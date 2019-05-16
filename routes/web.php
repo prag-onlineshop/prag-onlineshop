@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('L');
 });
 
 Route::get('/user', function () {
@@ -28,3 +28,17 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
         return view('admin.home');
     });
 });
+
+Route::get('/loginForm', function () {
+    return view('loginForm');
+});
+
+Route::get('/forgotPass', function () {
+    return view('forgotPass');
+});
+
+Route::get('/resetPass', function () {
+    return view('resetPass');
+});
+
+
