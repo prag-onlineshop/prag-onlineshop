@@ -11,20 +11,18 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.userHome');
 });
 
-Route::get('/user', function () {
-    return view('user.home');
-});
+Route::view('/userlogin','user.userLogin');
 
 Route::get('/profile', 'ProfileController@index');
 Route::post('/updateProfile', 'ProfileController@updateProfile');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {
@@ -32,3 +30,17 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     });
     Route::resource('/product', 'ProductController');
 });
+
+Route::get('/userLogin', function () {
+    return view('user.userLogin');
+});
+
+Route::get('/forgotPass', function () {
+    return view('user.userForgotPassword');
+});
+
+Route::get('/resetPass', function () {
+    return view('resetPass');
+});
+
+
