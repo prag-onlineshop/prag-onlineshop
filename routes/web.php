@@ -19,6 +19,9 @@ Route::get('/user', function () {
     return view('user.home');
 });
 
+Route::get('/profile', 'ProfileController@index');
+Route::post('/updateProfile', 'ProfileController@updateProfile');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -27,4 +30,5 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {
         return view('admin.home');
     });
+    Route::resource('/product', 'ProductController');
 });
