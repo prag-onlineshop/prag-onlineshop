@@ -11,17 +11,15 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('L');
+    return view('user.userHome');
 });
 
-Route::get('/user', function () {
-    return view('user.home');
-});
+Route::view('/userlogin','user.userLogin');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {
@@ -29,12 +27,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     });
 });
 
-Route::get('/loginForm', function () {
-    return view('loginForm');
+Route::get('/userLogin', function () {
+    return view('user.userLogin');
 });
 
 Route::get('/forgotPass', function () {
-    return view('forgotPass');
+    return view('user.userForgotPassword');
 });
 
 Route::get('/resetPass', function () {

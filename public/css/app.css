@@ -10664,30 +10664,25 @@ a.text-dark:focus {
 
 h3 {
   margin: 0;
-  padding: 0;
+  padding: 5px 0;
   color: #ffbe00;
   text-align: center;
 }
 
-#box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+#loginBox {
+  margin: 0 auto;
   width: 400px;
   padding: 40px;
   background: rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
   border-radius: 20px;
 }
 
-#box .inputBox {
+#loginBox .inputBox {
   position: relative;
 }
 
-#box .inputBox input {
+#loginBox .inputBox input {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -10700,7 +10695,7 @@ h3 {
   background: transparent;
 }
 
-#box .inputBox label {
+#loginBox .inputBox label {
   position: absolute;
   top: 0;
   left: 0;
@@ -10712,15 +10707,15 @@ h3 {
   transition: 0.5s;
 }
 
-#box .inputBox input:focus ~ label,
-#box .inputBox input:valid ~ label {
+#loginBox .inputBox input:focus ~ label,
+#loginBox .inputBox input:valid ~ label {
   top: -10px;
   left: 0;
   color: #ffbe00;
   font-size: 12px;
 }
 
-#box input[type=submit] {
+#loginBox input[type=submit] {
   background: transparent;
   border: none;
   outline: none;
@@ -10732,32 +10727,28 @@ h3 {
   border-radius: 5px;
 }
 
-#box .forgot-pass {
+#loginBox .forgot-pass {
   padding: 10px 0;
 }
 
-#box .reg {
+#loginBox .reg {
   padding: 5px 0;
 }
 
-#fpBox {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+#forgotPasswordBox {
+  margin: 0 auto;
   width: 400px;
   padding: 40px;
   background: rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
   border-radius: 20px;
 }
 
-#fpBox .inputBox {
+#forgotPasswordBox .inputBox {
   position: relative;
 }
-#fpBox .inputBox input {
+
+#forgotPasswordBox .inputBox input {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -10770,27 +10761,26 @@ h3 {
   background: transparent;
 }
 
-#fpBox .inputBox label {
+#forgotPasswordBox .inputBox label {
   position: absolute;
   top: 0;
   left: 0;
   letter-spacing: 1px;
-  padding: 10px 0;
+  padding: 1px 0;
   font-size: 16px;
   color: #fff;
   pointer-events: none;
   transition: 0.5s;
 }
 
-#fpBox .inputBox input:focus ~ label,
-#fpBox .inputBox input:valid ~ label {
+#forgotPasswordBox .inputBox input:focus ~ label,
+#forgotPasswordBox .inputBox input:valid ~ label {
   top: -10px;
   left: 0;
   color: #ffbe00;
-  font-size: 12px;
 }
 
-#fpBox input[type=submit] {
+#forgotPasswordBox input[type=submit] {
   background: transparent;
   border: none;
   outline: none;
@@ -10800,5 +10790,98 @@ h3 {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
+}
+
+#resetPasswordBox {
+  margin: 0 auto;
+  width: 400px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+#resetPasswordBox .inputBox {
+  position: relative;
+}
+
+#resetPasswordBox .inputBox input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+#resetPasswordBox .inputBox label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  letter-spacing: 1px;
+  padding: 1px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+#resetPasswordBox .inputBox input:focus ~ label,
+#resetPasswordBox .inputBox input:valid ~ label {
+  top: -10px;
+  left: 0;
+  color: #ffbe00;
+}
+
+#resetPasswordBox input[type=submit] {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffbe00;
+  width: 100%;
+  background: #005874;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#resetPasswordBox .loginLink {
+  padding: 35px 0px 0;
+}
+
+html {
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+ul li {
+  list-style: none;
+  display: inline-block;
+  padding-right: 1rem;
+}
+
+#headerWrap {
+  background: #02182a77;
+  height: 120px;
+}
+
+#headerWrap ul li a {
+  color: white;
+}
+
+#contentWrap {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+footer {
+  background: #333;
+  padding: 1.5rem;
+  margin: 0;
+  color: white;
 }
 
