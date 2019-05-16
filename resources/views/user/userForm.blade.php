@@ -11,14 +11,14 @@
     <div class="container-fluid m-0 p-0 ">
         <div class="" id="headerWrap">
           <div class="container">
-          @include('user.layouts.nav')
+          @include('user.layouts.userFormData')
           </div>
         </div>
 
         <div class="container">
             <div class="" id="contentWrap">
               <h2>This is user form</h2>
-                @include('user.layouts.userForm.blade.php')
+                @include('user.layouts.content')
             </div>
           </div>
         

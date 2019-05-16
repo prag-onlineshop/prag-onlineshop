@@ -17,6 +17,7 @@ Route::get('/', function () {
 });
 
 Route::view('/userlogin','user.userLogin');
+Route::view('/userData','user.userForm');
 
 Auth::routes();
 

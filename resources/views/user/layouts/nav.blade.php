@@ -9,7 +9,6 @@
                 <li><a href="#">Customer Care</a> </li>
            </ul>
         </div>
-
     </div>
 </header>
  
