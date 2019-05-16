@@ -18,9 +18,9 @@
 
           <div class="container">
             <div class="" id="contentWrap">
-              <h2 class="text-center mt-4">login here</h2>
-             <div class="loginFormWrap">
-               @include('user.layouts.loginForm')
+              
+             <div class="forgotPasswordFormWrap mt-4">
+               @include('user.layouts.forgotPasswordForm')
               </div>
               
           </div>

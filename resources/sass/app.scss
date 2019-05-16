@@ -5,7 +5,216 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
+
+h3{
+    margin: 0;
+    padding: 5px 0;
+    color: #ffbe00;
+    text-align: center;
+
+}
+
+
+
+#loginBox
+
+{
+    margin: 0 auto;
+	width: 400px;
+	padding:40px;
+	background: rgba(0, 0, 0, .8);
+	box-sizing: border-box;
+	 border-radius: 20px;
+    
+    
+
+    .inputBox {
+        position: relative;
+    }
+    
+    .inputBox input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+    }
+    
+    .inputBox label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        letter-spacing: 1px;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+    }
+    
+    .inputBox input:focus ~ label, 
+    .inputBox input:valid ~ label {
+        top: -10px;
+        left: 0;
+        color: #ffbe00;
+        font-size: 12px;
+    }
+    
+    input[type="submit"]
+    {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #ffbe00;
+        width:	100%;
+        background: #005874;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }	
+    
+    .forgot-pass {
+        padding: 10px 0;
+    }
+    
+    .reg {
+        padding: 5px 0;
+    }
+    
+}
+
+
+ 
+
+
+#forgotPasswordBox
+{
+    margin: 0 auto;
+	width: 400px;
+	padding:40px;
+	background: rgba(0, 0, 0, .8);
+	box-sizing: border-box;
+	border-radius: 20px;
+    
+    
+    .inputBox {
+        position: relative;
+        
+    }
+    
+    .inputBox input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+    }
+    
+    .inputBox label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        letter-spacing: 1px;
+        padding: 1px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+    }
+    .inputBox input:focus ~ label, 
+    .inputBox input:valid ~ label {
+        top: -10px;
+        left: 0;
+        color: #ffbe00;
+    }
+    input[type="submit"]
+    {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #ffbe00;
+        width:	100%;
+        background: #005874;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }	
+}
+
+#resetPasswordBox
+{
+    margin: 0 auto;
+	width: 400px;
+	padding:40px;
+	background: rgba(0, 0, 0, .8);
+	box-sizing: border-box;
+	border-radius: 20px;
+    
+    
+    .inputBox {
+        position: relative;
+        
+    }
+    
+    .inputBox input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+    }
+    
+    .inputBox label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        letter-spacing: 1px;
+        padding: 1px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+    }
+    .inputBox input:focus ~ label, 
+    .inputBox input:valid ~ label {
+        top: -10px;
+        left: 0;
+        color: #ffbe00;
+    }
+    input[type="submit"]
+    {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #ffbe00;
+        width:	100%;
+        background: #005874;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }	
+    .loginLink {
+        padding: 35px 0px 0;
+    }
+
+}
+
 
 html {
     line-height: 1.6;
@@ -29,9 +238,7 @@ ul li {
     display: block;
     margin-bottom: 1.5rem;
 }
-.loginForm {
-    height: 100vh;  
-}
+
 footer {
     background: #333;
     padding: 1.5rem;

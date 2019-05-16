@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::view('/userlogin','user.userLogin');
 Route::view('/userData','user.userForm');
 
+Route::get('/profile', 'ProfileController@index');
+Route::post('/updateProfile', 'ProfileController@updateProfile');
+
 Auth::routes();
 
 
@@ -26,4 +29,19 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {
         return view('admin.home');
     });
+    Route::resource('/product', 'ProductController');
 });
+
+Route::get('/userLogin', function () {
+    return view('user.userLogin');
+});
+
+Route::get('/forgotPass', function () {
+    return view('user.userForgotPassword');
+});
+
+Route::get('/resetPass', function () {
+    return view('resetPass');
+});
+
+
