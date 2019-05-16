@@ -13,16 +13,13 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.userHome');
 });
 
-Route::get('/user', function () {
-    return view('user.home');
-});
+Route::view('/userlogin','user.userLogin');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {

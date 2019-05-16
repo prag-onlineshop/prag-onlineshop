@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+}
+ul li {
+    list-style: none;
+}
+#headerNav {
+    background: #005874;
+    height: 130px;
+    color: #f4f4f4;
+}
+
+#headerNav .navTop {
+    width: 400px;
+    float: right;
+    height: 30px;
+    color: #000000;
+    background: #02c4ff;
+}
+#headerNav .logo a {
+    text-decoration: none;
+    font-size: 3rem;
+    color: white;
+}
+#headerNav input[type="text"] {
+    font-size: 1.2rem;
+    width: 400px;
+    padding: 0.3rem;
+    height: 40px;
+}
+
+#headerNav .headerContent {
+    padding-top: 3.3rem;
+}
