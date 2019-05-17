@@ -19,29 +19,24 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
-        // $user_id = Auth::user()->id;
-        // User::where('id', $user_id)->update($request->except('_token'));
+        if($request->photo){
+            $name = time() . '.' . $request->photo->getClientOriginalExtension();
 
-        // return back()->with('msg', 'Your Profile Detail has been update');
+            Image::make($request->photo)->save(public_path('images/' ).$name);
 
-        //
-        if($request->hasFile('avatar')){
-            $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300, 300)->save( public_path('images/' . $filename ) );
+            $request->merge(['photo' => $name]);
 
-            // $user = Auth::user();
-            // $user->avatar = $filename;
-            // $user->save();
+            $userPhoto = public_path('images/');
+            if(file_exists($userPhoto)){
+                @unlink($userPhoto);
+            }
 
             $user_id = Auth::user()->id;
-            $user_id->avatar = $filename;
-            $user->save();
-
-            User::where('id', $user_id)->image('image')->update($request->except('_token'));
+            $user = User::where('id', $user_id)->update($request->except('_token'));
+            $user = Auth::user();
+            $user->photo = $name;
+    		$user->save();
         }
-
-        // return view('user.home', array('user' => Auth::user()));
 
         return back()->with('msg', 'Your Profile Detail has been update');
     }

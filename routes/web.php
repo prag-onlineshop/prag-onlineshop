@@ -23,7 +23,6 @@ Route::post('/updateProfile', 'ProfileController@updateProfile');
 
 Auth::routes();
 
-
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {
         return view('admin.home');
