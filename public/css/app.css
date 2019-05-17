@@ -10690,12 +10690,12 @@ textarea {
 }
 
 #headerWrap {
-  background: #103c42;
+  background: #02576c;
   height: auto;
 }
 
 #headerWrap .homelink {
-  background: #02576c;
+  background: #103c42;
   height: 2rem;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -10737,7 +10737,7 @@ textarea {
 }
 
 footer {
-  background: #103c42;
+  background: #02576c;
   padding: 1.5rem;
   margin: 0;
   color: white;
