@@ -1,8 +1,8 @@
 
 	    <div class="form-group">
 	    	<label for="name">Brand Name</label>
-    	    <input type="text" name="name" class="form-control" value="{{ old('name') ?? $brand->name }} ">
-			{{ $errors->first('brandname') }}
+    	    <input type="text" name="name" class="form-control" value="{{ old('name') ?? $brand->name }}">
+			{{ $errors->first('name') }}
 	    </div>
 	    <div class="form-group d-flex flex-column">
 	    	<label for="logo">Logo</label>

@@ -30,8 +30,8 @@ class BrandController extends Controller
     public function create()
     {
         //
-
-        return view('admin.brand.create');
+        $brand = new Brand();
+        return view('admin.brand.create', compact('brand'));
     }
 
     /**
@@ -45,7 +45,7 @@ class BrandController extends Controller
 
         $brand = Brand::create($this->validateRequest());
 
-
+        //$this->storeImage($brand);
         // $this->storeImage($validatetaData);
 
         
@@ -91,13 +91,9 @@ class BrandController extends Controller
      */
     public function update(Brand $brand)
     {
-        $data = request()->validate([
-            'name' => 'required|min:3',
-            //'logo' => 'required|file|image|max:5000',
-            'url' => 'required',
-        ]);
+        $brand->update($this->validateRequest());
 
-        $brand->update($data);
+        //$this->storeImage($brand);
 
         return redirect('brand/'. $brand->id);
 
@@ -116,25 +112,46 @@ class BrandController extends Controller
         return redirect('brand');
     }
 
-    private function storeImage($validatetaData){
-        if(request()->has('logo')){
-            $validatetaData->update([
-                'logo' => request()->logo->store('uploads','public'),
-            ]);
-        }
-    }
+    // private function storeImage($brand){
+    //     if(request()->has('image')){
+    //         $brand->update([
+    //             'logo' => request()->image->store('uploads','public'),
+    //         ]);
+    //     }
+    // }
 
     private function validateRequest(){
 
-        return request()->validate([
-            'name' => 'required|min:3',
-            'logo' => 'required|file|image|max:5000',
+        $validateData = request()->validate([
+            'name' => 'required',
             'url' => 'required',
+            'logo' => '',
+
         ]);
+  
+        if(request()->hasFile('logo')){
+            //dd(request('logo'));
+            request()->validate([
+                'logo' => 'file|image|max:50000',
+            ]);
+        };
 
-
+            return $validateData;
     }
 
 
+        // return tap(request()->validate([
+        //     'name' => 'required|min:3',
+        //     'url' => 'required',
+            
+        // ]), function () {       
+        //         if (request()->hasFile('logo')){
 
+        //             request()->validate([
+        //                 'logo' => 'file|image|mimes:png,jpg|max:5000',
+        //             ]);
+        //         }
+        // });
+
+    
 }
