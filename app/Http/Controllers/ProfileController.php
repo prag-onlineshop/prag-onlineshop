@@ -14,11 +14,19 @@ class ProfileController extends Controller
         $user_id = Auth::user()->id;
         $profile = User::where('id', $user_id)->get();
 
-        return view('user.home', compact('profile'));
+        return view('user.userprofile', compact('profile'));
     }
 
     public function updateProfile(Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required|min:5|max:191',
+            'email' => 'required|min:5|email|max:191',
+            'contact' => 'required|min:5|max:191',
+            'address' => 'required|min:5|max:191',
+            'photo' => 'image|mimes:png,jpg,jpeg,|max:10000'
+        ]);
+
         if($request->photo){
             $name = time() . '.' . $request->photo->getClientOriginalExtension();
 
