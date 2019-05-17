@@ -4,9 +4,7 @@
   <body>
       <div class="container-fluid m-0 p-0 ">
         <div class="" id="headerWrap">
-          <div class="container">
-          @include('user.layouts.nav')
-          </div>
+          
         </div>
         <div class="container">
           <div class="" id="contentWrap">
