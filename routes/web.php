@@ -13,11 +13,12 @@
 
 
 Route::get('/', function () {
-    return view('user.userHome');
+    return view('user.content');
 });
 
 Route::view('/userlogin','user.userLogin');
 Route::view('/userData','user.userForm');
+Route::view('/userprofile','user.userprofile');
 
 Route::get('/profile', 'ProfileController@index');
 Route::post('/updateProfile', 'ProfileController@updateProfile');

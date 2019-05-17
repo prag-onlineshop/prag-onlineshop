@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Forgot Password</title>
-    <link href="{{ asset('css/app.css')}}"rel="stylesheet"/>
-</head>
-    
-<body>
+@extends('layouts.app')
+
+@section('forgotpassword')
+
     <div id="forgotPasswordBox">
       <h3>Forgot your Password?</h3>
         <form>
@@ -21,7 +16,7 @@
             
         </form>  
     </div>
-</body>
+    
+@endsection
 
 
-</html>
