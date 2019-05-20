@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-
 <section class="main-content py-3 " >
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -110,109 +109,14 @@
                       </div>
                       <div class="d-flex justify-content-between align-items-center">
                           <div class="btn-group">
-                            <a href="#" class="btn btn-sm btn-outline-secondary">View Product</a>
-                            <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-sm btn-outline-secondary">Add To Cart <i class="fa fa-shopping-cart"></i></a>
+                            <a href="{{ url('productDetail',$product->id) }}" class="btn btn-sm btn-outline-secondary">View Product</a>
+                            <a href="{{ url('cart/addItem',$product->id) }}" class="btn btn-sm btn-outline-secondary">Add To Cart <i class="fa fa-shopping-cart"></i></a>
                           </div>
                       </div>
                     </div>
                     @empty
                         <h3>No Products</h3>
                     @endforelse
-    
-                    <!-- <div class="card">
-                        <img src="{{ asset('img/Bags/Fendi/products/fendi-elitebag.jpg') }}" class="card-img-top" alt="...">
-                      <div class="card-body">
-                          <h5 class="card-title">Brand: Fendi</h5>
-                          <p class="card-text">GUCCI This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Category: Bag</small></p>
-                      </div>
-                    </div>
-    
-                    <div class="card">
-                        <img src="{{ asset('img/Shirts/Lacoste/products/lacoste.jpg') }}" class="card-img-top " alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Brand: Lacoste</h5>
-                          <p class="card-text">Lacoste This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Category: Clothes</small></p>
-                        </div>
-                      </div>
-      
-                      <div class="card">
-                          <img src="{{ asset('img/Bags/Fendi/products/fendi-elitebag.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Brand: Fendi</h5>
-                            <p class="card-text">GUCCI This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Category: Bag</small></p>
-                        </div>
-                      </div>
-
-                        
-
-                    <div class="card">
-                        <img src="{{ asset('img/Bags/Fendi/products/fendi-elitebag.jpg') }}" class="card-img-top" alt="...">
-                      <div class="card-body">
-                          <h5 class="card-title">Brand: Fendi</h5>
-                          <p class="card-text">GUCCI This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Category: Bag</small></p>
-                      </div>
-                    </div>
-                  
-    
-                   
-              </div>
-          </div>
-
-
-
-          <div class="row mt-4">
-              <div class="card-deck">
-                  <div class="card">
-                      <img src="{{ asset('img/Shirts/Lacoste/products/lacoste.jpg') }}" class="card-img-top " alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Brand: Lacoste</h5>
-                        <p class="card-text">Lacoste This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Category: Clothes</small></p>
-                      </div>
-                    </div>
-    
-                  
-      
-                    
-                        <div class="card">
-                            <img src="{{ asset('img/Shirts/Lacoste/products/lacoste.jpg') }}" class="card-img-top " alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Brand: Lacoste</h5>
-                              <p class="card-text">Lacoste This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                              <p class="card-text"><small class="text-muted">Category: Clothes</small></p>
-                            </div>
-                          </div>
-    
-                    <div class="card">
-                        <img src="{{ asset('img/Bags/Fendi/products/fendi-elitebag.jpg') }}" class="card-img-top" alt="...">
-                      <div class="card-body">
-                          <h5 class="card-title">Brand: Fendi</h5>
-                          <p class="card-text">GUCCI This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Category: Bag</small></p>
-                      </div>
-                    </div>
-    
-                    <div class="card">
-                        <img src="{{ asset('img/Shirts/Lacoste/products/lacoste.jpg') }}" class="card-img-top " alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Brand: Lacoste</h5>
-                          <p class="card-text">Lacoste This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Category: Clothes</small></p>
-                        </div>
-                      </div>
-      
-                      <div class="card">
-                          <img src="{{ asset('img/Bags/Fendi/products/fendi-elitebag.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Brand: Fendi</h5>
-                            <p class="card-text">GUCCI This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Category: Bag</small></p>
-                        </div>
-                      </div> -->
               </div>
 
           </div>

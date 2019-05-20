@@ -1,14 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-<<<<<<< HEAD
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "5a4e971c699dca3e564bcef6aadc2c5e",
-=======
-    "content-hash": "36cb84ff3309b2af9fa5413aa0e2a364",
+    "content-hash": "c9dae9e21e0305f04ae811eaf91b7380",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -77,30 +73,30 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-            "version": "4.8.0",
+            "version": "4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "4a5bf905b55e7eb0a30ef5933f647387dc8f365a"
+                "reference": "e05e778d3ff87a010b0dd73aab00a7c72761ff81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/4a5bf905b55e7eb0a30ef5933f647387dc8f365a",
-                "reference": "4a5bf905b55e7eb0a30ef5933f647387dc8f365a",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/e05e778d3ff87a010b0dd73aab00a7c72761ff81",
+                "reference": "e05e778d3ff87a010b0dd73aab00a7c72761ff81",
                 "shasum": ""
             },
             "require": {
                 "cocur/slugify": "^3.1",
-                "illuminate/config": "~5.8.0",
-                "illuminate/database": "~5.8.0",
-                "illuminate/support": "~5.8.0",
-                "php": "^7.1"
+                "illuminate/config": "~5.7.0",
+                "illuminate/database": "~5.7.0",
+                "illuminate/support": "~5.7.0",
+                "php": "^7.0"
             },
             "require-dev": {
                 "limedeck/phpunit-detailed-printer": "^4.1",
-                "mockery/mockery": "^1.2",
-                "orchestra/database": "3.8.x-dev",
-                "orchestra/testbench": "v3.8.0",
+                "mockery/mockery": "^0.9.4",
+                "orchestra/database": "3.7.x-dev",
+                "orchestra/testbench": "v3.7.0",
                 "phpunit/phpunit": "~7.0"
             },
             "type": "library",
@@ -136,18 +132,9 @@
                 "slug",
                 "sluggable"
             ],
-            "time": "2019-03-01T05:04:21+00:00"
+            "time": "2019-02-24T19:36:12+00:00"
         },
         {
-=======
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "443c3d8dfdf81c12d41d608f0d36d384",
->>>>>>> 2369a94cda4b9e880de892c70cadf9d7bb5fb857
-    "packages": [
-        {
->>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
             "source": {
@@ -1458,23 +1445,7 @@
         },
         {
             "name": "nesbot/carbon",
-<<<<<<< HEAD
             "version": "1.37.1",
-=======
-<<<<<<< HEAD
-            "version": "2.18.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "8322b7bd1805be31867c13bf3cdaab948a0dd406"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8322b7bd1805be31867c13bf3cdaab948a0dd406",
-                "reference": "8322b7bd1805be31867c13bf3cdaab948a0dd406",
-=======
-            "version": "2.17.1",
->>>>>>> 2369a94cda4b9e880de892c70cadf9d7bb5fb857
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
@@ -1482,14 +1453,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< HEAD
                 "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
                 "reference": "5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
-=======
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/96acbc0c03782e8115156dd4dd8b736267155066",
-                "reference": "96acbc0c03782e8115156dd4dd8b736267155066",
->>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
->>>>>>> 2369a94cda4b9e880de892c70cadf9d7bb5fb857
                 "shasum": ""
             },
             "require": {
@@ -1534,7 +1499,6 @@
                 "datetime",
                 "time"
             ],
-<<<<<<< HEAD
             "time": "2019-04-19T10:27:42+00:00"
         },
         {
@@ -1584,13 +1548,6 @@
             ],
             "description": "PHP Client for using Nexmo's API.",
             "time": "2019-05-13T20:27:43+00:00"
-=======
-<<<<<<< HEAD
-            "time": "2019-05-16T18:44:35+00:00"
-=======
-            "time": "2019-04-27T18:04:27+00:00"
->>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
->>>>>>> 2369a94cda4b9e880de892c70cadf9d7bb5fb857
         },
         {
             "name": "nikic/php-parser",
