@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 // Route::get('/home1', function () {
 //     return view('user.home');
@@ -32,6 +29,7 @@ Route::get('/category/{url}', 'CategoriesController@url');
 Route::get('/', 'ProductController@index');
 
 Route::view('/userlogin','user.userLogin');
+Route::view('/signup','user.registration');
 Route::view('/userData','user.userForm');
 Route::get('/userprofile','ProfileController@index');
 
@@ -66,7 +64,7 @@ Route::get('/resetPass', function () {
     return view('resetPass');
 });
 
-// <<<<<<< HEAD
+
 Route::get('brand', 'BrandController@index')->name('brand.index');
 Route::post('brand', 'BrandController@store')->name('brand.store');
 Route::get('brand/create', 'BrandController@create')->name('brand.create');
@@ -74,6 +72,5 @@ Route::get('brand/{brand}', 'BrandController@show')->name('brand.profile');
 Route::get('brand/{brand}/edit', 'BrandController@edit')->name('brand.edit');
 Route::patch('brand/{brand}', 'BrandController@update')->name('brand.update');
 Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
-// =======
-// >>>>>>> ee787582356f6ccbef5c0d87db3c6705b6d6db5e
+
 
