@@ -18,33 +18,40 @@
     margin: 0;
     padding: 0;
 }
+
 html,
 body {
     line-height: 1.6;
     height: 100%;
     box-sizing: border-box;
 }
+
 ul li {
     list-style: none;
     display: inline-block;
     padding-right: 1rem;
 }
+
 .logoText {
     font-size: 2.5rem;
     color: #fdfdfd;
 }
+
 textarea {
     padding: 0.5rem;
 }
+
 .carousel-control-prev,
-.carousel-control-next {
-}
+.carousel-control-next {}
+
 .carousel-item {
     height: calc(100vh - 120px);
 }
+
 .carousel-item img {
     height: calc(100vh - 120px);
 }
+
 .card-hover:hover {
     border-style: inset;
     border: 2px #fffa6f solid;
@@ -56,13 +63,13 @@ textarea {
 .bg-carousel {
     background: #fff4d6;
 }
+
 .bg-overlay {
     background: #e6e6e6;
     min-height: 100%;
 }
-.card-img-top {
-    width: 100px;
-}
+
+.card-img-top {}
 
 #headerWrap {
     background: $secondary-color-navyBlue;
@@ -80,10 +87,12 @@ textarea {
             font-size: 0.5rem;
         }
     }
+
     .header-content {
         input[type="text"] {
             width: 500px !important;
         }
+
         .searchBtn button {
             border: none;
             background: #fffa6f;
@@ -94,17 +103,21 @@ textarea {
         ul {
             margin: 0;
         }
+
         ul li a {
             color: white;
         }
+
         button {
             border: 0;
             border-radius: 0px;
         }
+
         .bg-white {
             border: 0;
             border-radius: 0;
         }
+
         .search img {
             height: 1.5rem;
             width: 1.5rem;
@@ -114,6 +127,7 @@ textarea {
 
 #HomeContentproduct {
     display: block;
+
     .card-img-top {
         margin: 20px auto;
         height: 150px;
@@ -133,6 +147,7 @@ footer {
     background: #e6e6e6;
     padding-top: 50px;
     padding: 2rem;
+
     .myprofile {
         padding: 2rem;
         background: #f4f4f4;
@@ -146,12 +161,14 @@ footer {
     align-items: center;
     height: 100vh;
 }
+
 .loginContainer {
     display: flex;
     justify-items: center;
     align-items: center;
     min-height: 100%;
 }
+
 #loginBox {
     margin: 0 auto;
     width: 600px;
@@ -159,12 +176,14 @@ footer {
     background: #f4f4f4;
     box-sizing: border-box;
     border-radius: 20px;
+
     h3 {
         margin: 0;
         padding: 5px 0;
         color: #ffbe00;
         text-align: center;
     }
+
     .inputBox {
         position: relative;
     }
@@ -194,8 +213,8 @@ footer {
         transition: 0.5s;
     }
 
-    .inputBox input:focus ~ label,
-    .inputBox input:valid ~ label {
+    .inputBox input:focus~label,
+    .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #b6b6b6;
@@ -259,12 +278,14 @@ footer {
         pointer-events: none;
         transition: 0.5s;
     }
-    .inputBox input:focus ~ label,
-    .inputBox input:valid ~ label {
+
+    .inputBox input:focus~label,
+    .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #ffbe00;
     }
+
     input[type="submit"] {
         background: transparent;
         border: none;
@@ -285,12 +306,14 @@ footer {
     background: rgba(0, 0, 0, 0.8);
     box-sizing: border-box;
     border-radius: 20px;
+
     h3 {
         margin: 0;
         padding: 5px 0;
         color: #ffbe00;
         text-align: center;
     }
+
     .inputBox {
         position: relative;
     }
@@ -319,12 +342,14 @@ footer {
         pointer-events: none;
         transition: 0.5s;
     }
-    .inputBox input:focus ~ label,
-    .inputBox input:valid ~ label {
+
+    .inputBox input:focus~label,
+    .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #ffbe00;
     }
+
     input[type="submit"] {
         background: transparent;
         border: none;
@@ -336,6 +361,7 @@ footer {
         cursor: pointer;
         border-radius: 5px;
     }
+
     .loginLink {
         padding: 35px 0px 0;
     }
