@@ -17,7 +17,11 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('category_id');
             $table->integer('brand_id');
+<<<<<<< HEAD
+            $table->string('name');
+=======
             $table->string('name')->nullable();
+>>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
             $table->string('image');
             $table->integer('price');
             $table->string('description');

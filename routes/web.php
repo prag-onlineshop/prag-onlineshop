@@ -11,6 +11,19 @@
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('categories', 'CategoriesController');
+
+Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
+
+Route::get('/category/{url}', 'CategoriesController@url');
 
 Route::get('/', 'ProductController@index');
 
@@ -48,4 +61,14 @@ Route::get('/resetPass', function () {
     return view('resetPass');
 });
 
+// <<<<<<< HEAD
+Route::get('brand', 'BrandController@index')->name('brand.index');
+Route::post('brand', 'BrandController@store')->name('brand.store');
+Route::get('brand/create', 'BrandController@create')->name('brand.create');
+Route::get('brand/{brand}', 'BrandController@show')->name('brand.profile');
+Route::get('brand/{brand}/edit', 'BrandController@edit')->name('brand.edit');
+Route::patch('brand/{brand}', 'BrandController@update')->name('brand.update');
+Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
+// =======
+// >>>>>>> ee787582356f6ccbef5c0d87db3c6705b6d6db5e
 
