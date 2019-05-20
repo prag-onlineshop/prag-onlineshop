@@ -6,6 +6,13 @@
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
 
 * {
     margin: 0;
@@ -52,6 +59,9 @@ textarea {
 .bg-overlay {
     background: #e6e6e6;
     min-height: 100%;
+}
+.card-img-top {
+    width: 100px;
 }
 
 #headerWrap {

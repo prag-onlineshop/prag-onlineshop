@@ -25,27 +25,42 @@
               <hr>
               <div class="row">
                   <div class="col-md-9 col-lg-9 ">
-                      <form action="">
-                          <p>Email: <span>test@yahoo.com</span></p>
-                          <p>phone Number: <span>099333211</span></p>
-                          <div class="form-group">
-                          <label for="">Username: 
-                            <input type="text" placeholder="Value Username here">
-                          </label>
-                          </div>
-                          <div class="form-group">
-                              <span>Gender: </span>
-                          <span><input type="radio" name="gender">Male</span>
-                          <span><input type="radio" name="gender">Male</span>
-                        </div>
-                          <div class="form-group">
-                           <p>Address </p> 
-                             <span><textarea name="address" id="address" cols="30" rows="6" placeholder="Enter Address Here"></textarea></span> 
-                           
-                          </div>
-                       
+                      <form action="{{ url('/updateProfile') }}" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        @foreach($profile as $pro)
+                        <img alt="Card image cap" src="{{ url('images',$pro->photo) }}">
 
-                        <button class="btn btn-primary d-block">Save</button>
+                        <div class="form-group{{ $errors->has('photo')?' has-error':'' }}">
+                          <label for="photo">Profile Picture</label>
+                          <input type="file" class="form-control" name="photo" id="photo">
+                          <span class="text-danger">{{ $errors->first('photo') }}</span>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('name')?' has-error':'' }}">
+                          <label for="name">Name</label>
+                          <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $pro->name }}" placeholder="UserName">
+                          <span class="text-danger">{{ $errors->first('name') }}</span>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('email')?' has-error':'' }}">
+                          <label for="email">Email</label>
+                          <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $pro->email }}" placeholder="Email">
+                          <span class="text-danger">{{ $errors->first('email') }}</span>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('contact')?' has-error':'' }}">
+                          <label for="contact">Contact</label>
+                          <input type="text" class="form-control @error('contact') is-invalid @enderror" name="contact" id="contact" value="{{ $pro->contact }}" placeholder="Contact">
+                          <span class="text-danger">{{ $errors->first('contact') }}</span>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('address')?' has-error':'' }}">
+                          <label for="address">Address</label>
+                          <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" id="address" value="{{ $pro->address }}" placeholder="Address">
+                          <span class="text-danger">{{ $errors->first('address') }}</span>
+                        </div>
+                        @endforeach
+                        <button type="submit" class="btn btn-primary d-block">Save</button>
                       </form>
                   </div>
 

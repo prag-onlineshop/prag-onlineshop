@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+Options +SymLinksIfOwnerMatch
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+=======
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
@@ -19,3 +27,4 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+>>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
