@@ -10689,45 +10689,82 @@ textarea {
   padding: 0.5rem;
 }
 
+.carousel-item {
+  height: calc(100vh - 120px);
+}
+
+.carousel-item img {
+  height: calc(100vh - 120px);
+}
+
+.card-hover:hover {
+  border-style: inset;
+  border: 2px #fffa6f solid;
+}
+
+.bg-carousel {
+  background: #fff4d6;
+}
+
+.bg-overlay {
+  background: #e6e6e6;
+  min-height: 100%;
+}
+
 #headerWrap {
   background: #02576c;
   height: auto;
+  font-size: 0.7rem !important;
 }
 
 #headerWrap .homelink {
   background: #103c42;
-  height: 2rem;
+  height: 1.5rem;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 
 #headerWrap .homelink ul li a {
-  color: white;
+  color: #d8d8d8;
+  font-size: 0.5rem;
 }
 
 #headerWrap .header-content input[type=text] {
   width: 500px !important;
-  padding: 0.5rem;
-  height: 3rem;
-  border-radius: 15px;
 }
 
-#headerWrap .header-content button {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 0px;
-  color: #fbfbfb;
-  background: #02576c;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+#headerWrap .header-content .searchBtn button {
+  border: none;
+  background: #fffa6f;
+  cursor: pointer;
+  height: 100%;
+}
+
+#headerWrap .header-content ul {
+  margin: 0;
 }
 
 #headerWrap .header-content ul li a {
   color: white;
 }
 
-.bg-content {
-  background: #e6e6e6;
+#headerWrap .header-content button {
+  border: 0;
+  border-radius: 0px;
+}
+
+#headerWrap .header-content .bg-white {
+  border: 0;
+  border-radius: 0;
+}
+
+#headerWrap .header-content .search img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+#HomeContentproduct {
+  display: block;
 }
 
 #HomeContentproduct .card-img-top {
@@ -10754,6 +10791,13 @@ footer {
   background: #f4f4f4;
 }
 
+.forgotpassContainer {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .loginContainer {
   display: flex;
   justify-items: center;
@@ -10763,9 +10807,9 @@ footer {
 
 #loginBox {
   margin: 0 auto;
-  width: 400px;
+  width: 600px;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.8);
+  background: #f4f4f4;
   box-sizing: border-box;
   border-radius: 20px;
 }
@@ -10783,13 +10827,13 @@ footer {
 
 #loginBox .inputBox input {
   width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
+  padding: 15px 0;
+  font-size: 12px;
+  color: #333;
   letter-spacing: 1px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #333;
   outline: none;
   background: transparent;
 }
@@ -10801,7 +10845,7 @@ footer {
   letter-spacing: 1px;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: #333;
   pointer-events: none;
   transition: 0.5s;
 }
@@ -10810,8 +10854,8 @@ footer {
 #loginBox .inputBox input:valid ~ label {
   top: -10px;
   left: 0;
-  color: #ffbe00;
-  font-size: 12px;
+  color: #b6b6b6;
+  font-size: 14px;
 }
 
 #loginBox input[type=submit] {
@@ -10835,10 +10879,10 @@ footer {
 }
 
 #forgotPasswordBox {
-  margin: 0 auto;
+  margin: 15px auto;
   width: 400px;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.8);
+  background: #f4f4f4;
   box-sizing: border-box;
   border-radius: 20px;
 }
@@ -10851,11 +10895,11 @@ footer {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: #333;
   letter-spacing: 1px;
   margin-bottom: 30px;
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #333;
   outline: none;
   background: transparent;
 }
@@ -10867,7 +10911,7 @@ footer {
   letter-spacing: 1px;
   padding: 1px 0;
   font-size: 16px;
-  color: #fff;
+  color: #333;
   pointer-events: none;
   transition: 0.5s;
 }
