@@ -19,8 +19,7 @@ use Faker\Generator as Faker;
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-<<<<<<< HEAD
-=======
+
         'contact' => '09999989289',
         'address' => $faker->address,
 >>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d

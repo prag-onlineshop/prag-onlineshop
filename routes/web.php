@@ -59,6 +59,10 @@ Route::get('/resetPass', function () {
     return view('resetPass');
 });
 
+Route::get('/productCategory', function () {
+    return view('productCategory');
+});
+
 
 Route::get('brand', 'BrandController@index')->name('brand.index');
 Route::post('brand', 'BrandController@store')->name('brand.store');
