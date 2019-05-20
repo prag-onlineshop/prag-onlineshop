@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-
 <header>
     <div class="" id="headerWrap">
             <div class="container">
@@ -11,6 +8,9 @@
                             <li><a href="userlogin">Login</a> </li>
                             <li><a href="#">Signup</a> </li>
                             <li><a href="#">Customer Care</a> </li>
+                            <li>
+                                <a href="{{url('/cart')}}" class="nav-link">Cart&nbsp;{{Cart::count()}}</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="clearfix"></div>

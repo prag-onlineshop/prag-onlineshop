@@ -12,9 +12,7 @@
 */
 
 
-Route::get('/', function () {
-    return view('user.content');
-});
+Route::get('/', 'ProductController@index');
 
 Route::view('/userlogin','user.userLogin');
 Route::view('/userData','user.userForm');
@@ -22,6 +20,12 @@ Route::get('/userprofile','ProfileController@index');
 
 Route::get('/profile', 'ProfileController@index');
 Route::post('/updateProfile', 'ProfileController@updateProfile');
+
+Route::get('/cart', 'CartController@index');
+Route::get('/cart/addItem/{id}', 'CartController@addItem');
+Route::get('/cart/update/{id}', 'CartController@update');
+Route::put('/cart/update/{id}', 'CartController@update');
+Route::get('/cart/remove/{id}', 'CartController@destroy');
 
 Auth::routes();
 

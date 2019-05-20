@@ -11,7 +11,7 @@
 <body>
    
   
-<header>
+<!-- <header>
     <div class="" id="headerWrap">
             <div class="container">
                 <div class="header-form">
@@ -60,7 +60,9 @@
                 </div>
             </div>
         </div> 
-</header>
+</header> -->
+
+    @include('layouts.header')
 
     @yield('login')
 
