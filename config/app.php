@@ -161,14 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-<<<<<<< HEAD
-=======
         Intervention\Image\ImageServiceProvider::class,
-<<<<<<< HEAD
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-=======
->>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
->>>>>>> 2369a94cda4b9e880de892c70cadf9d7bb5fb857
 
         /*
          * Package Service Providers...
@@ -233,16 +227,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-<<<<<<< HEAD
         'Image' => Intervention\Image\Facades\Image::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
-=======
-<<<<<<< HEAD
-
-=======
-        'Image' => Intervention\Image\Facades\Image::class
->>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
->>>>>>> 2369a94cda4b9e880de892c70cadf9d7bb5fb857
     ],
 
 ];
