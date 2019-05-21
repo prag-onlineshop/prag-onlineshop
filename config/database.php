@@ -57,6 +57,7 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
+            'engine' => 'InnoDB ROW_FORMAT=DYNAMIC',
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
@@ -71,6 +72,8 @@ return [
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8mb4',
+            'charset' => 'utf8',
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,

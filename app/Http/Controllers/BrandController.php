@@ -45,16 +45,7 @@ class BrandController extends Controller
 
         $brand = Brand::create($this->validateRequest());
 
-        //$this->storeImage($brand);
-        // $this->storeImage($validatetaData);
-
-        
-
-        // $brand = new Brand();
-        // $brand->name = request('brandname');
-        // $brand->logo = request('logo');
-        // $brand->url = request('url');
-        // $brand->save();
+        $this->storeImage($brand);
 
         return redirect('brand');
     }
@@ -93,7 +84,7 @@ class BrandController extends Controller
     {
         $brand->update($this->validateRequest());
 
-        //$this->storeImage($brand);
+        $this->storeImage($brand);
 
         return redirect('brand/'. $brand->id);
 
@@ -112,46 +103,38 @@ class BrandController extends Controller
         return redirect('brand');
     }
 
-    // private function storeImage($brand){
-    //     if(request()->has('image')){
-    //         $brand->update([
-    //             'logo' => request()->image->store('uploads','public'),
-    //         ]);
-    //     }
-    // }
+    private function storeImage($brand){
+
+        if(request()->has('logo')){
+            $brand->update([
+                'logo' => request()->logo->store('uploads','public'),
+            ]);
+        }
+    }
 
     private function validateRequest(){
 
-        $validateData = request()->validate([
+        return tap(request()->validate([
             'name' => 'required',
             'url' => 'required',
             'logo' => '',
 
-        ]);
-  
-        if(request()->hasFile('logo')){
-            //dd(request('logo'));
-            request()->validate([
+        ]), function () {
+                   
+            if(request()->hasFile('logo')){
+                request()->validate([
                 'logo' => 'file|image|max:50000',
             ]);
-        };
+            };
+        });
+    }
+    
+    public function getURL($brand){
 
-            return $validateData;
+        $brand = Brand::where('url', $brand)->firstOrFail();
+        return view('admin.brand.profile', compact($brand));
     }
 
-
-        // return tap(request()->validate([
-        //     'name' => 'required|min:3',
-        //     'url' => 'required',
-            
-        // ]), function () {       
-        //         if (request()->hasFile('logo')){
-
-        //             request()->validate([
-        //                 'logo' => 'file|image|mimes:png,jpg|max:5000',
-        //             ]);
-        //         }
-        // });
 
     
 }

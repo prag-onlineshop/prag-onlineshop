@@ -29,6 +29,7 @@ Route::get('/', 'ProductController@index');
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
 Route::view('/userData','user.userForm'); 
+Route::view('/dashboard','layouts.adminLayout'); 
 Route::get('/userprofile','ProfileController@index');
 Route::get('/productDetail/{id}','CartController@detailPro');
 
@@ -42,7 +43,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/remove/{id}', 'CartController@destroy'); 
 });
 
-// Auth::routes();
+
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {
@@ -71,5 +72,9 @@ Route::get('brand/{brand}', 'BrandController@show')->name('brand.profile');
 Route::get('brand/{brand}/edit', 'BrandController@edit')->name('brand.edit');
 Route::patch('brand/{brand}', 'BrandController@update')->name('brand.update');
 Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
+
+//Route::get('brand/{brand}', 'BrandController@getURL');
+
+
 
 
