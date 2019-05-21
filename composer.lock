@@ -7,11 +7,9 @@
 
         "This file is @generated automatically"
     ],
-
     "content-hash": "c9dae9e21e0305f04ae811eaf91b7380",
-
     "content-hash": "acf81691e434e8004012d60391429dfe",
-
+    "content-hash": "acf81691e434e8004012d60391429dfe",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -80,6 +78,7 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
+<<<<<<< HEAD
 
             "version": "4.7.0",
             "source": {
@@ -92,6 +91,8 @@
                 "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/e05e778d3ff87a010b0dd73aab00a7c72761ff81",
                 "reference": "e05e778d3ff87a010b0dd73aab00a7c72761ff81",
 
+=======
+>>>>>>> ae69bfa5d47e7a7694d2d107496a288afc7cea1a
             "version": "4.6.0",
             "source": {
                 "type": "git",
@@ -151,6 +152,7 @@
                 "slug",
                 "sluggable"
             ],
+<<<<<<< HEAD
 
             "time": "2019-03-01T05:04:21+00:00"
 
@@ -160,6 +162,9 @@
             "time": "2018-09-05T02:03:48+00:00"
 
 
+=======
+            "time": "2018-09-05T02:03:48+00:00"
+>>>>>>> ae69bfa5d47e7a7694d2d107496a288afc7cea1a
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
