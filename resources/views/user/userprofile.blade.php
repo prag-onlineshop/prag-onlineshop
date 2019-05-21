@@ -38,25 +38,25 @@
 
                         <div class="form-group{{ $errors->has('name')?' has-error':'' }}">
                           <label for="name">Name</label>
-                          <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $pro->name }}" placeholder="UserName">
+                          <input type="text" class="form-control" name="name" id="name" value="{{ $pro->name }}" placeholder="UserName">
                           <span class="text-danger">{{ $errors->first('name') }}</span>
                         </div>
 
                         <div class="form-group{{ $errors->has('email')?' has-error':'' }}">
                           <label for="email">Email</label>
-                          <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $pro->email }}" placeholder="Email">
+                          <input type="text" class="form-control" name="email" id="email" value="{{ $pro->email }}" placeholder="Email">
                           <span class="text-danger">{{ $errors->first('email') }}</span>
                         </div>
 
                         <div class="form-group{{ $errors->has('contact')?' has-error':'' }}">
                           <label for="contact">Contact</label>
-                          <input type="text" class="form-control @error('contact') is-invalid @enderror" name="contact" id="contact" value="{{ $pro->contact }}" placeholder="Contact">
+                          <input type="text" class="form-control" name="contact" id="contact" value="{{ $pro->contact }}" placeholder="Contact">
                           <span class="text-danger">{{ $errors->first('contact') }}</span>
                         </div>
 
                         <div class="form-group{{ $errors->has('address')?' has-error':'' }}">
                           <label for="address">Address</label>
-                          <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" id="address" value="{{ $pro->address }}" placeholder="Address">
+                          <input type="text" class="form-control" name="address" id="address" value="{{ $pro->address }}" placeholder="Address">
                           <span class="text-danger">{{ $errors->first('address') }}</span>
                         </div>
                         @endforeach

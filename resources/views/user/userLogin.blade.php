@@ -6,16 +6,18 @@
         <div id="loginBox" class="" >
             <h3>Welcome to Pragstore!</h3>
             <hr>
-              <form>
+              <form method="POST" action="{{ route('login') }}">
+                @csrf
                 <div class="inputBox">
-                    <input type="text" name="" required="">
-                    <label>Username</label>
+                    <input type="text" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <label>Email</label>
                 </div>
-                  <div class="inputBox">
-                      <input type="password" name="" required="">
-                      <label>Password</label>
-                  </div>
-                  <input type="submit" name="" value="Login">
+
+                <div class="inputBox">
+                    <input type="password" name="password" required autocomplete="current-password">
+                    <label>Password</label>
+                </div>
+                  <input type="submit" value="Login">
                   <hr>
                   <div class="forgot-pass"> <a href="#">Forgot Password? </a></div>
                   <div class="reg"> <a href="#"> Don't yet have an account? Register Here! </a></div>
@@ -23,7 +25,6 @@
           </div>
         </div>
 </div>
-
 
 @endsection
   
