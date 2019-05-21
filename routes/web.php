@@ -12,9 +12,6 @@
 */
 
 
-// Route::get('/home1', function () {
-//     return view('user.home');
-// });
 
 Auth::routes();
 
@@ -65,9 +62,9 @@ Route::get('/resetPass', function () {
     return view('resetPass');
 });
 
-Route::get('/productCategory', function () {
-    return view('productCategory');
-});
+
+
+Route::view('/profileOrder','user.profileOrder');
 
 
 Route::get('brand', 'BrandController@index')->name('brand.index');
