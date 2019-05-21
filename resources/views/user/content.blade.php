@@ -2,6 +2,7 @@
 @section('content')
 
 
+<<<<<<< HEAD
 <section class="main-content py-3 " >
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -32,6 +33,8 @@
             </div>
         </div>
 
+=======
+>>>>>>> ae69bfa5d47e7a7694d2d107496a288afc7cea1a
 
 
 <section class="main-content" >
@@ -67,62 +70,103 @@
 						</div>
 					</div>
 					<div class="bg-overlay py-3">
-						{{-- <div class="container">
-							<div class="" id="HomeContentproduct">
-								<div class="row">
-									<h3 class="mt-4 ">Most popular:</h3>
-									<div class="card-deck">
-										<div class="card card-hover">
-											<img src="{{ asset('img/Shirts/Lacoste/products/lacoste.jpg') }}" class="card-img-top " alt="...">
-												<div class="card-body">
-													<h5 class="card-title">Brand: Lacoste</h5>
-													<p class="card-text">Lacoste This is a longer card with supporting text below as a natural </p>
-													<p class="card-text">
-														<small class="text-muted">Category: Clothes</small>
-													</p>
-												</div>
+						<div class="container">
+							<h3>Most popular:</h3>
+							<div class="slick-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
+								<div class="item-slide p-2">
+									<figure class="card card-product">
+										<span class="badge-new"> NEW </span>
+										<div class="img-wrap">
+											<img src="{{ asset('img/items/1.jpg') }}">
 											</div>
-											<div class="card card-hover">
-												<img src="{{ asset('img/Bags/Fendi/products/fendi-elitebag.jpg') }}" class="card-img-top" alt="...">
-													<div class="card-body">
-														<h5 class="card-title">Brand: Fendi</h5>
-														<p class="card-text">Lacoste This is a longer card with supporting text below as a natural </p>
-														<p class="card-text">
-															<small class="text-muted">Category: Bag</small>
-														</p>
-													</div>
+											<figcaption class="info-wrap text-center">
+												<h6 class="title text-truncate">
+													<a href="#">First item name</a>
+												</h6>
+											</figcaption>
+										</figure>
+										<!-- card // -->
+									</div>
+									<div class="item-slide p-2">
+										<figure class="card card-product">
+											<div class="img-wrap">
+												<img src="{{ asset('img/items/1.jpg') }}">
 												</div>
-												<div class="card card-hover">
-													<img src="{{ asset('img/Shirts/Lacoste/products/lacoste.jpg') }}" class="card-img-top " alt="...">
-														<div class="card-body">
-															<h5 class="card-title">Brand: Lacoste</h5>
-															<p class="card-text">Lacoste This is a longer card with supporting text below as a natural </p>
-															<p class="card-text">
-																<small class="text-muted">Category: Clothes</small>
-															</p>
-														</div>
+												<figcaption class="info-wrap text-center">
+													<h6 class="title text-truncate">
+														<a href="#">Second item name</a>
+													</h6>
+												</figcaption>
+											</figure>
+											<!-- card // -->
+										</div>
+										<div class="item-slide p-2">
+											<figure class="card card-product">
+												<div class="img-wrap">
+													<img src="{{ asset('img/items/1.jpg') }}">
 													</div>
-													<div class="card card-hover">
-														<img src="{{ asset('img/Bags/Fendi/products/fendi-elitebag.jpg') }}" class="card-img-top" alt="...">
-															<div class="card-body">
-																<h5 class="card-title">Brand: Fendi</h5>
-																<p class="card-text">Lacoste This is a longer card with supporting text below as a natural </p>
-																<p class="card-text">
-																	<small class="text-muted">Category: Bag</small>
-																</p>
-															</div>
+													<figcaption class="info-wrap text-center">
+														<h6 class="title text-truncate">
+															<a href="#">Third item name</a>
+														</h6>
+													</figcaption>
+												</figure>
+												<!-- card // -->
+											</div>
+											<div class="item-slide p-2">
+												<figure class="card card-product">
+													<div class="img-wrap">
+														<img src="{{ asset('img/items/1.jpg') }}">
 														</div>
-														<div class="card card-hover">
-															<img src="{{ asset('img/Shirts/Lacoste/products/lacoste.jpg') }}" class="card-img-top " alt="...">
-																<div class="card-body">
-																	<h5 class="card-title">Brand: Lacoste</h5>
-																	<p class="card-text">Lacoste This is a longer card with supporting text below as a natural </p>
-																	<p class="card-text">
-																		<small class="text-muted">Category: Clothes</small>
-																	</p>
+														<figcaption class="info-wrap text-center">
+															<h6 class="title text-truncate">
+																<a href="#">Good item name</a>
+															</h6>
+														</figcaption>
+													</figure>
+													<!-- card // -->
+												</div>
+												<div class="item-slide p-2">
+													<figure class="card card-product">
+														<div class="img-wrap">
+															<img src="{{ asset('img/items/1.jpg') }}">
+															</div>
+															<figcaption class="info-wrap text-center">
+																<h6 class="title text-truncate">
+																	<a href="#">Another item name</a>
+																</h6>
+															</figcaption>
+														</figure>
+														<!-- card // -->
+													</div>
+													<div class="item-slide p-2">
+														<figure class="card card-product">
+															<div class="img-wrap">
+																<img src="{{ asset('img/items/1.jpg') }}">
 																</div>
+																<figcaption class="info-wrap text-center">
+																	<h6 class="title text-truncate">
+																		<a href="#">Third item name</a>
+																	</h6>
+																</figcaption>
+															</figure>
+															<!-- card // -->
+														</div>
+														<div class="item-slide p-2">
+															<figure class="card card-product">
+																<div class="img-wrap">
+																	<img src="{{ asset('img/items/1.jpg') }}">
+																	</div>
+																	<figcaption class="info-wrap text-center">
+																		<h6 class="title text-truncate">
+																			<a href="#">Third item name</a>
+																		</h6>
+																	</figcaption>
+																</figure>
+																<!-- card // -->
 															</div>
 														</div>
+<<<<<<< HEAD
                           </div> --}}
 
 <div class="container">
@@ -327,18 +371,48 @@
 																				<a href="#" class="btn btn-sm btn-outline-secondary">View Product</a>
 																				<a href="{{url('cart/addItem',$product->id)}}" class="btn btn-sm btn-outline-secondary">Add To Cart 
 																					<i class="fa fa-shopping-cart"></i>
+=======
+														<hr>
+															<h3>Most Recent:</h3>
+															<div class="row">
+                @forelse($products as $product)
+                              
+																<div class="col-md-3">
+																	<figure class="card card-product">
+																		<div class="img-wrap">
+																			<img src="{{ url('images', $product->image) }}">
+																				<a class="btn-overlay" href="#">
+																					<i class="fa fa-search-plus"></i> Quick view
+>>>>>>> ae69bfa5d47e7a7694d2d107496a288afc7cea1a
 																				</a>
 																			</div>
-																		</div>
+																			<figcaption class="info-wrap">
+																				<a href="#" class="title">{{ $product->name }} </a>
+																				<p>{{ $product->description }}</p>
+																				<div class="action-wrap">
+																					<a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add to Cart  </a>
+																					<div class="price-wrap h5">
+																						<span class="price-new">$1280</span>
+																						<del class="price-old">$1980</del>
+																					</div>
+																					<!-- price-wrap.// -->
+																				</div>
+																				<!-- action-wrap -->
+																			</figcaption>
+																		</figure>
+																		<!-- card // -->
 																	</div>
-                @empty
-                    
+																	<!-- col // -->
+                         @empty
+                              
 																	<h3>No Products</h3>
-                @endforelse 
+                    @endforelse 
+                              
 																</div>
-															</div> --}}
-                          </div>     {{-- container --}}
-													</div> {{-- Overlay Content End --}}
+																<!-- row.// -->
+															</div>     {{-- container --}}
+													
+														</div> {{-- Overlay Content End --}}
 
 
 @endsection
