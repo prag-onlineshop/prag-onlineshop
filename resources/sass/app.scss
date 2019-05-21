@@ -11,21 +11,25 @@
     margin: 0;
     padding: 0;
 }
+
 html,
 body {
     line-height: 1.6;
     height: 100%;
     box-sizing: border-box;
 }
+
 ul li {
     list-style: none;
     display: inline-block;
     padding-right: 1rem;
 }
+
 .logoText {
     font-size: 2.5rem;
     color: #fdfdfd;
 }
+
 textarea {
     padding: 0.5rem;
 }
@@ -43,6 +47,7 @@ textarea {
             color: white;
         }
     }
+
     .header-content {
         input[type="text"] {
             width: 500px !important;
@@ -59,6 +64,7 @@ textarea {
             border-top-right-radius: 15px;
             border-bottom-right-radius: 15px;
         }
+
         ul li a {
             color: white;
         }
@@ -86,6 +92,7 @@ footer {
     background: #e6e6e6;
     padding-top: 50px;
     padding: 2rem;
+
     .myprofile {
         padding: 2rem;
         background: #f4f4f4;
@@ -97,6 +104,7 @@ footer {
     align-items: center;
     min-height: 100%;
 }
+
 #loginBox {
     margin: 0 auto;
     width: 400px;
@@ -104,12 +112,14 @@ footer {
     background: rgba(0, 0, 0, 0.8);
     box-sizing: border-box;
     border-radius: 20px;
+
     h3 {
         margin: 0;
         padding: 5px 0;
         color: #ffbe00;
         text-align: center;
     }
+
     .inputBox {
         position: relative;
     }
@@ -139,8 +149,8 @@ footer {
         transition: 0.5s;
     }
 
-    .inputBox input:focus ~ label,
-    .inputBox input:valid ~ label {
+    .inputBox input:focus~label,
+    .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #ffbe00;
@@ -204,12 +214,14 @@ footer {
         pointer-events: none;
         transition: 0.5s;
     }
-    .inputBox input:focus ~ label,
-    .inputBox input:valid ~ label {
+
+    .inputBox input:focus~label,
+    .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #ffbe00;
     }
+
     input[type="submit"] {
         background: transparent;
         border: none;
@@ -230,12 +242,14 @@ footer {
     background: rgba(0, 0, 0, 0.8);
     box-sizing: border-box;
     border-radius: 20px;
+
     h3 {
         margin: 0;
         padding: 5px 0;
         color: #ffbe00;
         text-align: center;
     }
+
     .inputBox {
         position: relative;
     }
@@ -264,12 +278,14 @@ footer {
         pointer-events: none;
         transition: 0.5s;
     }
-    .inputBox input:focus ~ label,
-    .inputBox input:valid ~ label {
+
+    .inputBox input:focus~label,
+    .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #ffbe00;
     }
+
     input[type="submit"] {
         background: transparent;
         border: none;
@@ -281,6 +297,7 @@ footer {
         cursor: pointer;
         border-radius: 5px;
     }
+
     .loginLink {
         padding: 35px 0px 0;
     }

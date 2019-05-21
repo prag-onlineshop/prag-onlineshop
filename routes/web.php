@@ -12,6 +12,10 @@
 */
 
 
+// Route::get('/home1', function () {
+//     return view('user.home');
+// });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -32,6 +36,7 @@ Route::get('/userprofile','ProfileController@index');
 Route::get('/profile', 'ProfileController@index');
 Route::post('/updateProfile', 'ProfileController@updateProfile');
 
+Route::get('/productDetail/{id}','CartController@detailPro');
 Route::get('/cart', 'CartController@index');
 Route::get('/cart/addItem/{id}', 'CartController@addItem');
 Route::get('/cart/update/{id}', 'CartController@update');
