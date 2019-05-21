@@ -57,11 +57,8 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
-<<<<<<< HEAD
             'engine' => 'InnoDB ROW_FORMAT=DYNAMIC',
-=======
             'engine' => null,
->>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
@@ -75,11 +72,9 @@ return [
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
-<<<<<<< HEAD
             'charset' => 'utf8mb4',
-=======
             'charset' => 'utf8',
->>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
+
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'public',

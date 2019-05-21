@@ -1,8 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-<<<<<<< HEAD
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "36cb84ff3309b2af9fa5413aa0e2a364",
@@ -136,14 +135,6 @@
             "time": "2019-03-01T05:04:21+00:00"
         },
         {
-=======
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "443c3d8dfdf81c12d41d608f0d36d384",
-    "packages": [
-        {
->>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
             "source": {
@@ -1107,7 +1098,6 @@
         },
         {
             "name": "nesbot/carbon",
-<<<<<<< HEAD
             "version": "2.18.0",
             "source": {
                 "type": "git",
@@ -1118,18 +1108,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8322b7bd1805be31867c13bf3cdaab948a0dd406",
                 "reference": "8322b7bd1805be31867c13bf3cdaab948a0dd406",
-=======
-            "version": "2.17.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "96acbc0c03782e8115156dd4dd8b736267155066"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/96acbc0c03782e8115156dd4dd8b736267155066",
-                "reference": "96acbc0c03782e8115156dd4dd8b736267155066",
->>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
                 "shasum": ""
             },
             "require": {
@@ -1176,11 +1154,7 @@
                 "datetime",
                 "time"
             ],
-<<<<<<< HEAD
             "time": "2019-05-16T18:44:35+00:00"
-=======
-            "time": "2019-04-27T18:04:27+00:00"
->>>>>>> 9c5e5c8a629d9b64a0eac0ac2d10143967c9f92d
         },
         {
             "name": "nikic/php-parser",
