@@ -194,9 +194,9 @@
 
 					<div class="col-md-3 ">
 						<figure class="card card-product">
-							<div class="img-wrap  py-2">
-								<img src="{{ url('images', $product->image) }}">
-								<a class="btn-overlay" href="#	">
+							<div class="img-wrap  p-2">
+								<img src="{{ url('img', $product->image) }}">
+								<a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
 									<i class="fa fa-search-plus"></i> Quick view
 								</a>
 							</div>

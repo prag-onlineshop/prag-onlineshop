@@ -7,7 +7,7 @@
                         <li><a href="#">CUSTOMER CARE</a> </li>
                         <li><a href="/">HOME</a> </li>
                         <?php if(Auth::check()){ ?>
-                        <li><a href="/profile">Profile</a> </li>
+                        <li><a href="/profile">My Account</a> </li>
                         <li><a href="#">WishList</a> </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -46,7 +46,7 @@
                                     </a>
                                 </span>
                             </div>
-                            <div class="col-md-12 col-lg-7 col-sm-12  float-right">
+                            <div class="col-md-12 col-lg-7 col-sm-12  float-right ">
                                 <div class="search">
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Search Item Here"
