@@ -12,9 +12,15 @@
 */
 
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/home1', function () {
+//     return view('user.home');
+// });
+
 
 Auth::routes();
 
@@ -26,16 +32,22 @@ Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name
 
 Route::get('/category/{url}', 'CategoriesController@url');
 
-Route::get('/', function () {
-    return view('user.content');
-});
+Route::get('/', 'ProductController@index');
 
 Route::view('/userlogin','user.userLogin');
+Route::view('/signup','user.registration');
 Route::view('/userData','user.userForm');
 Route::get('/userprofile','ProfileController@index');
 
 Route::get('/profile', 'ProfileController@index');
 Route::post('/updateProfile', 'ProfileController@updateProfile');
+
+Route::get('/productDetail/{id}','CartController@detailPro');
+Route::get('/cart', 'CartController@index');
+Route::get('/cart/addItem/{id}', 'CartController@addItem');
+Route::get('/cart/update/{id}', 'CartController@update');
+Route::put('/cart/update/{id}', 'CartController@update');
+Route::get('/cart/remove/{id}', 'CartController@destroy');
 
 Auth::routes();
 
@@ -66,4 +78,9 @@ Route::get('brand/{brand}', 'BrandController@show')->name('brand.profile');
 Route::get('brand/{brand}/edit', 'BrandController@edit')->name('brand.edit');
 Route::patch('brand/{brand}', 'BrandController@update')->name('brand.update');
 Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
+
 //Route::get('brand/{brand}', 'BrandController@getURL');
+
+
+
+

@@ -7,35 +7,28 @@
     <title>Document</title>
 </head>
 <body>
-    @foreach($profile as $pro)
-        <img alt="Card image cap" src="{{ url('images',$pro->photo) }}">
-        <p>{{ $pro->name }}</p>
-        <p>{{ $pro->email }}</p>
-        <p>{{ $pro->contact }}</p>
-        <p>{{ $pro->address }}</p>
-    @endforeach
 
-    <form action="{{ url('/updateProfile') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('product.store') }}" method="post" role="form" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <div>
-            <input type="file" class="form-control" name="photo" >
-        </div>
+            <label for="pro_name">Name</label>
+            <input type="text" class="form-control" name="pro_name" id="pro_name" placeholder="Product Name">
 
-        <div>
-            <input type="text" class="form-control" name="name" placeholder="Product Name">
-        </div>
+            <label for="pro_price">Price</label>
+            <input type="text" class="form-control" name="pro_price" id="pro_price" placeholder="Price">
 
-        <div>
-            <input type="email" class="form-control" name="email" placeholder="Email">
-        </div>
+            <label for="pro_info">Description</label>
+            <textarea type="text" class="form-control" name="pro_info" id="pro_info" placeholder="Info"></textarea>
 
-        <div>
-            <input type="text" class="form-control" name="contact" placeholder="con">
-        </div>
+            <label for="category_id">Category</label>
+            <select name="category_id" id="category_id">
+                <option value=""> -- Select Category --</option>
+                @foreach($categories as $id=>$category)
+                    <option value="{{ $id }}">{{ $category }}</option>
+                @endforeach
+            </select>
 
-        <div>
-            <input type="text" class="form-control" name="address"  placeholder="add">
-        </div>
+            <label for="spl_price">Quantity</label>
+            <input type="text" class="form-control" name="spl_price" id="spl_price" placeholder="Quantity">
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
