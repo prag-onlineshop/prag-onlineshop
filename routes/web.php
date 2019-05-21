@@ -13,6 +13,7 @@
 
 
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -74,5 +75,9 @@ Route::get('brand/{brand}', 'BrandController@show')->name('brand.profile');
 Route::get('brand/{brand}/edit', 'BrandController@edit')->name('brand.edit');
 Route::patch('brand/{brand}', 'BrandController@update')->name('brand.update');
 Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
+
+//Route::get('brand/{brand}', 'BrandController@getURL');
+
+
 
 

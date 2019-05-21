@@ -49,7 +49,7 @@
                                         <input type="text" class="form-control" placeholder="Search Item Here"
                                             aria-label="Search Item Here" aria-describedby="button-addon2">
                                         <span class="input-group-addon input-group-addon-btn bg-white">
-                                            <button class="btn searchBtn" type="submit>
+                                            <button class="btn searchBtn" type="submit">
                                                 <img src="{{ asset('img/logo/searchIcon.png') }}" alt="">
                                             </button>
                                         </span>
