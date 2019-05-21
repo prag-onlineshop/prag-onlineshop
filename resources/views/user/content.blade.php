@@ -192,7 +192,7 @@
 				<div class="row">
 					@forelse($products as $product)
 
-					<div class="col-md-3">
+					<div class="col-md-3 ">
 						<figure class="card card-product">
 							<div class="img-wrap  py-2">
 								<img src="{{ url('images', $product->image) }}">

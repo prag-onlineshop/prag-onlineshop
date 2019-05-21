@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "c9dae9e21e0305f04ae811eaf91b7380",
-=======
     "content-hash": "acf81691e434e8004012d60391429dfe",
->>>>>>> 16c5ffbc73dea780b800b13342003e990e344ade
     "packages": [
         {
             "name": "cocur/slugify",
@@ -77,18 +73,6 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-<<<<<<< HEAD
-            "version": "4.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "e05e778d3ff87a010b0dd73aab00a7c72761ff81"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/e05e778d3ff87a010b0dd73aab00a7c72761ff81",
-                "reference": "e05e778d3ff87a010b0dd73aab00a7c72761ff81",
-=======
             "version": "4.6.0",
             "source": {
                 "type": "git",
@@ -99,7 +83,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/d8a6982d32a7fe92f42b1c33a34e89d33516c2fd",
                 "reference": "d8a6982d32a7fe92f42b1c33a34e89d33516c2fd",
->>>>>>> 16c5ffbc73dea780b800b13342003e990e344ade
                 "shasum": ""
             },
             "require": {
@@ -149,11 +132,7 @@
                 "slug",
                 "sluggable"
             ],
-<<<<<<< HEAD
-            "time": "2019-02-24T19:36:12+00:00"
-=======
             "time": "2018-09-05T02:03:48+00:00"
->>>>>>> 16c5ffbc73dea780b800b13342003e990e344ade
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
