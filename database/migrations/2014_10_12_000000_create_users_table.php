@@ -19,12 +19,16 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('provider')->nullable();
+            $table->string('provider_id')->nullable();
+            $table->string('photo')->default('profile.png');
             $table->rememberToken();
             $table->timestamps();
             $table->string('contact')->nullable();
             $table->string('address')->nullable();
             $table->string('photo')->default('profile.png');
             $table->integer('admin')->nullable();
+            $table->string('payment_type')->nullable();
         });
     }
 
