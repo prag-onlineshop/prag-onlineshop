@@ -1,7 +1,17 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
+<<<<<<< HEAD
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+=======
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+<<<<<<< HEAD
+=======
+
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+
+>>>>>>> fb5028eebf62fae5c2fe1d0542a7d519c7f4925b
+>>>>>>> 6bb5100b930e78b3285096a7112468d17122e9ad
         "This file is @generated automatically"
     ],
     "content-hash": "acf81691e434e8004012d60391429dfe",
@@ -1283,6 +1293,10 @@
         },
         {
             "name": "league/flysystem",
+<<<<<<< HEAD
+            "version": "1.0.52",
+=======
+<<<<<<< HEAD
             "version": "1.0.52",
             "source": {
                 "type": "git",
@@ -1293,6 +1307,24 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c5a5097156387970e6f0ccfcdf03f752856f3391",
                 "reference": "c5a5097156387970e6f0ccfcdf03f752856f3391",
+=======
+            "version": "1.0.51",
+>>>>>>> 6bb5100b930e78b3285096a7112468d17122e9ad
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "c5a5097156387970e6f0ccfcdf03f752856f3391"
+            },
+            "dist": {
+                "type": "zip",
+<<<<<<< HEAD
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c5a5097156387970e6f0ccfcdf03f752856f3391",
+                "reference": "c5a5097156387970e6f0ccfcdf03f752856f3391",
+=======
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/755ba7bf3fb9031e6581d091db84d78275874396",
+                "reference": "755ba7bf3fb9031e6581d091db84d78275874396",
+>>>>>>> fb5028eebf62fae5c2fe1d0542a7d519c7f4925b
+>>>>>>> 6bb5100b930e78b3285096a7112468d17122e9ad
                 "shasum": ""
             },
             "require": {
@@ -1363,7 +1395,15 @@
                 "sftp",
                 "storage"
             ],
+<<<<<<< HEAD
             "time": "2019-05-20T20:21:14+00:00"
+=======
+<<<<<<< HEAD
+            "time": "2019-05-20T20:21:14+00:00"
+=======
+            "time": "2019-03-30T13:22:34+00:00"
+>>>>>>> fb5028eebf62fae5c2fe1d0542a7d519c7f4925b
+>>>>>>> 6bb5100b930e78b3285096a7112468d17122e9ad
         },
         {
             "name": "monolog/monolog",
@@ -1445,7 +1485,17 @@
         },
         {
             "name": "nesbot/carbon",
+<<<<<<< HEAD
             "version": "1.37.1",
+=======
+<<<<<<< HEAD
+            "version": "1.37.1",
+=======
+
+            "version": "2.18.0",
+
+>>>>>>> fb5028eebf62fae5c2fe1d0542a7d519c7f4925b
+>>>>>>> 6bb5100b930e78b3285096a7112468d17122e9ad
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
@@ -1453,8 +1503,20 @@
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
                 "reference": "5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
+=======
+<<<<<<< HEAD
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
+                "reference": "5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
+=======
+
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8322b7bd1805be31867c13bf3cdaab948a0dd406",
+                "reference": "8322b7bd1805be31867c13bf3cdaab948a0dd406",
+
+>>>>>>> fb5028eebf62fae5c2fe1d0542a7d519c7f4925b
+>>>>>>> 6bb5100b930e78b3285096a7112468d17122e9ad
                 "shasum": ""
             },
             "require": {
@@ -1499,6 +1561,13 @@
                 "datetime",
                 "time"
             ],
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> fb5028eebf62fae5c2fe1d0542a7d519c7f4925b
+>>>>>>> 6bb5100b930e78b3285096a7112468d17122e9ad
             "time": "2019-04-19T10:27:42+00:00"
         },
         {
@@ -1548,6 +1617,13 @@
             ],
             "description": "PHP Client for using Nexmo's API.",
             "time": "2019-05-13T20:27:43+00:00"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> fb5028eebf62fae5c2fe1d0542a7d519c7f4925b
+>>>>>>> 6bb5100b930e78b3285096a7112468d17122e9ad
         },
         {
             "name": "nikic/php-parser",

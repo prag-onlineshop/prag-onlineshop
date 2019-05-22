@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use App\Product;
 
 class Category extends Model
 {
@@ -19,14 +20,7 @@ class Category extends Model
 
     protected $guarded = [];
 
-
-
-class Category extends Model
-{
-    protected $table = 'categories';
-    protected $primaryKey = 'id';
-    protected $fillable = ['name'];
-
-
-
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }
