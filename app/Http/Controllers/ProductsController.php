@@ -12,7 +12,7 @@ class ProductsController extends Controller
 {
     public function index(){
         $products = Product::orderBy('name', 'asc')->paginate(10);
-        return view('admin.product.indexProduct', compact('products'));
+        return view('user.content', compact('products'));
     }
     public function create(){
         $product = new Product();
