@@ -28,7 +28,7 @@ Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name
 Route::get('/category/{url}', 'CategoriesController@url');
 
 // Product Routes
-Route::get('/', 'ProductsController@index');
+Route::get('/', 'ProductsController@indexAdmin');
 Route::resource('products', 'ProductsController');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
 
@@ -48,7 +48,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/update/{id}', 'CartController@update');
     Route::put('/cart/update/{id}', 'CartController@update');
     Route::get('/cart/remove/{id}', 'CartController@destroy');
-    Route::get('/checkout', 'CheckoutController@index');
+    Route::get ('/checkout', 'CheckoutController@index');
     Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
     Route::get('/orders', 'ProfileController@orders'); 
 });
