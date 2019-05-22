@@ -14,7 +14,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::paginate(3);
+        $brands = Brand::orderBy('name','asc')->paginate(3);
         return view('admin.brand.index', [
             'brands' => $brands,
         ]);
@@ -111,7 +111,7 @@ class BrandController extends Controller
 
         return tap(request()->validate([
             'name' => 'required',
-            'url' => 'required',
+            'url' => 'required|alpha_num',
             'logo' => '',
 
         ]), function () {

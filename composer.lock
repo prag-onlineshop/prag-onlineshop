@@ -2,13 +2,8 @@
     "_readme": [
         "This file locks the dependencies of your project to a known state",
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-
         "This file is @generated automatically"
     ],
-    "content-hash": "c9dae9e21e0305f04ae811eaf91b7380",
-    "content-hash": "acf81691e434e8004012d60391429dfe",
     "content-hash": "acf81691e434e8004012d60391429dfe",
     "packages": [
         {
@@ -78,21 +73,6 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-<<<<<<< HEAD
-
-            "version": "4.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "e05e778d3ff87a010b0dd73aab00a7c72761ff81"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/e05e778d3ff87a010b0dd73aab00a7c72761ff81",
-                "reference": "e05e778d3ff87a010b0dd73aab00a7c72761ff81",
-
-=======
->>>>>>> ae69bfa5d47e7a7694d2d107496a288afc7cea1a
             "version": "4.6.0",
             "source": {
                 "type": "git",
@@ -152,19 +132,7 @@
                 "slug",
                 "sluggable"
             ],
-<<<<<<< HEAD
-
-            "time": "2019-03-01T05:04:21+00:00"
-
-
-            "time": "2019-02-24T19:36:12+00:00"
-
             "time": "2018-09-05T02:03:48+00:00"
-
-
-=======
-            "time": "2018-09-05T02:03:48+00:00"
->>>>>>> ae69bfa5d47e7a7694d2d107496a288afc7cea1a
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1315,16 +1283,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.51",
+            "version": "1.0.52",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "755ba7bf3fb9031e6581d091db84d78275874396"
+                "reference": "c5a5097156387970e6f0ccfcdf03f752856f3391"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/755ba7bf3fb9031e6581d091db84d78275874396",
-                "reference": "755ba7bf3fb9031e6581d091db84d78275874396",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c5a5097156387970e6f0ccfcdf03f752856f3391",
+                "reference": "c5a5097156387970e6f0ccfcdf03f752856f3391",
                 "shasum": ""
             },
             "require": {
@@ -1395,7 +1363,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-03-30T13:22:34+00:00"
+            "time": "2019-05-20T20:21:14+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1477,11 +1445,7 @@
         },
         {
             "name": "nesbot/carbon",
-
-            "version": "2.18.0",
-
             "version": "1.37.1",
-
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
@@ -1489,13 +1453,8 @@
             },
             "dist": {
                 "type": "zip",
-
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8322b7bd1805be31867c13bf3cdaab948a0dd406",
-                "reference": "8322b7bd1805be31867c13bf3cdaab948a0dd406",
-
                 "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
                 "reference": "5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
-
                 "shasum": ""
             },
             "require": {
@@ -1540,9 +1499,6 @@
                 "datetime",
                 "time"
             ],
-
-            "time": "2019-05-16T18:44:35+00:00"
-
             "time": "2019-04-19T10:27:42+00:00"
         },
         {
@@ -1592,7 +1548,6 @@
             ],
             "description": "PHP Client for using Nexmo's API.",
             "time": "2019-05-13T20:27:43+00:00"
-
         },
         {
             "name": "nikic/php-parser",
