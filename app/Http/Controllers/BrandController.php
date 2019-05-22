@@ -14,9 +14,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-
-        $brands = Brand::all();
-
+        $brands = Brand::paginate(3);
         return view('admin.brand.index', [
             'brands' => $brands,
         ]);
@@ -29,9 +27,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
-        $brand = new Brand();
-        return view('admin.brand.create', compact('brand'));
+        $brandurl = new Brand();
+        return view('admin.brand.create', compact('brandurl'));
     }
 
     /**
@@ -45,16 +42,7 @@ class BrandController extends Controller
 
         $brand = Brand::create($this->validateRequest());
 
-        //$this->storeImage($brand);
-        // $this->storeImage($validatetaData);
-
-        
-
-        // $brand = new Brand();
-        // $brand->name = request('brandname');
-        // $brand->logo = request('logo');
-        // $brand->url = request('url');
-        // $brand->save();
+        $this->storeImage($brand);
 
         return redirect('brand');
     }
@@ -65,10 +53,10 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show($brand)
     {
-        //
-        return view('admin.brand.profile', compact('brand'));
+        $brandurl = Brand::where('url', $brand)->firstOrFail();
+        return view('admin.brand.profile', compact('brandurl'));
     }
 
     /**
@@ -77,9 +65,10 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
-    {
-        return view('admin.brand.edit', compact('brand'));
+    public function edit($url)
+    {    
+        $brandurl = Brand::where('url', $url)->firstOrFail();
+        return view('admin.brand.edit', compact('brandurl'));
     }
 
     /**
@@ -89,13 +78,11 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Brand $brand)
+    public function update(Brand $url)
     {
-        $brand->update($this->validateRequest());
-
-        //$this->storeImage($brand);
-
-        return redirect('brand/'. $brand->id);
+        $url->update($this->validateRequest());           
+        $this->storeImage($url);
+        return redirect('brand/'. $url->url);
 
     }
 
@@ -108,50 +95,34 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         $brand->delete();
-
         return redirect('brand');
     }
 
-    // private function storeImage($brand){
-    //     if(request()->has('image')){
-    //         $brand->update([
-    //             'logo' => request()->image->store('uploads','public'),
-    //         ]);
-    //     }
-    // }
+    private function storeImage($brand){
+
+        if(request()->has('logo')){
+            $brand->update([
+                'logo' => request()->logo->store('uploads','public'),
+            ]);
+        }
+    }
 
     private function validateRequest(){
 
-        $validateData = request()->validate([
+        return tap(request()->validate([
             'name' => 'required',
             'url' => 'required',
             'logo' => '',
 
-        ]);
-  
-        if(request()->hasFile('logo')){
-            //dd(request('logo'));
-            request()->validate([
+        ]), function () {
+                   
+            if(request()->hasFile('logo')){
+                request()->validate([
                 'logo' => 'file|image|max:50000',
             ]);
-        };
-
-            return $validateData;
+            };
+        });
     }
 
 
-        // return tap(request()->validate([
-        //     'name' => 'required|min:3',
-        //     'url' => 'required',
-            
-        // ]), function () {       
-        //         if (request()->hasFile('logo')){
-
-        //             request()->validate([
-        //                 'logo' => 'file|image|mimes:png,jpg|max:5000',
-        //             ]);
-        //         }
-        // });
-
-    
 }

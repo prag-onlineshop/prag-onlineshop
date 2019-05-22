@@ -1,7 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+
         "This file is @generated automatically"
     ],
     "content-hash": "acf81691e434e8004012d60391429dfe",
@@ -1445,7 +1448,9 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.37.1",
+
+            "version": "2.18.0",
+
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
@@ -1453,8 +1458,10 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
-                "reference": "5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
+
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8322b7bd1805be31867c13bf3cdaab948a0dd406",
+                "reference": "8322b7bd1805be31867c13bf3cdaab948a0dd406",
+
                 "shasum": ""
             },
             "require": {
@@ -1499,6 +1506,7 @@
                 "datetime",
                 "time"
             ],
+
             "time": "2019-04-19T10:27:42+00:00"
         },
         {
@@ -1548,6 +1556,7 @@
             ],
             "description": "PHP Client for using Nexmo's API.",
             "time": "2019-05-13T20:27:43+00:00"
+
         },
         {
             "name": "nikic/php-parser",
