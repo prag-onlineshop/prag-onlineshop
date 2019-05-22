@@ -194,6 +194,7 @@
 
 					<div class="col-md-3 ">
 						<figure class="card card-product">
+							<span class="badge-new"> NEW </span>
 							<div class="img-wrap  p-2">
 								<img src="{{ url('img', $product->image) }}">
 								<a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">

@@ -22,12 +22,18 @@
         <tbody>
             @foreach($categories as $category)
             <tr>
+                <th> @if($category->image)
+                    <div class="row">
+                        <div><img src="{{asset('storage/'.$category->image)}}" alt="image" width="50px" height="50px">
+                        </div>
+                    </div>
+                    @endif</th>
                 <th>{{$category->name}}</th>
                 <th><button><a href="{{route('categories.show', $category)}}">Details</a></button></th>
             </tr>
             @endforeach
         </tbody>
-    </table>  
+    </table>
     <br>
-    {{$categories->links()}}
+    {{-- {{$categories->links()}} --}}
 </div>

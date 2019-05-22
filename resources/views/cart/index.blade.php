@@ -55,7 +55,7 @@
                             <tbody>
                                 <tr>
                                     <td class="cart_product">
-                                        <p><img src="{{url('images',$cartItem->options->img)}}" class="img-responsive"
+                                        <p><img src="{{url('img',$cartItem->options->img)}}" class="img-responsive"
                                                 width="250"></p>
                                     </td>
                                     <td class="cart_description">

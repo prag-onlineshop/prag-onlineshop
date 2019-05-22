@@ -14,9 +14,10 @@ class CategoriesController extends Controller
         return view('category.urlCategory', compact('category'));
     }
     public function index(){
-        $categories = Category::orderBy('name', 'asc')->paginate(10);
 
-        return view('category.indexCategory', compact('categories'));
+        $categories = Category::all();
+
+        return view('admin.contentlayouts.categoriesList', compact('categories'));
     }
     public function create(){
         $category = new Category();
@@ -29,7 +30,8 @@ class CategoriesController extends Controller
         return redirect('categories')->with('add_message', 'added successfully');;
     }
     public function show(Category $category){
-        return view('category.showCategory', compact('category'));
+       
+        return view('admin.contentLayouts.CategoriesList', compact('category'));
     }
     public function edit(Category $category){
         return view('category.editCategory', compact('category'));

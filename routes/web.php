@@ -20,6 +20,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('categories', 'CategoriesController');
 
+Route::get('categoriesList-Admin', 'CategoriesController@index');
+
 Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
 
 Route::get('/category/{url}', 'CategoriesController@url');
@@ -29,7 +31,7 @@ Route::get('/', 'ProductController@index');
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
 Route::view('/userData','user.userForm'); 
-Route::view('/dashboard','layouts.adminLayout'); 
+//Route::view('/categoriesList-Admin','admin.contentLayouts.CategoriesList'); 
 Route::get('/userprofile','ProfileController@index');
 Route::get('/productDetail/{id}','CartController@detailPro');
 
