@@ -21,7 +21,7 @@ Route::get('/categories/{category}/delete', 'CategoriesController@delete');
 Route::get('/category/{url}', 'CategoriesController@url');
 
 // Product Routes
-Route::get('/', 'ProductsController@index');
+Route::get('/', 'ProductsController@indexAdmin');
 Route::resource('products', 'ProductsController');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
 
