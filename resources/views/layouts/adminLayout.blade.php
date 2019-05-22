@@ -43,16 +43,20 @@
 
 
   <div class="container-fluid">
+
     <div class="row">
+
       <div class="col-2  bg-primary ">
         @include('layouts.sidebarAdmin')
       </div>
 
 
-      <div class="col-10 bg-success vh-100">
-        @yield('CategoriesList')
-      </div> {{-- col-10 end --}}
+      <div class="col-10  bg-overlay vh-100">
 
+        @yield('CategoriesList')
+
+
+      </div> {{-- col-10 end --}}
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

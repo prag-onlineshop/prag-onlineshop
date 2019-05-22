@@ -28,7 +28,7 @@ Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name
 Route::get('/category/{url}', 'CategoriesController@url');
 
 // Product Routes
-Route::resource('/','ProductsController@index');
+Route::get('/', 'ProductsController@index');
 Route::resource('products', 'ProductsController');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
 
@@ -36,7 +36,7 @@ Route::view('/','user.content');
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
 Route::view('/userData','user.userForm'); 
-//Route::view('/categoriesList-Admin','admin.contentLayouts.CategoriesList'); 
+
 Route::get('/userprofile','ProfileController@index');
 Route::get('/productDetail/{id}','CartController@detailPro');
 

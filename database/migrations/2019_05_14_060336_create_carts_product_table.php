@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCartProductsTable extends Migration
+class CreateCartsProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateCartProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cart_products', function (Blueprint $table) {
+        Schema::create('carts_product', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('tax');
             $table->integer('product_id');
             $table->integer('carts_id');
             $table->integer('qty');
-            $table->integer('amount');
+            $table->integer('amount')->nullable();
             $table->integer('total');
             $table->timestamps();
         });

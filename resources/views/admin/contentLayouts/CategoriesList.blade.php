@@ -1,6 +1,7 @@
 @extends('layouts.adminLayout')
 
 @section('CategoriesList')
+
 <div class="container">
   <div class="table-wrapper">
     <div class="table-title">
