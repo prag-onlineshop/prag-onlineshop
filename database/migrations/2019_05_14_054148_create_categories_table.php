@@ -18,10 +18,6 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('image')->default('../imgCategory/default_img.jpg');
             $table->string('url');
-            $table->string('image')->nullable();
-            $table->string('url')->nullable();
-            $table->string('image')->default('../imgCategory/default_img.jpg');
-            $table->string('url');
             $table->timestamps();
         });
     }

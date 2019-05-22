@@ -11,20 +11,19 @@
 |
 */
 
-
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Category Routes
 Route::resource('categories', 'CategoriesController');
-
-Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
-
+Route::get('/categories/{category}/delete', 'CategoriesController@delete');
 Route::get('/category/{url}', 'CategoriesController@url');
 
-Route::get('/', 'ProductController@index');
+// Product Routes
+Route::resource('products', 'ProductsController');
+Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
+
 
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
@@ -39,7 +38,10 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/addItem/{id}', 'CartController@addItem');
     Route::get('/cart/update/{id}', 'CartController@update');
     Route::put('/cart/update/{id}', 'CartController@update');
-    Route::get('/cart/remove/{id}', 'CartController@destroy'); 
+    Route::get('/cart/remove/{id}', 'CartController@destroy');
+    Route::get('/checkout', 'CheckoutController@index');
+    Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
+    Route::get('/orders', 'ProfileController@orders'); 
 });
 
 // Auth::routes();

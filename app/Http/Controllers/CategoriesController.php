@@ -4,44 +4,46 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
-use App\Product;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
     public function url($category){
         $category = Category::where('url', $category)->firstOrFail();
-        return view('category.urlCategory', compact('category'));
+        return view('admin.category.urlCategory', compact('category'));
     }
     public function index(){
         $categories = Category::orderBy('name', 'asc')->paginate(10);
-
-        return view('category.indexCategory', compact('categories'));
+        return view('admin.category.indexCategory', compact('categories'));
     }
     public function create(){
         $category = new Category();
-        return view('category.createCategory', compact('category'));
+        return view('admin.category.createCategory', compact('category'));
     }
     public function store(){
         $category = Category::create($this->validateRequest());
         $this->storeImage($category);
 
-        return redirect('categories')->with('add_message', 'added successfully');;
+        return redirect('categories')->with('add_message', ' added successfully');
     }
-    public function show(Category $category){
-        return view('category.showCategory', compact('category'));
+    public function show($category){
+        $category = Category::where('url', $category)->firstOrFail();
+        return view('admin.category.showCategory', compact('category'));
     }
-    public function edit(Category $category){
-        return view('category.editCategory', compact('category'));
+    public function edit($category){
+        $category = Category::where('url', $category)->firstOrFail();
+        return view('admin.category.editCategory', compact('category'));
     }
     public function update(Category $category){
         $category->update($this->validateRequest());
-        $this->storeImage($category);
-        
-        return redirect('categories/'.$category->id)->with('update_message', 'successfully updated');
+        $category->url = Str::slug($category->name,'-');
+        $category->save();
+        return redirect('categories/'.$category->url)->with('update_message', 'successfully updated');
     }
-    public function delete(Category $category){
-        return view('category.deleteCategory', compact('category'));
+    public function delete($category){
+        $category = Category::where('url', $category)->firstOrFail();
+        return view('admin.category.deleteCategory', compact('category'));
     }
     public function destroy(Category $category){
         $this->deleteImage($category);
