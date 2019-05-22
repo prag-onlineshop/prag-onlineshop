@@ -16,7 +16,7 @@
 						<span class="h4">Username</span>
 						<hr>
 							<span>
-								<ul>
+								<ul>	
 									<li class="d-block">
 										<a href="#">My Account</a>
 									</li>
@@ -40,8 +40,8 @@
     <a class="nav-link" id="paid-tab" data-toggle="tab" href="#paid" role="tab" aria-controls="paid" aria-selected="false">Paid</a>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+	<div class="tab-content" id="myTabContent">
+		<div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content bg padding-y border-top">
 <div class="container">
