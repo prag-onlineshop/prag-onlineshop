@@ -11,11 +11,6 @@
 |
 */
 
-
-// Route::get('/home1', function () {
-//     return view('user.home');
-// });
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -41,7 +36,10 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/addItem/{id}', 'CartController@addItem');
     Route::get('/cart/update/{id}', 'CartController@update');
     Route::put('/cart/update/{id}', 'CartController@update');
-    Route::get('/cart/remove/{id}', 'CartController@destroy'); 
+    Route::get('/cart/remove/{id}', 'CartController@destroy');
+    Route::get('/checkout', 'CheckoutController@index');
+    Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
+    Route::get('/orders', 'ProfileController@orders'); 
 });
 
 // Auth::routes();
@@ -65,7 +63,6 @@ Route::get('/resetPass', function () {
     return view('resetPass');
 });
 
-
 Route::get('brand', 'BrandController@index')->name('brand.index');
 Route::post('brand', 'BrandController@store')->name('brand.store');
 Route::get('brand/create', 'BrandController@create')->name('brand.create');
@@ -73,5 +70,3 @@ Route::get('brand/{brand}', 'BrandController@show')->name('brand.profile');
 Route::get('brand/{brand}/edit', 'BrandController@edit')->name('brand.edit');
 Route::patch('brand/{brand}', 'BrandController@update')->name('brand.update');
 Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
-
-

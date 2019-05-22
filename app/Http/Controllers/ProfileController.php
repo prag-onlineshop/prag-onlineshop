@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -47,5 +48,15 @@ class ProfileController extends Controller
         }
 
         return back()->with('msg', 'Your Profile Detail has been update');
+    }
+
+    public function orders()
+    {
+        $user_id = Auth::user()->id;
+        $orders = DB::table('carts_product')
+            ->leftJoin('products', 'products.id', '=', 'carts_product.product_id')
+            ->leftJoin('carts', 'carts.id', '=', 'carts_product.carts_id')
+            ->where('carts.user_id', '=', $user_id)->get();
+        return view('user.orders', compact('orders'));
     }
 }
