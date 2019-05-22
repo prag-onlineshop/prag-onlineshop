@@ -35,5 +35,6 @@
     @yield('forgotpassword')
     @yield('userprofile')
     @yield('registration')
+    @yield('profileOrder')
 
     @include('layouts.footer')

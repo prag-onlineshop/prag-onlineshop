@@ -205,7 +205,8 @@
 								<a href="#" class="title">{{ $product->name }} </a>
 								<p>{{ $product->description }}</p>
 								<div class="action-wrap">
-									<a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add to Cart
+									<a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+										to Cart
 									</a>
 									<div class="price-wrap h5">
 										<span class="price-new">₱{{ $product->price }}</span>

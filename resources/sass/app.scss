@@ -1,57 +1,44 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito");
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css?family=Nunito");
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
-
 * {
     margin: 0;
     padding: 0;
 }
-
 html,
 body {
     line-height: 1.6;
     height: 100%;
     box-sizing: border-box;
 }
-
 ul li {
     list-style: none;
     display: inline-block;
     padding-right: 1rem;
 }
-
 .logoText {
     font-size: 2.5rem;
     color: #fdfdfd;
 }
-
 textarea {
     padding: 0.5rem;
 }
-
 .carousel-control-prev,
 .carousel-control-next {}
-
 .carousel-item {
     height: calc(100vh - 120px);
 }
-
 .carousel-item img {
     height: calc(100vh - 120px);
 }
-
 .card-hover:hover {
     border-style: inset;
     border: 2px #fffa6f solid;
@@ -59,101 +46,82 @@ textarea {
     // -moz-box-shadow: 0px 5px 35px -14px rgba(255, 250, 111, 0.7);
     // box-shadow: 0px 5px 35px -14px rgba(255, 250, 111, 0.7);
 }
-
 .bg-carousel {
     background: #fff4d6;
 }
-
 .bg-overlay {
     background: #e6e6e6;
     min-height: 100%;
 }
-
 .card-img-top {}
-
 #headerWrap {
     background: $secondary-color-navyBlue;
     height: auto;
     font-size: 0.7rem !important;
-
     .homelink {
         background: $primary-color-darkGreen;
         height: 1.5rem;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
-
         ul li a {
             color: #d8d8d8;
             font-size: 0.5rem;
         }
     }
-
     .header-content {
         input[type="text"] {
             width: 500px !important;
         }
-
         .searchBtn button {
             border: none;
             background: #fffa6f;
             cursor: pointer;
             height: 100%;
         }
-
         ul {
             margin: 0;
         }
-
         ul li a {
             color: white;
         }
-
         button {
             border: 0;
             border-radius: 0px;
         }
-
         .bg-white {
             border: 0;
             border-radius: 0;
         }
-
         .search img {
             height: 1.5rem;
             width: 1.5rem;
         }
     }
 }
-
 #HomeContentproduct {
     display: block;
-
     .card-img-top {
         margin: 20px auto;
         height: 150px;
         width: 80%;
     }
 }
-
 footer {
     background: $secondary-color-navyBlue;
     padding: 1.5rem;
     margin: 0;
     color: white;
 }
-
 // Userprofile CSS
 #userprofile {
     background: #e6e6e6;
     padding-top: 50px;
     padding: 2rem;
-
     .myprofile {
         padding: 2rem;
         background: #f4f4f4;
     }
 }
-
 // Login CSS starts
 .forgotpassContainer {
     display: flex;
@@ -161,14 +129,12 @@ footer {
     align-items: center;
     height: 100vh;
 }
-
 .loginContainer {
     display: flex;
     justify-items: center;
     align-items: center;
     min-height: 100%;
 }
-
 #loginBox {
     margin: 0 auto;
     width: 600px;
@@ -176,18 +142,15 @@ footer {
     background: #f4f4f4;
     box-sizing: border-box;
     border-radius: 20px;
-
     h3 {
         margin: 0;
         padding: 5px 0;
         color: #ffbe00;
         text-align: center;
     }
-
     .inputBox {
         position: relative;
     }
-
     .inputBox input {
         width: 100%;
         padding: 15px 0;
@@ -200,7 +163,6 @@ footer {
         outline: none;
         background: transparent;
     }
-
     .inputBox label {
         position: absolute;
         top: 0;
@@ -212,7 +174,6 @@ footer {
         pointer-events: none;
         transition: 0.5s;
     }
-
     .inputBox input:focus~label,
     .inputBox input:valid~label {
         top: -10px;
@@ -220,7 +181,6 @@ footer {
         color: #b6b6b6;
         font-size: 14px;
     }
-
     input[type="submit"] {
         background: transparent;
         border: none;
@@ -232,16 +192,13 @@ footer {
         cursor: pointer;
         border-radius: 5px;
     }
-
     .forgot-pass {
         padding: 10px 0;
     }
-
     .reg {
         padding: 5px 0;
     }
 }
-
 #forgotPasswordBox {
     margin: 15px auto;
     width: 400px;
@@ -249,11 +206,9 @@ footer {
     background: #f4f4f4;
     box-sizing: border-box;
     border-radius: 20px;
-
     .inputBox {
         position: relative;
     }
-
     .inputBox input {
         width: 100%;
         padding: 10px 0;
@@ -266,7 +221,6 @@ footer {
         outline: none;
         background: transparent;
     }
-
     .inputBox label {
         position: absolute;
         top: 0;
@@ -278,14 +232,12 @@ footer {
         pointer-events: none;
         transition: 0.5s;
     }
-
     .inputBox input:focus~label,
     .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #ffbe00;
     }
-
     input[type="submit"] {
         background: transparent;
         border: none;
@@ -298,7 +250,6 @@ footer {
         border-radius: 5px;
     }
 }
-
 #resetPasswordBox {
     margin: 0 auto;
     width: 400px;
@@ -306,18 +257,15 @@ footer {
     background: rgba(0, 0, 0, 0.8);
     box-sizing: border-box;
     border-radius: 20px;
-
     h3 {
         margin: 0;
         padding: 5px 0;
         color: #ffbe00;
         text-align: center;
     }
-
     .inputBox {
         position: relative;
     }
-
     .inputBox input {
         width: 100%;
         padding: 10px 0;
@@ -330,7 +278,6 @@ footer {
         outline: none;
         background: transparent;
     }
-
     .inputBox label {
         position: absolute;
         top: 0;
@@ -342,14 +289,12 @@ footer {
         pointer-events: none;
         transition: 0.5s;
     }
-
     .inputBox input:focus~label,
     .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #ffbe00;
     }
-
     input[type="submit"] {
         background: transparent;
         border: none;
@@ -361,7 +306,6 @@ footer {
         cursor: pointer;
         border-radius: 5px;
     }
-
     .loginLink {
         padding: 35px 0px 0;
     }

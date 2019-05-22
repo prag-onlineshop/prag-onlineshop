@@ -16,8 +16,9 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
+//Category Routes
 Route::resource('categories', 'CategoriesController');
 
 Route::get('categoriesList-Admin', 'CategoriesController@index');
@@ -26,8 +27,12 @@ Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name
 
 Route::get('/category/{url}', 'CategoriesController@url');
 
-Route::get('/', 'ProductController@index');
+// Product Routes
+Route::resource('/','ProductsController@index');
+Route::resource('products', 'ProductsController');
+Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
 
+Route::view('/','user.content');
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
 Route::view('/userData','user.userForm'); 
@@ -42,7 +47,10 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/addItem/{id}', 'CartController@addItem');
     Route::get('/cart/update/{id}', 'CartController@update');
     Route::put('/cart/update/{id}', 'CartController@update');
-    Route::get('/cart/remove/{id}', 'CartController@destroy'); 
+    Route::get('/cart/remove/{id}', 'CartController@destroy');
+    Route::get('/checkout', 'CheckoutController@index');
+    Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
+    Route::get('/orders', 'ProfileController@orders'); 
 });
 
 
@@ -67,15 +75,19 @@ Route::get('/resetPass', function () {
 });
 
 
+
+Route::view('/profileOrder','user.profileOrder');
+
+
 Route::get('brand', 'BrandController@index')->name('brand.index');
 Route::post('brand', 'BrandController@store')->name('brand.store');
 Route::get('brand/create', 'BrandController@create')->name('brand.create');
 Route::get('brand/{brand}', 'BrandController@show')->name('brand.profile');
-Route::get('brand/{brand}/edit', 'BrandController@edit')->name('brand.edit');
-Route::patch('brand/{brand}', 'BrandController@update')->name('brand.update');
+Route::get('brand/{url}/edit', 'BrandController@edit')->name('brand.edit');
+Route::patch('brand/{url}', 'BrandController@update')->name('brand.update');
 Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
 
-//Route::get('brand/{brand}', 'BrandController@getURL');
+
 
 
 

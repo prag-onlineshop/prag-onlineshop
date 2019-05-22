@@ -14,9 +14,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-
-        $brands = Brand::all();
-
+        $brands = Brand::paginate(3);
         return view('admin.brand.index', [
             'brands' => $brands,
         ]);
@@ -29,9 +27,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
-        $brand = new Brand();
-        return view('admin.brand.create', compact('brand'));
+        $brandurl = new Brand();
+        return view('admin.brand.create', compact('brandurl'));
     }
 
     /**
@@ -56,10 +53,10 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show($brand)
     {
-        //
-        return view('admin.brand.profile', compact('brand'));
+        $brandurl = Brand::where('url', $brand)->firstOrFail();
+        return view('admin.brand.profile', compact('brandurl'));
     }
 
     /**
@@ -68,9 +65,10 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
-    {
-        return view('admin.brand.edit', compact('brand'));
+    public function edit($url)
+    {    
+        $brandurl = Brand::where('url', $url)->firstOrFail();
+        return view('admin.brand.edit', compact('brandurl'));
     }
 
     /**
@@ -80,13 +78,11 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Brand $brand)
+    public function update(Brand $url)
     {
-        $brand->update($this->validateRequest());
-
-        $this->storeImage($brand);
-
-        return redirect('brand/'. $brand->id);
+        $url->update($this->validateRequest());           
+        $this->storeImage($url);
+        return redirect('brand/'. $url->url);
 
     }
 
@@ -99,7 +95,6 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         $brand->delete();
-
         return redirect('brand');
     }
 
@@ -128,13 +123,6 @@ class BrandController extends Controller
             };
         });
     }
-    
-    public function getURL($brand){
-
-        $brand = Brand::where('url', $brand)->firstOrFail();
-        return view('admin.brand.profile', compact($brand));
-    }
 
 
-    
 }
