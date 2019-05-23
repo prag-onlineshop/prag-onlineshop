@@ -1,11 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
+
+
+<div class="bg-overlay bg-light">
 <?php if ($cartItems->isEmpty()) { ?>
 <br>
 <br>
 <br>
 <section id="cart_items">
+
     <div class="container">
         <div align="center"> <img src="{{asset('dist/img/empty-cart.png')}}" /></div>
     </div>
@@ -99,7 +103,7 @@
 </section>
 <!--/#cart_items-->
 <section id="do_action">
-    <div class="container">
+    <div class="container py-5">
         <div class="row">
             <div class="col-sm-6">
                 <div class="total_area">
@@ -109,7 +113,7 @@
                         <li>Shipping Cost <span>Free</span></li>
                         <li>Total <span>{{Cart::total()}}</span></li>
                     </ul>
-                    <a class="btn btn-default check_out" href="{{url('/')}}/checkout">Check Out</a>
+                    <a class="btn btn-primary check_out" href="{{url('/')}}/checkout">Check Out</a>
                 </div>
             </div>
         </div>

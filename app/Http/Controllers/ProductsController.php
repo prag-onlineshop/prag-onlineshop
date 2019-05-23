@@ -10,10 +10,11 @@ use Intervention\Image\Facades\Image;
 
 class ProductsController extends Controller
 {
-    public function indexAdmin(){
-        $products = Product::orderBy('name', 'asc')->paginate(10);
+    public function indexHome(){
+        $products = Product::orderBy('name', 'asc')->paginate(8);
         return view('user.content', compact('products'));
     }
+
     public function index(){
         $products = Product::orderBy('name', 'asc')->paginate(10);
         return view('admin.product.indexProduct', compact('products'));
@@ -59,7 +60,7 @@ class ProductsController extends Controller
             'brand_id'=>'required',
             'name'=> 'required|min:3',
             'image'=> 'sometimes|file|image|max:3000',
-            'price'=> 'required|numeric',
+            'price'=> 'required|numeric|between:1.00,999999.99',
             'description'=> 'required|max:300',
             'quantity'=> 'required|numeric|min:1',
         ]);
