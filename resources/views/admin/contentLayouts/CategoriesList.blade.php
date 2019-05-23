@@ -64,21 +64,16 @@
                 data-toggle="tooltip" title="Delete">&#xE872;</i></a>
           </td>
         </tr>
+    
         @endforeach
 
       </tbody>
     </table>
-    <div class="clearfix">
-      <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-      <ul class="pagination">
-        <li class="page-item disabled"><a href="#">Previous</a></li>
-        <li class="page-item"><a href="#" class="page-link">1</a></li>
-        <li class="page-item"><a href="#" class="page-link">2</a></li>
-        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-        <li class="page-item"><a href="#" class="page-link">4</a></li>
-        <li class="page-item"><a href="#" class="page-link">5</a></li>
-        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-      </ul>
+    <div>Showing {{($categories->currentpage()-1)*$categories->perpage()+1}} to {{$categories->currentpage()*$categories->perpage()}}
+    of  {{$categories->total()}} entries
+    </div>
+    <div>
+    {{$categories->links()}}
     </div>
   </div>
 </div>
@@ -86,33 +81,28 @@
 <div id="addEmployeeModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+    <form action="{{route('categoriesList-Admin.store', $category)}}" method="post" enctype="multipart/form-data">
         <div class="modal-header">
           <h4 class="modal-title">Add Employee</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-          </div>
-          <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
-          </div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="{{$category->name}}" placeholder="categoryname">
+            <div>{{$errors->first('name')}}</div>
+        </div>
+        <div>
+            <label for="image">Image:</label>
+            <input type="file" name="image" id="image" accept="image/*" value="{{$category->image}}">
+            <div>{{$errors->first('image')}}</div>
+        </div>
         </div>
         <div class="modal-footer">
           <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
           <input type="submit" class="btn btn-success" value="Add">
         </div>
+        @csrf
       </form>
     </div>
   </div>

@@ -1,38 +1,33 @@
 <header>
-    <div class="" id="headerWrap">
-        <div class="container">
-            <div class="header-form">
-                <div class="homelink">
-                    <ul class="float-right">
-                        <li><a href="#">CUSTOMER CARE</a> </li>
-                        <li><a href="/">HOME</a> </li>
-                        <?php if(Auth::check()){ ?>
-                        <li><a href="/profile">My Account</a> </li>
-                        <li><a href="#">WishList</a> </li>
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+   <div class="" id="headerWrap">
+      <div class="container">
+         <div class="header-form">
+            <div class="homelink">
+               <ul class="float-right">
+                  <li><a href="#">CUSTOMER CARE</a> </li>
+                  <li><a href="/">HOME</a> </li>
+                  @guest
+                     <li><a href="/login">LOGIN</a></li>
+                     <li><a href="/register">SIGNUP</a> </li>
+                  @else
+                     <li><a href="/profile">Profile</a> </li>
+                     <li><a href="#">WishList</a> </li>
+                     <li><a href="/orders">Orders</a></li>
+                     <li><a href="#">{{ Auth::user()->name }}</a></li>
+                     <li>
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                        logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                           @csrf
+                        </form>
+                     </li>
+                  @endguest
+               </ul>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        <?php }else{ ?>
-                        <li><a href="/login">LOGIN</a></li>
-                        <li><a href="/register">SIGNUP</a> </li>
-                        <?php }?>
-
-                    </ul>
-                </div>
+               </div>
                 <div class="clearfix"></div>
                 <div class="header-content p-1 ">
                     <div class="container">
@@ -65,9 +60,10 @@
                                                 Categories
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <?php $cats=DB::table('categories')->get(); ?>
+                                                @foreach($cats as $cat)
+                                                   <a class="dropdown-item" href="{{ url('category',$cat->id) }}">{{ $cat->name }}</a>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <ul class="d-inline-block pl-3">

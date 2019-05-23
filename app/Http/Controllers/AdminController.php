@@ -3,29 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 use App\Category;
+use App\Brand;
 use Intervention\Image\Facades\Image;
-use Illuminate\Support\Str;
 
-class CategoriesController extends Controller
+class AdminController extends Controller
 {
-    public function url($category){
-        $category = Category::where('url', $category)->firstOrFail();
-        return view('admin.category.urlCategory', compact('category'));
-    }
     public function index(){
-        $categories = Category::orderBy('name', 'asc')->paginate(10);
-        return view('admin.category.indexCategory', compact('categories'));
-    }
-    public function create(){
-        $category = new Category();
-        return view('admin.category.createCategory', compact('category'));
+        $categories = Category::oldest()->paginate(10);
+        return view('admin.contentLayouts.CategoriesList', compact('categories'));
     }
     public function store(){
         $category = Category::create($this->validateRequest());
         $this->storeImage($category);
-
-        return redirect('categories')->with('add_message', ' added successfully');
+        return redirect('categoriesList-Admin')->with('add_message', ' added successfully');
     }
     public function show($category){
         $category = Category::where('url', $category)->firstOrFail();
@@ -41,14 +33,10 @@ class CategoriesController extends Controller
         $category->save();
         return redirect('categories/'.$category->url)->with('update_message', 'successfully updated');
     }
-    public function delete($category){
-        $category = Category::where('url', $category)->firstOrFail();
-        return view('admin.category.deleteCategory', compact('category'));
-    }
     public function destroy(Category $category){
         $this->deleteImage($category);
         $category->delete();
-        return redirect('categories')->with('del_message','successfully deleted');
+        return redirect('CategoriesList-Admin')->with('del_message','successfully deleted');
     }
 
     private function validateRequest(){

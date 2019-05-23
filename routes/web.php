@@ -16,24 +16,21 @@
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+//Home Routes
+Route::get('/', 'ProductsController@indexHome');
+Route::get('/home', 'HomeController@index')->name('home');
 
 //Category Routes
 Route::resource('categories', 'CategoriesController');
+Route::get('/categories/{category}/delete', 'CategoriesController@delete');
 
-
-
-Route::get('categoriesList-Admin', 'CategoriesController@index');
-
-Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
-
-Route::get('/category/{url}', 'CategoriesController@url');
+//Admin Routes
+Route::resource('categoriesList-Admin', 'AdminController');
+Route::get('/categoriesList-Admin/{category}/delete', 'AdminController@delete');
 
 // Product Routes
-Route::get('/', 'ProductsController@indexAdmin');
 Route::resource('products', 'ProductsController');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
-
 
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');

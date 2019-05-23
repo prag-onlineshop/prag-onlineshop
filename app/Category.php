@@ -24,7 +24,3 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 583b74d6d87a3c0c19e6f6f5ab04088de989d6f3
