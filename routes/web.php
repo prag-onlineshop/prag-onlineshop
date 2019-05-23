@@ -21,6 +21,8 @@ Auth::routes();
 //Category Routes
 Route::resource('categories', 'CategoriesController');
 
+
+
 Route::get('categoriesList-Admin', 'CategoriesController@index');
 
 Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
