@@ -46,12 +46,14 @@
 
     <div class="row">
 
-      <div class="col-2  bg-primary ">
+      <div class="col-2 m-0 p-0  sideBarBg text-dark  vh-100">
         @include('layouts.sidebarAdmin')
       </div>
 
 
-      <div class="col-10  bg-overlay vh-100">
+      <div class="col-10 m-0 p-0  bg-overlay vh-100">
+
+        <div class="headerRight"></div>
 
         @yield('CategoriesList')
 
@@ -61,7 +63,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 

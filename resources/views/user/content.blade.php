@@ -190,6 +190,7 @@
 				<hr>
 
 
+
 				<h3>Most Recent:</h3>
 				<div class="row">
 					@forelse($products as $product)

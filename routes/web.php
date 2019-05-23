@@ -32,7 +32,7 @@ Route::get('/', 'ProductsController@indexAdmin');
 Route::resource('products', 'ProductsController');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
 
-Route::view('/','user.content');
+
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
 Route::view('/userData','user.userForm'); 
