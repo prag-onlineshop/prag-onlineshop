@@ -24,4 +24,4 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 }
-git
+
