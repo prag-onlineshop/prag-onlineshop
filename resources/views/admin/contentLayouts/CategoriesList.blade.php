@@ -71,8 +71,6 @@
     </table>
     <div>Showing {{($categories->currentpage()-1)*$categories->perpage()+1}} to {{$categories->currentpage()*$categories->perpage()}}
     of  {{$categories->total()}} entries
-    </div>
-    <div>
     {{$categories->links()}}
     </div>
   </div>
