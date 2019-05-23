@@ -118,13 +118,8 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-</div>
-</section><!--/#do_action-->
-=======
 </section>
 <!--/#do_action-->
->>>>>>> 583b74d6d87a3c0c19e6f6f5ab04088de989d6f3
 <?php } ?>
 
 @endsection
