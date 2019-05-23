@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\Category;
+use App\Brand;
+use Intervention\Image\Facades\Image;
 
 class HomeController extends Controller
 {

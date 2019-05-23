@@ -2,6 +2,7 @@
 @section('content')
 
 <section class="main-content" >
+<!----------------------------- CAROUSEL ------------------------------->
 <div class="bg-carousel">
 <div class="container">
    <div class="carouselWrap">
@@ -33,105 +34,39 @@
       </div>
    </div>
 </div>
+<!----------------------------- END CAROUSEL ------------------------------->
 <div class="bg-overlay py-3">
+<!----------------------------- MOST POPULAR ITEMS ------------------------------->
    <div class="container">
-      <h3>Most popular:</h3>
-      <div class="slick-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
-         <div class="item-slide p-2">
-            <figure class="card card-product">
-               <span class="badge-new"> NEW </span>
-               <div class="img-wrap">
-                  <img src="{{ asset('img/items/1.jpg') }}">
+      <div class="row">
+         <h3>Most popular:</h3>
+         <div class="container">
+            <div class="row">
+               <div class="slick-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
+                  <div class="item-slide p-2">
+                     <figure class="card card-product">
+                        <span class="badge-new"> NEW </span>
+                        <div class="img-wrap">
+                           <img src="{{ asset('img/items/1.jpg') }}">
+                        </div>
+                        <figcaption class="info-wrap text-center">
+                           <h6 class="title text-truncate">
+                              <a href="#">First item name</a>
+                           </h6>
+                        </figcaption>
+                     </figure>
+               <!-- card // -->
                </div>
-               <figcaption class="info-wrap text-center">
-                  <h6 class="title text-truncate">
-                     <a href="#">First item name</a>
-                  </h6>
-               </figcaption>
-            </figure>
-            <!-- card // -->
-         </div>
-         <div class="item-slide p-2">
-            <figure class="card card-product">
-               <div class="img-wrap">
-                  <img src="{{ asset('img/items/1.jpg') }}">
-               </div>
-               <figcaption class="info-wrap text-center">
-                  <h6 class="title text-truncate">
-                     <a href="#">Second item name</a>
-                  </h6>
-               </figcaption>
-            </figure>
-            <!-- card // -->
-         </div>
-         <div class="item-slide p-2">
-            <figure class="card card-product">
-               <div class="img-wrap">
-                  <img src="{{ asset('img/items/1.jpg') }}">
-               </div>
-               <figcaption class="info-wrap text-center">
-                  <h6 class="title text-truncate">
-                     <a href="#">Third item name</a>
-                  </h6>
-               </figcaption>
-            </figure>
-            <!-- card // -->
-         </div>
-         <div class="item-slide p-2">
-            <figure class="card card-product">
-               <div class="img-wrap">
-                  <img src="{{ asset('img/items/1.jpg') }}">
-               </div>
-               <figcaption class="info-wrap text-center">
-                  <h6 class="title text-truncate">
-                     <a href="#">Good item name</a>
-                  </h6>
-               </figcaption>
-            </figure>
-            <!-- card // -->
-         </div>
-         <div class="item-slide p-2">
-            <figure class="card card-product">
-               <div class="img-wrap">
-                  <img src="{{ asset('img/items/1.jpg') }}">
-               </div>
-               <figcaption class="info-wrap text-center">
-                  <h6 class="title text-truncate">
-                     <a href="#">Another item name</a>
-                  </h6>
-               </figcaption>
-            </figure>
-            <!-- card // -->
-         </div>
-         <div class="item-slide p-2">
-            <figure class="card card-product">
-               <div class="img-wrap">
-                  <img src="{{ asset('img/items/1.jpg') }}">
-               </div>
-               <figcaption class="info-wrap text-center">
-                  <h6 class="title text-truncate">
-                     <a href="#">Third item name</a>
-                  </h6>
-               </figcaption>
-            </figure>
-            <!-- card // -->
-         </div>
-         <div class="item-slide p-2">
-            <figure class="card card-product">
-               <div class="img-wrap">
-                  <img src="{{ asset('img/items/1.jpg') }}">
-               </div>
-               <figcaption class="info-wrap text-center">
-                  <h6 class="title text-truncate">
-                     <a href="#">Third item name</a>
-                  </h6>
-               </figcaption>
-            </figure>
-            <!-- card // -->
+            </div>
          </div>
       </div>
+   </div>
+<!----------------------------- END MOST POPULAR ITEMS ------------------------------->
       <hr>
+<!----------------------------- MOST RECENT ITEMS ------------------------------->
+      <div class="container">
       <h3>Most Recent:</h3>
+      </div>
       <div class="row">
          @forelse($products as $product)
          <div class="col-md-3">
@@ -164,8 +99,9 @@
       </div>
       <!-- row.// -->
    </div>
+   <div style="align-content: center;">{{$products->links()}}</div>
    {{-- container --}}
 </div>
 {{-- Overlay Content End --}}
-
+<!-----------------------------END MOST RECENT ITEMS ------------------------------->
 @endsection

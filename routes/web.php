@@ -13,18 +13,17 @@
 
 Auth::routes();
 
+//Home Routes
+Route::get('/', 'ProductsController@indexHome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Category Routes
 Route::resource('categories', 'CategoriesController');
 Route::get('/categories/{category}/delete', 'CategoriesController@delete');
-Route::get('/category/{url}', 'CategoriesController@url');
 
 // Product Routes
-Route::get('/', 'ProductsController@indexAdmin');
 Route::resource('products', 'ProductsController');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
-
 
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
