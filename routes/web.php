@@ -34,10 +34,12 @@ Route::get('/products/{product}/delete', 'ProductsController@delete')->name('pro
 
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
-Route::view('/userData','user.userForm'); 
+Route::view('/userData','user.userForm');
+Route::get('/category/{id}', 'HomeController@showCates'); 
 
 Route::get('/userprofile','ProfileController@index');
 Route::get('/productDetail/{id}','CartController@detailPro');
+Route::get('/category/{id}', 'ProductsController@showCates');
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', 'ProfileController@index');
