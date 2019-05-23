@@ -79,7 +79,7 @@ Route::patch('brand/{url}', 'BrandController@update')->name('brand.update');
 Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
 
 
-
-
-
-
+//Route for coupon
+Route::get('Coupons/create', 'CouponController@create')->name('coupon.create');
+Route::post('Coupons','CouponController@store')->name('coupon.store');
+Route::get('Coupons', 'CouponController@index');

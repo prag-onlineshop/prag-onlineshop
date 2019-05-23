@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->string('contact')->nullable();
             $table->string('address')->nullable();
-            $table->string('photo')->default('profile.png');
             $table->integer('admin')->nullable();
             $table->string('payment_type')->nullable();
         });
