@@ -11,17 +11,26 @@
 |
 */
 
+
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 //Category Routes
 Route::resource('categories', 'CategoriesController');
-Route::get('/categories/{category}/delete', 'CategoriesController@delete');
+Route::get('/category/{id}', 'ProductsController@showCates');
+
+
+Route::get('categoriesList-Admin', 'CategoriesController@index');
+
+Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
+
 Route::get('/category/{url}', 'CategoriesController@url');
 
 // Product Routes
-Route::get('/', 'ProductsController@index');
+Route::get('/', 'ProductsController@indexAdmin');
 Route::resource('products', 'ProductsController');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
 
@@ -29,6 +38,7 @@ Route::get('/products/{product}/delete', 'ProductsController@delete')->name('pro
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
 Route::view('/userData','user.userForm'); 
+
 Route::get('/userprofile','ProfileController@index');
 Route::get('/productDetail/{id}','CartController@detailPro');
 
@@ -40,12 +50,12 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/update/{id}', 'CartController@update');
     Route::put('/cart/update/{id}', 'CartController@update');
     Route::get('/cart/remove/{id}', 'CartController@destroy');
-    Route::get('/checkout', 'CheckoutController@index');
+    Route::get ('/checkout', 'CheckoutController@index');
     Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
     Route::get('/orders', 'ProfileController@orders'); 
 });
 
-// Auth::routes();
+
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {

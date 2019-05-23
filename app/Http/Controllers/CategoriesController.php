@@ -14,8 +14,11 @@ class CategoriesController extends Controller
         return view('admin.category.urlCategory', compact('category'));
     }
     public function index(){
-        $categories = Category::orderBy('name', 'asc')->paginate(10);
-        return view('admin.category.indexCategory', compact('categories'));
+
+        $categories = Category::all();
+
+        // return view('admin.contentlayouts.categoriesList', compact('categories'));
+        return view('admin.contentLayouts.CategoriesList', compact('categories'));
     }
     public function create(){
         $category = new Category();

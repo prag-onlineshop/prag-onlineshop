@@ -10,15 +10,18 @@ use Intervention\Image\Facades\Image;
 
 class ProductsController extends Controller
 {
-    public function index(){
+    public function indexAdmin(){
         $products = Product::orderBy('name', 'asc')->paginate(10);
         return view('user.content', compact('products'));
+    }
+    public function index(){
+        $products = Product::orderBy('name', 'asc')->paginate(10);
+        return view('admin.product.indexProduct', compact('products'));
     }
     public function create(){
         $product = new Product();
         $categories = Category::all();
         $brands = Brand::all();
-
         return view('admin.product.createProduct', compact('product', 'categories', 'brands'));
     }
     public function store(){
@@ -78,5 +81,13 @@ class ProductsController extends Controller
         if(file_exists($image_path)){
             unlink($image_path);
         }
+    }
+
+    // category filter for product
+    public function showCates($id)
+    {
+        $category_products = Product::where('category_id', $id)->get();
+        $id_ = $id;
+        return view('user.CategoryFilter', compact('category_products', 'id_'));
     }
 }
