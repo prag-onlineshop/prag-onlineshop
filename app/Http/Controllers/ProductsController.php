@@ -12,7 +12,6 @@ class ProductsController extends Controller
 {
     public function indexHome(){
         $products = Product::orderBy('name', 'asc')->paginate(8);
-
         return view('user.content', compact('products'));
     }
 
@@ -24,7 +23,6 @@ class ProductsController extends Controller
         $product = new Product();
         $categories = Category::all();
         $brands = Brand::all();
-
         return view('admin.product.createProduct', compact('product', 'categories', 'brands'));
     }
     public function store(){
