@@ -11,25 +11,35 @@
 |
 */
 
+
+
+
 Auth::routes();
 
+//Home Routes
+Route::get('/', 'ProductsController@indexHome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Category Routes
 Route::resource('categories', 'CategoriesController');
 Route::get('/categories/{category}/delete', 'CategoriesController@delete');
-Route::get('/category/{url}', 'CategoriesController@url');
+
+//Admin Routes
+Route::resource('categoriesList-Admin', 'AdminController');
+Route::get('/categoriesList-Admin/{category}/delete', 'AdminController@delete');
 
 // Product Routes
 Route::resource('products', 'ProductsController');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
 
-
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
-Route::view('/userData','user.userForm'); 
+Route::view('/userData','user.userForm');
+Route::get('/category/{id}', 'HomeController@showCates'); 
+
 Route::get('/userprofile','ProfileController@index');
 Route::get('/productDetail/{id}','CartController@detailPro');
+Route::get('/category/{id}', 'ProductsController@showCates');
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', 'ProfileController@index');
@@ -39,12 +49,12 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/update/{id}', 'CartController@update');
     Route::put('/cart/update/{id}', 'CartController@update');
     Route::get('/cart/remove/{id}', 'CartController@destroy');
-    Route::get('/checkout', 'CheckoutController@index');
+    Route::get ('/checkout', 'CheckoutController@index');
     Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
     Route::get('/orders', 'ProfileController@orders'); 
 });
 
-// Auth::routes();
+
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {

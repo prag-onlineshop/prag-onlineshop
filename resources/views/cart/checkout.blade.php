@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<div class="bg-overlay">
 <section class="hero hero-page gray-bg padding-small">
     <div class="container">
         <div class="row d-flex">
@@ -13,8 +13,9 @@
     </div>
 </section>
 <!-- Checout Forms-->
+<div class="container bg-light">
 <div class="table-responsive cart_info">
-    <table class="table table-condensed border-bottom">
+    <table class="table table-condensed">
         <thead>
         <tr>
             @if(session('status'))
@@ -79,14 +80,15 @@
         @endforeach
     </table>
 </div>
+</div>s
 
 <?php  // form start here ?>
 <section class="checkout">
     <br><br>
-    <div class="container">
+    <div class="container .position-relative py-3 bg-light">
         <div class="row">
             <div class="col-lg-8">
-                <div class="tab-content">
+                <div class="tab-content float-left">
                     <div id="address" class="active tab-block">
                         <form action="{{ url('/addCheckOut') }}" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -104,19 +106,21 @@
                                     <br>
                                     <span style="color:red">{{ $errors->first('contact') }}</span>
                                 </div>
+                                
                                 <div class="form-group col-md-6">
                                     <label for="lastname" class="form-label">Adress</label>
-                                    <input id="lastname" type="text" name="address" placeholder="Address" class="form-control">
+                                    <textarea name="address" id="address" cols="30" rows="10" class="form-control"></textarea>
+                                    
                                     <br>
                                     <span style="color:red">{{ $errors->first('address') }}</span>
                                 </div>
-
-                                <span>
-                                    <input type="radio" name="payment_type" value="COD" checked="checked"> COD
-                                </span>
-                                <input type="radio" name="payment_type" value="paypal"> PayPal
+        
+                                <span class="p-3">
+                                    <input  type="radio" name="payment_type" value="COD" checked="checked"> COD
+                                
+                                <input  type="radio" name="payment_type" value="paypal"> PayPal
                                 <div class="row" style="height: 34px; margin-left: 15px;">
-                                    
+                                </span>  
                                 <input type="submit" value="Continue" class="btn btn-primary btn-sm">
                                 </div>
                             </div>
@@ -125,7 +129,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 py-5">
                 <div class="block-body order-summary">
                     <h6 class="text-uppercase">Order Summary</h6>
                     <p>Shipping and additional costs are calculated based on values you have entered</p>
@@ -140,5 +144,5 @@
         </div>
     </div>
 </section>
-
+</div>
 @endsection

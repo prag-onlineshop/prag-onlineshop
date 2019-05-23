@@ -28,7 +28,7 @@
     <label for="category">Category:</label>
     <select name="category_id" id="category_id">
         @foreach($categories as $category)
-            <option value="{{$category->id}}">{{old('name', $category->name) ?? $category->name}}</option>
+            <option value="{{$category->id}}" {{$category->id == $product->category_id ? 'selected' : ''}} >{{$category->name}}</option>
         @endforeach
     </select>
 </div>
@@ -38,7 +38,7 @@
     <select name="brand_id" id="brand_id">
     <option disabled>Select Brand</option>
         @foreach($brands as $brand)
-            <option value="{{old('id') ?? $brand->id}}">{{$brand->name}}</option>
+            <option value="{{$brand->id}}" {{$brand->id == $product->brand_id ? 'selected' : ''}}>{{$brand->name}}</option>
         @endforeach
     </select>
 </div>

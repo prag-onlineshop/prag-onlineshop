@@ -16,8 +16,8 @@
     <p>Description: {{$product->description}}</p>
     <p>Price: {{$product->price}}</p>
     <p>Quantity: {{$product->quantity}}</p>
-    <p>Category: {{$product->category->url}}</p>
-    <p>Brand: {{$product->brand->url}}</p>
+    <p>Category: {{$product->category['name']}}</p>
+    <p>Brand: {{$product->brand['name']}}</p>
     <button><a href="/products"> &lt Back</a></button>
     <button><a href="{{route('products.edit', $product)}}">Edit</a></button>
     <button><a href="{{route('products.delete', $product)}}">Delete</a></button>
