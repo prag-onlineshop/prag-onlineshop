@@ -13,7 +13,7 @@
     </div>
 </section>
 <!-- Checout Forms-->
-<div class="container">
+<div class="container bg-light">
 <div class="table-responsive cart_info">
     <table class="table table-condensed">
         <thead>
@@ -115,12 +115,12 @@
                                     <span style="color:red">{{ $errors->first('address') }}</span>
                                 </div>
         
-                                <span>
-                                    <input type="radio" name="payment_type" value="COD" checked="checked"> COD
-                                </span>
-                                <input type="radio" name="payment_type" value="paypal"> PayPal
+                                <span class="p-3">
+                                    <input  type="radio" name="payment_type" value="COD" checked="checked"> COD
+                                
+                                <input  type="radio" name="payment_type" value="paypal"> PayPal
                                 <div class="row" style="height: 34px; margin-left: 15px;">
-                                    
+                                </span>  
                                 <input type="submit" value="Continue" class="btn btn-primary btn-sm">
                                 </div>
                             </div>
