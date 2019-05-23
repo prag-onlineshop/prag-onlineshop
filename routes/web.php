@@ -11,13 +11,22 @@
 |
 */
 
+
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 //Category Routes
 Route::resource('categories', 'CategoriesController');
-Route::get('/categories/{category}/delete', 'CategoriesController@delete');
+
+
+
+Route::get('categoriesList-Admin', 'CategoriesController@index');
+
+Route::get('/categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
+
 Route::get('/category/{url}', 'CategoriesController@url');
 
 // Product Routes
@@ -29,6 +38,7 @@ Route::get('/products/{product}/delete', 'ProductsController@delete')->name('pro
 Route::view('/userlogin','user.userLogin');
 Route::view('/signup','user.registration');
 Route::view('/userData','user.userForm'); 
+
 Route::get('/userprofile','ProfileController@index');
 Route::get('/productDetail/{id}','CartController@detailPro');
 
@@ -45,7 +55,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/orders', 'ProfileController@orders'); 
 });
 
-// Auth::routes();
+
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {

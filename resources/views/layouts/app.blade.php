@@ -9,15 +9,15 @@
     <title>pragstore | Home</title>
 
 
-    <script src="{{ asset('js/jquery-2.0.0.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 
     <link href="{{ asset('css/fontawesome/css/fontawesome-all.min.css') }}" rel="stylesheet" />
+    <script src="{{ asset('js/jquery-2.0.0.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <link href="{{ asset('css/ui.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" media="only screen and (max-width: 900px)" />
 
     <link href="{{ asset('plugins/slickslider/slick.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/slickslider/slick-theme.css') }}" rel="stylesheet" />

@@ -1,53 +1,56 @@
-<div class="wrap py-2 ">
-  <h5 class="text-white text-center">PRAGSTORE ADMIN </h5>
-  <p class="text-info ">Time: </p>
-  <hr>
+<div class="bg-primary p-4">
+  <h3 class="text-center text-white ">
+    <b> PS ADMIN </b> </h3>
+</div>
+<hr class="border-white">
+<div class="wrap p-2">
 
-  <div class=" form-group text-center border border-white">
-    <a href="#" class="form-control text-white bg-transparent border-0 ">
-      <span class="float-left "><img src="{{ asset('img/logo/settingsLogo.png') }}" alt="" width="24px"
-          height="24"></span>
-      <h6 class="d-inline">Dashboard</h6> <span class="float-right"><img src="{{ asset('img/logo/chevronLogo.png') }}"
-          alt="">
-      </span>
+  <h3><b>Overview</b> </h3>
+
+  <div class="form-group">
+    <a href="#" class="form-control bg-transparent border-0 text-dark ">
+      <img src="{{ asset('img/logo/light/barLogoBlue.png') }}" width="24px" height="24px" class=" rounded float-left">
+      <h6 class="d-inline-block pl-2">Dashboard</h6><img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}"
+        class="float-right">
+
     </a>
   </div> {{-- Dashboard --}}
+  <hr class="border-secondary mx-2">
+  <h3><b>Component</b></h3>
+  <div class=" form-group ">
+    <a href=" #" class="form-control bg-transparent border-0  text-dark ">
+      <img src="{{ asset('img/logo/light/listLogoBlue.png') }}" class="rounded float-left">
+      <h6 class="d-inline-block pl-2">Brands Data</h6>
+      <img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}" alt="" class="float-right">
 
-  <div class=" form-group text-center border border-white">
-    <a href="#" class="form-control text-white bg-transparent border-0 ">
-      <span class="float-left "><img src="{{ asset('img/logo/listLogo.png') }}" alt="" width="24px" height="24"></span>
-      <h6 class="d-inline">Brands Data</h6>
-      <span class="float-right"><img src="{{ asset('img/logo/chevronLogo.png') }}" alt="">
-      </span>
     </a>
   </div> {{-- Brands --}}
 
-  <div class=" form-group text-center border border-white">
-    <a href="#" class="form-control text-white bg-transparent border-0 ">
-      <span class="float-left "><img src="{{ asset('img/logo/listLogo.png') }}" alt="" width="24px" height="24"></span>
-      <h6 class="d-inline">products Data</h6>
-      <span class="float-right"><img src="{{ asset('img/logo/chevronLogo.png') }}" alt="">
-      </span>
+  <div class=" form-group ">
+    <a href="#" class="form-control  bg-transparent border-0  text-dark  ">
+      <img src="{{ asset('img/logo/light/listLogoBlue.png') }}" class="rounded float-left">
+      <h6 class="d-inline-block pl-2">products Data</h6>
+      <img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}" alt="" class="float-right">
+
     </a>
   </div> {{-- products --}}
 
-  <div class=" form-group text-center border border-white">
-    <a href="#" class="form-control text-white bg-transparent border-0 ">
-      <span class="float-left "><img src="{{ asset('img/logo/listLogo.png') }}" alt="" width="24px" height="24"></span>
-      <h6 class="d-inline">Categories Data</h6>
-      <span class="float-right"><img src="{{ asset('img/logo/chevronLogo.png') }}" alt="">
-      </span>
+  <div class=" form-group ">
+    <a href="#" class="form-control bg-transparent border-0 text-dark ">
+      <img src="{{ asset('img/logo/light/listLogoBlue.png') }}" alt="" class="rounded float-left">
+      <h6 class="d-inline-block pl-2">Categories Data</h6>
+      <img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}" alt="" class="float-right">
+
     </a>
   </div> {{-- Categories --}}
 
 
-  <div class=" form-group text-center border border-white">
-    <a href="#" class="form-control text-white bg-transparent border-0 ">
-      <span class="float-left "><img src="{{ asset('img/logo/couponLogo.png') }}" alt="" width="24px"
-          height="24"></span>
-      <h6 class="d-inline">Coupons</h6>
-      <span class="float-right"><img src="{{ asset('img/logo/chevronLogo.png') }}" alt="">
-      </span>
+  <div class="form-group ">
+    <a href="#" class="form-control bg-transparent border-0   text-dark ">
+      <img src="{{ asset('img/logo/light/couponLogoBlue.png') }}" alt="" class="rounded float-left">
+      <h6 class="d-inline-block pl-2 ">Coupons</h6>
+      <img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}" alt="" class="float-right">
+
     </a>
   </div> {{-- Coupon--}}
 
