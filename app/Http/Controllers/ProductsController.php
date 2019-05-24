@@ -66,6 +66,12 @@ class ProductsController extends Controller
             'quantity'=> 'required|numeric|min:1',
         ]);
     }
+
+    public function productSearch(Request $request){
+        $search = $request->get('search');
+        $products = Product::where('name','like','%'.$search.'%')->paginate(10);
+        return view('admin.product.indexProduct',['products' => $products]);
+    }
 //image upload
     private function storeImage($product){
         if(request()->has('image')){
@@ -100,5 +106,11 @@ class ProductsController extends Controller
         $brand_products = Product::where('brand_id', $brand_url->id)->get();
         $brand_id = $brand_url->id;
         return view('user.BrandFilter', compact('brand_products', 'brand_id'));
+    }
+
+    public function itemSearch(Request $request){
+        $search = $request->get('search');
+        $products = Product::where('name','like','%'.$search.'%')->paginate(10);
+        return view('user.ProductSearch',['products' => $products]);
     }
 }
