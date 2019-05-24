@@ -81,9 +81,6 @@
 							<input type="file" class="" name="photo" id="photo">
 							<span class="text-danger">{{ $errors->first('photo') }}</span>
 						</div>
-
-
-
 					</div>
 					@endforeach
 				</div>
