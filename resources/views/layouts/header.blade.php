@@ -43,15 +43,17 @@
                             </div>
                             <div class="col-md-12 col-lg-7 col-sm-12  float-right ">
                                 <div class="search">
+                                    <form action="/search-item" method="get">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search Item Here"
+                                        <input type="search" name="search" class="form-control" placeholder="Search Item Here"
                                             aria-label="Search Item Here" aria-describedby="button-addon2">
                                         <span class="input-group-addon input-group-addon-btn bg-white">
-                                            <button class="btn " type="submit class=" searchBtn">
+                                            <button class="btn searchBtn" type="submit" >
                                                 <img src="{{ asset('img/logo/searchIcon.png') }}" alt="">
                                             </button>
                                         </span>
                                     </div>
+                                    </form>
                                     <div class="float-left pt-2">
                                         <div class="dropdown d-inline-block">
                                             <button class="btn-sm btn-primary dropdown-toggle  " type="button"
