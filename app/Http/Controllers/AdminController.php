@@ -11,7 +11,7 @@ use Intervention\Image\Facades\Image;
 class AdminController extends Controller
 {
     public function index(){
-        $categories = Category::oldest()->paginate(10);
+        $categories = Category::latest()->paginate(10);
         return view('admin.contentLayouts.CategoriesList', compact('categories'));
     }
     public function store(){

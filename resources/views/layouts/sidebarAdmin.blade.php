@@ -2,7 +2,7 @@
   <h3 class="text-center text-white ">
     <b> PS ADMIN </b> </h3>
 </div>
-<hr class="border-white">
+
 <div class="wrap p-2">
 
   <h3><b>Overview</b> </h3>

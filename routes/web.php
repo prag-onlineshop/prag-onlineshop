@@ -32,9 +32,7 @@ Route::get('/categoriesList-Admin/{category}/delete', 'AdminController@delete');
 Route::resource('products', 'ProductsController');
 Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
 
-Route::view('/userlogin','user.userLogin');
-Route::view('/signup','user.registration');
-Route::view('/userData','user.userForm'); 
+
 
 Route::get('/userprofile','ProfileController@index');
 Route::get('/productDetail/{id}','CartController@detailPro');
