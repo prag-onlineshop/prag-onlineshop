@@ -42,20 +42,31 @@
          <h3>Most popular:</h3>
          <div class="container">
             <div class="row">
-               <div class="slick-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
-                  <div class="item-slide p-2">
-                     <figure class="card card-product">
-                        <span class="badge-new"> NEW </span>
-                        <div class="img-wrap">
-                           <img src="{{ asset('img/items/1.jpg') }}">
-                        </div>
-                        <figcaption class="info-wrap text-center">
-                           <h6 class="title text-truncate">
-                              <a href="#">First item name</a>
-                           </h6>
-                        </figcaption>
-                     </figure>
-               <!-- card // -->
+               <div class="col-md-10">
+                  <div class="slick-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
+                     <div class="item-slide p-2">
+                        <figure class="card card-product">
+                           <span class="badge-new"> NEW </span>
+                           <div class="img-wrap">
+                              <img src="{{ asset('img/items/1.jpg') }}">
+                           </div>
+                           <figcaption class="info-wrap text-center">
+                              <h6 class="title text-truncate">
+                                 <a href="#">First item name</a>
+                              </h6>
+                           </figcaption>
+                        </figure>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-2">
+                  <div class="box">
+                     <p>Brands</p>
+                     <?php $brands = DB::table('brands')->get(); ?>
+                     @foreach($brands as $brand)
+                        <a href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a> <br>
+                     @endforeach
+                  </div>
                </div>
             </div>
          </div>

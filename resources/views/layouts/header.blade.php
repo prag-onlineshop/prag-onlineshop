@@ -59,10 +59,10 @@
                                                 aria-expanded="false">
                                                 Categories
                                             </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="height:100px; overflow-y:auto;">
                                                 <?php $cats=DB::table('categories')->get(); ?>
                                                 @foreach($cats as $cat)
-                                                   <a class="dropdown-item" href="{{ url('category',$cat->id) }}">{{ $cat->name }}</a>
+                                                   <a class="dropdown-item" href="{{ url('category',$cat->url) }}">{{ $cat->name }}</a>
                                                 @endforeach
                                             </div>
                                         </div>

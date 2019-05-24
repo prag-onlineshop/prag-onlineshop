@@ -10,12 +10,32 @@
           <h2><b>Categories: List </b></h2>
         </div>
         <div class="col-sm-6">
-          <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"> <span>Add New
-              Categories</span></a>
-          <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"> <span>Multiple Delete</span></a>
+          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#add-category"> <span>Add New
+              Category</span></a>
+          <a href="#" class="btn btn-danger" data-toggle="modal"> <span>Multiple Delete</span></a>
         </div>
       </div>
     </div>
+    <div>
+<!--------------------------------------- ALERT MESSAGE -------------------------------------->
+    @if(session()->has('del_message'))
+    <div id="delete-success" role="alert" class="alert-success">
+        <strong>{{session()->get('del_message')}}</strong>
+        <br>
+    </div>
+    @elseif(session()->has('add_message'))
+    <div id="add-success" role="alert" class="alert-success">
+        <strong>{{session()->get('add_message')}}</strong>
+        <br>
+    </div>
+    @elseif(session()->has('update_message'))
+    <div id="update-success" role="alert" class="alert-success">
+        <strong>{{session()->get('update_message')}}</strong>
+        <br>
+    </div>
+    @endif
+    </div>
+<!--------------------------------------- TABLE ----------------------------------------->
     <table class="table table-striped table-hover">
       <thead>
         <tr>
@@ -27,12 +47,10 @@
           </th>
           <th>Image</th>
           <th>Name</th>
-          <th>Details</th>
-
+          <th>URL</th>
           <th>Actions</th>
         </tr>
       </thead>
-
       <tbody id="show-category">
         @foreach($categories as $category)
         <tr>
@@ -42,7 +60,6 @@
               <label for="checkbox1"></label>
             </span>
           </td>
-
           <td>
             @if($category->image)
             <div class="row">
@@ -51,32 +68,33 @@
             </div>
             @endif
           </td>
-
           <td>{{$category->name}}</td>
-
           <td><a href="/category/{{$category->url}}">{{$category->url}}</a></td>
-
-
-          <td> actions
-            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+          <td>
+            <button class="btn btn-secondary btn-sm" class="material-icons" data-toggle="tooltip" title="Edit">
+            <a href="#editCategoryModal" class="edit" data-toggle="modal" data-target="#edit-category">&#xE254;</a>
+            </button>
+            <button class="btn btn-danger btn-sm" class="material-icons" data-toggle="tooltip" title="Delete">
+            <a href="#deleteCategoryModal" class="edit" data-toggle="modal" data-target="#delete-category">&#xE872;</a>
+            </button>
+            <!-- <a href="#editEmployeeModal" class="edit" data-toggle="modal" data-target="#edit-category"><i class="material-icons"
                 data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" data-target="#delete-category"><i class="material-icons"
+                data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
           </td>
         </tr>
-    
         @endforeach
-
       </tbody>
     </table>
+<!--------------------------------------- END TABLE ----------------------------------------->
     <div>Showing {{($categories->currentpage()-1)*$categories->perpage()+1}} to {{$categories->currentpage()*$categories->perpage()}}
     of  {{$categories->total()}} entries
     {{$categories->links()}}
     </div>
   </div>
 </div>
-<!-- Edit Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
+<!---------------------------------------- ADD CATEGORY MODAL ------------------------------------------>
+<div id="add-category" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
     <form action="{{route('categoriesList-Admin.store', $category)}}" method="post" enctype="multipart/form-data">
@@ -85,17 +103,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" value="{{$category->name}}" placeholder="categoryname">
-            <div>{{$errors->first('name')}}</div>
-        </div>
-        <div>
-            <label for="image">Image:</label>
-            <input type="file" name="image" id="image" accept="image/*" value="{{$category->image}}">
-            <div>{{$errors->first('image')}}</div>
-        </div>
-        </div>
+        @include('admin.contentLayouts.formCategory')
         <div class="modal-footer">
           <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
           <input type="submit" class="btn btn-success" value="Add">
@@ -105,48 +113,37 @@
     </div>
   </div>
 </div>
-<!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
+<!---------------------------------------- END ADD CATEGORY MODAL ------------------------------------------>
+<!---------------------------------------- EDIT CATEGORY MODAL ------------------------------------------>
+<div id="edit-category" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+      <form action="{{route('categories.update', ['category' => $category])}}" method="post" enctype="multipart/form-data">
+        @method('PATCH')
         <div class="modal-header">
           <h4 class="modal-title">Edit Employee</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-          </div>
-          <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
-          </div>
-        </div>
+        @include('admin.category.formCategory')
         <div class="modal-footer">
           <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
           <input type="submit" class="btn btn-info" value="Save">
         </div>
+        @csrf
       </form>
     </div>
   </div>
 </div>
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
+<!---------------------------------------- END EDIT CATEGORY MODAL ------------------------------------------>
+<!---------------------------------------- DELETE CATEGORY MODAL ------------------------------------------>
+<div id="delete-category" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+    <form action="{{route('categories.destroy', $category)}}" method="post">
+    @method('DELETE')
         <div class="modal-header">
-          <h4 class="modal-title">Delete Employee</h4>
+          <h4 class="modal-title">Delete</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
@@ -157,8 +154,10 @@
           <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
           <input type="submit" class="btn btn-danger" value="Delete">
         </div>
+        @csrf
       </form>
     </div>
   </div>
 </div>
+<!---------------------------------------- END DELETE CATEGORY MODAL ------------------------------------------>
 @endsection
