@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use App\Brand;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class ProductsController extends Controller
 {
@@ -85,10 +86,19 @@ class ProductsController extends Controller
     }
 
     // category filter for product
-    public function showCates($id)
-    {
-        $category_products = Product::where('category_id', $id)->get();
-        $id_ = $id;
+    public function showCates($cat)
+    {   
+        $cat_url = Category::where('url',$cat)->firstOrFail();
+        $category_products = Product::where('category_id', $cat_url->id)->get();
+        $id_ = $cat_url->id;
         return view('user.CategoryFilter', compact('category_products', 'id_'));
+    }
+
+    //brand products
+    public function productBrand($brand){
+        $brand_url = Brand::where('name',$brand)->firstOrFail();
+        $brand_products = Product::where('brand_id', $brand_url->id)->get();
+        $brand_id = $brand_url->id;
+        return view('user.BrandFilter', compact('brand_products', 'brand_id'));
     }
 }
