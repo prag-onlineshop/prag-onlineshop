@@ -27,7 +27,7 @@
 						</li>
 					</ul>
 				</span>
-			</div>
+			</div> 
 			<div class="col-md-9 col-lg-9 col-sm-12 myprofile">
 				<p class="h3">My profile</p>
 				<h6>Manage and protect your account</h6>
@@ -62,7 +62,7 @@
 							<div class="form-group{{ $errors->has('address')?' has-error':'' }}">
 								<label for="address">Address</label>
 								<textarea class="form-control" name="address" id="address" value="{{ $pro->address }}"
-									placeholder="Enter Address here" cols=30" rows="10"></textarea>
+									placeholder="Enter Address here" cols="30" rows="10"></textarea>
 								{{-- <input type="text" class="form-control" name="address" id="address" value="{{ $pro->address }}"
 								placeholder="Address"> --}}
 								<span class="text-danger">{{ $errors->first('address') }}</span>
@@ -70,7 +70,7 @@
 
 
 							<button type="submit" class="btn btn-primary d-block">Save</button>
-						</form>
+						
 					</div>
 
 					<div class="col-md-4 col-lg-4 mx-auto border-left">
@@ -83,6 +83,7 @@
 						</div>
 					</div>
 					@endforeach
+					</form>
 				</div>
 			</div>
 		</div>
