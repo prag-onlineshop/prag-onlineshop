@@ -11,13 +11,13 @@ use Intervention\Image\Facades\Image;
 class AdminController extends Controller
 {
     public function index(){
-        $categories = Category::oldest()->paginate(10);
+        $categories = Category::latest()->paginate(10);
         return view('admin.contentLayouts.CategoriesList', compact('categories'));
     }
     public function store(){
         $category = Category::create($this->validateRequest());
         $this->storeImage($category);
-        return redirect('categoriesList-Admin')->with('add_message', ' added successfully');
+        return redirect('categoriesList-Admin')->with('add_message', $category->name.' added successfully');
     }
     public function show($category){
         $category = Category::where('url', $category)->firstOrFail();
@@ -31,12 +31,12 @@ class AdminController extends Controller
         $category->update($this->validateRequest());
         $category->url = Str::slug($category->name,'-');
         $category->save();
-        return redirect('categories/'.$category->url)->with('update_message', 'successfully updated');
+        return redirect('categories/'.$category->url)->with('update_message', $category->name.' successfully updated');
     }
     public function destroy(Category $category){
         $this->deleteImage($category);
         $category->delete();
-        return redirect('CategoriesList-Admin')->with('del_message','successfully deleted');
+        return redirect('CategoriesList-Admin')->with('del_message','Item successfully deleted');
     }
 
     private function validateRequest(){

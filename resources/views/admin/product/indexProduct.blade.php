@@ -10,6 +10,17 @@
 </div>
 @endif
 <div id="product">
+    <div>
+        <form action="/search" method="get">
+            <div class="input-group">
+                <input type="search" name="search" class="form-control">
+                <span class="input-group-prepend">
+                    <button type="submit">Search</button>
+                </span>
+            </div>
+        @csrf
+        </form>
+    </div>
     <button><a href="products/create">Add Product</a></button>
     <br>
     <table>
