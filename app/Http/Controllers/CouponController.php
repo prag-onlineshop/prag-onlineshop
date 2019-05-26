@@ -17,18 +17,16 @@ class CouponController extends Controller
 
 	}
 
-
-
     public function create(){
 
     	$coupon = new Coupon();
-    	return view('admin.coupon.addCoupon');
+    	return view('admin.coupon.addCoupon', compact('coupon'));
     }
 
     public function store(){
 
    		$data = Coupon::create($this->validateRequest());
-   		//dd($data);
+   		
    		return redirect('Coupons');
     }
 
@@ -41,6 +39,28 @@ class CouponController extends Controller
     		'amount' => 'required|numeric',
 
     		]);
+    }
+
+    public function edit(Coupon $coupon){
+
+        return view('admin.coupon.edit', compact('coupon'));
 
     }
+//Coupon $coupon,compact('coupon')
+    public function show(Coupon $coupon){
+    	return view('admin.coupon.profile', compact('coupon'));
+
+    }
+
+    public function destroy(Coupon $coupon){
+        $coupon->delete();
+        return redirect('Coupons');
+    }
+
+    public function update(Coupon $coupon){
+        $coupon->update($this->validateRequest());
+
+        return redirect('Coupons');
+    }
+
 }
