@@ -14,7 +14,7 @@ class CouponsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function stored(Request $request)
     {
         $coupon = Coupon::where('code', $request->coupon_code)->first();
 

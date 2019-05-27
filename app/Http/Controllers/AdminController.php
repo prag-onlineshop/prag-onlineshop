@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Brand;
+use App\CartsProduct;
 use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
@@ -54,5 +55,13 @@ class AdminController extends Controller
         if(file_exists($image_path)){
             unlink($image_path);
         }
+    }
+
+    //orders
+    public function orders()
+    {
+        $orders = CartsProduct::all();
+        dd($orders);
+        //return view('admin.order.ordersIndex', compact('orders'));
     }
 }

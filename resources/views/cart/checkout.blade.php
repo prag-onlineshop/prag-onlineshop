@@ -154,12 +154,12 @@
 
                     <!-- older  -->
                     <ul class="order-menu list-unstyled">
-                        <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong>{{ $newSubtotal }}</strong></li>
+                        <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong>{{ Cart::subtotal() }}</strong></li>
                         <!-- <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li> -->
                         <li class="d-flex justify-content-between">
                             @if (session()->has('coupon'))
                             <span>Discount ({{ session()->get('coupon')['name'] }})</span>
-                            <form action="{{ route('coupon.destroy') }}" method="POST">
+                            <form action="{{ route('coupons.destroy') }}" method="POST">
                                 @csrf
                                 {{ method_field('delete') }}
                                 <button type="submit">Remove</button>
@@ -174,7 +174,7 @@
                     </ul>
                     <div class="container">
                         @if (! session()->has('coupon'))
-                        <form action="{{ route('coupon.store') }}" method="POST">
+                        <form action="{{ route('coupons.store') }}" method="POST">
                             @csrf
                             <input type="text" name="coupon_code" id="coupon_code">
                             <button type="submit" class="btn btn-primary">Apply</button>

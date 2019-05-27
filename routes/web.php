@@ -37,9 +37,8 @@ Route::get('admin/settings', function(){
 Route::get('admin/reports', function(){
     return view('admin.report.reports');
 });
-Route::get('admin/orders', function(){
-    return view('admin.order.ordersIndex');
-});
+Route::get('admin/orders', 'AdminController@orders');
+
 Route::get('admin/products', function(){
     return view('admin.contentLayouts.productsIndex');
 });
@@ -81,8 +80,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/orders', 'ProfileController@orders');
     
     //Coupons
-    Route::post('/coupon', 'CouponsController@store')->name('coupon.store');
-    Route::delete('/coupon', 'CouponsController@destroy')->name('coupon.destroy'); 
+    Route::post('/coupon', 'CouponsController@stored')->name('coupons.store');
+    Route::delete('/coupon', 'CouponsController@destroy')->name('coupons.destroy'); 
 });
 
 
@@ -93,6 +92,23 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     });
     Route::resource('/product', 'ProductController');
     Route::resource('categoriesList-Admin', 'AdminController');
+
+    //Route for brand
+    Route::get('brand', 'BrandController@index')->name('brand.index');
+    Route::post('brand', 'BrandController@store')->name('brand.store');
+    Route::get('brand/create', 'BrandController@create')->name('brand.create');
+    Route::get('brand/{brand}', 'BrandController@show')->name('brand.profile');
+    Route::get('brand/{url}/edit', 'BrandController@edit')->name('brand.edit');
+    Route::patch('brand/{url}', 'BrandController@update')->name('brand.update');
+    Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
+
+    //Route for coupon
+    Route::get('Coupons', 'CouponController@index');
+    Route::get('Coupons/create', 'CouponController@create')->name('coupon.create');
+    Route::post('Coupons', 'CouponController@store')->name('coupon.store');
+    Route::get('Coupons/{coupon}/edit', 'CouponController@edit')->name('coupon.edit');
+    Route::delete('Coupons/{coupon}', 'CouponController@destroy')->name('coupon.delete');
+    Route::patch('Coupons/{coupon}', 'CouponController@update')->name('coupon.update');
 });
 
 Route::get('/userLogin', function () {
@@ -107,25 +123,5 @@ Route::get('/resetPass', function () {
     return view('resetPass');
 });
 
-
-
 Route::view('/profileOrder','user.profileOrder');
-
-//Route for brand
-Route::get('brand', 'BrandController@index')->name('brand.index');
-Route::post('brand', 'BrandController@store')->name('brand.store');
-Route::get('brand/create', 'BrandController@create')->name('brand.create');
-Route::get('brand/{brand}', 'BrandController@show')->name('brand.profile');
-Route::get('brand/{url}/edit', 'BrandController@edit')->name('brand.edit');
-Route::patch('brand/{url}', 'BrandController@update')->name('brand.update');
-Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
-
-
-//Route for coupon
-Route::get('Coupons', 'CouponController@index');
-Route::get('Coupons/create', 'CouponController@create')->name('coupon.create');
-Route::post('Coupons', 'CouponController@store')->name('coupon.store');
-Route::get('Coupons/{coupon}/edit', 'CouponController@edit')->name('coupon.edit');
-Route::delete('Coupons/{coupon}', 'CouponController@destroy')->name('coupon.delete');
-Route::patch('Coupons/{coupon}', 'CouponController@update')->name('coupon.update');
 
