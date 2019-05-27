@@ -28,7 +28,6 @@ Route::resource('categories', 'CategoriesController');
 Route::get('/categories/{category}/delete', 'CategoriesController@delete');
 
 //Admin Routes
-Route::resource('categoriesList-Admin', 'AdminController');
 Route::get('/categoriesList-Admin/{category}/delete', 'AdminController@delete');
 
 // Product Routes
@@ -53,7 +52,11 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/remove/{id}', 'CartController@destroy');
     Route::get ('/checkout', 'CheckoutController@index');
     Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
-    Route::get('/orders', 'ProfileController@orders'); 
+    Route::get('/orders', 'ProfileController@orders');
+    
+    //Coupons
+    Route::post('/coupon', 'CouponsController@store')->name('coupon.store');
+    Route::delete('/coupon', 'CouponsController@destroy')->name('coupon.destroy'); 
 });
 
 
@@ -63,6 +66,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
         return view('admin.home');
     });
     Route::resource('/product', 'ProductController');
+    Route::resource('categoriesList-Admin', 'AdminController');
 });
 
 Route::get('/userLogin', function () {

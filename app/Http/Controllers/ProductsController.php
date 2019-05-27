@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Brand;
+use App\CartsProduct;
+use DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 
@@ -13,7 +15,7 @@ class ProductsController extends Controller
 {
     public function indexHome(){
         $products = Product::orderBy('name', 'asc')->paginate(8);
-        return view('user.content', compact('products'));
+        return view('user.content', compact('products', 'cart_products'));
     }
 
     public function index(){

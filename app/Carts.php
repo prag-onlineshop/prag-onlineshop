@@ -24,8 +24,13 @@ class Carts extends Model
 
     public static function createOrder()
     {
+        $discount = session()->get('coupon')['discount'] ?? 0;
+        $newSubtotal = (Cart::total(2,'.','') - $discount);
+        $newTotal = $newSubtotal * (1);
+
         $user = Auth::user();
-        $order = $user->orders()->create(['total' => Cart::total(), 'status'=>'pending']);
+        //$order = $user->orders()->create(['total' => Cart::total(), 'status'=>'pending']);
+        $order = $user->orders()->create(['total' => $newTotal, 'status' => 'shipped']);
         $cartItems = Cart::content();
 
         foreach ($cartItems as $cartItem) {
