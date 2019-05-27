@@ -19,19 +19,11 @@ class AdminController extends Controller
         $this->storeImage($category);
         return redirect('categoriesList-Admin')->with('add_message', $category->name.' added successfully');
     }
-    public function show($category){
-        $category = Category::where('url', $category)->firstOrFail();
-        return view('admin.category.showCategory', compact('category'));
-    }
-    public function edit($category){
-        $category = Category::where('url', $category)->firstOrFail();
-        return view('admin.category.editCategory', compact('category'));
-    }
     public function update(Category $category){
         $category->update($this->validateRequest());
         $category->url = Str::slug($category->name,'-');
         $category->save();
-        return redirect('categories/'.$category->url)->with('update_message', $category->name.' successfully updated');
+        return redirect('categoriesList-Admin/'.$category->url)->with('update_message', $category->name.' successfully updated');
     }
     public function destroy(Category $category){
         $this->deleteImage($category);

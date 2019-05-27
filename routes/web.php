@@ -28,6 +28,31 @@ Route::resource('categories', 'CategoriesController');
 Route::get('/categories/{category}/delete', 'CategoriesController@delete');
 
 //Admin Routes
+Route::get('admin/dashboard', function(){
+    return view('admin.dashboard.dashboard');
+});
+Route::get('admin/settings', function(){
+    return view('admin.setting.settings');
+});
+Route::get('admin/reports', function(){
+    return view('admin.report.reports');
+});
+Route::get('admin/orders', function(){
+    return view('admin.order.ordersIndex');
+});
+Route::get('admin/products', function(){
+    return view('admin.contentLayouts.productsIndex');
+});
+Route::get('admin/categories', function(){
+    //removed from controller, returns error message 'undefined variable: categories'
+    return view('admin.contentLayouts.categoriesIndex');
+});
+Route::get('admin/brands', function(){
+    return view('admin.contentLayouts.brandsIndex');
+});
+Route::get('admin/coupons', function(){
+    return view('admin.contentLayouts.couponsIndex');
+});
 Route::resource('categoriesList-Admin', 'AdminController');
 Route::get('/categoriesList-Admin/{category}/delete', 'AdminController@delete');
 

@@ -10,7 +10,7 @@
           <h2><b>Categories: List </b></h2>
         </div>
         <div class="col-sm-6">
-          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#add-category"> <span>Add New
+          <a href="/category/create" class="btn btn-success" rel="cat_modal" data-toggle="modal" data-target="#add-category"> <span>Add New
               Category</span></a>
           <a href="#" class="btn btn-danger" data-toggle="modal"> <span>Multiple Delete</span></a>
         </div>
@@ -56,7 +56,7 @@
         <tr>
           <td>
             <span class="custom-checkbox">
-              <input type="checkbox" id="checkbox1" name="options[]" value="1">
+              <input type="checkbox" id="checkbox1" name="options[]" value="{{$category->id}}">
               <label for="checkbox1"></label>
             </span>
           </td>
@@ -71,16 +71,56 @@
           <td>{{$category->name}}</td>
           <td><a href="/category/{{$category->url}}">{{$category->url}}</a></td>
           <td>
-            <button class="btn btn-secondary btn-sm" class="material-icons" data-toggle="tooltip" title="Edit">
-            <a href="#editCategoryModal" class="edit" data-toggle="modal" data-target="#edit-category">&#xE254;</a>
-            </button>
-            <button class="btn btn-danger btn-sm" class="material-icons" data-toggle="tooltip" title="Delete">
-            <a href="#deleteCategoryModal" class="edit" data-toggle="modal" data-target="#delete-category">&#xE872;</a>
-            </button>
-            <!-- <a href="#editEmployeeModal" class="edit" data-toggle="modal" data-target="#edit-category"><i class="material-icons"
-                data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" data-target="#delete-category"><i class="material-icons"
-                data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
+          <div>
+            <button href="/category/{{$category->url}}/edit" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-modal">edit</button>
+            <button href="/category/{{$category->url}}/delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete-category">delete</button>
+          </div>
+<!---------------------------------------- DELETE CATEGORY MODAL ------------------------------------------>
+<div id="delete-category" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <form action="{{route('categoriesList-Admin.destroy', $category)}}" method="post">
+    @method('DELETE')
+        <div class="modal-header">
+          <h4 class="modal-title">Delete</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete <strong> {{$category->name}} </strong>?</p>
+          <p class="text-warning"><small>This action cannot be undone.</small></p>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-danger" value="Delete">
+        </div>
+        @csrf
+      </form>
+    </div>
+  </div>
+</div>
+<!---------------------------------------- END DELETE CATEGORY MODAL ------------------------------------------>
+<!---------------------------------------- EDIT CATEGORY MODAL ------------------------------------------>
+<div id="edit-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="{{route('categories.update', ['category' => $category])}}" method="post" enctype="multipart/form-data">
+        @method('PATCH')
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Employee</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+        @include('admin.category.formCategory')
+        <div class="modal-footer">
+          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-info" value="Save">
+        </div>
+        @csrf
+      </form>
+    </div>
+  </div>
+</div>
+<!---------------------------------------- END EDIT CATEGORY MODAL ------------------------------------------>
           </td>
         </tr>
         @endforeach
@@ -91,8 +131,6 @@
     of  {{$categories->total()}} entries
     {{$categories->links()}}
     </div>
-  </div>
-</div>
 <!---------------------------------------- ADD CATEGORY MODAL ------------------------------------------>
 <div id="add-category" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -114,50 +152,7 @@
   </div>
 </div>
 <!---------------------------------------- END ADD CATEGORY MODAL ------------------------------------------>
-<!---------------------------------------- EDIT CATEGORY MODAL ------------------------------------------>
-<div id="edit-category" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form action="{{route('categories.update', ['category' => $category])}}" method="post" enctype="multipart/form-data">
-        @method('PATCH')
-        <div class="modal-header">
-          <h4 class="modal-title">Edit Employee</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">
-        @include('admin.category.formCategory')
-        <div class="modal-footer">
-          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-          <input type="submit" class="btn btn-info" value="Save">
-        </div>
-        @csrf
-      </form>
-    </div>
   </div>
 </div>
-<!---------------------------------------- END EDIT CATEGORY MODAL ------------------------------------------>
-<!---------------------------------------- DELETE CATEGORY MODAL ------------------------------------------>
-<div id="delete-category" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-    <form action="{{route('categories.destroy', $category)}}" method="post">
-    @method('DELETE')
-        <div class="modal-header">
-          <h4 class="modal-title">Delete</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure you want to delete these Records?</p>
-          <p class="text-warning"><small>This action cannot be undone.</small></p>
-        </div>
-        <div class="modal-footer">
-          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-          <input type="submit" class="btn btn-danger" value="Delete">
-        </div>
-        @csrf
-      </form>
-    </div>
-  </div>
-</div>
-<!---------------------------------------- END DELETE CATEGORY MODAL ------------------------------------------>
+<div>
 @endsection

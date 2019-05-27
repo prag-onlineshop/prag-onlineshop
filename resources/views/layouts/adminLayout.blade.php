@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Admin Dashboard</title>
+  <title>@yield('title')</title>
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
@@ -55,8 +55,14 @@
 
         <div class="headerRight"></div>
 
-        @yield('CategoriesList')
-
+        @yield('categories')
+        @yield('products')
+        @yield('brands')
+        @yield('coupons')
+        @yield('dashboard')
+        @yield('reports')
+        @yield('orders')
+        @yield('settings')
 
       </div> {{-- col-10 end --}}
 
@@ -64,6 +70,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
+    <script type="text/javascript">
+  $('#edit').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var name = button.data('catname')
+    var cat_id = button.data('catid') // Extract info from data-* attributes
+    var modal = $(this)
+
+    modal.find('.modal-body #name').val(name)
+    modal.find('.modal-body #cat_id').val(cat_id)
+  })
+
+  $('#delete').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var name = button.data('catname')
+    var cat_id = button.data('catid') // Extract info from data-* attributes
+    var modal = $(this)
+
+    modal.find('.modal-body #name').val(name)
+    modal.find('.modal-body #cat_id').val(cat_id)
+  })
+    </script>
 </body>
 
 </html>
