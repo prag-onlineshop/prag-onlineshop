@@ -18,9 +18,18 @@ class ProductsController extends Controller
         return view('user.content', compact('products', 'cart_products'));
     }
 
+    // public function index(){
+    //     $product = new Product();
+    //     $categories = Category::all();
+    //     $brands = Brand::all();
+    //     $products = Product::orderBy('name', 'asc')->paginate(10);
+    //     return view('admin.product.productsIndex', compact('product','products', 'categories', 'brands'));
+    // }
     public function index(){
+        $categories = Category::all();
+        $brands = Brand::all();
         $products = Product::orderBy('name', 'asc')->paginate(10);
-        return view('admin.product.indexProduct', compact('products'));
+        return view('admin.product.indexProduct', compact('products', 'categories', 'brands'));
     }
     public function create(){
         $product = new Product();
@@ -28,22 +37,27 @@ class ProductsController extends Controller
         $brands = Brand::all();
         return view('admin.product.createProduct', compact('product', 'categories', 'brands'));
     }
-    public function store(){
-        $product = Product::create($this->validateRequest());
+    public function store(Product $product){
+        $this->validateRequest();
+        $this->storeRequest($product);
         $this->storeImage($product);
-
-        return redirect('/products')->with('add_message', $product->name.' added successfully');
+        return redirect('/products')->with(' add_message', $product->name.' added successfully');
     }
     public function show(Product $product, Category $category, Brand $brand){
+        $price_format = number_format($product->price, 2, '.', ',');
+        $product->price = $price_format;
         return view('admin.product.showProduct', compact('product', 'category', 'brand'));
     }
     public function edit(Product $product){
         $categories = Category::all();
         $brands = Brand::all();
+        $price_format = number_format($product->price, 2, '.', ',');
+        $product->price = $price_format;
         return view('admin.product.editProduct', compact('product', 'categories', 'brands'));
     }
     public function update(Product $product, Category $category, Brand $brand){
-        $product->update($this->validateRequest());
+        $this->validateRequest();
+        $this->storeRequest($product);
         $this->storeImage($product);
 
         return redirect('products/'.$product->id)->with('update_message', $product->name.' updated successfully');
@@ -63,10 +77,24 @@ class ProductsController extends Controller
             'brand_id'=>'required',
             'name'=> 'required|min:3',
             'image'=> 'sometimes|file|image|max:3000',
-            'price'=> 'required|numeric|between:1.00,999999.99',
+            'price'=> ['required','not_in:0.00','regex:/^\d{1,3}(?:,\d{3}|\d+)*(?:\.\d+)?$/'],
             'description'=> 'required|max:300',
             'quantity'=> 'required|numeric|min:1',
         ]);
+    }
+    private function storeRequest($product){
+        $product->category_id = request('category_id');
+        $product->brand_id = request('brand_id');
+        $product->name = request('name');
+
+        $price= request('price');
+        $price_format = str_replace(',','',$price);
+        $product->price = $price_format;
+
+        $product->description = request('description');
+        $product->quantity = request('quantity');
+
+        $product->save();
     }
 
     public function productSearch(Request $request){
@@ -80,8 +108,6 @@ class ProductsController extends Controller
             $product->update([
                 'image' => request()->image->store('productImages', 'public'),
             ]);
-            $image = Image::make(public_path('storage/'.$product->image));
-            $image->save();
         }
     }
 //image delete

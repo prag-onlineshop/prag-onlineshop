@@ -23,6 +23,8 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->integer('quantity');
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('set null');
         });
     }
 
