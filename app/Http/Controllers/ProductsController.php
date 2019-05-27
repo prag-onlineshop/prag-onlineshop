@@ -79,7 +79,7 @@ class ProductsController extends Controller
             'image'=> 'sometimes|file|image|max:3000',
             'price'=> ['required','not_in:0.00','regex:/^\d{1,3}(?:,\d{3}|\d+)*(?:\.\d+)?$/'],
             'description'=> 'required|max:300',
-            'quantity'=> 'required|numeric|min:1',
+            'quantity'=> 'required|numeric',
         ]);
     }
     private function storeRequest($product){
