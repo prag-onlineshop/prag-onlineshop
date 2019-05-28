@@ -42,7 +42,7 @@ class CategoriesController extends Controller
         $category = Category::where('url', $category)->firstOrFail();
         return view('admin.category.deleteCategory', compact('category'));
     }
-    public function destroy(Category $categories){
+    public function destroy(Category $category){
         $this->deleteImage($category);
         $category->delete();
         return redirect('categories')->with('del_message','successfully deleted');

@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Category;
 use App\Brand;
+use App\Category;
+use App\CartsProduct;
 
 class Product extends Model
 {
@@ -18,5 +19,8 @@ class Product extends Model
     }
     public function brand(){
         return $this->belongsTo(Brand::class);
+    }
+    public function carts_product(){
+        return $this->hasMany(CartsProduct::class);
     }
 }

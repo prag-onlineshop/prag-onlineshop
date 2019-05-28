@@ -7,26 +7,12 @@ use App\Product;
 use App\Category;
 use App\Brand;
 use App\CartsProduct;
-use DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 
 class ProductsController extends Controller
 {
-    public function indexHome(){
-        $products = Product::orderBy('name', 'asc')->paginate(8);
-        $cartsProduct = CartsProduct::with('products', 'carts')->orderBy('id','desc')->get();
-       
-        return view('user.content', compact('products', 'cartsProduct'));
-    }
-
-    // public function index(){
-    //     $product = new Product();
-    //     $categories = Category::all();
-    //     $brands = Brand::all();
-    //     $products = Product::orderBy('name', 'asc')->paginate(10);
-    //     return view('admin.product.productsIndex', compact('product','products', 'categories', 'brands'));
-    // }
+//------------------------------------------------- ADMIN PAGE ---------------------------------------
     public function index(){
         $categories = Category::all();
         $brands = Brand::all();
@@ -81,7 +67,7 @@ class ProductsController extends Controller
             'image'=> 'sometimes|file|image|max:3000',
             'price'=> ['required','not_in:0.00','regex:/^\d{1,3}(?:,\d{3}|\d+)*(?:\.\d+)?$/'],
             'description'=> 'required|max:300',
-            'quantity'=> 'required|numeric|min:1',
+            'quantity'=> 'required|numeric',
         ]);
     }
     private function storeRequest($product){
@@ -120,12 +106,26 @@ class ProductsController extends Controller
             unlink($image_path);
         }
     }
-
+//--------------------------------------------------- HOME PAGE ------------------------------------------------------------
+    //landing page
+    public function indexHome(){
+        $product_list = Product::all()
+        ->where('quantity', '!=', 0)
+        ->where('category_id','!=','')
+        ->where('brand_id','!=','')
+        ->where('quantity', '!=', 0);
+        $cart_products = CartsProduct::groupBy('product_id')->selectRaw('sum(qty) as sum, product_id')->orderBy('sum','desc')->get();
+        $products = Product::where('quantity', '!=', 0)->latest()->paginate(8);
+        return view('user.content', compact('products','product_list','cart_products'));
+    }
     // category filter for product
     public function showCates($cat)
     {   
         $cat_url = Category::where('url',$cat)->firstOrFail();
-        $category_products = Product::where('category_id', $cat_url->id)->get();
+        $category_products = Product::where('category_id', $cat_url->id)
+        ->where('brand_id','!=','')
+        ->where('quantity', '!=', 0)
+        ->get();
         $id_ = $cat_url->id;
         return view('user.CategoryFilter', compact('category_products', 'id_'));
     }
@@ -133,14 +133,22 @@ class ProductsController extends Controller
     //brand products
     public function productBrand($brand){
         $brand_url = Brand::where('name',$brand)->firstOrFail();
-        $brand_products = Product::where('brand_id', $brand_url->id)->get();
+        $brand_products = Product::where('brand_id', $brand_url->id)
+        ->where('category_id','!=','')
+        ->where('quantity', '!=', 0)
+        ->get();
         $brand_id = $brand_url->id;
         return view('user.BrandFilter', compact('brand_products', 'brand_id'));
     }
 
+    //search products
     public function itemSearch(Request $request){
         $search = $request->get('search');
-        $products = Product::where('name','like','%'.$search.'%')->paginate(10);
+        $products = Product::where('name','like','%'.$search.'%')
+        ->where('category_id','!=','')
+        ->where('brand_id','!=','')
+        ->where('quantity', '!=', 0)
+        ->paginate(10);
         return view('user.ProductSearch',['products' => $products]);
     }
 }
