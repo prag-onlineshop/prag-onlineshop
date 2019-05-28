@@ -95,7 +95,7 @@ Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
 Route::get('Coupons', 'CouponController@index');
 Route::get('Coupons/create', 'CouponController@create')->name('coupon.create');
 Route::post('Coupons', 'CouponController@store')->name('coupon.store');
-Route::get('Coupons/{coupon}/edit', 'CouponController@edit')->name('coupon.edit');
+Route::get('Coupons/{coupon}{slug}/edit', 'CouponController@edit')->name('coupon.edit');
 Route::delete('Coupons/{coupon}', 'CouponController@destroy')->name('coupon.delete');
 Route::patch('Coupons/{coupon}', 'CouponController@update')->name('coupon.update');
 
