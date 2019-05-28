@@ -3,6 +3,18 @@
 
 <div class="album py-5 bg-light">
     <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box">
+                     <p>Brands</p>
+                     <?php $brands = DB::table('brands')->get(); ?>
+                     @foreach($brands as $brand)
+                        <a href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a> <br>
+                     @endforeach
+                </div>    
+</div>
+<div class="col-md-9">
+    <div class="container">
     <?php $brands=DB::table('brands')->select('name')->where('id',$brand_id)->get(); ?>
         <h4>
             Brand :
@@ -15,7 +27,6 @@
             @forelse($brand_products as $product)
             <div class="col-md-3 ">
                 <figure class="card card-product">
-                    <span class="badge-new"> NEW </span>
                     <div class="img-wrap  p-2">
                         <img src="{{ url('img', $product->image) }}">
                         <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
@@ -39,9 +50,17 @@
                 </figure>
                 <!-- card // -->
             </div>
+            <!-- col // -->
+        
             @empty
                 <h3>No Brand for @foreach($brands as $brand) {{$brand->name}} @endforeach</h3>
             @endforelse
+    
+    <!-- row // -->
+    </div>
+<!-- container // -->
+</div>
+
         </div>
     </div>
 </div>
