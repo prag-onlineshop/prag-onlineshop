@@ -179,7 +179,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> d27140aaa589bfedd19a8d9dbe9d3c7ec34bff80
     ],
 
     /*

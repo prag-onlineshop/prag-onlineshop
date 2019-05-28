@@ -29,6 +29,24 @@
                     {{session('error')}}
                 </div>
             @endif
+
+            <!-- coupon -->
+            @if(count($errors) > 0)
+                <div class="spacer"></div>
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{!! $error !!}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if (session()->has('success_message'))
+                <div class="spacer"></div>
+                <div class="alert alert-success">
+                    {{ session()->get('success_message') }}
+                </div>
+            @endif
         </tr>
         <tr class="cart_menu badge-info">
             <td class="image">Item</td>
@@ -80,7 +98,7 @@
         @endforeach
     </table>
 </div>
-</div>s
+</div>
 
 <?php  // form start here ?>
 <section class="checkout">
@@ -133,12 +151,37 @@
                 <div class="block-body order-summary">
                     <h6 class="text-uppercase">Order Summary</h6>
                     <p>Shipping and additional costs are calculated based on values you have entered</p>
+
+                    <!-- older  -->
                     <ul class="order-menu list-unstyled">
-                        <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong>${{Cart::subtotal()}}</strong></li>
-                        <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li>
-                        <li class="d-flex justify-content-between"><span>Tax</span><strong>${{Cart::tax()}}</strong></li>
-                        <li class="d-flex justify-content-between"><span>Total</span><strong class="text-primary price-total">${{Cart::total()}}</strong></li>
+                        <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong>{{ Cart::subtotal() }}</strong></li>
+                        <!-- <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li> -->
+                        <li class="d-flex justify-content-between">
+                            @if (session()->has('coupon'))
+                            <span>Discount ({{ session()->get('coupon')['name'] }})</span>
+                            <form action="{{ route('coupons.destroy') }}" method="POST">
+                                @csrf
+                                {{ method_field('delete') }}
+                                <button type="submit">Remove</button>
+                            </form>
+                            @endif
+                            @if (session()->has('coupon'))
+                            -{{ $amount }}
+                            @endif
+                        </li>
+                        <li class="d-flex justify-content-between"><span>Tax</span><strong>{{ Cart::tax() }}</strong></li>
+                        <li class="d-flex justify-content-between"><span>Total</span><strong class="text-primary price-total">{{ $newTotal }}</strong></li>
                     </ul>
+                    <div class="container">
+                        @if (! session()->has('coupon'))
+                        <form action="{{ route('coupons.store') }}" method="POST">
+                            @csrf
+                            <input type="text" name="coupon_code" id="coupon_code">
+                            <button type="submit" class="btn btn-primary">Apply</button>
+                        </form>
+                        @endif
+                    </div>
+                    
                 </div>
             </div>
         </div>

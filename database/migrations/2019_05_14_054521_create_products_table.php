@@ -19,10 +19,12 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->string('name');
             $table->string('image')->default('../imgProduct/prod_img.png');
-            $table->decimal('price');
+            $table->decimal('price', 13, 2);
             $table->string('description');
             $table->integer('quantity');
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('set null');
         });
     }
 
