@@ -13,7 +13,7 @@
     @endif
     <p>Name: {{$category->name}}</p>
     <p>Url: {{$category->url}}</p>
-    <button><a href="/categories"> &lt Back</a></button>
+    <button><a href="{{url('/categories')}}"> &lt Back</a></button>
     <button><a href="/categories/{{$category->url}}/edit">Edit</a></button>
     <button><a href="/categories/{{$category->url}}/delete">Delete</a></button>
 </div>

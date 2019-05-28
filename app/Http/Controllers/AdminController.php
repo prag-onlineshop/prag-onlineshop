@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Brand;
+use App\CartsProduct;
 use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
@@ -19,19 +20,11 @@ class AdminController extends Controller
         $this->storeImage($category);
         return redirect('categoriesList-Admin')->with('add_message', ' added successfully');
     }
-    public function show($category){
-        $category = Category::where('url', $category)->firstOrFail();
-        return view('admin.category.showCategory', compact('category'));
-    }
-    public function edit($category){
-        $category = Category::where('url', $category)->firstOrFail();
-        return view('admin.category.editCategory', compact('category'));
-    }
     public function update(Category $category){
         $category->update($this->validateRequest());
         $category->url = Str::slug($category->name,'-');
         $category->save();
-        return redirect('categories/'.$category->url)->with('update_message', 'successfully updated');
+        return redirect('categoriesList-Admin/'.$category->url)->with('update_message', $category->name.' successfully updated');
     }
     public function destroy(Category $category){
         $this->deleteImage($category);
@@ -62,5 +55,13 @@ class AdminController extends Controller
         if(file_exists($image_path)){
             unlink($image_path);
         }
+    }
+
+    //orders
+    public function orders()
+    {
+        $orders = CartsProduct::all();
+        dd($orders);
+        //return view('admin.order.ordersIndex', compact('orders'));
     }
 }
