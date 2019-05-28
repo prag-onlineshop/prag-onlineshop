@@ -21,6 +21,8 @@ class CartController extends Controller
             $product = Product::findOrFail($id);
             // 1 add one time only 1 to Cart
             Cart::add($id, $product->name, 1, $product->price,['img'=>$product->image,'quantity'=>$product->quantity]);
+            $product->quantity -= 1; 
+            $product->save();
             return back();
         } else {
             return redirect('userLogin');

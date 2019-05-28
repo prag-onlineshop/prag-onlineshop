@@ -38,4 +38,8 @@ class Carts extends Model
                 ['qty'=>$cartItem->qty, 'tax'=>Cart::tax(),'total'=>$cartItem->qty*$cartItem->price]);
         }
     }
+
+    public function carts_product(){
+        return $this->hasMany(App\CartsProduct::class);
+    }
 }
