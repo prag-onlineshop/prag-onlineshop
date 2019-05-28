@@ -76,7 +76,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/update/{id}', 'CartController@update');
     Route::put('/cart/update/{id}', 'CartController@update');
     Route::get('/cart/remove/{id}', 'CartController@destroy');
-    Route::get ('/checkout', 'CheckoutController@index');
+    Route::get('/checkout', 'CheckoutController@index');
     Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
     Route::get('/orders', 'ProfileController@orders');
     

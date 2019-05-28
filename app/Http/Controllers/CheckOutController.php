@@ -14,6 +14,7 @@ class CheckOutController extends Controller
     public function index()
     {
         $cartItems = Cart::content();
+        dd($cartItems);
         // return view('cart.checkout', compact('cartItems'));
 
         // $discount = session()->get('coupon')['discount'] ?? 0;
