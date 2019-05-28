@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/category/{category}', 'ProductsController@showCates')->name('category.showCates');
 Route::get('/brand-products/{brand}', 'ProductsController@productBrand');
 Route::get('/search-item', 'ProductsController@itemSearch');
+Route::get('/productDetail/{id}','CartController@detailPro');
 
 //Category Routes
 Route::resource('categories', 'CategoriesController');
@@ -65,7 +66,7 @@ Route::view('/signup','user.registration');
 Route::view('/userData','user.userForm');
 
 Route::get('/userprofile','ProfileController@index');
-Route::get('/productDetail/{id}','CartController@detailPro');
+
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', 'ProfileController@index');
@@ -124,4 +125,24 @@ Route::get('/resetPass', function () {
 });
 
 Route::view('/profileOrder','user.profileOrder');
+
+
+//Route for brand
+Route::get('brand', 'BrandController@index')->name('brand.index');
+Route::post('brand', 'BrandController@store')->name('brand.store');
+Route::get('brand/create', 'BrandController@create')->name('brand.create');
+Route::get('brand/{slug}', 'BrandController@show')->name('brand.profile');
+Route::get('brand/{slug}/edit', 'BrandController@edit')->name('brand.edit');
+Route::patch('brand/{brand}', 'BrandController@update')->name('brand.update');
+Route::delete('brand/{brand}', 'BrandController@destroy')->name('brand.delete');
+
+
+//Route for coupon
+Route::get('Coupons', 'CouponController@index');
+Route::get('Coupons/create', 'CouponController@create')->name('coupon.create');
+Route::post('Coupons', 'CouponController@store')->name('coupon.store');
+Route::get('Coupons/{slug}/edit', 'CouponController@edit')->name('coupon.edit');
+Route::delete('Coupons/{coupon}', 'CouponController@destroy')->name('coupon.delete');
+Route::patch('Coupons/{coupon}', 'CouponController@update')->name('coupon.update');
+
 

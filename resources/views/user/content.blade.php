@@ -44,28 +44,55 @@
             <div class="row">
                <div class="col-md-10">
                   <div class="slick-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
-                     <div class="item-slide p-2">
-                        <figure class="card card-product">
-                           <span class="badge-new"> NEW </span>
-                           <div class="img-wrap">
-                              <img src="{{ asset('img/items/1.jpg') }}">
+                  <?php $first = true;?>
+                     @foreach($cart_products as $prod)
+                        @foreach($product_list as $pop)
+                           @if($pop->id == $prod->product_id)
+                           @if($first)
+                           <div class="item-slide p-2">
+                              <figure class="card card-product">
+                                 <span class="badge-new">BEST SELLER</span>
+                                 <div class="img-wrap">
+                                    <img src="{{asset('storage/'.$pop->image)}}">
+                                 </div>
+                                 <figcaption class="info-wrap text-center">
+                                    <h6 class="title text-truncate">
+                                       <a href="#">{{$pop->name}}</a>
+                                       <p>qty sold:{{$prod->sum}}</p>
+                                    </h6>
+                                 </figcaption>
+                              </figure>
                            </div>
-                           <figcaption class="info-wrap text-center">
-                              <h6 class="title text-truncate">
-                                 <a href="#">First item name</a>
-                              </h6>
-                           </figcaption>
-                        </figure>
-                     </div>
+                           <?php $first = false;?>
+                           @else
+                           <div class="item-slide p-2">
+                              <figure class="card card-product">
+                                 <div class="img-wrap">
+                                    <img src="{{asset('storage/'.$pop->image)}}">
+                                 </div>
+                                 <figcaption class="info-wrap text-center">
+                                    <h6 class="title text-truncate">
+                                       <a href="#">{{$pop->name}}</a>
+                                       <p>qty sold:{{$prod->sum}}</p>
+                                    </h6>
+                                 </figcaption>
+                              </figure>
+                           </div>
+                           @endif
+                           @endif
+                        @endforeach
+                     @endforeach
                   </div>
                </div>
                <div class="col-md-2">
-                  <div class="box">
+                  <div class="box" style="height:300px; width:200px; overflow-y:auto">
                      <p>Brands</p>
                      <?php $brands = DB::table('brands')->get(); ?>
+                     <div>
                      @foreach($brands as $brand)
                         <a href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a> <br>
                      @endforeach
+                     </div>
                   </div>
                </div>
             </div>
@@ -91,6 +118,7 @@
                <figcaption class="info-wrap">
                   <a href="#" class="title">{{ $product->name }} </a>
                   <p>{{ $product->description }}</p>
+                  <p>{{$product->quantity}}</p>
                   <div class="action-wrap">
                      <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add to Cart</a>
                      <div class="price-wrap h5">

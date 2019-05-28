@@ -62,10 +62,10 @@
             <tbody>
             <tr>
                 <td class="cart_product">
-                    <a href="{{url('/product_details')}}/{{$cartItem->id}}"><img src="{{url('images',$cartItem->options->img)}}" alt="" width="200px"></a>
+                    <a href="{{url('/productDetail')}}/{{$cartItem->id}}"><img src="{{url('images',$cartItem->options->img)}}" alt="" width="200px"></a>
                 </td>
                 <td class="cart_description">
-                    <h4><a href="{{url('/product_details')}}/{{$cartItem->id}}" style="color:blue">{{$cartItem->name}}</a></h4>
+                    <h4><a href="{{url('/productDetail')}}/{{$cartItem->id}}" style="color:blue">{{$cartItem->name}}</a></h4>
                     <p>Product ID: {{$cartItem->id}}</p>
                     <p>Only {{$cartItem->options->quantity}} left</p>
                 </td>

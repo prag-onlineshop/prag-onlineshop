@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Brand;
+use App\Carts;
 use App\CartsProduct;
 use Intervention\Image\Facades\Image;
 
@@ -60,8 +61,7 @@ class AdminController extends Controller
     //orders
     public function orders()
     {
-        $orders = CartsProduct::all();
-        dd($orders);
-        //return view('admin.order.ordersIndex', compact('orders'));
+        $orders = Carts::with('users', 'carts_product.products')->orderBy('id','desc')->get();
+        return view('admin.order.ordersIndex', compact('orders'));
     }
 }

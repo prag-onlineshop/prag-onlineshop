@@ -3,9 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Coupon extends Model
 {
+
+    protected $guarded = [];
+
+
+    public function url(){
+
+    	return url("/Coupons/" . Str::slug($this->code). "/edit");
+    }
+
     public function findByCode($code)
     {
         return self::where('code', $code)->first();
@@ -20,5 +30,6 @@ class Coupon extends Model
         } else {
             return 0;
         }
+
     }
 }

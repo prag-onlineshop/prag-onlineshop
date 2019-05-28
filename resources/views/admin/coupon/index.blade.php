@@ -12,7 +12,7 @@
 		Php 
 	@endif
 	
-	<a href="{{ route('coupon.edit' , [ 'coupon' => $coupon->id ] )}}">Edit</a>
+	<a href="{{ $coupon->url() }}">Edit</a>
 
 
 
