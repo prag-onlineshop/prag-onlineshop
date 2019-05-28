@@ -18,14 +18,12 @@
 			{{ $brand->id }}
 		</div>
 		<div class="col-4">
-			<a href="/brand/{{ $brand->url }}">{{ $brand->name }}</a>
+			<a href="{{ $brand->url() }}">{{ $brand->name }}</a>
 		</div>
 		<div class="col-4">
 			<img src="{{ asset('storage/'. $brand->logo) }}" alt="">
 		</div>
-		<div class="col-2">
-			{{ $brand->url }}
-		</div>
+
 	</div>
 
 
