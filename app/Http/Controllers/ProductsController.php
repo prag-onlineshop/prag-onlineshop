@@ -9,6 +9,7 @@ use App\Brand;
 use App\CartsProduct;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -109,8 +110,7 @@ class ProductsController extends Controller
 //--------------------------------------------------- HOME PAGE ------------------------------------------------------------
     //landing page
     public function indexHome(){
-        $product_list = Product::all()
-        ->where('quantity', '!=', 0)
+        $product_list = Product::all()->where('quantity', '!=', 0)
         ->where('category_id','!=','')
         ->where('brand_id','!=','')
         ->where('quantity', '!=', 0);
@@ -133,10 +133,10 @@ class ProductsController extends Controller
     //brand products
     public function productBrand($brand){
         $brand_url = Brand::where('name',$brand)->firstOrFail();
-        $brand_products = Product::where('brand_id', $brand_url->id)
-        ->where('category_id','!=','')
-        ->where('quantity', '!=', 0)
-        ->get();
+        $brand_products = Product::where('brand_id', $brand_url->id);
+        // ->where('category_id','!=','')
+        // ->where('quantity', '!=', 0)
+        // ->get();
         $brand_id = $brand_url->id;
         return view('user.BrandFilter', compact('brand_products', 'brand_id'));
     }

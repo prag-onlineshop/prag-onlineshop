@@ -62,9 +62,15 @@
                                                 Categories
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="height:100px; overflow-y:auto;">
-                                                <?php $cats=DB::table('categories')->get(); ?>
-                                                @foreach($cats as $cat)
-                                                   <a class="dropdown-item" href="{{ url('category',$cat->url) }}">{{ $cat->name }}</a>
+                                                <?php $cats=DB::table('categories')->get();
+                                                    $cat_product=DB::table('products')->where('category_id','!=','')->groupBy('category_id')->orderBy('id','desc')->get();
+                                                ?>
+                                                 @foreach($cats as $cat)
+                                                    @foreach($cat_product as $product)
+                                                        @if($cat->id == $product->category_id)
+                                                            <a class="dropdown-item" href="{{ url('category',$cat->url) }}">{{ $cat->name }}</a>
+                                                        @endif
+                                                    @endforeach
                                                 @endforeach
                                             </div>
                                         </div>

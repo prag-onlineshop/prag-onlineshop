@@ -58,6 +58,7 @@
                                  <figcaption class="info-wrap text-center">
                                     <h6 class="title text-truncate">
                                        <a href="#">{{$pop->name}}</a>
+                                       <p>In-stock: {{$pop->quantity}}</p>
                                        <p>qty sold:{{$prod->sum}}</p>
                                     </h6>
                                  </figcaption>
@@ -73,6 +74,7 @@
                                  <figcaption class="info-wrap text-center">
                                     <h6 class="title text-truncate">
                                        <a href="#">{{$pop->name}}</a>
+                                       <p>In-stock: {{$pop->quantity}}</p>
                                        <p>qty sold:{{$prod->sum}}</p>
                                     </h6>
                                  </figcaption>
@@ -87,10 +89,18 @@
                <div class="col-md-2">
                   <div class="box" style="height:300px; width:200px; overflow-y:auto">
                      <p>Brands</p>
-                     <?php $brands = DB::table('brands')->get(); ?>
+                     <?php $brands = DB::table('brands')->get(); 
+                        $brand_products = DB::table('products')->where('brand_id','!=','')->groupBy('brand_id')->orderBy('id', 'desc')->get();
+                     ?>
                      <div>
                      @foreach($brands as $brand)
-                        <a href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a> <br>
+                        @foreach($brand_products as $product)
+                           @if($brand->id == $product->brand_id)
+                           <span>
+                           <a href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a> <br>
+                           </span>
+                           @endif
+                        @endforeach
                      @endforeach
                      </div>
                   </div>
@@ -118,7 +128,7 @@
                <figcaption class="info-wrap">
                   <a href="#" class="title">{{ $product->name }} </a>
                   <p>{{ $product->description }}</p>
-                  <p>{{$product->quantity}}</p>
+                  <p>In-stock: {{$product->quantity}}</p>
                   <div class="action-wrap">
                      <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add to Cart</a>
                      <div class="price-wrap h5">
