@@ -41,13 +41,15 @@ class CouponController extends Controller
     		]);
     }
 
-    public function edit(Coupon $coupon){
-
+    public function edit($slug){
+                $coupon = Coupon::where('code', $slug)->firstOrFail();    
         return view('admin.coupon.edit', compact('coupon'));
 
     }
 //Coupon $coupon,compact('coupon')
-    public function show(Coupon $coupon){
+    public function show($slug){
+        $coupon = Coupon::where('code', $coupon)->firstOrFail();
+
     	return view('admin.coupon.profile', compact('coupon'));
 
     }

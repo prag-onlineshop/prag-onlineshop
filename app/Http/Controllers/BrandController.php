@@ -27,8 +27,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        $brandurl = new Brand();
-        return view('admin.brand.create', compact('brandurl'));
+        $brand = new Brand();
+        return view('admin.brand.create', compact('brand'));
     }
 
     /**
@@ -53,10 +53,10 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($brand)
+    public function show($slug)
     {
-        $brandurl = Brand::where('url', $brand)->firstOrFail();
-        return view('admin.brand.profile', compact('brandurl'));
+        $brand = Brand::where('name', $slug)->firstOrFail();
+        return view('admin.brand.profile', compact('brand'));
     }
 
     /**
@@ -65,10 +65,10 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($url)
+    public function edit($slug)
     {    
-        $brandurl = Brand::where('url', $url)->firstOrFail();
-        return view('admin.brand.edit', compact('brandurl'));
+        $brand = Brand::where('name', $slug)->firstOrFail();
+        return view('admin.brand.edit', compact('brand'));
     }
 
     /**
@@ -78,11 +78,11 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Brand $url)
+    public function update(Brand $brand)
     {
-        $url->update($this->validateRequest());           
-        $this->storeImage($url);
-        return redirect('brand/'. $url->url);
+        $brand->update($this->validateRequest());           
+        $this->storeImage($brand);
+        return redirect('brand');
 
     }
 
@@ -111,7 +111,6 @@ class BrandController extends Controller
 
         return tap(request()->validate([
             'name' => 'required',
-            'url' => 'required|alpha_num',
             'logo' => '',
 
         ]), function () {

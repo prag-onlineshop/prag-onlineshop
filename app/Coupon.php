@@ -7,14 +7,15 @@ use Illuminate\Support\Str;
 
 class Coupon extends Model
 {
-<<<<<<< HEAD
+
     protected $guarded = [];
 
 
     public function url(){
 
-    	return url("/Coupons/{$this->id}". Str::slug($this->code). "/edit");
-=======
+    	return url("/Coupons/" . Str::slug($this->code). "/edit");
+    }
+
     public function findByCode($code)
     {
         return self::where('code', $code)->first();
@@ -29,6 +30,6 @@ class Coupon extends Model
         } else {
             return 0;
         }
->>>>>>> d27140aaa589bfedd19a8d9dbe9d3c7ec34bff80
+
     }
 }

@@ -10,7 +10,7 @@
     <div class="row py-3">
 
         <div class="col-4">
-            <form action="/brand" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('brand.store') }}" method="POST" enctype="multipart/form-data">
                 @include('admin.brand.form')
 
                 <button type="submit" class="btn btn-primary">Add Brand</button>
