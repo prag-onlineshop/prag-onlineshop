@@ -45,6 +45,7 @@
                <div class="col-md-10">
                   <div class="slick-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
                      <div class="item-slide p-2">
+                        @forelse($cartsProduct as $cp)
                         <figure class="card card-product">
                            <span class="badge-new"> NEW </span>
                            <div class="img-wrap">
@@ -52,10 +53,13 @@
                            </div>
                            <figcaption class="info-wrap text-center">
                               <h6 class="title text-truncate">
-                                 <a href="#">First item name</a>
+                                 <a href="#">{{ $cp->products->name }}</a>
                               </h6>
                            </figcaption>
                         </figure>
+                        @empty
+                        <h3>No Products</h3>
+                        @endforelse 
                      </div>
                   </div>
                </div>

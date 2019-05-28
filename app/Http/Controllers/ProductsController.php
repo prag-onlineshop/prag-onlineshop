@@ -15,7 +15,9 @@ class ProductsController extends Controller
 {
     public function indexHome(){
         $products = Product::orderBy('name', 'asc')->paginate(8);
-        return view('user.content', compact('products', 'cart_products'));
+        $cartsProduct = CartsProduct::with('products', 'carts')->orderBy('id','desc')->get();
+       
+        return view('user.content', compact('products', 'cartsProduct'));
     }
 
     // public function index(){

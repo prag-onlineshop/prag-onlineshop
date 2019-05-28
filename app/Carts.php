@@ -38,4 +38,14 @@ class Carts extends Model
                 ['qty'=>$cartItem->qty, 'tax'=>Cart::tax(),'total'=>$cartItem->qty*$cartItem->price]);
         }
     }
+
+    public function users()
+    {
+        return $this->BelongsTo(User::class, 'user_id');
+    }
+
+    public function carts_product()
+    {
+        return $this->hasMany(CartsProduct::class, 'carts_id');
+    }
 }
