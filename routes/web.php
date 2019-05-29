@@ -76,8 +76,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/update/{id}', 'CartController@update');
     Route::put('/cart/update/{id}', 'CartController@update');
     Route::get('/cart/remove/{id}', 'CartController@destroy');
-    Route::get('/checkout', 'CheckoutController@index');
-    Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
+    Route::get('/checkout', 'CheckOutController@index');
+    Route::post('/addCheckOut', 'CheckOutController@addCheckOut');
     Route::get('/orders', 'ProfileController@orders');
     
     //Coupons
