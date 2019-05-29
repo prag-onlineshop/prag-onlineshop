@@ -34,9 +34,9 @@
         <tr class="text-white bg-primary">
           <th scope="col">Id</th>
           <th scope="col">Name</th>
-          <th scope="col">Image</th>
-          <th scope="col">url</th>
-          <th scope="col">Actions</th>
+          <th scope="col " style="text-align: center;"">Image</th>
+          {{-- <th scope="col">url</th> --}}
+          <th scope=" col">Actions</th>
           <th scope="col">Time Created</th>
           <th scope="col">Time Updated</th>
 
@@ -149,24 +149,25 @@
                       var imgdefault ="../imgCategory/default_img.jpg";
                       if(imgdefault == data)
                       {
-                        showImage ="<img src={{ asset('') }}" + data + " width='70' class='img-thumbnail' />";
+                        showImage ="<img src={{ asset('') }}" + data + " width='70' class='img-thumbnail mx-auto'  />";
                       } else {
                         
-                        showImage ="<img src={{ URL::to('/') }}/storage/" + data + " width='70' class='img-thumbnail'  />";
+                        showImage ="<img src={{ URL::to('/') }}/storage/" + data + " width='70' class='img-thumbnail ' />";
                       }
 
                     return showImage;
                     },
                     orderable: false },
-                    { data: 'url', name: 'url' },
-                    { data: "created_at", name:"created_at"},
-                    { data: "updated_at", name:"updated_at"},
+                    // { data: 'url', name: 'url' },
+                  
                     // URL and Name must same data
                     {
                       data: 'action',
                       name: 'action',
                       orderable: false
-                    }
+                    },
+                    { data: "created_at", name:"created_at"},
+                    { data: "updated_at", name:"updated_at"},
                  ]
         });
 

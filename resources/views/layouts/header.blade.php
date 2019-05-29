@@ -64,27 +64,22 @@
                                                 aria-expanded="false">
                                                 Categories
                                             </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                                                    style="height:100px; overflow-y:auto;">
-                                                    <?php $cats=DB::table('categories')->get();
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                                style="height:100px; overflow-y:auto;">
+                                                <?php $cats=DB::table('categories')->get();
                                                     $cat_product=DB::table('products')->where('category_id','!=','')->groupBy('category_id')->orderBy('id','desc')->get();
                                                 ?>
-                                                    @foreach($cats as $cat)
-                                                    @foreach($cat_product as $product)
-                                                    @if($cat->id == $product->category_id)
-                                                    <a class="dropdown-item"
-                                                        href="{{ url('category',$cat->url) }}">{{ $cat->name }}</a>
-                                                    @endif
-                                                    @endforeach
-                                                    @endforeach
+                                                @foreach($cats as $cat)
+                                                @foreach($cat_product as $product)
+                                                @if($cat->id == $product->category_id)
+                                                <a class="dropdown-item"
+                                                    href="{{ url('category',$cat->url) }}">{{ $cat->name }}</a>
+                                                @endif
+                                                @endforeach
+                                                @endforeach
 
-                                                </div>
                                             </div>
+
                                             <ul class="d-inline-block pl-3">
                                                 <li>
                                                     <a href="#">Nike</a>
