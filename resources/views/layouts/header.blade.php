@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-lg-2 col-md-2  pl-0">
+                            <div class="col-lg-2 col-md-2 pl-0">
                                 <div class="float-left">
                                     <button type="button" class="btn">
                                         <a href="{{url('/cart')}}" class="nav-link">

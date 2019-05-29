@@ -21387,8 +21387,8 @@ textarea {
 #headerWrap .homelink {
     background: #103c42;
     height: 2rem;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 #headerWrap .homelink ul li a {
