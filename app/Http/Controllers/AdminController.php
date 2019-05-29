@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
  
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Product;
 use App\Category;
 use App\Brand;
 use App\Carts;
 use App\CartsProduct;
 use Intervention\Image\Facades\Image;
+use DataTables;
+use Validator;
+
 
 class AdminController extends Controller
 {
@@ -33,13 +37,62 @@ class AdminController extends Controller
         return redirect('CategoriesList-Admin')->with('del_message','successfully deleted');
     }
 
+
     private function validateRequest(){
         return request()->validate([
             'name'=> 'required|min:3',
-            'image'=> 'sometimes|file|image|max:3000',
+            'image'=> 'sometimes|file|image',
+            'url' => 'required'
         ]);
     }
-//image upload
+
+    // public function update(Request $request, Category $category)
+    // {
+    //     $image_name = $request->hidden_image;
+    //     $image = $request->file('image');
+    //     if($image != '')
+    //     {
+    //         $rules = array(
+    //             'name'    =>  'required',
+    //             'url'     =>  'required',
+    //             'image'    =>  'image'
+    //         );
+    //         $error = Validator::make($request->all(), $rules);
+    //         if($error->fails())
+    //         {
+    //             return response()->json(['errors' => $error->errors()->all()]);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         $rules = array(
+    //             'name'    =>  'required',
+    //             'url'     =>  'required'
+    //         );
+
+    //         $error = Validator::make($request->all(), $rules);
+
+    //         if($error->fails())
+    //         {
+    //             return response()->json(['errors' => $error->errors()->all()]);
+    //         }
+    //     }
+
+    //     $form_data = array(
+    //         'name'       =>   $request->name,
+    //         'url'        =>   $request->url,
+    //         'image'            =>   $image_name
+    //     );
+
+    //     Category::whereId($request->hidden_id)->update($form_data);
+    //     return response()->json(['success' => 'Data is successfully updated']);
+
+
+    // }
+
+
+
+
     private function storeImage($category){
         if(request()->has('image')){
             $category->update([
@@ -49,7 +102,7 @@ class AdminController extends Controller
             $image->save();
         }
     }
-//image delete
+
     private function deleteImage($category){
         $category = Category::findOrFail($category->id);
         $image_path = public_path('storage/'.$category->image);
@@ -58,10 +111,7 @@ class AdminController extends Controller
         }
     }
 
-    //orders
-    public function orders()
-    {
-        $orders = Carts::with('users', 'carts_product.products')->orderBy('id','desc')->get();
-        return view('admin.order.ordersIndex', compact('orders'));
-    }
 }
+
+
+

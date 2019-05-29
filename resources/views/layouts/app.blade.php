@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
@@ -22,6 +23,7 @@
     <link href="{{ asset('plugins/slickslider/slick.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/slickslider/slick-theme.css') }}" rel="stylesheet" />
     <script src="{{ asset('plugins/slickslider/slick.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
 </head>
 

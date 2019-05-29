@@ -9,7 +9,6 @@ use App\CartsProduct;
 
 class Product extends Model
 {
-
     protected $table = 'products';
     protected $primaryKey = 'id';
     protected $guarded = [];

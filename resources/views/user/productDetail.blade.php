@@ -13,14 +13,19 @@
             <div class="col-md-5 col-md-offset-1">
                 <h2>{{ $product->name }}</h2>
                 <h2 class="text-danger">P {{$product->price}}</h2>
-                <p><b>Available :{{$product->quantity}} In Stock</b></p>
-                <p>{{ $product->description }}</p>
+                <p><b>Available :  {{$product->quantity}} In Stock</b></p>
+                
+                <p>Category: {{$product->category->name}}</p>
+                <p>Brand: {{$product->brand->name}}</p>
                 <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-sm btn-outline-secondary">Add To Cart <i class="fa fa-shopping-cart"></i></a>
             </div>
-
+            <div class="container">
+            <div class="row">
+            <div class="col-lg-12 p-5"><p>Description:</p>
+                <p>{{ $product->description }}</p></div>
+            </div>
+                </div>
             @endforeach
-
-
         </div>
     </div>
 

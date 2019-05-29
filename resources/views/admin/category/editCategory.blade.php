@@ -1,4 +1,4 @@
-<div id="edit-category">
+<div id="add-category">
     <h3>Edit {{$category->name}}</h3>
     <form action="{{route('categories.update', ['category' => $category])}}" method="post" enctype="multipart/form-data">
         @method('PATCH')
