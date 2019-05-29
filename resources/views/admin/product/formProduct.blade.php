@@ -10,7 +10,7 @@
 </div>
 <div>
     <label for="price">Price:</label>
-    <input type="text" name="price" id="price" value="{{old('price') ?? $product->price}}">
+    <input type="text" name="price" id="price" value="{{old('price') ?? $product->price}}" placeholder="10,000.00">
     <div>{{$errors->first('price')}}</div>
 </div>
 <div>

@@ -60,7 +60,7 @@
                                         width="250"></p>
                             </td>
                             <td class="cart_description">
-                                <h4><a href="{{url('/product_detail')}}/{{$cartItem->id}}"
+                                <h4><a href="{{url('/productDetail')}}/{{$cartItem->id}}"
                                         style="color:blue">{{$cartItem->name}}</a></h4>
                                 <p>Product ID: {{$cartItem->id}}</p>
                                 <p>Only {{$cartItem->options->quantity}} left</p>
@@ -118,6 +118,13 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+
+</div>
+</section><!--/#do_action-->
+
+=======
+>>>>>>> bbf98751ff34dac55b2179d8cdaf0214fa237e94
 </section>
 <!--/#do_action-->
 <?php } ?>

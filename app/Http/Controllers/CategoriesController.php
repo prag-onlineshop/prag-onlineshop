@@ -9,10 +9,7 @@ use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
-    public function url($category){
-        $category = Category::where('url', $category)->firstOrFail();
-        return view('admin.category.urlCategory', compact('category'));
-    }
+
     public function index(){
         $categories = Category::orderBy('name', 'asc')->paginate(10);
         return view('admin.category.indexCategory', compact('categories'));
@@ -24,8 +21,7 @@ class CategoriesController extends Controller
     public function store(){
         $category = Category::create($this->validateRequest());
         $this->storeImage($category);
-
-        return redirect('categories')->with('add_message', ' added successfully');
+        return redirect('categories')->with('add_message', $category->name.' added successfully');
     }
     public function show($category){
         $category = Category::where('url', $category)->firstOrFail();
@@ -37,9 +33,10 @@ class CategoriesController extends Controller
     }
     public function update(Category $category){
         $category->update($this->validateRequest());
+        $this->storeImage($category);
         $category->url = Str::slug($category->name,'-');
         $category->save();
-        return redirect('categories/'.$category->url)->with('update_message', 'successfully updated');
+        return redirect('categories')->with('update_message', $category->name.' successfully updated');
     }
     public function delete($category){
         $category = Category::where('url', $category)->firstOrFail();
@@ -63,8 +60,6 @@ class CategoriesController extends Controller
             $category->update([
                 'image' => request()->image->store('categoryImages', 'public'),
             ]);
-            $image = Image::make(public_path('storage/'.$category->image))->fit(300,300);
-            $image->save();
         }
     }
 //image delete

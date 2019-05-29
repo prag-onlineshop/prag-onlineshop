@@ -68,42 +68,58 @@
                                                 <a class="dropdown-item" href="#">Action</a>
                                                 <a class="dropdown-item" href="#">Another action</a>
                                                 <a class="dropdown-item" href="#">Something else here</a>
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                                    style="height:100px; overflow-y:auto;">
+                                                    <?php $cats=DB::table('categories')->get();
+                                                    $cat_product=DB::table('products')->where('category_id','!=','')->groupBy('category_id')->orderBy('id','desc')->get();
+                                                ?>
+                                                    @foreach($cats as $cat)
+                                                    @foreach($cat_product as $product)
+                                                    @if($cat->id == $product->category_id)
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('category',$cat->url) }}">{{ $cat->name }}</a>
+                                                    @endif
+                                                    @endforeach
+                                                    @endforeach
+
+                                                </div>
                                             </div>
+                                            <ul class="d-inline-block pl-3">
+                                                <li>
+                                                    <a href="#">Nike</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Addidas</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Converse</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Vans</a>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <ul class="d-inline-block pl-3">
-                                            <li>
-                                                <a href="#">Nike</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Addidas</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Converse</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Vans</a>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-lg-2 col-md-2  pl-0">
-                                <div class="float-left">
-                                    <button type="button" class="btn">
-                                        <a href="{{url('/cart')}}" class="nav-link">
-                                            <span class="m-0 float-right badge badge-danger">{{Cart::count()}}</span>
-                                            <img src="{{ asset('img/logo/logoCart.png') }}" alt="" width="40px"
-                                                height="25px">
-                                        </a>
-                                    </button>
+                                <div class="clearfix"></div>
+                                <div class="col-lg-2 col-md-2 pl-0">
+                                    <div class="float-left">
+                                        <button type="button" class="btn">
+                                            <a href="{{url('/cart')}}" class="nav-link">
+                                                <span
+                                                    class="m-0 float-right badge badge-danger">{{Cart::count()}}</span>
+                                                <img src="{{ asset('img/logo/logoCart.png') }}" alt="" width="40px"
+                                                    height="25px">
+                                            </a>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </div> {{-- row --}}
-                        <div class="clearfix"></div>
+                            </div> {{-- row --}}
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </header>

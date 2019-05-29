@@ -1,5 +1,6 @@
 <form action="{{route('categoriesList-Admin.destroy', $category)}}" method="post">
     @method('DELETE')
+<<<<<<< HEAD
     <div class="modal-header">
         <h4 class="modal-title">Delete Employee</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -14,6 +15,10 @@
         <input type="submit" class="btn btn-danger" value="Delete">
 
     </div>
+=======
+    <h2>You want to delete <b>"{{$category->name}}"</b> ?</h2>
+    <button type="submit">YES</button>
+>>>>>>> 0f1b8b485c088cb0fa9c4b958cc40bcc6fa7217f
     @csrf
 </form>
 
