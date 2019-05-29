@@ -1,22 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 
 
 Auth::routes();
 
 //Home Routes
+
 Route::get('/', 'ProductsController@indexHome');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/category/{category}', 'ProductsController@showCates')->name('category.showCates');
@@ -25,8 +14,8 @@ Route::get('/search-item', 'ProductsController@itemSearch');
 Route::get('/productDetail/{id}','CartController@detailPro');
 
 //Category Routes
-Route::resource('categories', 'CategoriesController');
-Route::get('/categories/{category}/delete', 'CategoriesController@delete');
+// Route::resource('categories', 'CategoriesController');
+// Route::get('/categories/{category}/delete', 'CategoriesController@delete');
 
 //Admin Routes
 Route::get('admin/dashboard', function(){
@@ -53,17 +42,13 @@ Route::get('admin/brands', function(){
 Route::get('admin/coupons', function(){
     return view('admin.contentLayouts.couponsIndex');
 });
-Route::resource('categoriesList-Admin', 'AdminController');
-Route::get('/categoriesList-Admin/{category}/delete', 'AdminController@delete');
+// Route::resource('categoriesList-Admin', 'AdminController');
+// Route::get('/categoriesList-Admin/{category}/delete', 'AdminController@delete');
 
-// Product Routes
-Route::resource('products', 'ProductsController');
-Route::get('/products/{product}/delete', 'ProductsController@delete')->name('products.delete');
-Route::get('/search', 'ProductsController@productSearch');
+Route::resource('admin/category', 'AdminCategoryController');
+Route::post('admin/category/update','AdminCategoryController@update')->name('category.update');
 
-Route::view('/userlogin','user.userLogin');
-Route::view('/signup','user.registration');
-Route::view('/userData','user.userForm');
+Route::delete('/category/destroy/{id}', 'AdminCategoryController@destroy');
 
 Route::get('/userprofile','ProfileController@index');
 
@@ -112,17 +97,20 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::patch('Coupons/{coupon}', 'CouponController@update')->name('coupon.update');
 });
 
-Route::get('/userLogin', function () {
-    return view('user.userLogin');
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('/profile', 'ProfileController@index');
+    Route::post('/updateProfile', 'ProfileController@updateProfile');
+    Route::get('/cart', 'CartController@index');
+    Route::get('/cart/addItem/{id}', 'CartController@addItem');
+    Route::get('/cart/update/{id}', 'CartController@update');
+    Route::put('/cart/update/{id}', 'CartController@update');
+    Route::get('/cart/remove/{id}', 'CartController@destroy');
+    Route::get ('/checkout', 'CheckoutController@index');
+    Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
+    Route::get('/orders', 'ProfileController@orders'); 
 });
 
-Route::get('/forgotPass', function () {
-    return view('user.userForgotPassword');
-});
 
-Route::get('/resetPass', function () {
-    return view('resetPass');
-});
 
 Route::view('/profileOrder','user.profileOrder');
 

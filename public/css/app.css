@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -21367,21 +21367,21 @@ textarea {
 }
 
 #headerWrap {
-  background: #02576c;
-  height: auto;
-  font-size: 0.7rem !important;
+    background: #02576c;
+    height: auto;
+    font-size: 1rem !important;
 }
 
 #headerWrap .homelink {
-  background: #103c42;
-  height: 1.5rem;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+    background: #103c42;
+    height: 2rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 #headerWrap .homelink ul li a {
-  color: #d8d8d8;
-  font-size: 0.5rem;
+    color: #d8d8d8;
+    font-size: 0.9srem;
 }
 
 #headerWrap .header-content input[type=text] {
