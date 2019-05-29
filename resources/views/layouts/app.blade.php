@@ -22,6 +22,7 @@
     <link href="{{ asset('plugins/slickslider/slick.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/slickslider/slick-theme.css') }}" rel="stylesheet" />
     <script src="{{ asset('plugins/slickslider/slick.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
 </head>
 
