@@ -8,6 +8,9 @@ use App\Coupon;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CheckOutMail;
+use App\CartsProduct;
 
 class CheckOutController extends Controller
 {
@@ -47,13 +50,20 @@ class CheckOutController extends Controller
             'contact' => 'required|min:5|max:191',
             'address' => 'required|min:5|max:191',
         ]);
-
+        
+        $user = Auth::user();   
+        // $order = $user->orders()->get(); //cart
+        // $prod = CartsProduct::where('id', $order)->get();
+        $products = Cart::content();
         $user_id = Auth::user()->id;
-
         User::where('id', $user_id)->update($request->except('_token'));
-       
+        $name = User::where('id', $user_id)->first();
+        $carts = Carts::where('user_id',$user_id)->get();   
         Carts::createOrder();
         Cart::destroy();
+
+        //send email // $products not working
+        Mail::to($name->email)->send(new CheckOutMail($name, $products));
         return view('user.thanksyou');
     }
 }

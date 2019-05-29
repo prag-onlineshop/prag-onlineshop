@@ -118,13 +118,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-</div>
-</section><!--/#do_action-->
-
-=======
->>>>>>> bbf98751ff34dac55b2179d8cdaf0214fa237e94
 </section>
 <!--/#do_action-->
 <?php } ?>
