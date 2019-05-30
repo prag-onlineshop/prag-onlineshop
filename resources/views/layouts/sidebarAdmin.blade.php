@@ -1,21 +1,21 @@
 <div class="bg-primary p-4">
   <h3 class="text-center text-white ">
-   <b>PS ADMIN</b>
+    <b>PS ADMIN</b>
   </h3>
 </div>
 
 <hr class="border-white">
 <div class="wrap p-2">
-<!--------------------------------------------- DASHBOARD -------------------------------------------->
+  <!--------------------------------------------- DASHBOARD -------------------------------------------->
   <div class="form-group">
     <a href="{{url('/admin/dashboard')}}" class="form-control bg-transparent border-0 text-dark ">
       <img src="{{ asset('img/logo/light/barLogoBlue.png') }}" width="24px" height="24px" class=" rounded float-left">
       <h6 class="d-inline-block pl-2">Dashboard</h6><img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}"
-      class="float-right">
+        class="float-right">
     </a>
   </div>
   <hr class="border-white">
-<!--------------------------------------------- BRANDS -------------------------------------------->
+  <!--------------------------------------------- BRANDS -------------------------------------------->
   <div class=" form-group ">
     <a href="{{url('/admin/brands')}}" class="form-control bg-transparent border-0  text-dark ">
       <img src="{{ asset('img/logo/light/listLogoBlue.png') }}" class="rounded float-left">
@@ -23,7 +23,7 @@
       <img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}" alt="" class="float-right">
     </a>
   </div>
-<!--------------------------------------------- PRODUCTS -------------------------------------------->
+  <!--------------------------------------------- PRODUCTS -------------------------------------------->
   <div class=" form-group ">
     <a href="{{url('/admin/products')}}" class="form-control  bg-transparent border-0  text-dark  ">
       <img src="{{ asset('img/logo/light/listLogoBlue.png') }}" class="rounded float-left">
@@ -31,7 +31,7 @@
       <img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}" alt="" class="float-right">
     </a>
   </div>
-<!--------------------------------------------- CATEGORIES -------------------------------------------->
+  <!--------------------------------------------- CATEGORIES -------------------------------------------->
   <div class="form-group ">
     <a href="{{url('/admin/categories')}}" class="form-control bg-transparent border-0 text-dark ">
       <img src="{{ asset('img/logo/light/listLogoBlue.png') }}" alt="" class="rounded float-left">
@@ -39,7 +39,7 @@
       <img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}" alt="" class="float-right">
     </a>
   </div>
-<!--------------------------------------------- COUPONS -------------------------------------------->
+  <!--------------------------------------------- COUPONS -------------------------------------------->
   <div class="form-group ">
     <a href="/admin/coupons" class="form-control bg-transparent border-0   text-dark ">
       <img src="{{ asset('img/logo/light/couponLogoBlue.png') }}" alt="" class="rounded float-left">
@@ -48,7 +48,7 @@
     </a>
   </div>
   <hr class="border-white">
-<!--------------------------------------------- ORDERS -------------------------------------------->
+  <!--------------------------------------------- ORDERS -------------------------------------------->
   <div class="form-group ">
     <a href="/admin/orders" class="form-control bg-transparent border-0   text-dark ">
       <img src="{{ asset('img/logo/light/couponLogoBlue.png') }}" alt="" class="rounded float-left">
@@ -65,7 +65,7 @@
     </a>
   </div>
   <hr class="border-white">
-<!--------------------------------------------- SETTINGS -------------------------------------------->
+  <!--------------------------------------------- SETTINGS -------------------------------------------->
   <div class="form-group ">
     <a href="/admin/settings" class="form-control bg-transparent border-0   text-dark ">
       <img src="{{ asset('img/logo/light/couponLogoBlue.png') }}" alt="" class="rounded float-left">

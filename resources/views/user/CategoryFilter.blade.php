@@ -36,7 +36,7 @@
                         </a>
                     </div>
          
-            
+                
                     <figcaption class="info-wrap">
                         <a href="#" class="title">{{ $product->name }} </a>
                         <p>{{ $product->description }}</p>
