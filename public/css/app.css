@@ -10356,6 +10356,7 @@ button.bg-dark:focus {
 
 .text-center {
     text-align: center !important;
+    color:#005874;
 }
 
 @media (min-width: 576px) {
@@ -13864,6 +13865,8 @@ fieldset:disabled a.btn {
 .btn-block {
     display: block;
     width: 100%;
+    color: #ffbe00;
+    background-color:#005874;
 }
 
 .btn-block+.btn-block {
