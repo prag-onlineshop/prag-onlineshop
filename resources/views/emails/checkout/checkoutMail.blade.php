@@ -6,17 +6,21 @@
 
 <strong>Order Details</strong>
 @component('mail::table')
-| Item          | Price         | Qty  |
-| ------------- |:-------------:|:----:|
+| Item          | Price         | Qty  | Total     |
+|:-------------:|:-------------:|:----:|:---------:|
 @foreach($products as $product)
-| {{$product->name}} | {{$product->price}} | {{$product->qty}} |
+| {{$product->name}} | {{$product->price}} | {{$product->qty}} | {{$product->total}}
 @endforeach
+| ** | ** | Subtotal | {{ $total }} |
+| ** | ** | Discount | {{$discount}} |
+| ** | ** | Total | {{$newTotal}} |
+
 @endcomponent
 
 <p>To check your orders, just click the button below. </p>
 
 @component('mail::button', ['url' => 'localhost:8000/orders'])
-Check Your Orders
+Check Orders
 @endcomponent
 
 Thank you!

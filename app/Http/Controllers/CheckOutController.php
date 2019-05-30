@@ -53,8 +53,14 @@ class CheckOutController extends Controller
         
         $user = Auth::user();   
         // $order = $user->orders()->get(); //cart
-        // $prod = CartsProduct::where('id', $order)->get();
+
         $products = Cart::content();
+        $total = Cart::total();
+
+        $discount = session()->get('coupon')['discount'] ?? 0;
+        $newSubtotal = (Cart::total(2,'.','') - $discount);
+        $newTotal = $newSubtotal * (1);
+
         $user_id = Auth::user()->id;
         User::where('id', $user_id)->update($request->except('_token'));
         $name = User::where('id', $user_id)->first();
@@ -62,8 +68,8 @@ class CheckOutController extends Controller
         Carts::createOrder();
         Cart::destroy();
 
-        //send email // $products not working
-        Mail::to($name->email)->send(new CheckOutMail($name, $products));
+        //send email // 
+        // Mail::to($name->email)->send(new CheckOutMail($name, $products, $total, $discount, $newTotal));
         return view('user.thanksyou');
     }
 }

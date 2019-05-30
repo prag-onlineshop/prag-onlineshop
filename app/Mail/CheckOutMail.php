@@ -6,9 +6,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Collection;
-use Gloudemans\Shoppingcart\Facades\Cart;
-use App\User;
 
 class CheckOutMail extends Mailable
 {
@@ -16,19 +13,20 @@ class CheckOutMail extends Mailable
 
     public $name;
     public $products;
+    public $total;
+    public $discount;
+    public $newTotal;
 
-    public function __construct($name, Collection $products)
+
+    public function __construct($name, $products, $total, $discount, $newTotal)
     {
-        // $this->data = $data;
         $this->name = $name;
         $this->products = $products;
+        $this->total = $total;
+        $this->newTotal = $newTotal;
+        $this->discount = $discount;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
         return $this->markdown('emails.checkout.checkoutMail');
