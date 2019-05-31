@@ -6,10 +6,16 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="box">
-                     <p>Brands</p>
-                     <?php $brands = DB::table('brands')->get(); ?>
-                     @foreach($brands as $brand)
-                        <a href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a> <br>
+                    <p>Categories</p>
+                    <?php $categories=DB::table('categories')->get();
+                        $products=DB::table('products')->where('category_id','!=','')->groupBy('category_id')->orderBy('id','desc')->get();
+                    ?>
+                     @foreach($categories as $category)
+                        @foreach($products as $product)
+                            @if($category->id == $product->category_id)
+                            <a href="{{ url('category-products',$category->url) }}">{{$category->name}}</a><br>
+                            @endif
+                        @endforeach
                      @endforeach
                 </div>    
             </div>

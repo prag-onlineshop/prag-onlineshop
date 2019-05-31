@@ -8,7 +8,7 @@ Auth::routes();
 
 Route::get('/', 'ProductsController@indexHome');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/category/{category}', 'ProductsController@showCates')->name('category.showCates');
+Route::get('/category-products/{category}', 'ProductsController@showCates')->name('category.showCates');
 Route::get('/brand-products/{brand}', 'ProductsController@productBrand');
 Route::get('/search-item', 'ProductsController@itemSearch');
 Route::get('/productDetail/{id}','CartController@detailPro');
