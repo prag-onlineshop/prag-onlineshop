@@ -20,9 +20,9 @@ class AdminCategoryController extends Controller
           $dataList = Category::latest()->get();
           return Datatables::of($dataList)
                   ->addColumn('action', function($data){
-                      $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  id="'.$data->id.'" data-original-title="Edit" name="edit" class="edit btn btn-primary btn-sm editCategory">Edit</a>';
+                      $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  id="'.$data->id.'" data-original-title="Edit" name="edit" class="edit btn btn-primary btn-sm editCategory text-white">Edit</a>';
      
-                      $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" name="delete"  data-id="'.$data->id.'" data-original-title="Delete" class="delete btn btn-danger btn-sm">Delete</a>';
+                      $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" name="delete"  data-id="'.$data->id.'" data-original-title="Delete" class="delete btn btn-danger btn-sm text-white">Delete</a>';
   
                        return $btn;
                   })
@@ -31,20 +31,21 @@ class AdminCategoryController extends Controller
               
       }
       return view('admin.contentLayouts.CategoryCrud', compact('categories'));
-      }
+     
+    }
   
   
       // Insert Data
-      public function store(Request $request)
+      public function store(Request $request, Product $product)
       {
   
+
+    
        
           $rules = array(
               'name'=> 'unique:categories|required|min:3',
               'url' => 'required',
               'image'=> 'sometimes|file|image',
-             
-   
           );
   
           $error = Validator::make($request->all(), $rules);
@@ -53,19 +54,25 @@ class AdminCategoryController extends Controller
           {
               return response()->json(['errors' => $error->errors()->all()]);
           }
-          
+
+
           $files = $request->file('image');
-        
-          $new_name = $files->getClientOriginalName();
+          if($files == NULL){
+            $new_name = '../imgCategory/default_img.jpg';
+          } else {
+            $new_name = $files->getClientOriginalName();
+            $files->move(public_path('storage'), $new_name);
+          }
+          
           $form_data = array(
               'name'           =>  $request->name,
               'url'            =>  $request->url,
               'image'          =>  $new_name,
              
         );
-       
-        $category = Category::create($form_data);
-        $this->storeImage($category);
+        Category::create($form_data);
+        // $category = Category::create($form_data);
+        // $this->storeImage($category);
           return response()->json(['success'=>'Data saved successfully.']);    
               
       }
@@ -103,63 +110,70 @@ class AdminCategoryController extends Controller
               'image'=> 'sometimes|file|image',
               'url' => 'required'
           ]);
+     
       }
   
       public function update(Request $request, Category $category)
       {
-          $image_name = $request->hidden_image;
-          $image = $request->file('image');
-          if($image != '')
-          {
-              $rules = array(
-                  'name'    =>  'required',
-                  'url'     =>  'required',
-                  'image'    =>  'image'
-              );
-              $error = Validator::make($request->all(), $rules);
-              if($error->fails())
-              {
-                  return response()->json(['errors' => $error->errors()->all()]);
-              }
+        $image_name = $request->hidden_image;
+        $image = $request->file('image');
+        if($image != '')
+        {
+            $rules = array(
+                'name'    =>  'required',
+                'url'     =>  'required',
+                'image'    =>  'image'
+            );
+            $error = Validator::make($request->all(), $rules);
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+        }
+        else
+        {
+            $rules = array(
+                'name'    =>  'required',
+                'url'     =>  'required',
+            
+            );
+
+            $error = Validator::make($request->all(), $rules);
+
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+        }
+    
+        if($image == NULL){
+            $new_name = $image_name;
+          } else {
+            $new_name = $image->getClientOriginalName();
+            $image->move(public_path('storage'), $new_name);
           }
-          else
-          {
-              $rules = array(
-                  'name'    =>  'required',
-                  'url'     =>  'required'
-              );
-  
-              $error = Validator::make($request->all(), $rules);
-  
-              if($error->fails())
-              {
-                  return response()->json(['errors' => $error->errors()->all()]);
-              }
-          }
-  
-          $form_data = array(
-              'name'       =>   $request->name,
-              'url'        =>   $request->url,
-              'image'            =>   $image_name
-          );
-  
-          Category::whereId($request->hidden_id)->update($form_data);
-          return response()->json(['success' => 'Data is successfully updated']);
-  
-  
+        // Get Image name and Upload in DB using Image Intervention
+        // $image_name = $image->getClientOriginalName();
+        // $image->move(public_path('storage'), $image_name);
+
+        $form_data = array(
+            'name'       =>   $request->name,
+            'url'        =>   $request->url,
+            'image'       =>   $new_name
+        );
+
+      Category::whereId($request->hidden_id)->update($form_data);
+        return response()->json(['success' => 'Data is successfully updated']);
       }
   
   
   
   
       private function storeImage($category){
-          if(request()->has('image')){
               $category->update([
                   'image' => request()->image->store('categoryImages', 'public'),
               ]);
-              $image = Image::make(public_path('storage/'.$category->image))->fit(300,300);
-              $image->save();
-          }
+      
       }
   
       private function deleteImage($category){
