@@ -35,19 +35,19 @@
          </div>
       </div>
       <!----------------------------- END CAROUSEL ------------------------------->
-      <div class="bg-overlay py-3">
+      <div class="bg-overlay py-3 ">
          <!----------------------------- MOST POPULAR ITEMS ------------------------------->
          <div class="container">
             <div class="row">
                <div class="col-md-10">
-                  <div class="slick-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
+                  <div class="multiple-items">
                      <?php $first = true;?>
                      @foreach($cart_products as $prod)
                      @foreach($product_list as $pop)
                      @if($pop->id == $prod->product_id)
                      @if($first)
                      <div class="item-slide p-2">
-                        <figure class="card card-product">
+                        <figure class="card card-product ">
                            <span class="badge-new">BEST SELLER</span>
                            <div class="img-wrap">
                               <img src="{{asset('storage/'.$pop->image)}}">
@@ -107,57 +107,51 @@
       </div>
    </div>
    <!----------------------------- END MOST POPULAR ITEMS ------------------------------->
-   <hr>
+
    <!----------------------------- MOST RECENT ITEMS ------------------------------->
-   <div class="container">
+   <div class="container mt-3">
       <h3>Most Recent:</h3>
-   </div>
-   <div class="row">
-      @forelse($products as $product)
-      <div class="col-md-3">
-         <figure class="card card-product">
-            <div class="img-wrap">
-               <img src="{{ url('images', $product->image) }}">
-               <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
-                  <i class="fa fa-search-plus"></i> Quick view
-               </a>
-            </div>
-            <figcaption class="info-wrap">
-               <a href="#" class="title">{{ $product->name }} </a>
-               <p>{{ $product->description }}</p>
-               <p>In-stock: {{$product->quantity}}</p>
-               <div class="action-wrap">
-                  <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add to
-                     Cart</a>
-                  <div class="price-wrap h5">
-                     <span class="price-new">{{ $product->price }}</span>
-                  </div>
-                  <figcaption class="info-wrap">
-                     <a href="#" class="title">{{ $product->name }} </a>
-                     <p>{{ $product->description }}</p>
-                     <div class="action-wrap">
-                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
-                           to Cart</a>
-                        <div class="price-wrap h5">
-                           <span class="price-new">{{ $product->price }}</span>
-                        </div>
-                        <!-- price-wrap.// -->
+      <hr>
+      <div class="row">
+         @forelse($products as $product)
+         <div class="col-md-3">
+            <figure class="card card-product">
+               <div class="img-wrap">
+                  <img src="{{ url('images', $product->image) }}">
+                  <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
+                     <i class="fa fa-search-plus"></i> Quick view
+                  </a>
+               </div>
+               <figcaption class="info-wrap">
+                  <a href="#" class="title">{{ $product->name }} </a>
+                  <p style="white-space: nowrap; width: 200px; overflow: hidden; text-overflow: ellipsis;">
+                     {{ $product->description }}
+                  </p>
+                  <p>In-stock: {{$product->quantity}}</p>
+                  <div class="action-wrap">
+                     <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add to
+                        Cart</a>
+                     <div class="price-wrap h5">
+                        <span class="price-new">₱{{ $product->price }}</span>
                      </div>
                      <!-- action-wrap -->
-                  </figcaption>
-         </figure>
-         <!-- card // -->
+               </figcaption>
+            </figure>
+            <!-- card // -->
+         </div>
+         <!-- col // -->
+         @empty
+         <h3>No Products</h3>
+         @endforelse
       </div>
-      <!-- col // -->
-      @empty
-      <h3>No Products</h3>
-      @endforelse
+      <!-- row.// -->
+      <div>{{$products->links()}}</div>
    </div>
-   <!-- row.// -->
-   </div>
-   <div style="align-content: center;">{{$products->links()}}</div>
+
    {{-- container --}}
+   </div>
    </div>
    {{-- Overlay Content End --}}
    <!-----------------------------END MOST RECENT ITEMS ------------------------------->
-   @endsection
+</section>
+@endsection
