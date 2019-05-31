@@ -8,7 +8,7 @@ Auth::routes();
 
 Route::get('/', 'ProductsController@indexHome');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/category/{category}', 'ProductsController@showCates')->name('category.showCates');
+Route::get('/category-products/{category}', 'ProductsController@showCates')->name('category.showCates');
 Route::get('/brand-products/{brand}', 'ProductsController@productBrand');
 Route::get('/search-item', 'ProductsController@itemSearch');
 Route::get('/productDetail/{id}','CartController@detailPro');
@@ -65,8 +65,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/update/{id}', 'CartController@update');
     Route::put('/cart/update/{id}', 'CartController@update');
     Route::get('/cart/remove/{id}', 'CartController@destroy');
-    Route::get ('/checkout', 'CheckoutController@index');
-    Route::post('/addCheckOut', 'CheckoutController@addCheckOut');
+    Route::get('/checkout', 'CheckOutController@index');
+    Route::post('/addCheckOut', 'CheckOutController@addCheckOut');
     Route::get('/orders', 'ProfileController@orders');
     
 //     //Coupons

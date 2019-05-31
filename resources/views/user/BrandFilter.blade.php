@@ -35,7 +35,6 @@
                     </div>
                     <figcaption class="info-wrap">
                         <a href="#" class="title">{{ $product->name }} </a>
-                        <p>{{ $product->description }}</p>
                         <div class="action-wrap">
                             <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
                                 to Cart
@@ -53,7 +52,7 @@
             <!-- col // -->
         
             @empty
-                <h3>No Brand for @foreach($brands as $brand) {{$brand->name}} @endforeach</h3>
+                <h3>No Product for @foreach($brands as $brand) {{$brand->name}} available @endforeach</h3>
             @endforelse
     
     <!-- row // -->
