@@ -65,7 +65,7 @@ class CheckOutController extends Controller
         $user_id = Auth::user()->id;
         User::where('id', $user_id)->update($request->except('_token'));
         $name = User::where('id', $user_id)->first();
-        $carts = Carts::where('user_id',$user_id)->get();   
+        $carts = Carts::where('user_id',$user_id)->get();
         Carts::createOrder();
         Cart::destroy();
 

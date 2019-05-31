@@ -6,18 +6,15 @@
 <div class="bg-overlay bg-light">
 <?php if ($cartItems->isEmpty()) { ?>
 <br>
-<br>
-<br>
 <section id="cart_items">
-
     <div class="container">
-        <div align="center"> <img src="{{asset('dist/img/empty-cart.png')}}" /></div>
+        <center> <h3><strong>No items in your cart</strong></h3></center>
     </div>
 </section>
+<br>
+<br>
 <!--/#cart_items-->
 <?php } else { ?>
-<br>
-<br>
 <section id="cart_items">
     <div class="container">
         <div class="breadcrumbs">
@@ -60,17 +57,29 @@
                                         width="250"></p>
                             </td>
                             <td class="cart_description">
-                                <h4><a href="{{url('/productDetail')}}/{{$cartItem->id}}"
+                                <h4><a href="{{ url('productDetail',$cartItem->id) }}"
                                         style="color:blue">{{$cartItem->name}}</a></h4>
                                 <p>Product ID: {{$cartItem->id}}</p>
-                                <p>Only {{$cartItem->options->quantity}} left</p>
+                                @foreach($products as $product)
+                                    @if($cartItem->id == $product->id)
+                                        @if($product->quantity == 0)
+                                            <p>Out of stock</p>
+                                        @else
+                                            <p>Only {{$product->quantity}} left</p>
+                                        @endif
+                                    @endif
+                                @endforeach
                             </td>
                             <td class="cart_price">
                                 <p>{{$cartItem->price}}</p>
                             </td>
                             <td class="cart_quantity">
+                                @foreach($products as $product)
+                                    @if($cartItem->id == $product->id)
+                                        @if($product->quantity == 0)
+                                            <p>{{$cartItem->qty}}</p>
+                                        @else
                                 <form action="{{url('cart/update',$cartItem->rowId)}}" method="post" role="form">
-
                                     <input type="hidden" name="_method" value="PUT">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <input type="hidden" name="proId" value="{{$cartItem->id}}" />
@@ -79,7 +88,9 @@
                                         style="text-align:center; max-width:50px; " MIN="1" MAX="1000">
                                     <input type="submit" class="btn btn-primary" value="Update" styel="margin:5px">
                                 </form>
-
+                                        @endif
+                                    @endif
+                                @endforeach
                                 <!--</div>-->
                             </td>
                             <td class="cart_total">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Brand;
+use App\Category;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +13,9 @@ class CartController extends Controller
 {
     public function index()
     {
-        $cartItems = Cart::content(); 
-        return view('cart.index', compact('cartItems'));  
+        $cartItems = Cart::content();
+        $products = Product::with('brand', 'category')->get(); 
+        return view('cart.index', compact('cartItems', 'products'));  
     }
 
     public function addItem($id)
@@ -23,7 +26,7 @@ class CartController extends Controller
             Cart::add($id, $product->name, 1, $product->price,['img'=>$product->image,'quantity'=>$product->quantity]);
             $product->quantity -= 1; 
             $product->save();
-            return back();
+            return back()->with('status', 'added 1 item to your cart');
         } else {
             return redirect('userLogin');
         }
@@ -52,7 +55,7 @@ class CartController extends Controller
 
     public function detailPro($id)
     {
-        $products = Product::where('id', $id)->get();
+        $products = Product::with('category','brand')->where('id', $id)->get();
         return view('user.productDetail', compact('products'));
     }   
 }
