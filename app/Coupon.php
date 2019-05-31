@@ -10,6 +10,10 @@ class Coupon extends Model
 
     protected $guarded = [];
 
+    protected $fillable = [
+        'name', 'code', 'type', 'amount'
+    ];
+
 
     public function url(){
 

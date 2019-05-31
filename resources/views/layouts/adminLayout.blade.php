@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <<<<<<< HEAD <title>Laravel DataTable - Tuts Make</title>
+  <title>Laravel DataTable - Tuts Make</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 

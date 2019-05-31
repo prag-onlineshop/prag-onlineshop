@@ -42,6 +42,14 @@ Route::get('admin/brands', function(){
 Route::get('admin/coupons', function(){
     return view('admin.contentLayouts.couponsIndex');
 });
+
+Route::get('admin/couponcrud', function(){
+    return view('admin.contentLayouts.CouponCrud');
+});
+
+Route::resource('admin/coupon', 'AdminCouponsController');
+Route::post('admin/add-coupon', 'AdminCouponsController@store');
+
 // Route::resource('categoriesList-Admin', 'AdminController');
 // Route::get('/categoriesList-Admin/{category}/delete', 'AdminController@delete');
 
