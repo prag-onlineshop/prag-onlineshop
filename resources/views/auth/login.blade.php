@@ -11,13 +11,21 @@
                 <div class="inputBox{{ $errors->has('email')?' has-error':'' }}">
                     <input type="text" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     <label>Email</label>
-                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                  @if($errors->any())
+                     <div class="invalid-feedback d-block">
+                        {{ $errors->first('email') }}
+                     </div>
+                  @endif
                 </div>
 
                 <div class="inputBox{{ $errors->has('password')?' has-error':'' }}">
                     <input type="password" name="password" required autocomplete="current-password">
                     <label>Password</label>
-                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                  @if($errors->any())
+                     <div class="invalid-feedback d-block">
+                        {{ $errors->first('password') }}
+                     </div>
+                  @endif
                 </div>
                     <br>
                     <br>

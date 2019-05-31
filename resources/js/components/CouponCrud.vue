@@ -1,9 +1,9 @@
 <template>
 <div>
    <div class="container">
-      <h2>Brand List</h2>
+      <h2>Coupon List</h2>
       <div align="right" class="m-2">
-         <a class="btn btn-success" @click="newModal">Create New Brand</a>
+         <a class="btn btn-success" @click="newModal">Create New Coupon</a>
       </div>
       <table class="table table-bordered" id="laravel_datatable">
          <thead>

@@ -24,7 +24,11 @@
                      <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                   </div>
                   <input type="email" name="email" class="form-control" placeholder="Email address" value="{{ old('email') }}" required autocomplete="email">
-                  <span class="text-danger">{{ $errors->first('email') }}</span>
+                  @if($errors->any())
+                     <div class="invalid-feedback d-block">
+                        {{ $errors->first('email') }}
+                     </div>
+                  @endif
                </div>
 
                <!-- form-group// -->
@@ -33,15 +37,21 @@
                      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                   </div>
                   <input type="password" name="password" class="form-control" required autocomplete="new-password" placeholder="Create password" >
-                  <span class="text-danger">{{ $errors->first('password') }}</span>
+                  @if($errors->any())
+                     <div class="invalid-feedback d-block">
+                        {{ $errors->first('password') }}
+                     </div>
+                  @endif
                </div>
-
+               
                <!-- form-group// -->
                <div class="form-group input-group">
                   <div class="input-group-prepend">
                      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                   </div>
                   <input name="password_confirmation" type="password" class="form-control" placeholder="Confirm password" required autocomplete="new-password">
+
+                  
                </div>
 
                <!-- form-group// -->                                      
@@ -50,7 +60,7 @@
                </div>
 
                <!-- form-group// -->      
-               <p class="text-center">Have an account? <a href="">Log In</a> </p>
+               <p class="text-center">Have an account? <a href="/login">Log In</a> </p>
             </form>
 
          </article>

@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
-
     public function index(){
         $categories = Category::orderBy('name', 'asc')->paginate(10);
         return view('admin.category.indexCategory', compact('categories'));

@@ -60035,13 +60035,13 @@ var render = function() {
       "div",
       { staticClass: "container" },
       [
-        _c("h2", [_vm._v("Brand List")]),
+        _c("h2", [_vm._v("Coupon List")]),
         _vm._v(" "),
         _c("div", { staticClass: "m-2", attrs: { align: "right" } }, [
           _c(
             "a",
             { staticClass: "btn btn-success", on: { click: _vm.newModal } },
-            [_vm._v("Create New Brand")]
+            [_vm._v("Create New Coupon")]
           )
         ]),
         _vm._v(" "),
