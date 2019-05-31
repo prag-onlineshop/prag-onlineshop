@@ -40,7 +40,7 @@
          <div class="container">
             <div class="row">
                <div class="col-md-10">
-                  <div class="slick-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
+               <div class="slick-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
                      <?php $first = true;?>
                      @foreach($cart_products as $prod)
                      @foreach($product_list as $pop)
@@ -132,7 +132,7 @@
                   <div class="price-wrap h5">
                      <span class="price-new">{{ $product->price }}</span>
                   </div>
-                  <figcaption class="info-wrap">
+                  <!-- <figcaption class="info-wrap">
                      <a href="#" class="title">{{ $product->name }} </a>
                      <p>{{ $product->description }}</p>
                      <div class="action-wrap">
@@ -140,7 +140,7 @@
                            to Cart</a>
                         <div class="price-wrap h5">
                            <span class="price-new">{{ $product->price }}</span>
-                        </div>
+                        </div> -->
                         <!-- price-wrap.// -->
                      </div>
                      <!-- action-wrap -->
