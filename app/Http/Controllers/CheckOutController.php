@@ -70,7 +70,7 @@ class CheckOutController extends Controller
         Cart::destroy();
 
         //send email // 
-        // Mail::to($name->email)->send(new CheckOutMail($name, $products, $total, $discount, $newTotal));
+        Mail::to($name->email)->send(new CheckOutMail($name, $products, $total, $discount, $newTotal));
         return view('user.thanksyou');
     }
 }

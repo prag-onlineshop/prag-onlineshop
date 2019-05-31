@@ -23,8 +23,12 @@ class CartController extends Controller
         if(Auth::check()){
             $product = Product::findOrFail($id);
             // 1 add one time only 1 to Cart
-            Cart::add($id, $product->name, 1, $product->price,['img'=>$product->image,'quantity'=>$product->quantity]);
-            $product->quantity -= 1; 
+            // if($product->id == $id){
+            //     Cart::update($id, 1);
+            // }else{
+                Cart::add($id, $product->name, 1, $product->price,['img'=>$product->image,'quantity'=>$product->quantity]);
+            // }
+            $product->quantity -= 1;
             $product->save();
             return back()->with('status', 'added 1 item to your cart');
         } else {

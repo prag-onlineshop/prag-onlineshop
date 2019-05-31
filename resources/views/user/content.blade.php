@@ -47,20 +47,20 @@
 							@if($pop->id == $prod->product_id)
 							@if($first)
 							<div class="item-slide p-2">
-								<figure class="card card-product">
-									<span class="badge-new">BEST SELLER</span>
-									<div class="img-wrap">
-										<img src="{{asset('storage/'.$pop->image)}}">
-									</div>
-									<figcaption class="info-wrap text-center">
-										<h6 class="title text-truncate">
-											<a href="#">{{$pop->name}}</a>
-											<p>In-stock: {{$pop->quantity}}</p>
-											<p>qty sold:{{$prod->sum}}</p>
-										</h6>
-									</figcaption>
-								</figure>
-							</div>
+                              <figure class="card card-product">
+                                 <span class="badge-new">BEST SELLER</span>
+                                 <div class="img-wrap">
+                                    <img src="{{asset('storage/'.$pop->image)}}">
+                                 </div>
+                                 <figcaption class="info-wrap text-center">
+                                    <h6 class="title text-truncate">
+                                       <a href="#">{{$pop->name}}</a>
+                                       <p>In-stock: {{$pop->quantity}}</p>
+                                       <p>qty sold:{{$prod->sum}}</p>
+                                    </h6>
+                                 </figcaption>
+                              </figure>
+                           	</div>
 							<?php $first = false; ?>
 							@else
 							<div class="item-slide p-2">
@@ -73,7 +73,7 @@
 											<a href="#">{{$pop->name}}</a>
 											<p>In-stock: {{$pop->quantity}}</p>
 											<p>qty sold:{{$prod->sum}}</p>
-											<a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+											<a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
 												to Cart</a>
 										</h6>
 									</figcaption>

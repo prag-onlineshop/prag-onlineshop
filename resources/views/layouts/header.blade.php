@@ -79,18 +79,17 @@
                                                 @endforeach
 
                                             </div>
-
-                                            <ul class="d-inline-block pl-3">
-                                                <li>
+                                            <ul class="slick-slider" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+                                                <li class="item-slide p-2">
                                                     <a href="#">Nike</a>
                                                 </li>
-                                                <li>
+                                                <li class="item-slide p-2">
                                                     <a href="#">Addidas</a>
                                                 </li>
-                                                <li>
+                                                <li class="item-slide p-2">
                                                     <a href="#">Converse</a>
                                                 </li>
-                                                <li>
+                                                <li class="item-slide p-2">
                                                     <a href="#">Vans</a>
                                                 </li>
                                             </ul>
