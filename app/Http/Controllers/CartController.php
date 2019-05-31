@@ -24,6 +24,7 @@ class CartController extends Controller
             $product = Product::findOrFail($id);
             // 1 add one time only 1 to Cart
             Cart::add($id, $product->name, 1, $product->price,['img'=>$product->image,'quantity'=>$product->quantity]);
+            // Cart::add($id, $product->name, 1, $product->price, $product->image, $product->quantity);
             $product->quantity -= 1; 
             $product->save();
             return back()->with('status', 'added 1 item to your cart');

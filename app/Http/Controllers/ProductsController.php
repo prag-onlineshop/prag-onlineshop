@@ -110,9 +110,9 @@ class ProductsController extends Controller
 //--------------------------------------------------- HOME PAGE ------------------------------------------------------------
     //landing page
     public function indexHome(){
-        $product_list = Product::with('category','brand')->where('quantity', '!=', 0)
+        $product_list = Product::where('quantity', '!=', 0)
         ->where('category_id','!=','')
-        ->where('brand_id','!=','');
+        ->where('brand_id','!=','')->get();
         $cart_products = CartsProduct::groupBy('product_id')->selectRaw('sum(qty) as sum, product_id')->orderBy('sum','desc')->get();
         $products = Product::with('category','brand')->where('quantity', '!=', 0)->latest()->paginate(8);
         return view('user.content', compact('products','product_list','cart_products'));

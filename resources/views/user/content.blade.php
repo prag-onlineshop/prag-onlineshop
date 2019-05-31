@@ -73,7 +73,7 @@
 											<a href="#">{{$pop->name}}</a>
 											<p>In-stock: {{$pop->quantity}}</p>
 											<p>qty sold:{{$prod->sum}}</p>
-											<a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+											<a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
 												to Cart</a>
 										</h6>
 									</figcaption>
