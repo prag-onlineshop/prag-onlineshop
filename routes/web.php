@@ -47,8 +47,8 @@ Route::delete('/category/destroy/{id}', 'AdminCategoryController@destroy');
 
 //Admin product Controller 
 Route::resource('admin/products', 'AdminProductController');
-Route::get('admin/list', 'AdminProductController@index')->name('product.index');
-Route::post('admin/products/update', 'AdminProductController@update')->name('product.update');
+Route::get('admin/list', 'AdminProductController@index')->name('products.index');
+Route::post('admin/products/update', 'AdminProductController@update')->name('products.update');
 Route::delete('/products/destroy/{id}', 'AdminProductController@destroy');
 
 

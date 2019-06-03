@@ -62,8 +62,14 @@
                 <tbody>
                     <tr>
                         <td class="cart_product">
-                            <a href="{{url('/productDetail')}}/{{$cartItem->id}}"><img
-                                    src="{{url('images',$cartItem->options->img)}}" alt="" width="200px"></a>
+                            <a href="{{url('/productDetail')}}/{{$cartItem->id}}">
+                                @if($cartItem->options->img == '../imgProduct/default_img.jpg')
+                                <img src="{{ url('imgProduct', $cartItem->options->img) }}" width="200px">
+                                @else
+                                <img src="{{ url('storage/', $cartItem->options->img) }}" width="200px">
+                                @endif
+                                {{-- <img src="{{url('images',$cartItem->options->img)}}" alt="" width="200px"> --}}
+                            </a>
                         </td>
                         <td class="cart_description">
                             <h4><a href="{{url('/productDetail')}}/{{$cartItem->id}}"

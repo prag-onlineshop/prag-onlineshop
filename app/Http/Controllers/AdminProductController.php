@@ -32,7 +32,6 @@ class AdminProductController extends Controller
           return Datatables::of($dataList)
                   ->addColumn('action', function($data){
                       $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  id="'.$data->id.'" data-original-title="Edit" name="edit" class="edit btn btn-primary btn-sm editCategory text-white">Edit</a>';
-     
                       $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" name="delete"  data-id="'.$data->id.'" data-original-title="Delete" class="delete btn btn-danger btn-sm text-white">Delete</a>';
   
                        return $btn;
@@ -62,13 +61,14 @@ class AdminProductController extends Controller
      * @return \Illuminate\Http\Response
      */
    
-    public function store(Request $request)
-
-    
+    public function store(Request $request,Product $product)
     {
 
         $this->validateRequest();
-        $this->storeRequest($product);
+
+        $price= request('price');
+        $price_format = str_replace(',','',$price);
+        $product->price = $price_format;
 
         $files = $request->file('image');
           if($files == NULL){
@@ -79,15 +79,17 @@ class AdminProductController extends Controller
           }
           
           $form_data = array(
+              'category_id'    =>  $request->category_id,
+              'brand_id'       =>  $request->brand_id,
               'name'           =>  $request->name,
-              'url'            =>  $request->url,
-              'url'            =>  $request->url,
               'image'          =>  $new_name,
+              'price'          =>  $price_format,
+              'description'    =>  $request->description,
+              'quantity'       => $request->quantity,
              
         );
-        Category::create($form_data);
-        // $category = Category::create($form_data);
-        // $this->storeImage($category);
+        Product::create($form_data);
+       
           return response()->json(['success'=>'Data saved successfully.']);    
               
     }
@@ -111,7 +113,11 @@ class AdminProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(request()->ajax())
+        {
+            $data = Product::findOrFail($id);
+            return response()->json(['data' => $data]);
+        }
     }
 
     /**
@@ -121,9 +127,67 @@ class AdminProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $image_name = $request->hidden_image;
+        $image = $request->file('image');
+        if($image != '')
+        {
+            $rules = array(
+                'category_id'=>'required',
+                'brand_id'=>'required',
+                'name'=> 'required|min:3',
+                'image'=> 'sometimes|file|image|max:3000',
+                'price'=> ['required','not_in:0.00','regex:/^\d{1,3}(?:,\d{3}|\d+)*(?:\.\d+)?$/'],
+                'description'=> 'required|max:300',
+                'quantity'=> 'required|numeric',
+            );
+            $error = Validator::make($request->all(), $rules);
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+        }
+        else
+        {
+            $rules = array(
+                'name'    =>  'required',
+                'url'     =>  'required',
+            
+            );
+
+            $error = Validator::make($request->all(), $rules);
+
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+        }
+    
+
+        if($image == NULL){
+            $new_name = $image_name;
+          } else {
+            $new_name = $image->getClientOriginalName();
+            $image->move(public_path('storage'), $new_name);
+          }
+
+          $price= request('price');
+          $price_format = str_replace(',','',$price);
+          $product->price = $price_format;
+
+        $form_data = array(
+            'category_id'    =>  $request->category_id,
+            'brand_id'       =>  $request->brand_id,
+            'name'           =>  $request->name,
+            'image'          =>  $new_name,
+            'price'          =>  $price_format,
+            'description'    =>  $request->description,
+            'quantity'       =>  $request->quantity,
+        );
+
+      Product::whereId($request->hidden_id)->update($form_data);
+        return response()->json(['success' => 'Data is successfully updated']);
     }
 
     /**
@@ -134,7 +198,11 @@ class AdminProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Product::findOrFail($id);
+        $data->delete();
+        return response()->json([
+            'success' => 'Record has been deleted successfully!'
+        ]); 
     }
 
     private function validateRequest(){
