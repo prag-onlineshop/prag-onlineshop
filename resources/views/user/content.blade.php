@@ -82,7 +82,7 @@
                                     @foreach($cartItems as $cartItem)
                                        @php ($carts[] = $cartItem->id)
                                     @endforeach
-                                       @if(in_array($product->id, $carts))
+                                       @if(in_array($pop->id, $carts))
                                           <i class="float-right">Added to cart</i>
                                        @else
                                           <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
