@@ -56,8 +56,21 @@
                                  <a href="#">{{$pop->name}}</a>
                                  <p>In-stock: {{$pop->quantity}}</p>
                                  <p>qty sold:{{$prod->sum}}</p>
-                                 <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                 @if($cartItems->isEmpty())
+                                    <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
 												to Cart</a>
+                                 @else
+                                    @php ($carts = [])
+                                    @foreach($cartItems as $cartItem)
+                                       @php ($carts[] = $cartItem->id)
+                                    @endforeach
+                                       @if(in_array($pop->id, $carts))
+                                          <i class="float-right">Added to cart</i>
+                                       @else
+                                          <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                             to Cart</a>
+                                       @endif
+                                 @endif
                               </h6>
                            </figcaption>
                         </figure>
@@ -82,7 +95,7 @@
                                     @foreach($cartItems as $cartItem)
                                        @php ($carts[] = $cartItem->id)
                                     @endforeach
-                                       @if(in_array($product->id, $carts))
+                                       @if(in_array($pop->id, $carts))
                                           <i class="float-right">Added to cart</i>
                                        @else
                                           <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
