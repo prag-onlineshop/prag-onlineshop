@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-
-<div class="container">
+<div class="bg-overlay">
+    <div class="container">
         <div>
-        @if(session('status'))
+                @if(session('status'))
                     <div class="alert alert-success">
                         {{session('status')}}
                     </div>
@@ -12,7 +12,7 @@
         <br><br>
         <div class="row">
             @foreach($products as $product)
-            <div class="col-md-6 col-xs-12">
+            <div class="col-md-4 col-xs-12 py-5">
                 <div class="thumbnail">
                     <img src="{{ url('images', $product->image) }}" class="card-img" width="300px" height="300px">
                 </div>
@@ -34,9 +34,16 @@
                 <p>{{ $product->description }}</p>
                 <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-sm btn-outline-secondary">Add To Cart <i class="fa fa-shopping-cart"></i></a>
                 @endif
-            </div>
-            <div class="container">
-            @endforeach
+                
+            </div>  
+
         </div>
+            <div class="container">
+        
+            @endforeach
+            </div>
+        
     </div>
+</div>
+    
 @endsection
