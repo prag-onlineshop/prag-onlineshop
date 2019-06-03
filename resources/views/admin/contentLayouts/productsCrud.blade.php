@@ -83,10 +83,10 @@ Admin | Products List
               Brand
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <a class="dropdown-item" href="#"></a>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <?php $categories = DB::table('categories')->get();?>
+              @foreach($categories as $category)
+              <a class="dropdown-item" href="#">{{$category->name}}</a>
+              @endforeach
             </div>
           </div>
         </div>

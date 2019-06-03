@@ -10,6 +10,7 @@ use App\CartsProduct;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class ProductsController extends Controller
 {
@@ -112,32 +113,36 @@ class ProductsController extends Controller
     public function indexHome(){
         $product_list = Product::where('quantity', '!=', 0)
         ->where('category_id','!=','')
-        ->where('brand_id','!=','')->get();
+        ->where('brand_id','!=','')
+        ->get();
+        $cartItems = Cart::content();
         $cart_products = CartsProduct::groupBy('product_id')->selectRaw('sum(qty) as sum, product_id')->orderBy('sum','desc')->get();
         $products = Product::with('category','brand')->where('quantity', '!=', 0)->latest()->paginate(8);
-        return view('user.content', compact('products','product_list','cart_products'));
-    } 
+        return view('user.content', compact('cartItems','products','product_list','cart_products'));
+    }
     // category filter for product
     public function showCates($cat)
     {   
         $cat_url = Category::where('url',$cat)->firstOrFail();
-        $category_products = Product::with('category','brand')
-        ->where('category_id', $cat_url->id)
+        $category_products = Product::where('category_id', $cat_url->id)
+        ->where('brand_id','!=','')
         ->where('quantity', '!=', 0)
         ->get();
         $id_ = $cat_url->id;
-        return view('user.CategoryFilter', compact('category_products', 'id_'));
+        $cartItems = Cart::content();
+        return view('user.CategoryFilter', compact('cartItems','category_products', 'id_'));
     }
 
     //brand products
     public function productBrand($brand){
-        $brand_url = Brand::where('name',$brand)->firstOrFail();
-        $brand_products = Product::with('category','brand')
-        ->where('brand_id', $brand_url->id)
+        $brand = Brand::where('name',$brand)->firstOrFail();
+        $brand_products = Product::where('brand_id', $brand->id)
+        ->where('category_id','!=','')
         ->where('quantity', '!=', 0)
         ->get();
-        $brand_id = $brand_url->id;
-        return view('user.BrandFilter', compact('brand_products', 'brand_id'));
+        $brand_id = $brand->id;
+        $cartItems = Cart::content();
+        return view('user.BrandFilter', compact('cartItems','brand_products', 'brand_id'));
     }
 
     //search products
@@ -148,6 +153,7 @@ class ProductsController extends Controller
         ->where('brand_id','!=','')
         ->where('quantity', '!=', 0)
         ->paginate(10);
-        return view('user.ProductSearch',['products' => $products]);
+        $cartItems = Cart::content();
+        return view('user.ProductSearch',['products' => $products], compact('cartItems'));
     }
 }

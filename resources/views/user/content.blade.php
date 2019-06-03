@@ -56,6 +56,8 @@
                                  <a href="#">{{$pop->name}}</a>
                                  <p>In-stock: {{$pop->quantity}}</p>
                                  <p>qty sold:{{$prod->sum}}</p>
+                                 <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
+												to Cart</a>
                               </h6>
                            </figcaption>
                         </figure>
@@ -72,6 +74,21 @@
                                  <a href="#">{{$pop->name}}</a>
                                  <p>In-stock: {{$pop->quantity}}</p>
                                  <p>qty sold:{{$prod->sum}}</p>
+                                 @if($cartItems->isEmpty())
+                                    <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
+												to Cart</a>
+                                 @else
+                                    @php ($carts = [])
+                                    @foreach($cartItems as $cartItem)
+                                       @php ($carts[] = $cartItem->id)
+                                    @endforeach
+                                       @if(in_array($product->id, $carts))
+                                          <i class="float-right">Added to cart</i>
+                                       @else
+                                          <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                             to Cart</a>
+                                       @endif
+                                 @endif
                               </h6>
                            </figcaption>
                         </figure>
@@ -122,14 +139,24 @@
                   </a>
                </div>
                <figcaption class="info-wrap">
-                  <a href="#" class="title">{{ $product->name }} </a>
-                  <p style="white-space: nowrap; width: 200px; overflow: hidden; text-overflow: ellipsis;">
-                     {{ $product->description }}
-                  </p>
+                  <h4 style="color:blue;">{{ $product->name }} </h4>
                   <p>In-stock: {{$product->quantity}}</p>
                   <div class="action-wrap">
-                     <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add to
-                        Cart</a>
+                     @if($cartItems->isEmpty())
+                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
+                           Cart</a>
+                     @else
+                        @php ($carts = [])
+                        @foreach($cartItems as $cartItem)
+                           @php ($carts[] = $cartItem->id)
+                        @endforeach
+                           @if(false !== $key = array_search($product->id, $carts))
+                              <i class="float-right">Added to cart</i>
+                           @else
+                              <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
+                                 Cart</a>
+                           @endif
+                     @endif
                      <div class="price-wrap h5">
                         <span class="price-new">₱{{ $product->price }}</span>
                      </div>
@@ -143,7 +170,7 @@
          <h3>No Products</h3>
          @endforelse
       </div>
-      <!-- row.// -->
+      <!-- row.// --> 
       <div>{{$products->links()}}</div>
    </div>
 
