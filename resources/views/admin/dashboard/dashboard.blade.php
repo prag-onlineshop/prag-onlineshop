@@ -1,5 +1,5 @@
-@extends('layouts.adminLayout')
-
+@extends('layouts.sidebarAdmin')
+asdasdas
 @section('title')
 Dashboard
 @endsection

@@ -18,9 +18,9 @@ Route::get('/productDetail/{id}','CartController@detailPro');
 // Route::get('/categories/{category}/delete', 'CategoriesController@delete');
 
 //Admin Routes
-Route::get('admin/dashboard', function(){
-    return view('admin.dashboard.dashboard');
-});
+// Route::get('admin/dashboard', function(){
+//     return view('admin.dashboard.dashboard');
+// });
 Route::get('admin/settings', function(){
     return view('admin.setting.settings');
 });
@@ -70,7 +70,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::delete('/coupon', 'CouponsController@destroy')->name('coupons.destroy'); 
 });
 
-
+    //Route for dashboard
+    Route::get('dashboard', 'DashboardController@index');
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('/', function () {
@@ -95,6 +96,9 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('Coupons/{coupon}/edit', 'CouponController@edit')->name('coupon.edit');
     Route::delete('Coupons/{coupon}', 'CouponController@destroy')->name('coupon.delete');
     Route::patch('Coupons/{coupon}', 'CouponController@update')->name('coupon.update');
+
+
+
 });
 
 Route::group(['middleware'=>'auth'], function(){
