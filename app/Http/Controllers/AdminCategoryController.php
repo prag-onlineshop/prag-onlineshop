@@ -181,4 +181,6 @@ class AdminCategoryController extends Controller
               unlink($image_path);
           }
       }
+
+      
 }

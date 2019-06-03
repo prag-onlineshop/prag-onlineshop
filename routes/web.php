@@ -24,12 +24,18 @@ Route::get('admin/reports', function(){
     return view('admin.report.reports');
 });
 Route::get('admin/orders', 'AdminController@orders');
+Route::get('admin/ordersid/{id}', 'AdminController@ordersId');
 
 Route::get('admin/coupons', function(){
     return view('admin.contentLayouts.couponsIndex');
 });
 
+Route::get('admin/couponcrud', function(){
+    return view('admin.contentLayouts.CouponCrud');
+});
 
+Route::resource('admin/coupon', 'AdminCouponsController');
+Route::post('admin/add-coupon', 'AdminCouponsController@store');
 
 
 // Admin Brand Controller

@@ -10,15 +10,16 @@
 
             <form method="POST" action="{{ route('register') }}">
               @csrf
-               <div class="form-group input-group">
+               <div class="form-group input-group{{ $errors->has('name')?' has-error':'' }}">
                   <div class="input-group-prepend">
                      <span class="input-group-text"> <i class="fa fa-user"></i></span>
                   </div>
                   <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Full name" required autocomplete="name" autofocus>
+                  <span class="text-danger">{{ $errors->first('name') }}</span>
                </div>
 
                <!-- form-group// -->
-               <div class="form-group input-group">
+               <div class="form-group input-group{{ $errors->has('email')?' has-error':'' }}">
                   <div class="input-group-prepend">
                      <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                   </div>
@@ -31,7 +32,7 @@
                </div>
 
                <!-- form-group// -->
-               <div class="form-group input-group">
+               <div class="form-group input-group{{ $errors->has('password')?' has-error':'' }}">
                   <div class="input-group-prepend">
                      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                   </div>

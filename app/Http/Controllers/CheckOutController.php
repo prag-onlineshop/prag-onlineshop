@@ -71,8 +71,8 @@ class CheckOutController extends Controller
         Carts::createOrder();
         Cart::destroy();
 
-        //send email // uncomment the code below to send email to user
-        // Mail::to($name->email)->send(new CheckOutMail($name, $products, $total, $discount, $newTotal));
+        //send email // 
+        Mail::to($name->email)->send(new CheckOutMail($name, $products, $total, $discount, $newTotal));
         return view('user.thanksyou');
     }
 }

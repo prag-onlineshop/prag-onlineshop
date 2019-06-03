@@ -18,7 +18,6 @@ Orders List
             <th>Product Quantity</th>
             <th>Order Total</th>
             <th>Order Status</th>
-            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -39,13 +38,18 @@ Orders List
                 {{ $cp->qty }}<br/>
             @endforeach
             </td>
-            <td>{{ $order->total }}</td>
+            <td>
+            @foreach($order->carts_product as $cp)
+                {{ $cp->total }}<br/>
+            @endforeach
+            </td>
+
             <td>{{ $order->status }}</td>
-            <td><a href="{{ url('admin/ordersid/' . $order->id) }}">View</a></td>
         </tr>
         @endforeach
         </tbody>
     </table>
+    <a href="{{ url('admin/orders') }}" class="btn btn-primary">Back</a>
 </div>
 
 @endsection
