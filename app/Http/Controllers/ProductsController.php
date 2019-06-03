@@ -116,7 +116,7 @@ class ProductsController extends Controller
         $cart_products = CartsProduct::groupBy('product_id')->selectRaw('sum(qty) as sum, product_id')->orderBy('sum','desc')->get();
         $products = Product::with('category','brand')->where('quantity', '!=', 0)->latest()->paginate(8);
         return view('user.content', compact('products','product_list','cart_products'));
-    }
+    } 
     // category filter for product
     public function showCates($cat)
     {   

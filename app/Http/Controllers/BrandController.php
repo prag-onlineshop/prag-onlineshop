@@ -3,7 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Product;
+use App\Category;
 use App\Brand;
+use Intervention\Image\Facades\Image;
+use DataTables;
+use Validator;
+
 
 class BrandController extends Controller
 {

@@ -27133,8 +27133,8 @@ textarea {
 #headerWrap .homelink {
   background: #103c42;
   height: 1.5rem;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 #headerWrap .homelink ul li a {
