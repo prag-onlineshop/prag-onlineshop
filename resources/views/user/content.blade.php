@@ -56,6 +56,9 @@
                                  <a href="#">{{$pop->name}}</a>
                                  <p>In-stock: {{$pop->quantity}}</p>
                                  <p>qty sold:{{$prod->sum}}</p>
+                                 <a href="{{url('cart/addItem',$pop->id)}}"
+                                    class="btn btn-primary btn-sm float-right">Add
+                                    to Cart</a>
                               </h6>
                            </figcaption>
                         </figure>
@@ -72,6 +75,23 @@
                                  <a href="#">{{$pop->name}}</a>
                                  <p>In-stock: {{$pop->quantity}}</p>
                                  <p>qty sold:{{$prod->sum}}</p>
+                                 @if($cartItems->isEmpty())
+                                 <a href="{{url('cart/addItem',$pop->id)}}"
+                                    class="btn btn-primary btn-sm float-right">Add
+                                    to Cart</a>
+                                 @else
+                                 @php ($carts = [])
+                                 @foreach($cartItems as $cartItem)
+                                 @php ($carts[] = $cartItem->id)
+                                 @endforeach
+                                 @if(in_array($pop->id, $carts))
+                                 <i class="float-right">Added to cart</i>
+                                 @else
+                                 <a href="{{url('cart/addItem',$pop->id)}}"
+                                    class="btn btn-primary btn-sm float-right">Add
+                                    to Cart</a>
+                                 @endif
+                                 @endif
                               </h6>
                            </figcaption>
                         </figure>
@@ -108,51 +128,64 @@
    <!----------------------------- END MOST POPULAR ITEMS ------------------------------->
 
    <!----------------------------- MOST RECENT ITEMS ------------------------------->
-   <div class="row">
-      <div class="col-10 mx-auto mt-3">
-         <h3>Most Recent:</h3>
-         <hr>
-         <div class="row">
-            @forelse($products as $product)
-            <div class="col-md-4 col-lg-3 col-xl-3  col-sm-5 justify-content-sm-center">
-               <figure class=" card card-product">
-                  <div class="img-wrap">
 
-                     @if($product->image == '../imgProduct/default_img.jpg')
-                     <img src="{{ url('imgProduct', $product->image) }}">
+
+
+   <!--end here // -->
+   <div class="container mt-3">
+      <h3>Most Recent:</h3>
+      <hr>
+      <div class="row">
+         @forelse($products as $product)
+         <div class="col-md-4 col-lg-3 col-xl-3  col-sm-5 justify-content-sm-center">
+            <figure class="card card-product ">
+               <div class="img-wrap">
+
+
+                  @if($product->image == '../imgProduct/default_img.jpg')
+                  <img src="{{ url('imgProduct', $product->image) }}">
+                  @else
+                  <img src="{{ url('storage/', $product->image) }}">
+                  @endif
+
+                  <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
+                     <i class="fa fa-search-plus"></i> Quick view
+                  </a>
+               </div>
+               <figcaption class="info-wrap">
+                  <h4 style="color:blue;">{{ $product->name }} </h4>
+                  <p>In-stock: {{$product->quantity}}</p>
+                  <div class="action-wrap">
+                     @if($cartItems->isEmpty())
+                     <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
+                        Cart</a>
                      @else
-                     <img src="{{ url('storage/', $product->image) }}">
+                     @php ($carts = [])
+                     @foreach($cartItems as $cartItem)
+                     @php ($carts[] = $cartItem->id)
+                     @endforeach
+                     @if(false !== $key = array_search($product->id, $carts))
+                     <i class="float-right">Added to cart</i>
+                     @else
+                     <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
+                        Cart</a>
                      @endif
-
-                     <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
-                        <i class="fa fa-search-plus"></i> Quick view
-                     </a>
-                  </div>
-                  <figcaption class="info-wrap">
-                     <a href="#" class="title h5"
-                        style="white-space: nowrap; width: 200px; overflow: hidden; text-overflow: ellipsis;">{{ $product->name }}
-                     </a>
-                     <p class="h6">In-stock: {{$product->quantity}}</p>
-                     <div class="action-wrap">
-                        <a href="{{url('cart/addItem',$product->id)}}" class="btn-sm btn-primary  float-right">Cart</a>
-                        <div class="price-wrap h6">
-                           <span class="price-new">₱{{ $product->price }}</span>
-                        </div>
-                        <!-- action-wrap -->
-                  </figcaption>
-               </figure>
-               <!-- card // -->
-            </div>
-            <!-- col // -->
-            @empty
-            <h3>No Products</h3>
-            @endforelse
+                     @endif
+                     <div class="price-wrap h5">
+                        <span class="price-new">₱{{ $product->price }}</span>
+                     </div>
+                     <!-- action-wrap -->
+               </figcaption>
+            </figure>
+            <!-- card // -->
          </div>
          <!-- row.// -->
-         <div>{{$products->links()}}</div>
-      </div>
 
-      {{-- container --}}
+         @empty
+         <h3>No Products</h3>
+         @endforelse
+      </div>
+      <div>{{$products->links()}}</div>
    </div>
    </div>
    {{-- Overlay Content End --}}

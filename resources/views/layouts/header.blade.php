@@ -1,7 +1,7 @@
 <header class="">
-    <div class="" id="headerWrap">
+    <div class="" id="headerWrap" class="">
         <div class="row">
-            <div class="col-10 mx-auto">
+            <div class="col-10 mx-auto ">
                 <div class="header-form ">
                     <div class="homelink">
                         <ul class="float-right">

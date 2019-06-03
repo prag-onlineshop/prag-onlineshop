@@ -11,8 +11,8 @@
 @import "~bootstrap/scss/bootstrap";
 
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 html,
@@ -39,8 +39,7 @@ textarea {
 }
 
 .carousel-control-prev,
-.carousel-control-next {
-}
+.carousel-control-next {}
 
 .carousel-item {
     height: calc(100vh - 120px);
@@ -76,8 +75,7 @@ textarea {
     width: 600px !important;
 }
 
-.card-img-top {
-}
+.card-img-top {}
 
 #headerWrap {
     background: $secondary-color-navyBlue;
@@ -94,6 +92,7 @@ textarea {
         font-size: 0.8rem !important;
         font-weight: 300;
         letter-spacing: 1px;
+
         ul li a {
             color: #d8d8d8;
         }
@@ -106,6 +105,7 @@ textarea {
             cursor: pointer;
             height: 100%;
         }
+
         ul {
             margin: 0;
         }
@@ -219,8 +219,8 @@ footer {
         transition: 0.5s;
     }
 
-    .inputBox input:focus ~ label,
-    .inputBox input:valid ~ label {
+    .inputBox input:focus~label,
+    .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #b6b6b6;
@@ -285,8 +285,8 @@ footer {
         transition: 0.5s;
     }
 
-    .inputBox input:focus ~ label,
-    .inputBox input:valid ~ label {
+    .inputBox input:focus~label,
+    .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #ffbe00;
@@ -349,8 +349,8 @@ footer {
         transition: 0.5s;
     }
 
-    .inputBox input:focus ~ label,
-    .inputBox input:valid ~ label {
+    .inputBox input:focus~label,
+    .inputBox input:valid~label {
         top: -10px;
         left: 0;
         color: #ffbe00;
