@@ -18396,27 +18396,13 @@ button.bg-dark:focus {
         align-items: center !important;
     }
 
-<<<<<<< HEAD
-.table-danger,
-.table-danger > th,
-.table-danger > td {
-}
-=======
-    .align-items-lg-baseline {
-        align-items: baseline !important;
     }
-
-    .align-items-lg-stretch {
-        align-items: stretch !important;
-    }
->>>>>>> 7bf7245bf7126cfd6d4fed22431921f36ce313c7
 
     .align-content-lg-start {
         align-content: flex-start !important;
     }
 
     .align-content-lg-end {
-        align-content: flex-end !important;
     }
 
     .align-content-lg-center {
@@ -27455,14 +27441,6 @@ footer {
 }
 
 #resetPasswordBox .loginLink {
-<<<<<<< HEAD
-  padding: 35px 0px 0;
-}
-=======
-    padding: 35px 0px 0;
-}
-
-.dropdown-header {
     display: none;
 }
 
