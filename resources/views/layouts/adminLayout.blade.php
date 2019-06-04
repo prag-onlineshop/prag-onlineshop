@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Laravel DataTable - Tuts Make</title>
+  <title>Admin</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> </script>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
   <!-- for charts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
@@ -61,8 +62,9 @@
 
 
   <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
-  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill">
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"> </script>
+
+
 
 </head>
 
@@ -71,11 +73,11 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-2 m-0 p-0 sideBarBg text-dark vh-100">
+      <div class="col-md-3 col-lg-2 col-sm-4 m-0 p-0 mh-100 sideBarBg text-dark ">
         @include('layouts.sidebarAdmin')
       </div>
 
-      <div class="col-10 m-0 p-0 bg-overlay vb-100">
+      <div class="col-md-9 col-lg-10 col-sm-8 m-0 p-0 ">
         @yield('categories')
         @yield('products')
         @yield('brands')

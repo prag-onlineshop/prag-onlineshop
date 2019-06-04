@@ -14,19 +14,40 @@ class CartController extends Controller
     public function index()
     {
         $cartItems = Cart::content();
-        $products = Product::with('brand', 'category')->get(); 
-        return view('cart.index', compact('cartItems', 'products'));  
+        $products = Product::with('brand', 'category')->get();
+
+        $user = Auth::user();
+
+        return view('cart.index')->with([
+            'amount' => $this->getNumbers()->get('discount'),
+            'newSubtotal' => $this->getNumbers()->get('newSubtotal'),
+            'newTotal' => $this->getNumbers()->get('newTotal'),
+            'cartItems' => $cartItems
+        ])->with(compact('user', 'cartItems', 'products'));
+        // return view('cart.index', compact('cartItems', 'products'));
+    }
+
+    private function getNumbers()
+    {
+        $discount = session()->get('coupon')['discount'] ?? 0;
+        $newSubtotal = (Cart::subtotal(2,'.','') - $discount);
+        $newTotal = $newSubtotal * (1);
+
+        return collect([
+            'discount' => $discount,
+            'newSubtotal' => $newSubtotal,
+            'newTotal' => $newTotal,
+        ]);
     }
 
     public function addItem($id)
     {
         if(Auth::check()){
             $product = Product::findOrFail($id);
-            // 1 add one time only 1 to Cart
             Cart::add($id, $product->name, 1, $product->price,['img'=>$product->image,'quantity'=>$product->quantity]);
-            $product->quantity -= 1; 
+            $product->quantity -= 1;
             $product->save();
-            return back()->with('status', 'added 1 item to your cart');
+            return back()->with('status', 'added '. $product->name .' to your cart');
         } else {
             return redirect('userLogin');
         }
@@ -34,21 +55,38 @@ class CartController extends Controller
 
     public function update(Request $request, $id)
     {
-        $qty = $request->qty;
         $proID = $request->proId;
         $product = Product::findOrFail($proID);
-        $quantity = $product->quantity;
+        
+        $new_qty = $request->new_qty;
+        $old_qty = $request->old_qty;
+        $prod_qty = $product->quantity;
+        $quantity = $prod_qty + $old_qty;
+        $product->quantity = $quantity;
+        
 
-        if($qty<$quantity) {
-            Cart::update($id, $request->qty);
+        if($new_qty <= $product->quantity) {
+            $prod_qty = $product->quantity;
+            $product->quantity = $prod_qty - $new_qty;
+            $product->save();
+
+            Cart::update($id, $new_qty);          
             return back()->with('status', 'Cart is updated');
         } else {
             return back()->with('error', 'Please check your quantity');
         }
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        $prod_id = $request->prod_id;
+        $product = Product::findOrFail($prod_id);
+        $qty = $request->qty;
+        $qty_prod = $product->quantity;
+        $back_qty = $qty + $qty_prod;
+        $product->quantity = $back_qty;
+        $product->save();
+
         Cart::remove($id);
         return back();
     }
@@ -56,6 +94,7 @@ class CartController extends Controller
     public function detailPro($id)
     {
         $products = Product::with('category','brand')->where('id', $id)->get();
-        return view('user.productDetail', compact('products'));
+        $cartItems = Cart::content();
+        return view('user.productDetail', compact( 'cartItems','products'));
     }   
 }

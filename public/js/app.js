@@ -1688,6 +1688,224 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CouponCrud.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CouponCrud.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      editmode: false,
+      coupons: {},
+      form: new Form({
+        id: '',
+        name: '',
+        code: '',
+        type: '',
+        amount: ''
+      })
+    };
+  },
+  methods: {
+    getResults: function getResults() {
+      var _this = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('coupon?page=' + page).then(function (response) {
+        _this.coupons = response.data;
+      });
+    },
+    editModal: function editModal(coupon) {
+      this.editmode = true;
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(coupon);
+    },
+    newModal: function newModal() {
+      this.editmode = false;
+      this.form.reset();
+      $('#addNew').modal('show');
+    },
+    deleteUser: function deleteUser(id) {
+      var _this2 = this;
+
+      swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        //Send request to the server
+        if (result.value) {
+          _this2.form["delete"]('coupon/' + id).then(function () {
+            swal('Deleted!', 'Your file has been deleted.', 'success');
+            Fire.$emit('AfterCreate');
+          })["catch"](function () {
+            swal("Failed!", "Then was something wrong.", "warning");
+          });
+        }
+      });
+    },
+    loadUsers: function loadUsers() {
+      var _this3 = this;
+
+      axios.get("coupon").then(function (_ref) {
+        var data = _ref.data;
+        return _this3.coupons = data;
+      });
+    },
+    createUser: function createUser() {
+      var _this4 = this;
+
+      this.$Progress.start();
+      this.form.post('add-coupon').then(function () {
+        Fire.$emit('AfterCreate');
+        $('#addNew').modal('hide');
+        toast({
+          type: 'success',
+          title: 'User Created in successfully'
+        });
+
+        _this4.$Progress.finish();
+      })["catch"](function () {});
+    },
+    updateUser: function updateUser() {
+      var _this5 = this;
+
+      this.$Progress.start(); // console.log('Editing data');
+
+      this.form.put('coupon/' + this.form.id).then(function () {
+        //success
+        $('#addNew').modal('hide');
+        swal('Updated!', 'Information has been updated.', 'success');
+
+        _this5.$Progress.finish();
+
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        _this5.$Progress.fail();
+      });
+    }
+  },
+  created: function created() {
+    var _this6 = this;
+
+    this.loadUsers();
+    Fire.$on('AfterCreate', function () {
+      _this6.loadUsers();
+    }); // setInterval(() => this.loadUsers(), 3000);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -36995,6 +37213,463 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CouponCrud.vue?vue&type=template&id=247a4f2f&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CouponCrud.vue?vue&type=template&id=247a4f2f& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c("h2", [_vm._v("Coupon List")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "m-2", attrs: { align: "right" } }, [
+          _c(
+            "a",
+            { staticClass: "btn btn-success", on: { click: _vm.newModal } },
+            [_vm._v("Create New Coupon")]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "table",
+          {
+            staticClass: "table table-bordered",
+            attrs: { id: "laravel_datatable" }
+          },
+          [
+            _c(
+              "thead",
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._l(_vm.coupons.data, function(coupon, couponNum) {
+                  return _c("tr", { key: coupon.id }, [
+                    _c("td", [_vm._v(_vm._s(couponNum + 1))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm._f("upText")(coupon.name)))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(coupon.code))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(coupon.type))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(coupon.amount))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("myDate")(coupon.created_at)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("myDate")(coupon.updated_at)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              return _vm.editModal(coupon)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-edit blue" })]
+                      ),
+                      _vm._v(
+                        "\r\n                    /\r\n                    "
+                      ),
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteUser(coupon.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-trash red" })]
+                      )
+                    ])
+                  ])
+                })
+              ],
+              2
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("pagination", {
+          attrs: { data: _vm.coupons },
+          on: { "pagination-change-page": _vm.getResults }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addNew",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.editmode,
+                        expression: "!editmode"
+                      }
+                    ],
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLabel" }
+                  },
+                  [_vm._v("Add New")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h5",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.editmode,
+                        expression: "editmode"
+                      }
+                    ],
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLabel" }
+                  },
+                  [_vm._v("Update User's Info")]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      _vm.editmode ? _vm.updateUser() : _vm.createUser()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.name,
+                              expression: "form.name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: { "is-invalid": _vm.form.errors.has("name") },
+                          attrs: {
+                            type: "text",
+                            name: "name",
+                            placeholder: "Name"
+                          },
+                          domProps: { value: _vm.form.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "name", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "name" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.code,
+                              expression: "form.code"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: { "is-invalid": _vm.form.errors.has("code") },
+                          attrs: {
+                            type: "text",
+                            name: "code",
+                            placeholder: "Code"
+                          },
+                          domProps: { value: _vm.form.code },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "code", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "code" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.type,
+                                expression: "form.type"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("type")
+                            },
+                            attrs: { type: "text" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "type",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "" } }, [
+                              _vm._v("Select Types of Payment")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "flat" } }, [
+                              _vm._v("Flat")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "percent" } }, [
+                              _vm._v("Percent")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "type" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.amount,
+                              expression: "form.amount"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("amount")
+                          },
+                          attrs: {
+                            type: "text",
+                            name: " ",
+                            placeholder: "Amount"
+                          },
+                          domProps: { value: _vm.form.amount },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "amount", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "amount" }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.editmode,
+                            expression: "editmode"
+                          }
+                        ],
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Update")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.editmode,
+                            expression: "!editmode"
+                          }
+                        ],
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Create")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", { staticClass: "text-white bg-primary" }, [
+      _c("th", { attrs: { scope: "col" } }),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Code")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Type")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Amount")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Time Created")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Time Updated")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Actions")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -49182,9 +49857,15 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'moment'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'vform'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'sweetalert2'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-progressbar'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49193,6 +49874,34 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+
+
+window.swal = !(function webpackMissingModule() { var e = new Error("Cannot find module 'sweetalert2'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+var toast = !(function webpackMissingModule() { var e = new Error("Cannot find module 'sweetalert2'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
+window.toast = toast;
+window.Form = !(function webpackMissingModule() { var e = new Error("Cannot find module 'vform'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Vue.component(!(function webpackMissingModule() { var e = new Error("Cannot find module 'vform'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).name, !(function webpackMissingModule() { var e = new Error("Cannot find module 'vform'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+Vue.component(!(function webpackMissingModule() { var e = new Error("Cannot find module 'vform'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).name, !(function webpackMissingModule() { var e = new Error("Cannot find module 'vform'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+Vue.use(!(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-progressbar'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '3px'
+});
+Vue.filter('upText', function (text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+});
+Vue.filter('myDate', function (created) {
+  return !(function webpackMissingModule() { var e = new Error("Cannot find module 'moment'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(created).format('MMMM Do YYYY');
+});
+Vue.component('pagination', __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'laravel-vue-pagination'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())));
+window.Fire = new Vue();
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -49204,6 +49913,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component('coupon-crud', __webpack_require__(/*! ./components/CouponCrud.vue */ "./resources/js/components/CouponCrud.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -49271,6 +49981,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/CouponCrud.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/CouponCrud.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CouponCrud_vue_vue_type_template_id_247a4f2f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CouponCrud.vue?vue&type=template&id=247a4f2f& */ "./resources/js/components/CouponCrud.vue?vue&type=template&id=247a4f2f&");
+/* harmony import */ var _CouponCrud_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CouponCrud.vue?vue&type=script&lang=js& */ "./resources/js/components/CouponCrud.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CouponCrud_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CouponCrud_vue_vue_type_template_id_247a4f2f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CouponCrud_vue_vue_type_template_id_247a4f2f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CouponCrud.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CouponCrud.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/CouponCrud.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CouponCrud_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CouponCrud.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CouponCrud.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CouponCrud_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CouponCrud.vue?vue&type=template&id=247a4f2f&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/CouponCrud.vue?vue&type=template&id=247a4f2f& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CouponCrud_vue_vue_type_template_id_247a4f2f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CouponCrud.vue?vue&type=template&id=247a4f2f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CouponCrud.vue?vue&type=template&id=247a4f2f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CouponCrud_vue_vue_type_template_id_247a4f2f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CouponCrud_vue_vue_type_template_id_247a4f2f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -49350,7 +50129,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/lib/loader.js):\n\r\n@import \"~@fortawesome/fontawesome-free/scss/fontawesome.scss\";\r\n       ^\r\n      Can't find stylesheet to import.\n   ╷\n14 │ @import \"~@fortawesome/fontawesome-free/scss/fontawesome.scss\";\r\n   │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   ╵\n  stdin 14:9  root stylesheet\r\n      in D:\\Myproject\\onlineshop\\resources\\sass\\app.scss (line 14, column 9)\n    at runLoaders (D:\\Myproject\\onlineshop\\node_modules\\webpack\\lib\\NormalModule.js:301:20)\n    at D:\\Myproject\\onlineshop\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at D:\\Myproject\\onlineshop\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (D:\\Myproject\\onlineshop\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at render (D:\\Myproject\\onlineshop\\node_modules\\sass-loader\\lib\\loader.js:52:13)\n    at Function.$2 (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:24443:48)\n    at wP.$2 (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:15367:15)\n    at uU.vt (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:9079:42)\n    at uU.vs (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:9081:32)\n    at iB.uF (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8429:46)\n    at us.$0 (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8571:7)\n    at Object.eH (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:1512:80)\n    at ad.ba (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8492:3)\n    at iO.ba (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8422:25)\n    at iO.cv (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8409:6)\n    at py.cv (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8199:35)\n    at Object.m (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:1383:19)\n    at D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:5078:51\n    at xf.a (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:1394:71)\n    at xf.$2 (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8214:23)\n    at vS.$2 (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8209:25)\n    at uU.vt (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:9079:42)\n    at uU.vs (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:9081:32)\n    at iB.uF (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8429:46)\n    at us.$0 (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8571:7)\n    at Object.eH (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:1512:80)\n    at ad.ba (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8492:3)\n    at iO.ba (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8422:25)\n    at iO.cv (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8409:6)\n    at Object.eval (eval at CM (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:648:15), <anonymous>:3:38)\n    at uU.vt (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:9079:42)\n    at uU.vs (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:9081:32)\n    at iB.uF (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8429:46)\n    at us.$0 (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8571:7)\n    at Object.eH (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:1512:80)\n    at ad.ba (D:\\Myproject\\onlineshop\\node_modules\\sass\\sass.dart.js:8492:3)");
 
 /***/ }),
 

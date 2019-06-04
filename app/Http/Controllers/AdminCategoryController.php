@@ -94,10 +94,12 @@ class AdminCategoryController extends Controller
       }
   
       // Delete Data 
-      public function destroy($id)
+      public function destroy($id, Category $category)
       {
+     
           $data = Category::findOrFail($id);
           $data->delete();
+        
           return response()->json([
               'success' => 'Record has been deleted successfully!'
           ]); 
@@ -152,10 +154,6 @@ class AdminCategoryController extends Controller
             $new_name = $image->getClientOriginalName();
             $image->move(public_path('storage'), $new_name);
           }
-        // Get Image name and Upload in DB using Image Intervention
-        // $image_name = $image->getClientOriginalName();
-        // $image->move(public_path('storage'), $image_name);
-
         $form_data = array(
             'name'       =>   $request->name,
             'url'        =>   $request->url,
@@ -183,4 +181,6 @@ class AdminCategoryController extends Controller
               unlink($image_path);
           }
       }
+
+      
 }

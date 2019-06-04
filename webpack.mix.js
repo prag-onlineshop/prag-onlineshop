@@ -27,3 +27,5 @@ mix.copy('node_modules/admin-lte/plugins/jquery/jquery.min.js', 'public/js');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.disableNotifications();

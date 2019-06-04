@@ -111,6 +111,19 @@ class AdminController extends Controller
         }
     }
 
+    public function orders()
+    {
+        //$orders = Carts::with('users', 'carts_product.products')->orderBy('id','desc')->get();
+        $orders = Carts::with('users', 'carts_product.products')->orderBy('id','desc')->get();
+    
+        return view('admin.order.ordersIndex', compact('orders', 'cart_products'));
+    }
+
+    public function ordersId($id)
+    {
+        $orders = Carts::with('users', 'carts_product.products')->where('id', $id)->get();
+        return view('admin.order.ordersId', compact('orders'));
+    }
 }
 
 
