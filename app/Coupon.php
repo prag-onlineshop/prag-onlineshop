@@ -27,14 +27,20 @@ class Coupon extends Model
 
     public function discount($total)
     {
-        if($this->type = 'flat'){
+        if($this->type == 'percent'){
+            $amount = $this->amount;
+            $total_t = str_replace(',','',$total);
+            $comp_amt = $amount/100 * $total_t;
+            $amt = number_format($comp_amt, 2, '.', ',');
+            $this->amount = $amt;
             return $this->amount;
-        } elseif ($this->type = 'percent') {
-            return ($this->amount / 100) * $total;
+
+        }elseif($this->type == 'flat'){
+            $amount = $this->amount;
+            $this->amount = number_format($amount, 2, '.', ',');
+            return $this->amount;
         } else {
             return 0;
         }
-        
-        //number_format($amount, 2 , '.', ',' / 100)
     }
 }

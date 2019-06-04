@@ -4,6 +4,7 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
+            @if(!$search)
             <div class="col-md-3">
                 <div class="box">
                     <h5 class="text-muted">Related Products:</h5>
@@ -27,11 +28,12 @@
                     @endforeach
                 </div>
             </div>
+            @endif
             <div class="col-md-9">
                 <div class="container bg-light">
                     <h4>
                         Search for item:
-                        {{$search}}
+                        <i>{{$search}}</i>
                     </h4>
                     <br>
                     <div class="row">
@@ -39,7 +41,11 @@
                         <div class="col-md-3">
                             <figure class="card card-product">
                                 <div class="img-wrap  p-2">
-                                    <img src="{{ url('img', $product->image) }}">
+                                @if($product->image == '../imgProduct/default_img.jpg')
+                                    <img src="{{ url('imgProduct', $product->image) }}">
+                                @else
+                                    <img src="{{ url('storage/', $product->image) }}">
+                                @endif
                                     <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
                                         <i class="fa fa-search-plus"></i> Quick view
                                     </a>
@@ -51,7 +57,8 @@
                                     </div>
                                     <div class="action-wrap">
                                         @if($cartItems->isEmpty())
-                                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                        <a href="{{url('cart/addItem',$product->id)}}"
+                                            class="btn btn-primary btn-sm float-right">Add
                                             to Cart</a>
                                         @else
                                         @php ($carts = [])
@@ -61,7 +68,8 @@
                                         @if(in_array($product->id, $carts))
                                         <i class="float-right text-muted">Added to cart</i>
                                         @else
-                                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                        <a href="{{url('cart/addItem',$product->id)}}"
+                                            class="btn btn-primary btn-sm float-right">Add
                                             to Cart</a>
                                         @endif
                                         @endif
@@ -73,7 +81,9 @@
                         </div>
                         <!-- col -->
                         @empty
-                        <h3>No Products for @foreach($products as $product) {{$product->name}} @endforeach</h3>
+                        <h4 class="text-center">
+                        No <i>{{$search}}</i> found
+                        </h4>
                         @endforelse
                     </div>
                     <!-- row -->
@@ -81,8 +91,10 @@
                 <!-- container -->
             </div>
         </div>
+        @if(!$products)
         <hr>
         <!--  -->
+
         @php ($relBrands = [])
         @foreach($products as $product)
         @php ($relBrands[] = $product->brand_id)
@@ -94,13 +106,14 @@
         @php ($relProds[] = $brand->id)
         @endif
         @endforeach
-        
-        
+
+
+
         <div class="container">
             <h3>Other brand products:</h3>
             <br>
             @foreach($brands as $brand)
-            @if(in_array($brand->id, $relBrands))
+            @if(in_array($brand->id, $brands_id))
             <h4><strong>{{$brand->name}}</strong></h4>
             <div class="row box bg-light">
                 <div class="col-md-10">
@@ -110,7 +123,11 @@
                         <div class="item-slide p-2">
                             <figure class="card card-product">
                                 <div class="img-wrap">
-                                    <img src="{{asset('storage/'.$product->image)}}">
+                                @if($product->image == '../imgProduct/default_img.jpg')
+                                    <img src="{{ url('imgProduct', $product->image) }}">
+                                @else
+                                    <img src="{{ url('storage/', $product->image) }}">
+                                @endif
                                     <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
                                         <i class="fa fa-search-plus"></i> Quick view
                                     </a>
@@ -120,7 +137,8 @@
                                         <h5 style="color:blue;">{{ $product->name }} </h5>
                                         <p>In-stock: {{$product->quantity}}</p>
                                         @if($cartItems->isEmpty())
-                                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                        <a href="{{url('cart/addItem',$product->id)}}"
+                                            class="btn btn-primary btn-sm float-right">Add
                                             to Cart</a>
                                         @else
                                         @php ($carts = [])
@@ -130,7 +148,8 @@
                                         @if(in_array($product->id, $carts))
                                         <i class="float-right">Added to cart</i>
                                         @else
-                                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                        <a href="{{url('cart/addItem',$product->id)}}"
+                                            class="btn btn-primary btn-sm float-right">Add
                                             to Cart</a>
                                         @endif
                                         @endif
@@ -146,7 +165,7 @@
             @endif
             @endforeach
         </div>
-        <!--  -->
+        @endif
     </div>
 </div>
 

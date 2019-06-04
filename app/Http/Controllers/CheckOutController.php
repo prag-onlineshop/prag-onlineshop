@@ -20,12 +20,6 @@ class CheckOutController extends Controller
         $user = Auth::user();
         $userAdd = User::get();
 
-        // return view('cart.checkout', compact('cartItems'));
-
-        // $discount = session()->get('coupon')['discount'] ?? 0;
-        // $newSubtotal = (Cart::subtotal() - $discount);
-        // $newTotal = $newSubtotal * (1);
-
         return view('cart.checkout', compact('cartItems'))
         ->with(['amount' => $this->getNumbers()->get('discount'),
             'newSubtotal' => $this->getNumbers()->get('newSubtotal'),
@@ -37,7 +31,9 @@ class CheckOutController extends Controller
     private function getNumbers()
     {
         $discount = session()->get('coupon')['discount'] ?? 0;
-        $newSubtotal = (Cart::subtotal(2,'.','') - $discount);
+        // $newSubtotal = (Cart::subtotal(2,'.','') - $discount);
+        $dist = str_replace(',','',$discount);
+        $newSubtotal = (Cart::subtotal(2,'.','') - $dist);
         $newTotal = $newSubtotal * (1);
 
         return collect([
