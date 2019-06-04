@@ -74,11 +74,11 @@ Route::group(['middleware'=>'auth'], function(){
     Route::delete('/coupon', 'CouponsController@destroy')->name('coupons.destroy'); 
 });
 
-<<<<<<< HEAD
+
     //Route for dashboard
-    Route::get('dashboard', 'DashboardController@index');
-=======
->>>>>>> f756058c2bb26d4caa385e50dc1113809234dc2e
+    Route::get('admin/dashboard', 'DashboardController@index');
+
+
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
  
@@ -91,11 +91,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::delete('Coupons/{coupon}', 'CouponController@destroy')->name('coupon.delete');
     Route::patch('Coupons/{coupon}', 'CouponController@update')->name('coupon.update');
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> f756058c2bb26d4caa385e50dc1113809234dc2e
+
+
 });
 
 Route::group(['middleware'=>'auth'], function(){

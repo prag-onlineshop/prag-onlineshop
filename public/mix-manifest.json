@@ -1,4 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/adminlte.min.css": "/css/adminlte.min.css",
+    "/css/bootstrap3-wysihtml5.min.css": "/css/bootstrap3-wysihtml5.min.css",
+    "/css/font-awesome.min.css": "/css/font-awesome.min.css",
+    "/css/blue.css": "/css/blue.css",
+    "/js/bootstrap.bundle.min.js": "/js/bootstrap.bundle.min.js",
+    "/js/jquery.min.js": "/js/jquery.min.js"
 }
