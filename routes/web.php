@@ -82,7 +82,7 @@ Route::group(['middleware'=>'auth'], function(){
 
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
- 
+
 
    //Route for coupon
     Route::get('Coupons', 'CouponController@index');
