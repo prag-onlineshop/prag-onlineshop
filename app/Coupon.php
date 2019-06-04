@@ -34,6 +34,7 @@ class Coupon extends Model
         } else {
             return 0;
         }
-
+        
+        //number_format($amount, 2 , '.', ',' / 100)
     }
 }

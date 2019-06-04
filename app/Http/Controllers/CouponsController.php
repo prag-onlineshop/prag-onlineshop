@@ -24,6 +24,7 @@ class CouponsController extends Controller
 
         session()->put('coupon', [
             'name' => $coupon->code,
+            'type' => $coupon->type,
             'discount' => $coupon->discount(Cart::subtotal()),
         ]);
 
@@ -39,6 +40,6 @@ class CouponsController extends Controller
     {
         session()->forget('coupon');
 
-        return redirect('checkout')->with('success_message', 'Coupon has been removed.');
+        return redirect('cart')->with('success_message', 'Coupon has been removed.');
     }
 }
