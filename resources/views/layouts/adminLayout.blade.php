@@ -34,7 +34,7 @@
 <body>
 
 
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <div class="row">
       <div class="col-md-3 col-lg-2 col-sm-4 m-0 p-0 mh-100 sideBarBg text-dark ">
         @include('layouts.sidebarAdmin')
@@ -58,9 +58,6 @@
   </script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-  {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
-  </script>
-  <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script> --}}
 
 
 </body>

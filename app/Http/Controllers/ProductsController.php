@@ -117,7 +117,7 @@ class ProductsController extends Controller
         ->get();
         $cartItems = Cart::content();
         $cart_products = CartsProduct::groupBy('product_id')->selectRaw('sum(qty) as sum, product_id')->orderBy('sum','desc')->get();
-        $products = Product::with('category','brand')->where('quantity', '!=', 0)->latest()->paginate(8);
+        $products = Product::with('category','brand')->where('quantity', '!=', 0)->latest()->paginate(16);
         return view('user.content', compact('cartItems','products','product_list','cart_products'));
     }
     // category filter for product
@@ -154,6 +154,6 @@ class ProductsController extends Controller
         ->where('quantity', '!=', 0)
         ->paginate(10);
         $cartItems = Cart::content();
-        return view('user.ProductSearch',['products' => $products], compact('cartItems'));
+        return view('user.productSearch',['products' => $products], compact('cartItems'));
     }
 }
