@@ -11,15 +11,16 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.copy('node_modules/admin-lte/dist/css/adminlte.min.css', 'public/css');
-mix.copy('node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css', 'public/css');
-mix.copy('node_modules/font-awesome/css/font-awesome.min.css', 'public/css');
+// mix.copy('node_modules/font-awesome/css/font-awesome.min.css', 'public/css');
+// mix.copy('node_modules/admin-lte/dist/css/adminlte.min.css', 'public/css');
+// mix.copy('node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css', 'public/css');
 mix.copy('node_modules/admin-lte/plugins/iCheck/flat/blue.css', 'public/css');
+// mix.copy('node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css', 'public/css');
+
+// mix.copy('node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js', 'public/js');
+//  mix.copy('node_modules/admin-lte/plugins/jquery/jquery.min.js', 'public/js');
 
 
-
-mix.copy('node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js', 'public/js');
-mix.copy('node_modules/admin-lte/plugins/jquery/jquery.min.js', 'public/js');
 
 
 
