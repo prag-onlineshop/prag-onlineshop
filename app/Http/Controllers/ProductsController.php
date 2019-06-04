@@ -153,7 +153,10 @@ class ProductsController extends Controller
         ->where('brand_id','!=','')
         ->where('quantity', '!=', 0)
         ->paginate(10);
+        $relProducts = Product::get();
+        $categories = Category::get();
+        $brands = Brand::get();
         $cartItems = Cart::content();
-        return view('user.ProductSearch',['products' => $products], compact('cartItems'));
+        return view('user.productSearch',['products' => $products], compact('search','relProducts','cartItems','brands','categories'));
     }
 }

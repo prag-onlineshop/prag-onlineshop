@@ -20,9 +20,9 @@ Route::get('admin/dashboard', function(){
 Route::get('admin/settings', function(){
     return view('admin.setting.settings');
 });
-Route::get('admin/reports', function(){
-    return view('admin.report.reports');
-});
+
+Route::get('admin/settings','SettingsController@index');
+
 Route::get('admin/orders', 'AdminController@orders');
 Route::get('admin/ordersid/{id}', 'AdminController@ordersId');
 

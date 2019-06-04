@@ -97,12 +97,7 @@
                             </span><strong>{{ Cart::subtotal() }}</strong></li>
                         <li class="d-flex justify-content-between">
                             @if (session()->has('coupon'))
-                            <span>Discount ({{ session()->get('coupon')['name'] }})</span>
-                            <form action="{{ route('coupons.destroy') }}" method="POST">
-                                @csrf
-                                {{ method_field('delete') }}
-                                <button type="submit">Remove</button>
-                            </form>
+                            <span>Discount ({{ session()->get('coupon')['name'] }}) </span>
                             @endif
                             @if (session()->has('coupon'))
                             -{{ $amount }}

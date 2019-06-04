@@ -37,6 +37,8 @@
       <div class="bg-overlay py-3 ">
          <!----------------------------- MOST POPULAR ITEMS ------------------------------->
          <div class="container">
+         <h3>Most Popular:</h3>
+         <hr>
             <div class="row">
                <div class="col-md-10">
                   <div class="multiple-items">
@@ -50,15 +52,30 @@
                            <span class="badge-new">BEST SELLER</span>
                            <div class="img-wrap">
                               <img src="{{asset('storage/'.$pop->image)}}">
+                              <a class="btn-overlay" href="{{ url('productDetail',$pop->id) }}">
+                                 <i class="fa fa-search-plus"></i> Quick view
+                              </a>
                            </div>
                            <figcaption class="info-wrap text-center">
                               <h6 class="title text-truncate">
-                                 <a href="#">{{$pop->name}}</a>
+                                 <h5 style="color:blue;">{{ $pop->name }} </h5>
                                  <p>In-stock: {{$pop->quantity}}</p>
                                  <p>qty sold:{{$prod->sum}}</p>
-                                 <a href="{{url('cart/addItem',$pop->id)}}"
-                                    class="btn btn-primary btn-sm float-right">Add
-                                    to Cart</a>
+                                 @if($cartItems->isEmpty())
+                                    <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
+												to Cart</a>
+                                 @else
+                                    @php ($carts = [])
+                                    @foreach($cartItems as $cartItem)
+                                       @php ($carts[] = $cartItem->id)
+                                    @endforeach
+                                       @if(in_array($pop->id, $carts))
+                                          <i class="float-right">Added to cart</i>
+                                       @else
+                                          <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                             to Cart</a>
+                                       @endif
+                                 @endif
                               </h6>
                            </figcaption>
                         </figure>
@@ -69,10 +86,13 @@
                         <figure class="card card-product">
                            <div class="img-wrap">
                               <img src="{{asset('storage/'.$pop->image)}}">
+                              <a class="btn-overlay" href="{{ url('productDetail',$pop->id) }}">
+                                 <i class="fa fa-search-plus"></i> Quick view
+                              </a>
                            </div>
                            <figcaption class="info-wrap text-center">
                               <h6 class="title text-truncate">
-                                 <a href="#">{{$pop->name}}</a>
+                                 <h5 style="color:blue;">{{ $pop->name }} </h5>
                                  <p>In-stock: {{$pop->quantity}}</p>
                                  <p>qty sold:{{$prod->sum}}</p>
                                  @if($cartItems->isEmpty())
@@ -80,17 +100,16 @@
                                     class="btn btn-primary btn-sm float-right">Add
                                     to Cart</a>
                                  @else
-                                 @php ($carts = [])
-                                 @foreach($cartItems as $cartItem)
-                                 @php ($carts[] = $cartItem->id)
-                                 @endforeach
-                                 @if(in_array($pop->id, $carts))
-                                 <i class="float-right">Added to cart</i>
-                                 @else
-                                 <a href="{{url('cart/addItem',$pop->id)}}"
-                                    class="btn btn-primary btn-sm float-right">Add
-                                    to Cart</a>
-                                 @endif
+                                    @php ($carts = [])
+                                    @foreach($cartItems as $cartItem)
+                                       @php ($carts[] = $cartItem->id)
+                                    @endforeach
+                                       @if(in_array($pop->id, $carts))
+                                          <i class="float-right">Added to cart</i>
+                                       @else
+                                          <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                             to Cart</a>
+                                       @endif
                                  @endif
                               </h6>
                            </figcaption>
@@ -103,12 +122,13 @@
                   </div>
                </div>
                <div class="col-md-2">
-                  <div class="box" style="height:300px; width:200px; overflow-y:auto">
-                     <p>Brands</p>
+                  <div class="box">
+                  <h5 class="text-center text-muted"><strong>Brands</strong></h5>
+                  <hr>
                      <?php $brands = DB::table('brands')->get(); 
                         $brand_products = DB::table('products')->where('brand_id','!=','')->groupBy('brand_id')->orderBy('id', 'desc')->get();
                      ?>
-                     <div>
+                     <div style="height:300px; width:200px; overflow-y:auto">
                         @foreach($brands as $brand)
                         @foreach($brand_products as $product)
                         @if($brand->id == $product->brand_id)
@@ -140,14 +160,11 @@
          <div class="col-md-4 col-lg-3 col-xl-3  col-sm-5 justify-content-sm-center">
             <figure class="card card-product ">
                <div class="img-wrap">
-
-
                   @if($product->image == '../imgProduct/default_img.jpg')
                   <img src="{{ url('imgProduct', $product->image) }}">
                   @else
                   <img src="{{ url('storage/', $product->image) }}">
                   @endif
-
                   <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
                      <i class="fa fa-search-plus"></i> Quick view
                   </a>
@@ -160,16 +177,16 @@
                      <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
                         Cart</a>
                      @else
-                     @php ($carts = [])
-                     @foreach($cartItems as $cartItem)
-                     @php ($carts[] = $cartItem->id)
-                     @endforeach
-                     @if(false !== $key = array_search($product->id, $carts))
-                     <i class="float-right">Added to cart</i>
-                     @else
-                     <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
-                        Cart</a>
-                     @endif
+                        @php ($carts = [])
+                        @foreach($cartItems as $cartItem)
+                        @php ($carts[] = $cartItem->id)
+                        @endforeach
+                        @if(in_array($product->id, $carts))
+                        <i class="float-right">Added to cart</i>
+                        @else
+                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
+                           Cart</a>
+                        @endif
                      @endif
                      <div class="price-wrap h5">
                         <span class="price-new">₱{{ $product->price }}</span>
@@ -180,7 +197,6 @@
             <!-- card // -->
          </div>
          <!-- row.// -->
-
          @empty
          <h3>No Products</h3>
          @endforelse
