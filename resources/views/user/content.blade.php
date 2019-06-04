@@ -96,7 +96,6 @@
                      @if($brand->id == $product->brand_id)
                      <span>
                         <a href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a> <br>
-
                      </span>
                      <hr>
                      @endif

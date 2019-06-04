@@ -4,6 +4,7 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
+            @if(!$search)
             <div class="col-md-3">
                 <div class="box">
                     <h5 class="text-muted">Related Products:</h5>
@@ -27,11 +28,12 @@
                     @endforeach
                 </div>
             </div>
+            @endif
             <div class="col-md-9">
                 <div class="container bg-light">
                     <h4>
                         Search for item:
-                        {{$search}}
+                        <i>{{$search}}</i>
                     </h4>
                     <br>
                     <div class="row">
@@ -39,7 +41,11 @@
                         <div class="col-md-3">
                             <figure class="card card-product">
                                 <div class="img-wrap  p-2">
-                                    <img src="{{ url('img', $product->image) }}">
+                                @if($product->image == '../imgProduct/default_img.jpg')
+                                    <img src="{{ url('imgProduct', $product->image) }}">
+                                @else
+                                    <img src="{{ url('storage/', $product->image) }}">
+                                @endif
                                     <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
                                         <i class="fa fa-search-plus"></i> Quick view
                                     </a>
@@ -75,7 +81,9 @@
                         </div>
                         <!-- col -->
                         @empty
-                        <h3>No Products for @foreach($products as $product) {{$product->name}} @endforeach</h3>
+                        <h4 class="text-center">
+                        No <i>{{$search}}</i> found
+                        </h4>
                         @endforelse
                     </div>
                     <!-- row -->
@@ -83,6 +91,7 @@
                 <!-- container -->
             </div>
         </div>
+        @if(!$products)
         <hr>
         <!--  -->
 
@@ -114,7 +123,11 @@
                         <div class="item-slide p-2">
                             <figure class="card card-product">
                                 <div class="img-wrap">
-                                    <img src="{{asset('storage/'.$product->image)}}">
+                                @if($product->image == '../imgProduct/default_img.jpg')
+                                    <img src="{{ url('imgProduct', $product->image) }}">
+                                @else
+                                    <img src="{{ url('storage/', $product->image) }}">
+                                @endif
                                     <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
                                         <i class="fa fa-search-plus"></i> Quick view
                                     </a>
@@ -152,7 +165,7 @@
             @endif
             @endforeach
         </div>
-        <!--  -->
+        @endif
     </div>
 </div>
 

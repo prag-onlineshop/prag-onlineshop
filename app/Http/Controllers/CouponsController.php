@@ -17,13 +17,15 @@ class CouponsController extends Controller
     public function stored(Request $request)
     {
         $coupon = Coupon::where('code', $request->coupon_code)->first();
-
+        // dd($coupon);
         if (!$coupon) {
             return redirect('cart')->withErrors('Invalid coupon code. Please try again.');
         }
 
         session()->put('coupon', [
             'name' => $coupon->code,
+            'type' => $coupon->type,
+            'amount' => $coupon->amount,
             'discount' => $coupon->discount(Cart::subtotal()),
         ]);
 
@@ -39,6 +41,6 @@ class CouponsController extends Controller
     {
         session()->forget('coupon');
 
-        return redirect('checkout')->with('success_message', 'Coupon has been removed.');
+        return redirect('cart')->with('success_message', 'Coupon has been removed.');
     }
 }

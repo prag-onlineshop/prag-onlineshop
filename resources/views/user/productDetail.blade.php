@@ -2,8 +2,13 @@
 @extends('layouts.app')
 @section('content')
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div class="bg-overlay">
     <div class="container bg-light p-4">
+=======
+
+<div class="container">
+>>>>>>> 7213fb268ce5c39a340929f26b3f614f2fbdcdf7
     <div>
         @if(session('status'))
         <div class="alert alert-success">
@@ -15,6 +20,7 @@
     <div class="row">
         @foreach($products as $product)
         <div class="col-md-6 col-xs-12">
+<<<<<<< HEAD
             <div class="thumbnail">
                 <img src="{{ url('images', $product->image) }}" class="card-img img-responsive" style="width:300px; height:300px;">
 =======
@@ -26,6 +32,12 @@
                 {{session('status')}}
 >>>>>>> 7bf7245bf7126cfd6d4fed22431921f36ce313c7
             </div>
+=======
+            @if($product->image == '../imgProduct/default_img.jpg')
+                <div class="thumbnail"><img src="{{ url('imgProduct', $product->image) }}"></div>
+            @else
+                <div class="card-img img-responsive"><img src="{{ url('storage/', $product->image) }}"></div>
+>>>>>>> 7213fb268ce5c39a340929f26b3f614f2fbdcdf7
             @endif
         </div>
         <br><br>
@@ -80,18 +92,11 @@
                 @endforeach
             </div>
         </div>
-
         <hr>
         @php ( $brands_id = [])
         @foreach ($products as $product)
         @php ( $brands_id[] = $product->brand_id )
-
-
         @endforeach
-
-
-
-
         <h3>Other brand products:</h3>
         <br>
         @foreach($brands as $brand)
