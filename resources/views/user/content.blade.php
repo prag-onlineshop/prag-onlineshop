@@ -51,7 +51,11 @@
                         <figure class="card card-product ">
                            <span class="badge-new">BEST SELLER</span>
                            <div class="img-wrap">
-                              <img src="{{asset('storage/'.$pop->image)}}">
+                              @if($pop->image == '../imgProduct/default_img.jpg')
+                              <img src="{{ url('imgProduct', $pop->image) }}">
+                              @else
+                              <img src="{{ url('storage/', $pop->image) }}">
+                              @endif
                               <a class="btn-overlay" href="{{ url('productDetail',$pop->id) }}">
                                  <i class="fa fa-search-plus"></i> Quick view
                               </a>
@@ -85,7 +89,11 @@
                      <div class="item-slide p-2">
                         <figure class="card card-product">
                            <div class="img-wrap">
-                              <img src="{{asset('storage/'.$pop->image)}}">
+                              @if($pop->image == '../imgProduct/default_img.jpg')
+                              <img src="{{ url('imgProduct', $pop->image) }}">
+                              @else
+                              <img src="{{ url('storage/', $pop->image) }}">
+                              @endif
                               <a class="btn-overlay" href="{{ url('productDetail',$pop->id) }}">
                                  <i class="fa fa-search-plus"></i> Quick view
                               </a>

@@ -13,9 +13,11 @@
     <div class="row">
         @foreach($products as $product)
         <div class="col-md-6 col-xs-12">
-            <div class="thumbnail">
-                <img src="{{ url('images', $product->image) }}" class="card-img img-responsive" style="width:300px; height:300px;">
-            </div>
+            @if($product->image == '../imgProduct/default_img.jpg')
+                <div class="thumbnail"><img src="{{ url('imgProduct', $product->image) }}"></div>
+            @else
+                <div class="card-img img-responsive"><img src="{{ url('storage/', $product->image) }}"></div>
+            @endif
         </div>
         <div class="col-md-5 col-md-offset-1">
             <h2>{{ $product->name }}</h2>
