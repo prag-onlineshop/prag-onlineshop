@@ -97,6 +97,8 @@ class CartController extends Controller
     {
         $products = Product::with('category','brand')->where('id', $id)->get();
         $cartItems = Cart::content();
-        return view('user.productDetail', compact( 'cartItems','products'));
+        $brands = Brand::all();
+        $productList = Product::all();
+        return view('user.productDetail', compact( 'cartItems','products', 'brands', 'productList'));
     }   
 }

@@ -22,7 +22,7 @@
                     @endforeach
 
                     @foreach($relProducts as $product)
-                    @if(in_array($product->category->id,$relProds))
+                    @if(in_array($product->category_id,$relProds))
                     <a href="{{ url('productDetail',$product->id) }}">{{$product->name}}</a><br>
                     @endif
                     @endforeach
@@ -57,7 +57,8 @@
                                     </div>
                                     <div class="action-wrap">
                                         @if($cartItems->isEmpty())
-                                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                        <a href="{{url('cart/addItem',$product->id)}}"
+                                            class="btn btn-primary btn-sm float-right">Add
                                             to Cart</a>
                                         @else
                                         @php ($carts = [])
@@ -67,7 +68,8 @@
                                         @if(in_array($product->id, $carts))
                                         <i class="float-right text-muted">Added to cart</i>
                                         @else
-                                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                        <a href="{{url('cart/addItem',$product->id)}}"
+                                            class="btn btn-primary btn-sm float-right">Add
                                             to Cart</a>
                                         @endif
                                         @endif
@@ -92,6 +94,7 @@
         @if(!$products)
         <hr>
         <!--  -->
+
         @php ($relBrands = [])
         @foreach($products as $product)
         @php ($relBrands[] = $product->brand_id)
@@ -103,13 +106,14 @@
         @php ($relProds[] = $brand->id)
         @endif
         @endforeach
-        
-        
+
+
+
         <div class="container">
             <h3>Other brand products:</h3>
             <br>
             @foreach($brands as $brand)
-            @if(in_array($brand->id, $relBrands))
+            @if(in_array($brand->id, $brands_id))
             <h4><strong>{{$brand->name}}</strong></h4>
             <div class="row box bg-light">
                 <div class="col-md-10">
@@ -133,7 +137,8 @@
                                         <h5 style="color:blue;">{{ $product->name }} </h5>
                                         <p>In-stock: {{$product->quantity}}</p>
                                         @if($cartItems->isEmpty())
-                                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                        <a href="{{url('cart/addItem',$product->id)}}"
+                                            class="btn btn-primary btn-sm float-right">Add
                                             to Cart</a>
                                         @else
                                         @php ($carts = [])
@@ -143,7 +148,8 @@
                                         @if(in_array($product->id, $carts))
                                         <i class="float-right">Added to cart</i>
                                         @else
-                                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-primary btn-sm float-right">Add
+                                        <a href="{{url('cart/addItem',$product->id)}}"
+                                            class="btn btn-primary btn-sm float-right">Add
                                             to Cart</a>
                                         @endif
                                         @endif
