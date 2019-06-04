@@ -18444,7 +18444,7 @@ button.bg-dark:focus {
     .align-self-lg-stretch {
         align-self: stretch !important;
     }
-}
+
 
 @media (min-width: 1200px) {
     .flex-xl-row {
