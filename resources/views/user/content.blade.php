@@ -2,6 +2,52 @@
 @section('content')
 <section class="main-content">
    <!----------------------------- CAROUSEL ------------------------------->
+      <div class="container">
+      <div class="containerCategory">
+      <div class="row p-0 m-0">
+      
+      <div class="boxCategory col-2">
+               <div class="iconCategory"><img class="aCategory" src="{{ asset('img/logo/shoe.png') }}">
+                </div>
+                <div class="contentCategory">   
+                    <h4> SHOES </h4>
+                </div>
+            </div>
+            <div class="boxCategory col-2">
+                    <div class="iconCategory"><img class="aCategory" src="{{ asset('img/logo/shirt.png') }}">
+                    </div>
+                    <div class="contentCategory">   
+                        <h4> SHIRTS </h4>
+                    </div>
+            </div>
+            <div class="boxCategory col-2">
+                    <div class="iconCategory"><img class="aCategory" src="{{ asset('img/logo/bag.png') }}">
+                    </div>
+                    <div class="contentCategory">   
+                        <h4> BAGS </h4>
+                    </div>
+
+            </div>
+            <div class="boxCategory col-2">
+                    <div class="iconCategory"><img class="aCategory" src="{{ asset('img/logo/watch.png') }}">
+                    </div>
+                    <div class="contentCategory">   
+                        <h4> WATCHES </h4>
+                    </div>
+
+            </div>
+            <div class="boxCategory col-2">
+                    <div class="iconCategory"><img class="aCategory" src="{{ asset('img/logo/cap.png') }}">
+                    </div>
+                    <div class="contentCategory">   
+                        <h4> CAPS </h4>
+                    </div>
+
+            </div>
+      
+      </div>
+   </div>
+   </div>
    <div class="bg-carousel">
       <div class="carouselWrap">
          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
