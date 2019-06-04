@@ -21,7 +21,7 @@
                     @endforeach
 
                     @foreach($relProducts as $product)
-                    @if(in_array($product->category->id,$relProds))
+                    @if(in_array($product->category_id,$relProds))
                     <a href="{{ url('productDetail',$product->id) }}">{{$product->name}}</a><br>
                     @endif
                     @endforeach
@@ -106,7 +106,7 @@
                 <div class="col-md-10">
                     <div class="multiple-items">
                         @foreach($relProducts as $product)
-                        @if(in_array($product->brand_id, $relProds))
+                        @if($brand->id == $product->brand_id)
                         <div class="item-slide p-2">
                             <figure class="card card-product">
                                 <div class="img-wrap">
