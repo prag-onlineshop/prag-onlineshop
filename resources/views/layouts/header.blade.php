@@ -4,7 +4,37 @@
             <div class="col-10 mx-auto ">
                 <div class="header-form ">
                     <div class="homelink">
-                        <ul class="float-right">
+
+                        <div class="dropdown dropdown-header float-right p-0 m-0  form-control">
+                            <button class="btn btn-secondary dropdown-toggle form-control " type="button"
+                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Menu
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item " href="#">HOME</a>
+                                @guest
+                                <a class="dropdown-item" href="#">LOGIN</a>
+                                <a class="dropdown-item" href="#">SIGNUP</a>
+
+                                @else
+                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="#">Orders</a>
+                                <a class="dropdown-item" href="#">{{ Auth::user()->name }}</a>
+                                <div>
+                                    <a class="dropdown-item" {{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">Log Out
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                                @endguest
+                            </div>
+                        </div>
+
+                        <ul class="float-right nav-header">
                             <li><a href="#">CUSTOMER CARE</a> </li>
                             <li><a href="/">HOME</a> </li>
                             @guest
@@ -12,7 +42,6 @@
                             <li><a href="/register">SIGNUP</a> </li>
                             @else
                             <li><a href="/profile">Profile</a> </li>
-                            <li><a href="#">WishList</a> </li>
                             <li><a href="/orders">Orders</a></li>
                             <li><a href="#">{{ Auth::user()->name }}</a></li>
                             <li>
@@ -45,30 +74,32 @@
                                     </div>
 
                                     <div class="col-sm-12 col-md-12  col-lg-7 m-0 p-0">
-                                        <div class="input-group  d-flex justify-content-center">
-                                            <input type="text" class="form-control" placeholder="Search Item Here" />
-                                            <div class="input-group-append bg-white">
-                                                <button class="btn btn-outline-secondary" type="submit">
-                                                    <img src="{{ asset('img/logo/searchIcon.png') }}" alt=""
-                                                        width="20px" height="20px">
-                                                </button>
+                                        <form action="{{url('/search-item')}}" method="get">
+                                            <div class="input-group  d-flex justify-content-center">
+                                                <input type="search" name="search" class="form-control"
+                                                    placeholder="Search Item Here" />
+                                                <div class="input-group-append bg-white">
+                                                    <button class="btn btn-outline-secondary" type="submit">
+                                                        <img src="{{ asset('img/logo/searchIcon.png') }}" alt=""
+                                                            width="20px" height="20px">
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
-
-
+                                            @csrf
+                                        </form>
                                         <div class="clearfix"></div>
                                         <div class="float-left pt-2">
                                             <div class="dropdown d-inline-block">
-                                                <button class="btn-sm btn-primary dropdown-toggle  " type="button"
+                                                <button class="btn btn-primary dropdown-toggle   " type="button"
                                                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                                     aria-expanded="false">
                                                     Categories
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                                                     style="height:100px; overflow-y:auto;">
-                                                    <?php $cats=DB::table('categories')->get();
-                                                    $cat_product=DB::table('products')->where('category_id','!=','')->groupBy('category_id')->orderBy('id','desc')->get();
-                                               ?>
+                                                    <?php $cats = DB::table('categories')->get();
+                                                    $cat_product = DB::table('products')->where('category_id', '!=', '')->groupBy('category_id')->orderBy('id', 'desc')->get();
+                                                    ?>
                                                     @foreach($cats as $cat)
                                                     @foreach($cat_product as $product)
                                                     @if($cat->id == $product->category_id)
@@ -79,20 +110,36 @@
                                                     @endforeach
 
                                                 </div>
+                                                <?php
+                                                $product_list = DB::table('products')->where('quantity', '!=', 0)
+                                                    ->where('category_id', '!=', '')
+                                                    ->where('brand_id', '!=', '')
+                                                    ->get();
+                                                $brands = DB::table('brands')->get();
+                                                $cart_products = DB::table('carts_product')->groupBy('product_id')
+                                                    ->selectRaw('sum(qty) as sum, product_id')
+                                                    ->orderBy('sum', 'desc')
+                                                    ->get();
 
+                                                $count = 0;
+                                                ?>
                                                 <ul class="d-inline-block pl-3">
+                                                    @foreach($cart_products as $prod)
+                                                    @foreach($product_list as $pop)
+                                                    @if($pop->id == $prod->product_id)
+                                                    @foreach($brands as $brand)
+                                                    @if($brand->id == $pop->brand_id)
+                                                    <?php if ($count == 5) break; ?>
                                                     <li>
-                                                        <a href="#">Nike</a>
+                                                        <a
+                                                            href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a>
                                                     </li>
-                                                    <li>
-                                                        <a href="#">Addidas</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Converse</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Vans</a>
-                                                    </li>
+                                                    <?php $count++; ?>
+                                                    @endif
+                                                    @endforeach
+                                                    @endif
+                                                    @endforeach
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
@@ -112,7 +159,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="clearfix"></div>
                             </div>
                         </div>

@@ -5,5 +5,7 @@ Admin Settings
 @endsection
 
 @section('settings')
-settings
+@foreach($settings as $setting)
+<p>{{$setting->title}}-</p>
+@endforeach
 @endsection

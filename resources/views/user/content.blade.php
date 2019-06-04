@@ -3,7 +3,6 @@
 <section class="main-content">
    <!----------------------------- CAROUSEL ------------------------------->
    <div class="bg-carousel">
-
       <div class="carouselWrap">
          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -32,99 +31,100 @@
             </a>
          </div>
       </div>
+   </div>
+   <!----------------------------- END CAROUSEL ------------------------------->
+   <div class="bg-overlay py-3 ">
+      <!----------------------------- MOST POPULAR ITEMS ------------------------------->
+      <div class="col-md-10 col-lg-9 col-xl-9 mx-auto">
+         <div class="row p-0 m-0">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+               <div class="box" style="height:400px; width:100%; overflow-y:auto">
+                  <p class="h4">Brands</p>
+                  <hr class="bg-secondary">
+                  <?php $brands = DB::table('brands')->get(); 
+                              $brand_products = DB::table('products')->where('brand_id','!=','')->groupBy('brand_id')->orderBy('id', 'desc')->get();
+                           ?>
+                  <div>
+                     @foreach($brands as $brand)
+                     @foreach($brand_products as $product)
+                     @if($brand->id == $product->brand_id)
+                     <span>
+                        <a href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a> <br>
 
-      <!----------------------------- END CAROUSEL ------------------------------->
-      <div class="bg-overlay py-3 ">
-         <!----------------------------- MOST POPULAR ITEMS ------------------------------->
-         <div class="container">
-            <div class="row">
-               <div class="col-md-10">
-                  <div class="multiple-items">
-                     <?php $first = true;?>
-                     @foreach($cart_products as $prod)
-                     @foreach($product_list as $pop)
-                     @if($pop->id == $prod->product_id)
-                     @if($first)
-                     <div class="item-slide p-2">
-                        <figure class="card card-product ">
-                           <span class="badge-new">BEST SELLER</span>
-                           <div class="img-wrap">
-                              <img src="{{asset('storage/'.$pop->image)}}">
-                           </div>
-                           <figcaption class="info-wrap text-center">
-                              <h6 class="title text-truncate">
-                                 <a href="#">{{$pop->name}}</a>
-                                 <p>In-stock: {{$pop->quantity}}</p>
-                                 <p>qty sold:{{$prod->sum}}</p>
-                                 <a href="{{url('cart/addItem',$pop->id)}}"
-                                    class="btn btn-primary btn-sm float-right">Add
-                                    to Cart</a>
-                              </h6>
-                           </figcaption>
-                        </figure>
-                     </div>
-                     <?php $first = false;?>
-                     @else
-                     <div class="item-slide p-2">
-                        <figure class="card card-product">
-                           <div class="img-wrap">
-                              <img src="{{asset('storage/'.$pop->image)}}">
-                           </div>
-                           <figcaption class="info-wrap text-center">
-                              <h6 class="title text-truncate">
-                                 <a href="#">{{$pop->name}}</a>
-                                 <p>In-stock: {{$pop->quantity}}</p>
-                                 <p>qty sold:{{$prod->sum}}</p>
-                                 @if($cartItems->isEmpty())
-                                 <a href="{{url('cart/addItem',$pop->id)}}"
-                                    class="btn btn-primary btn-sm float-right">Add
-                                    to Cart</a>
-                                 @else
-                                 @php ($carts = [])
-                                 @foreach($cartItems as $cartItem)
-                                 @php ($carts[] = $cartItem->id)
-                                 @endforeach
-                                 @if(in_array($pop->id, $carts))
-                                 <i class="float-right">Added to cart</i>
-                                 @else
-                                 <a href="{{url('cart/addItem',$pop->id)}}"
-                                    class="btn btn-primary btn-sm float-right">Add
-                                    to Cart</a>
-                                 @endif
-                                 @endif
-                              </h6>
-                           </figcaption>
-                        </figure>
-                     </div>
-                     @endif
+                     </span>
+                     <hr>
                      @endif
                      @endforeach
                      @endforeach
-                  </div>
-               </div>
-               <div class="col-md-2">
-                  <div class="box" style="height:300px; width:200px; overflow-y:auto">
-                     <p>Brands</p>
-                     <?php $brands = DB::table('brands')->get(); 
-                        $brand_products = DB::table('products')->where('brand_id','!=','')->groupBy('brand_id')->orderBy('id', 'desc')->get();
-                     ?>
-                     <div>
-                        @foreach($brands as $brand)
-                        @foreach($brand_products as $product)
-                        @if($brand->id == $product->brand_id)
-                        <span>
-                           <a href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a> <br>
-                        </span>
-                        @endif
-                        @endforeach
-                        @endforeach
-                     </div>
                   </div>
                </div>
             </div>
+            <div class="col-lg-8 col-md-8 col-sm-12">
+               <div class="multiple-items">
+                  <?php $first = true;?>
+                  @foreach($cart_products as $prod)
+                  @foreach($product_list as $pop)
+                  @if($pop->id == $prod->product_id)
+                  @if($first)
+                  <div class="item-slide p-2">
+                     <figure class="card card-product ">
+                        <span class="badge-new">BEST SELLER</span>
+                        <div class="img-wrap">
+                           <img src="{{asset('storage/'.$pop->image)}}">
+                        </div>
+                        <figcaption class="info-wrap text-center">
+                           <h6 class="title text-truncate">
+                              <a href="#" class="h3">{{$pop->name}}</a>
+                              <p>In-stock: {{$pop->quantity}}</p>
+                              <p>qty sold:{{$prod->sum}}</p>
+                              <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-success btn-sm float-right">Add
+                                 to Cart</a>
+                           </h6>
+                        </figcaption>
+                     </figure>
+                  </div>
+                  <?php $first = false;?>
+                  @else
+                  <div class="item-slide p-2">
+                     <figure class="card card-product">
+                        <div class="img-wrap">
+                           <img src="{{asset('storage/'.$pop->image)}}">
+                        </div>
+                        <figcaption class="info-wrap text-center">
+                           <h6 class="title text-truncate">
+                              <a href="#" class="h3">{{$pop->name}}</a>
+                              <p>In-stock: {{$pop->quantity}}</p>
+                              <p>qty sold:{{$prod->sum}}</p>
+                              @if($cartItems->isEmpty())
+                              <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-success btn-sm float-right">Add
+                                 to Cart</a>
+                              @else
+                              @php ($carts = [])
+                              @foreach($cartItems as $cartItem)
+                              @php ($carts[] = $cartItem->id)
+                              @endforeach
+                              @if(in_array($pop->id, $carts))
+                              <i class="float-right">Added to cart</i>
+                              @else
+                              <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-success btn-sm float-right">Add
+                                 to Cart</a>
+                              @endif
+                              @endif
+                           </h6>
+                        </figcaption>
+                     </figure>
+                  </div>
+                  @endif
+                  @endif
+                  @endforeach
+                  @endforeach
+               </div>
+            </div>
+
          </div>
       </div>
    </div>
+
    <!----------------------------- END MOST POPULAR ITEMS ------------------------------->
 
    <!----------------------------- MOST RECENT ITEMS ------------------------------->
@@ -132,22 +132,19 @@
 
 
    <!--end here // -->
-   <div class="container mt-3">
-      <h3>Most Recent:</h3>
+   <div class="col-10  mx-auto mt-3">
+      <h2>Most Recent:</h2>
       <hr>
-      <div class="row">
+      <div class="row p-0 m-0">
          @forelse($products as $product)
-         <div class="col-md-4 col-lg-3 col-xl-3  col-sm-5 justify-content-sm-center">
+         <div class="col-md-4 col-lg-2 col-xl-3  col-sm-5 justify-content-sm-center">
             <figure class="card card-product ">
                <div class="img-wrap">
-
-
                   @if($product->image == '../imgProduct/default_img.jpg')
                   <img src="{{ url('imgProduct', $product->image) }}">
                   @else
                   <img src="{{ url('storage/', $product->image) }}">
                   @endif
-
                   <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
                      <i class="fa fa-search-plus"></i> Quick view
                   </a>
@@ -164,7 +161,7 @@
                      @foreach($cartItems as $cartItem)
                      @php ($carts[] = $cartItem->id)
                      @endforeach
-                     @if(false !== $key = array_search($product->id, $carts))
+                     @if(in_array($product->id, $carts))
                      <i class="float-right">Added to cart</i>
                      @else
                      <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
@@ -180,7 +177,6 @@
             <!-- card // -->
          </div>
          <!-- row.// -->
-
          @empty
          <h3>No Products</h3>
          @endforelse
