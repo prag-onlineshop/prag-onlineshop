@@ -63,10 +63,13 @@
                             @foreach($cartItems as $cartItem)
                             <tr>
                                 <td class="cart_product">
-                                    <a href="{{url('/productDetail')}}/{{$cartItem->id}}"><img src="{{url('images',$cartItem->options->img)}}" alt="" style="width:50px; height:50px"></a>
+                                    <a href="{{url('/productDetail')}}/{{$cartItem->id}}"><img
+                                            src="{{url('images',$cartItem->options->img)}}" alt=""
+                                            style="width:50px; height:50px"></a>
                                 </td>
                                 <td class="cart_description">
-                                    <h5><a href="{{url('/productDetail')}}/{{$cartItem->id}}" style="color:blue">{{$cartItem->name}}</a></h5>
+                                    <h5><a href="{{url('/productDetail')}}/{{$cartItem->id}}"
+                                            style="color:blue">{{$cartItem->name}}</a></h5>
                                 </td>
                                 <td class="cart_price">
                                     <p>₱{{$cartItem->price}}</p>
@@ -109,7 +112,8 @@
                         </li>
                         <li class="d-flex justify-content-between"><span>Shipping cost</span><strong>Free</strong>
                         </li>
-                        <li class="d-flex justify-content-between"><span>Total</span><strong class="text-primary price-total">{{ $newTotal }}</strong></li>
+                        <li class="d-flex justify-content-between"><span>Total</span><strong
+                                class="text-primary price-total">{{ $newTotal }}</strong></li>
                     </ul>
 
                 </div>
@@ -123,13 +127,15 @@
                             <div class="form-group">
                                 <span>
                                     <label for="contact" class="form-label">Contact Number:</label>
-                                    <input id="contact" type="text" name="contact" placeholder="Contact" class="form-control">
+                                    <input id="contact" type="text" name="contact" placeholder="Contact"
+                                        class="form-control">
                                 </span>
                                 <span style="color:red">{{ $errors->first('contact') }}</span>
                             </div>
                             <div class="form-group" class="form-label">
                                 <label for="ship_add">Address</label>
-                                <textarea id="ship_add" name="address" cols="30" rows="4" class="form-control"></textarea>
+                                <textarea id="ship_add" name="address" cols="30" rows="4"
+                                    class="form-control"></textarea>
                                 <br>
                                 <span style="color:red">{{ $errors->first('address') }}</span>
                             </div>
@@ -145,7 +151,7 @@
                                 <input type="submit" value="Place Order" class="btn btn-primary btn-sm float-right">
                             </div>
                         </div>
-                    </div>
+                </div>
                 </form>
             </div>
         </div>

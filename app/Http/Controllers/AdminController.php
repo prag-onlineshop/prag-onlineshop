@@ -113,10 +113,12 @@ class AdminController extends Controller
 
     public function orders()
     {
-        //$orders = Carts::with('users', 'carts_product.products')->orderBy('id','desc')->get();
         $orders = Carts::with('users', 'carts_product.products')->orderBy('id','desc')->get();
-    
-        return view('admin.order.ordersIndex', compact('orders', 'cart_products'));
+        
+        // return response()->json([
+        //     'orders'=>$orders
+        // ],200);
+        return view('admin.order.ordersIndex', compact('orders'));
     }
 
     public function ordersId($id)

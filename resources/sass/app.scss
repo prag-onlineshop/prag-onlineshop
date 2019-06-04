@@ -1,5 +1,5 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap");
 // Variables
 @import "variables";
 // Bootstrap
@@ -16,8 +16,8 @@
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 html,
@@ -25,6 +25,7 @@ body {
     line-height: 1.6;
     height: 100%;
     box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
 }
 
 ul li {
@@ -75,31 +76,35 @@ textarea {
     color: white;
 }
 
+.modal-override-width {
+    width: 600px !important;
+}
+
 .card-img-top {}
 
 #headerWrap {
     background: $secondary-color-navyBlue;
     height: auto;
-    font-size: 0.7rem !important;
+    font-size: 1rem !important;
 
     .homelink {
         background: $primary-color-darkGreen;
-        height: 1.5rem;
+        height: 1.7rem;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
+        font-family: "Roboto", sans-serif;
+        line-height: 1.3 !important;
+        font-size: 0.8rem !important;
+        font-weight: 300;
+        letter-spacing: 1px;
 
         ul li a {
             color: #d8d8d8;
-            font-size: 0.5rem;
         }
     }
 
     .header-content {
-        input[type="text"] {
-            width: 500px !important;
-        }
-
-        .searchBtn button {
+        .searchBtna button {
             border: none;
             background: #fffa6f;
             cursor: pointer;

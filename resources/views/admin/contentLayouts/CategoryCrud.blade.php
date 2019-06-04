@@ -11,7 +11,7 @@ Categories List
 <div class="container py-4">
   <h2>Categories List</h2>
   <div align="right" class="m-2">
-    <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Product</a>
+    <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Category</a>
   </div>
 
   <table class="table table-bordered" id="laravel_datatable">
@@ -19,12 +19,10 @@ Categories List
       <tr class="text-white bg-primary">
         <th scope="col" class="text-center">Category ID</th>
         <th scope="col">Name</th>
-        <th scope="col " style="text-align: center;"">Image</th>
-          {{-- <th scope="col">url</th> --}}
-          <th scope=" col">Actions</th>
+        <th scope="col" style="text-align: center;">Image</th>
+        <th scope="col">Actions</th>
         <th scope="col">Time Created</th>
         <th scope="col">Time Updated</th>
-
       </tr>
     </thead>
   </table>
@@ -41,31 +39,49 @@ Categories List
         <form id="catForm" name="catForm" method="post" class="form-horizontal" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="cat_id" id="cat_id">
+
           <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-12">
               <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value=""
                 maxlength="50" required="">
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label">Upload Image</label>
-            <div class="col-sm-12">
-              <input type="file" class="image form-control-file" id="image" name="image">
-              <span id="storeImage"></span>
+
+            <div class="form-group">
+              <label class="control-label">Upload Image</label>
             </div>
 
-          </div>
-          <input type="hidden" name="url" id="url" value="">
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-8">
+                  <input type="file" class="image form-control-file m-2" id="image" name="image" onchange=" $('#preview').show();
+              document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])">
+                </div>
+                <div class="col-3">Image preview </div>
+              </div>
 
+
+              <div class="row">
+                <div class="col-6">
+                  <span id="storeImage"></span>
+                </div>
+                <div class="col-6">
+                  <img id="preview" name="preview" alt="" width="100" height="100" class="ml-2 " />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <input type="hidden" name="url" id="url" value="">
           <input type="hidden" name="created_at" id="created_at">
           <input type="hidden" name="update_at" id="update_at">
-
           <div class="col-sm-offset-2 col-sm-10">
             <input type="hidden" name="action" id="action" />
             <input type="hidden" name="hidden_id" id="hidden_id" />
+
             <input type="submit" class="btn btn-primary" id="action_button" value="create">
-            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
           </div>
         </form>
       </div>
@@ -96,15 +112,9 @@ Categories List
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-{{-- 
-  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> --}}
-
-
 <script type="text/javascript">
   $(document).ready(function () {
-  
+ 
   $.ajaxSetup({
       headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -119,7 +129,6 @@ Categories List
                     { data: 'name', name: 'name' },
                     { data: 'image', name: 'image',
                     render: function(data, type, full, meta){
-                      
                       var showImage = "";
                       var imgdefault ="../imgCategory/default_img.jpg";
                       if(imgdefault == data)
@@ -133,9 +142,6 @@ Categories List
                     return showImage;
                     },
                     orderable: false },
-                    // { data: 'url', name: 'url' },
-                  
-                    // URL and Name must same data
                     {
                       data: 'action',
                       name: 'action',
@@ -143,13 +149,14 @@ Categories List
                     },
                     { data: "created_at", name:"created_at"},
                     { data: "updated_at", name:"updated_at"},
-                 ]
-        });
+                 ],
+                  responsive:true,
+                order:[0,'desc']
+          });
+  
 
-       
-    
      $('#createNewProduct').click(function () {
-    
+      $('#storeImage').html('');
       $('#name').val('');
       $('#url').val('');
         $('#cat_id').val('');
@@ -157,7 +164,8 @@ Categories List
         $('#action').val("add");
         $("#action_button").val("add");
         $('#modelHeading').html("Create New Category");
-        $('#catModal').modal('show');
+        $('#catModal').modal('show');  
+       $('#preview').hide();
     });
 
 
@@ -210,7 +218,6 @@ Categories List
 if($('#action').val() == "edit")
   {
 
-    $('#storeImage').append();
    $.ajax({
     url:"{{ route('categories.update') }}",
     method:"POST",
@@ -241,8 +248,6 @@ if($('#action').val() == "edit")
       Swal.fire('Done!','It was Succesfully Updated','success');
   
       $('#laravel_datatable').DataTable().ajax.reload();
- 
-     
      }
    
      $('#form_result').html('');
@@ -253,64 +258,63 @@ if($('#action').val() == "edit")
    });
   }
 });
-$(document).on('click', '.edit', function () {
 
-$('#storeImage').html('');
-var category_id = $(this).attr('id');
+    $(document).on('click', '.edit', function () {
 
+    var category_id = $(this).attr('id');
+    $('#preview').hide();
+    $('#storeImage').html('');
 
-$('#form_result').html('');
-$.ajax({
+    $('#form_result').html('');
+    $.ajax({
 
-url: "/admin/category/"+ category_id + '/edit',
-dataType:"json",
- success:function(html){
+    url: "/admin/category/"+ category_id + '/edit',
+    dataType:"json",
+    success:function(html){
 
-  $('#catForm').trigger("reset");
-  $('#action').val("edit");
-  $("#action_button").val("edit");
-  $('#modelHeading').html("Update Category " + html.data.name);
-  $('.modal-title').text("Edit New Record");
-    $('#hidden_id').val(html.data.id);
-    $('#name').val(html.data.name);
-    $('#url').val(html.data.name); 
-    $('#storeImage').append("<img src={{ URL::to('/') }}/storage/"+ html.data.image + " width='70' class='img-thumbnail'  />");
-    $('#storeImage').append("<input type='hidden' name='hidden_image' value='"+ html.data.image +"' />");
-    $('#catModal').modal('show');
-  }
-})
+    $('#catForm').trigger("reset");
+    $('#action').val("edit");
+    $("#action_button").val("edit");
+    $('#modelHeading').html("Update Category " + html.data.name);
+    $('.modal-title').text("Edit New Record");
+      $('#hidden_id').val(html.data.id);
+      $('#name').val(html.data.name);
+      $('#url').val(html.data.name); 
+      $('#storeImage').append("<img src={{ URL::to('/') }}/storage/"+ html.data.image + " width='70' class='img-thumbnail'  />");
+      $('#storeImage').append("<input type='hidden' name='hidden_image' value='"+ html.data.image +"' />");
+      $('#catModal').modal('show');
+    }
+    })
 
 });
    
    var user_id;
 
-$(document).on('click', '.delete', function(){
+    $(document).on('click', '.delete', function(){
+        user_id = $(this).attr('data-id');
+        $('#confirmModal').modal('show');
+    });
 
- user_id = $(this).attr('data-id');
- $('#confirmModal').modal('show');
+    $('#ok_button').click(function(){
+    $.ajax({
+      type: "DELETE",
+      url:"/category/destroy/"+user_id,
 
-});
-
-$('#ok_button').click(function(){
- $.ajax({
-   type: "DELETE",
-  url:"/category/destroy/"+user_id,
-
-  success:function(data)
-  {
-    table.draw();
-    Swal.fire('Done!','It was Succesfully Deleted','success');
-   setTimeout(function(){
-    $('#ok_button').text('Delete');
-    $('#confirmModal').modal('hide');
-    $('#laravel_datatable').DataTable().ajax.reload();
-   }, 200);
-  },
-  error: function (data) {
-    console.log('Error:', data);
-  }
- });
-});
+      success:function(data)
+      {
+        table.draw();
+        Swal.fire('Done!','It was Succesfully Deleted','success');
+      setTimeout(function(){
+        $('#ok_button').text('Delete');
+        $('#confirmModal').modal('hide');
+        $('#laravel_datatable').DataTable().ajax.reload();
+      }, 200);
+      },
+      error: function (data) {
+        console.log('Error:', data);
+      }
+    });
+  });
 
 });
 

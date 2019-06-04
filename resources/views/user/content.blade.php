@@ -3,36 +3,36 @@
 <section class="main-content">
    <!----------------------------- CAROUSEL ------------------------------->
    <div class="bg-carousel">
-      <div class="container">
-         <div class="carouselWrap">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-               <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-               </ol>
-               <div class="carousel-inner">
-                  <div class="carousel-item active">
-                     <img class="d-block w-100 " src="{{ asset('img/slides/img-slide.jpeg') }}" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                     <img class="d-block w-100" src="{{ asset('img/slides/img-slide2.jpeg') }}" alt="Second slide">
-                  </div>
-                  <div class="carousel-item">
-                     <img class="d-block w-100" src="{{ asset('img/slides/img-slide4.jpeg') }}" alt="Third slide">
-                  </div>
+
+      <div class="carouselWrap">
+         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <img class="d-block w-100 " src="{{ asset('img/slides/img-slide.jpeg') }}" alt="First slide">
                </div>
-               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-               </a>
-               <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-               </a>
+               <div class="carousel-item">
+                  <img class="d-block w-100" src="{{ asset('img/slides/img-slide2.jpeg') }}" alt="Second slide">
+               </div>
+               <div class="carousel-item">
+                  <img class="d-block w-100" src="{{ asset('img/slides/img-slide4.jpeg') }}" alt="Third slide">
+               </div>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+            </a>
          </div>
       </div>
+
       <!----------------------------- END CAROUSEL ------------------------------->
       <div class="bg-overlay py-3 ">
          <!----------------------------- MOST POPULAR ITEMS ------------------------------->
@@ -56,8 +56,9 @@
                                  <a href="#">{{$pop->name}}</a>
                                  <p>In-stock: {{$pop->quantity}}</p>
                                  <p>qty sold:{{$prod->sum}}</p>
-                                 <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
-												to Cart</a>
+                                 <a href="{{url('cart/addItem',$pop->id)}}"
+                                    class="btn btn-primary btn-sm float-right">Add
+                                    to Cart</a>
                               </h6>
                            </figcaption>
                         </figure>
@@ -75,19 +76,21 @@
                                  <p>In-stock: {{$pop->quantity}}</p>
                                  <p>qty sold:{{$prod->sum}}</p>
                                  @if($cartItems->isEmpty())
-                                    <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
-												to Cart</a>
+                                 <a href="{{url('cart/addItem',$pop->id)}}"
+                                    class="btn btn-primary btn-sm float-right">Add
+                                    to Cart</a>
                                  @else
-                                    @php ($carts = [])
-                                    @foreach($cartItems as $cartItem)
-                                       @php ($carts[] = $cartItem->id)
-                                    @endforeach
-                                       @if(in_array($pop->id, $carts))
-                                          <i class="float-right">Added to cart</i>
-                                       @else
-                                          <a href="{{url('cart/addItem',$pop->id)}}" class="btn btn-primary btn-sm float-right">Add
-                                             to Cart</a>
-                                       @endif
+                                 @php ($carts = [])
+                                 @foreach($cartItems as $cartItem)
+                                 @php ($carts[] = $cartItem->id)
+                                 @endforeach
+                                 @if(in_array($pop->id, $carts))
+                                 <i class="float-right">Added to cart</i>
+                                 @else
+                                 <a href="{{url('cart/addItem',$pop->id)}}"
+                                    class="btn btn-primary btn-sm float-right">Add
+                                    to Cart</a>
+                                 @endif
                                  @endif
                               </h6>
                            </figcaption>
@@ -125,15 +128,26 @@
    <!----------------------------- END MOST POPULAR ITEMS ------------------------------->
 
    <!----------------------------- MOST RECENT ITEMS ------------------------------->
+
+
+
+   <!--end here // -->
    <div class="container mt-3">
       <h3>Most Recent:</h3>
       <hr>
       <div class="row">
          @forelse($products as $product)
-         <div class="col-md-3">
-            <figure class="card card-product">
+         <div class="col-md-4 col-lg-3 col-xl-3  col-sm-5 justify-content-sm-center">
+            <figure class="card card-product ">
                <div class="img-wrap">
-                  <img src="{{ url('images', $product->image) }}">
+
+
+                  @if($product->image == '../imgProduct/default_img.jpg')
+                  <img src="{{ url('imgProduct', $product->image) }}">
+                  @else
+                  <img src="{{ url('storage/', $product->image) }}">
+                  @endif
+
                   <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
                      <i class="fa fa-search-plus"></i> Quick view
                   </a>
@@ -143,19 +157,19 @@
                   <p>In-stock: {{$product->quantity}}</p>
                   <div class="action-wrap">
                      @if($cartItems->isEmpty())
-                        <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
-                           Cart</a>
+                     <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
+                        Cart</a>
                      @else
-                        @php ($carts = [])
-                        @foreach($cartItems as $cartItem)
-                           @php ($carts[] = $cartItem->id)
-                        @endforeach
-                           @if(false !== $key = array_search($product->id, $carts))
-                              <i class="float-right">Added to cart</i>
-                           @else
-                              <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
-                                 Cart</a>
-                           @endif
+                     @php ($carts = [])
+                     @foreach($cartItems as $cartItem)
+                     @php ($carts[] = $cartItem->id)
+                     @endforeach
+                     @if(false !== $key = array_search($product->id, $carts))
+                     <i class="float-right">Added to cart</i>
+                     @else
+                     <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
+                        Cart</a>
+                     @endif
                      @endif
                      <div class="price-wrap h5">
                         <span class="price-new">₱{{ $product->price }}</span>
@@ -165,16 +179,13 @@
             </figure>
             <!-- card // -->
          </div>
-         <!-- col // -->
+         <!-- row.// -->
+
          @empty
          <h3>No Products</h3>
          @endforelse
       </div>
-      <!-- row.// --> 
       <div>{{$products->links()}}</div>
-   </div>
-
-   {{-- container --}}
    </div>
    </div>
    {{-- Overlay Content End --}}
