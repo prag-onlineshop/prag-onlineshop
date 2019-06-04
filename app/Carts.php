@@ -30,7 +30,7 @@ class Carts extends Model
 
         $user = Auth::user();
         //$order = $user->orders()->create(['total' => Cart::total(), 'status'=>'pending']);
-        $order = $user->orders()->create(['total' => $newTotal, 'status' => 'shipped']);
+        $order = $user->orders()->create(['total' => $newTotal, 'status' => 'pending']);
         $cartItems = Cart::content();
 
         foreach ($cartItems as $cartItem) {

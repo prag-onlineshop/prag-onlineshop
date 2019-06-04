@@ -22,16 +22,38 @@
     </div>
   </div>
 </footer>
-<script src="{{ asset('js/jquery-2.0.0.min.js') }}"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script>
   $('.multiple-items').slick({
     infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 1
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  responsive: [{
+
+breakpoint: 1024,
+settings: {
+  slidesToShow: 3,
+  infinite: true
+}
+
+}, {
+
+breakpoint: 600,
+settings: {
+  slidesToShow: 2,
+  dots: true
+}
+
+}, {
+
+breakpoint: 300,
+slidesToShow: 2,
+dots: true
+}]
     });
 </script>
 </body>

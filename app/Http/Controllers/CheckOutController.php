@@ -17,6 +17,8 @@ class CheckOutController extends Controller
     public function index()
     {
         $cartItems = Cart::content();
+        $user = Auth::user();
+        $userAdd = User::get();
 
         // return view('cart.checkout', compact('cartItems'));
 
@@ -24,12 +26,12 @@ class CheckOutController extends Controller
         // $newSubtotal = (Cart::subtotal() - $discount);
         // $newTotal = $newSubtotal * (1);
 
-        return view('cart.checkout')->with([
-            'amount' => $this->getNumbers()->get('discount'),
+        return view('cart.checkout', compact('cartItems'))
+        ->with(['amount' => $this->getNumbers()->get('discount'),
             'newSubtotal' => $this->getNumbers()->get('newSubtotal'),
             'newTotal' => $this->getNumbers()->get('newTotal'),
             'cartItems' => $cartItems
-        ]);
+        ])->with(compact('user','userAdd'));
     }
 
     private function getNumbers()
@@ -51,7 +53,7 @@ class CheckOutController extends Controller
             'contact' => 'required|min:5|max:191',
             'address' => 'required|min:5|max:191',
         ]);
-        
+
         $user = Auth::user();   
         // $order = $user->orders()->get(); //cart
 
@@ -70,7 +72,7 @@ class CheckOutController extends Controller
         Cart::destroy();
 
         //send email // 
-        // Mail::to($name->email)->send(new CheckOutMail($name, $products, $total, $discount, $newTotal));
+        Mail::to($name->email)->send(new CheckOutMail($name, $products, $total, $discount, $newTotal));
         return view('user.thanksyou');
     }
 }

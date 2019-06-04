@@ -24,12 +24,18 @@ Route::get('admin/reports', function(){
     return view('admin.report.reports');
 });
 Route::get('admin/orders', 'AdminController@orders');
+Route::get('admin/ordersid/{id}', 'AdminController@ordersId');
 
 Route::get('admin/coupons', function(){
     return view('admin.contentLayouts.couponsIndex');
 });
 
+Route::get('admin/couponcrud', function(){
+    return view('admin.contentLayouts.CouponCrud');
+});
 
+Route::resource('admin/coupon', 'AdminCouponsController');
+Route::post('admin/add-coupon', 'AdminCouponsController@store');
 
 
 // Admin Brand Controller
@@ -47,8 +53,8 @@ Route::delete('/category/destroy/{id}', 'AdminCategoryController@destroy');
 
 //Admin product Controller 
 Route::resource('admin/products', 'AdminProductController');
-Route::get('admin/list', 'AdminProductController@index')->name('product.index');
-Route::post('admin/products/update', 'AdminProductController@update')->name('product.update');
+Route::get('admin/list', 'AdminProductController@index')->name('products.index');
+Route::post('admin/products/update', 'AdminProductController@update')->name('products.update');
 Route::delete('/products/destroy/{id}', 'AdminProductController@destroy');
 
 
@@ -64,7 +70,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart/addItem/{id}', 'CartController@addItem');
     Route::get('/cart/update/{id}', 'CartController@update');
     Route::put('/cart/update/{id}', 'CartController@update');
-    Route::get('/cart/remove/{id}', 'CartController@destroy');
+    Route::delete('/cart/remove/{id}', 'CartController@destroy');
     Route::get('/checkout', 'CheckOutController@index');
     Route::post('/addCheckOut', 'CheckOutController@addCheckOut');
     Route::get('/orders', 'ProfileController@orders');

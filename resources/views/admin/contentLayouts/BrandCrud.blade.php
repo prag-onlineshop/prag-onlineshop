@@ -13,7 +13,7 @@ Admin | Brand List
 <div class="container py-4">
   <h2>Brand List</h2>
   <div align="right" class="m-2">
-    <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Product</a>
+    <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Brand</a>
   </div>
 
   <table class="table table-bordered" id="brand_datatable">
@@ -22,7 +22,6 @@ Admin | Brand List
         <th scope="col">Brand ID</th>
         <th scope="col">Name</th>
         <th scope="col " style="text-align: center;"">Image</th>
-          {{-- <th scope="col">url</th> --}}
           <th scope=" col">Actions</th>
         <th scope="col">Time Created</th>
         <th scope="col">Time Updated</th>
@@ -55,18 +54,26 @@ Admin | Brand List
             </span>
             <label class="control-label">Upload Image</label>
             <div class="col-sm-12">
-              <input type="file" class="image form-control-file" id="image" name="image">
-              <span id="storeImage">
+              <div class="row">
+                <div class="col-8"> <input type="file" class="image form-control-file m-2" id="image" name="image"
+                    onchange=" $('#preview').show();
+                  document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])"></div>
+                <div class="col-3"> Image preview </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-6">
+                  <span id="storeImage"></span>
+                </div>
+                <div class="col-6">
+                  <img id="preview" name="preview" width="100" height="100" />
+                </div>
+              </div>
             </div>
 
           </div>
           <input type="hidden" name="url" id="url" value="">
-          {{-- <div class="form-group">
-              <label class=" col-sm-2 control-label">URL</label>
-              <div class="col-sm-12">
-                <input type="text" name="url" id="url" placeholder="URL">
-              </div>
-            </div> --}}
           <input type="hidden" name="created_at" id="created_at">
           <input type="hidden" name="update_at" id="update_at">
 
@@ -74,6 +81,7 @@ Admin | Brand List
             <input type="hidden" name="action" id="action" />
             <input type="hidden" name="hidden_id" id="hidden_id" />
             <input type="submit" class="btn btn-primary" id="action_button" value="create">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </button>
           </div>
         </form>
@@ -135,9 +143,7 @@ var table = $('#brand_datatable').DataTable({
       },
       orderable: false
     },
-    // { data: 'url', name: 'url' },
-
-    // URL and Name must same data
+  
     {
       data: 'action',
       name: 'action',
@@ -145,19 +151,23 @@ var table = $('#brand_datatable').DataTable({
     },
     { data: "created_at", name: "created_at" },
     { data: "updated_at", name: "updated_at" },
-  ]
+  ],
+  responsive:true,
+   order:[0,'desc']
 });
 
 
 
 $('#createNewProduct').click(function () {
+  $('#storeImage').html('');
+  $('#preview').hide();
   $('#name').val('');
   $('#url').val('');
   $('#brand_id').val('');
   $('#brandForm').trigger("reset");
   $('#action').val("add");
   $("#action_button").val("add");
-  $('#modelHeading').html("Create New Category");
+  $('#modelHeading').html("Create New Brand");
   $('#brandModal').modal('show');
 });
 
@@ -205,7 +215,7 @@ $('#brandForm').on('submit', function (event) {
   }
 
   if ($('#action').val() == "edit") {
-    $('#storeImage').append();
+
     $.ajax({
       url: "{{ route('brands.update') }}",
       method: "POST",
@@ -243,7 +253,7 @@ $('#brandForm').on('submit', function (event) {
 });
 
 $(document).on('click', '.edit', function () {
-
+  $('#preview').hide();
   $('#storeImage').html('');
   var brand_id = $(this).attr('id');
   $('#form_result').html('');
@@ -280,9 +290,6 @@ $('#ok_button').click(function () {
   $.ajax({
     type: "DELETE",
     url: "/brand/destroy/" + user_id,
-    // beforeSend:function(){
-    //  $('#ok_button').text('Deleting...');
-    // },
     success: function (data) {
       table.draw();
       Swal.fire('Done!', 'It was Succesfully Deleted', 'success');
