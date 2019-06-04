@@ -28,16 +28,11 @@ Orders List
             <td>{{ $order->users->contact }}</td>
             <td>{{ $order->users->address }}</td>
             <td>{{ $order->created_at }}</td>
-            
             <td>
-            @foreach($order->carts_product as $cp)
-                {{ $cp->products->name }}<br/>
-            @endforeach
+                <b>{{ $order->carts_product->count('products.name') }}</b>&nbsp/&nbsp products
             </td>
             <td>
-            @foreach($order->carts_product as $cp)
-                {{ $cp->qty }}<br/>
-            @endforeach
+                <b>{{ $order->carts_product->sum('qty') }}</b>&nbsp/&nbsp quantity
             </td>
             <td>{{ $order->total }}</td>
             <td>{{ $order->status }}</td>

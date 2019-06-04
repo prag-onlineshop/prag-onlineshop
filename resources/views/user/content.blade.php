@@ -161,7 +161,7 @@
                      @foreach($cartItems as $cartItem)
                      @php ($carts[] = $cartItem->id)
                      @endforeach
-                     @if(false !== $key = array_search($product->id, $carts))
+                     @if(in_array($product->id, $carts))
                      <i class="float-right">Added to cart</i>
                      @else
                      <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
@@ -177,7 +177,6 @@
             <!-- card // -->
          </div>
          <!-- row.// -->
-
          @empty
          <h3>No Products</h3>
          @endforelse

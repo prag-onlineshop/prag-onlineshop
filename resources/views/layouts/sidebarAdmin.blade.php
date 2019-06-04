@@ -33,7 +33,7 @@
   </div>
   <!--------------------------------------------- CATEGORIES -------------------------------------------->
   <div class="form-group ">
-    <a href="{{url('/admin/categories')}}" class="form-control bg-transparent border-0 text-dark ">
+    <a href="{{url('/admin/category')}}" class="form-control bg-transparent border-0 text-dark ">
       <img src="{{ asset('img/logo/light/listLogoBlue.png') }}" alt="" class="rounded float-left">
       <h6 class="d-inline-block pl-2">Categories</h6>
       <img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}" alt="" class="float-right">
