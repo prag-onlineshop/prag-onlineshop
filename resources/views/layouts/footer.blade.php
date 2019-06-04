@@ -29,7 +29,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script>
   $('.multiple-items').slick({
-    infinite: true,
+    infinite: false,
   slidesToShow: 5,
   slidesToScroll: 1,
   responsive: [{
@@ -37,7 +37,7 @@
 breakpoint: 1024,
 settings: {
   slidesToShow: 3,
-  infinite: true
+  infinite: false
 }
 
 }, {
