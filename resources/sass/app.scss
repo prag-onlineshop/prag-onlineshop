@@ -15,10 +15,7 @@
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
-* {
-    margin: 0px;
-    padding: 0px;
-}
+
 
 html,
 body {
@@ -26,6 +23,7 @@ body {
     height: 100%;
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
+
 }
 
 ul li {
@@ -80,7 +78,14 @@ textarea {
     width: 600px !important;
 }
 
+.no-scroll {
+    overflow-x: hidden;
+}
+
 .card-img-top {}
+
+
+
 
 #headerWrap {
     background: $secondary-color-navyBlue;

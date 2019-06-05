@@ -56,7 +56,7 @@
 
                <!-- form-group// -->                                      
                <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+                  <button type="submit" class="btn btn-block"> Create Account  </button>
                </div>
 
                <!-- form-group// -->      

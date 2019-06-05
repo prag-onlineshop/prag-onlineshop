@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Brand;
 use App\Category;
+use App\Coupon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,13 +25,14 @@ class CartController extends Controller
             'newTotal' => $this->getNumbers()->get('newTotal'),
             'cartItems' => $cartItems
         ])->with(compact('user', 'cartItems', 'products'));
-        // return view('cart.index', compact('cartItems', 'products'));
     }
 
     private function getNumbers()
     {
         $discount = session()->get('coupon')['discount'] ?? 0;
-        $newSubtotal = (Cart::subtotal(2,'.','') - $discount);
+        // $newSubtotal = (Cart::subtotal(2,'.','') - $discount);
+        $dist = str_replace(',','',$discount);
+        $newSubtotal = (Cart::subtotal(2,'.','') - $dist);
         $newTotal = $newSubtotal * (1);
 
         return collect([
@@ -95,6 +97,8 @@ class CartController extends Controller
     {
         $products = Product::with('category','brand')->where('id', $id)->get();
         $cartItems = Cart::content();
-        return view('user.productDetail', compact( 'cartItems','products'));
+        $brands = Brand::all();
+        $productList = Product::all();
+        return view('user.productDetail', compact( 'cartItems','products', 'brands', 'productList'));
     }   
 }
