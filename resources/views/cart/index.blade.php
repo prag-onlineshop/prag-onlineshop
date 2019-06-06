@@ -152,12 +152,7 @@
                                         class="text-primary price-total">{{ $newTotal }}</strong></li>
                             </ul>
                             <hr>
-<<<<<<< HEAD
-                            <div class="container ">
-                                <h6>Insert coupon code</h6>
-=======
                             <div class="container">
->>>>>>> 247e617059b118de355522d7796f168dbf10008d
                                 @if (! session()->has('coupon'))
                                 <h6>Insert coupon code</h6>
                                 <form action="{{ route('coupons.store') }}" method="POST">
