@@ -18396,12 +18396,6 @@ button.bg-dark:focus {
         align-items: center !important;
     }
 
-    .align-items-lg-baseline {
-        align-items: baseline !important;
-    }
-
-    .align-items-lg-stretch {
-        align-items: stretch !important;
     }
 
     .align-content-lg-start {
@@ -18409,7 +18403,6 @@ button.bg-dark:focus {
     }
 
     .align-content-lg-end {
-        align-content: flex-end !important;
     }
 
     .align-content-lg-center {
@@ -18451,7 +18444,7 @@ button.bg-dark:focus {
     .align-self-lg-stretch {
         align-self: stretch !important;
     }
-}
+
 
 @media (min-width: 1200px) {
     .flex-xl-row {
@@ -27448,10 +27441,6 @@ footer {
 }
 
 #resetPasswordBox .loginLink {
-    padding: 35px 0px 0;
-}
-
-.dropdown-header {
     display: none;
 }
 
@@ -27630,3 +27619,68 @@ footer {
 
 
 /* End Hexagons */
+
+.containerCategory {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    /* position: relative; */
+    display: block;
+    width: auto;
+    height: auto;
+    
+    
+}
+
+.contentCategory {
+    display:flex;
+    text-align: center;
+    align-content: center;
+    font-size: 10px;
+    justify-content: center;
+    /* padding-top: 30%; */
+    position: absolute;
+    bottom: 0;
+}
+.containerCategory .boxCategory {
+    position: relative;
+    width: calc(300px - 30px);
+    height: calc(200px - 30px);
+    background: #ffbe00;
+    float:left;
+    margin: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.containerCategory .boxCategory .iconCategory {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#02576C;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.containerCategory .boxCategory:hover .iconCategory{
+    top: 20%;
+    right: calc(50% - 40px);
+    left: calc(50% - 40px);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0);
+}
+
+.containerCategory .boxCategory .iconCategory .aCategory{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 80px;
+    transition: 0.5s;
+    color: #fff;
+}

@@ -25,7 +25,8 @@ class Carts extends Model
     public static function createOrder()
     {   
         $discount = session()->get('coupon')['discount'] ?? 0;
-        $newSubtotal = (Cart::total(2,'.','') - $discount);
+        $dist = str_replace(',','',$discount);
+        $newSubtotal = (Cart::total(2,'.','') - $dist);
         $newTotal = $newSubtotal * (1);
 
         $user = Auth::user();

@@ -1,7 +1,14 @@
+    
 @extends('layouts.app')
 @section('content')
+<<<<<<< HEAD
+<<<<<<< HEAD
+<div class="bg-overlay">
+    <div class="container bg-light p-4">
+=======
 
 <div class="container">
+>>>>>>> 7213fb268ce5c39a340929f26b3f614f2fbdcdf7
     <div>
         @if(session('status'))
         <div class="alert alert-success">
@@ -10,6 +17,33 @@
         @endif
     </div>
     <br><br>
+<<<<<<< HEAD
+=======
+    <div class="row">
+        @foreach($products as $product)
+        <div class="col-md-6 col-xs-12">
+<<<<<<< HEAD
+            <div class="thumbnail">
+                <img src="{{ url('images', $product->image) }}" class="card-img img-responsive" style="width:300px; height:300px;">
+=======
+<div class="bg-overlay ">
+    <div class="container bg-white vh-100 ">
+        <div>
+            @if(session('status'))
+            <div class="alert alert-success">
+                {{session('status')}}
+>>>>>>> 7bf7245bf7126cfd6d4fed22431921f36ce313c7
+            </div>
+=======
+            @if($product->image == '../imgProduct/default_img.jpg')
+                <div class="thumbnail"><img src="{{ url('imgProduct', $product->image) }}"></div>
+            @else
+                <div class="card-img img-responsive"><img src="{{ url('storage/', $product->image) }}"></div>
+>>>>>>> 7213fb268ce5c39a340929f26b3f614f2fbdcdf7
+            @endif
+        </div>
+        <br><br>
+>>>>>>> 247e617059b118de355522d7796f168dbf10008d
         <div class="row my-auto">
             @foreach($products as $product)
             <div class="col-md-6 col-xs-12">
@@ -116,4 +150,6 @@
         @endif
         @endforeach
     </div>
+</div>
+</div>
     @endsection
