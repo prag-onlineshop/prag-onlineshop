@@ -4,7 +4,7 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
-            @if(!$search)
+            
             <div class="col-md-3">
                 <div class="box">
                     <h5 class="text-muted">Related Products:</h5>
@@ -28,7 +28,7 @@
                     @endforeach
                 </div>
             </div>
-            @endif
+            
             <div class="col-md-9">
                 <div class="container bg-light">
                     <h4>
@@ -91,7 +91,7 @@
                 <!-- container -->
             </div>
         </div>
-        @if(!$products)
+        
         <hr>
         <!--  -->
 
@@ -113,7 +113,7 @@
             <h3>Other brand products:</h3>
             <br>
             @foreach($brands as $brand)
-            @if(in_array($brand->id, $brands_id))
+            @if(in_array($brand->id, $relBrands))
             <h4><strong>{{$brand->name}}</strong></h4>
             <div class="row box bg-light">
                 <div class="col-md-10">
@@ -165,7 +165,7 @@
             @endif
             @endforeach
         </div>
-        @endif
+        
     </div>
 </div>
 

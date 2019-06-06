@@ -10,16 +10,6 @@
         @endif
     </div>
     <br><br>
-    <div class="row">
-        @foreach($products as $product)
-        <div class="col-md-6 col-xs-12">
-            @if($product->image == '../imgProduct/default_img.jpg')
-                <div class="thumbnail"><img src="{{ url('imgProduct', $product->image) }}"></div>
-            @else
-                <div class="card-img img-responsive"><img src="{{ url('storage/', $product->image) }}"></div>
-            @endif
-        </div>
-        <br><br>
         <div class="row my-auto">
             @foreach($products as $product)
             <div class="col-md-6 col-xs-12">
@@ -67,9 +57,8 @@
                 </div>
                 @endif
             </div>
-            <div class="container">
-                @endforeach
-            </div>
+            
+            @endforeach
         </div>
         <hr>
         @php ( $brands_id = [])
