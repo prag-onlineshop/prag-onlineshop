@@ -4,9 +4,8 @@
             <div class="col-10 mx-auto ">
                 <div class="header-form ">
                     <div class="homelink">
-
                         <div class="dropdown dropdown-header float-right p-0 m-0  form-control">
-                            <button class="btn btn-secondary dropdown-toggle form-control " type="button"
+                            <button class="btn btn-secondary dropdown-toggle form-control" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 Menu
@@ -16,7 +15,6 @@
                                 @guest
                                 <a class="dropdown-item" href="#">LOGIN</a>
                                 <a class="dropdown-item" href="#">SIGNUP</a>
-
                                 @else
                                 <a class="dropdown-item" href="#">Profile</a>
                                 <a class="dropdown-item" href="#">Orders</a>
@@ -57,6 +55,7 @@
                             @endguest
                         </ul>
                     </div>
+
                     <div class="clearfix"></div>
                     <div class="header-content p-1 ">
                         <div class="row">
@@ -87,14 +86,16 @@
                                             </div>
                                             @csrf
                                         </form>
+
                                         <div class="clearfix"></div>
                                         <div class="float-left pt-2">
                                             <div class="dropdown d-inline-block">
-                                                <button class="btn btn-primary dropdown-toggle   " type="button"
+                                                <button class="btn btn-primary dropdown-toggle" type="button"
                                                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                                     aria-expanded="false">
                                                     Categories
                                                 </button>
+
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                                                     style="height:100px; overflow-y:auto;">
                                                     <?php $cats = DB::table('categories')->get();

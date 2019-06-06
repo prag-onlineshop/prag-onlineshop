@@ -2,6 +2,10 @@
 @section('content')
 <section class="main-content">
    <!----------------------------- CAROUSEL ------------------------------->
+
+
+
+
    <div class="bg-carousel">
       <div class="carouselWrap">
          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

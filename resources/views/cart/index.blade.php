@@ -3,7 +3,7 @@
 
 
 
-<div class="bg-overlay bg-light">
+<div class="bg-overlay bg-light py-4">
     <?php if ($cartItems->isEmpty()) { ?>
     <br>
     <section id="cart_items">
@@ -151,7 +151,7 @@
                                         class="text-primary price-total">{{ $newTotal }}</strong></li>
                             </ul>
                             <hr>
-                            <div class="container">
+                            <div class="container ">
                                 <h6>Insert coupon code</h6>
                                 @if (! session()->has('coupon'))
                                 <form action="{{ route('coupons.store') }}" method="POST">
@@ -160,6 +160,12 @@
                                     <button type="submit" class="btn btn-sm btn-primary">Apply</button>
                                 </form>
                                 @endif
+                                <div class="mb-4">
+                                    <br>
+                                    <a class="btn btn-primary check_out float-right" href="{{url('/')}}/checkout">Check
+                                        Out</a>
+                                    <br>
+                                </div>
                             </div>
                             <div>
                                 <!-- coupon -->
@@ -183,15 +189,12 @@
                         </section>
                         <!--/#do_action-->
                     </div>
-                    <div class="">
-                        <br>
-                        <a class="btn btn-primary check_out float-right" href="{{url('/')}}/checkout">Check Out</a>
-                        <br>
-                    </div>
+
                 </div>
             </div>
-        </div>
+
     </section>
-    <!--/#cart_items-->
-    <?php } ?>
-    @endsection
+</div>
+<!--/#cart_items-->
+<?php } ?>
+@endsection
