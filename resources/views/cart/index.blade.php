@@ -131,6 +131,7 @@
                                 <li class="d-flex justify-content-between">
                                     @if (session()->has('coupon'))
                                     <span>Discount ({{ session()->get('coupon')['name'] }})</span>
+                                    <span>Discount ({{ session()->get('coupon')['type'] }})</span>
                                     <form action="{{ route('coupons.destroy') }}" method="POST">
                                         @csrf
                                         {{ method_field('delete') }}
@@ -151,9 +152,14 @@
                                         class="text-primary price-total">{{ $newTotal }}</strong></li>
                             </ul>
                             <hr>
+<<<<<<< HEAD
                             <div class="container ">
                                 <h6>Insert coupon code</h6>
+=======
+                            <div class="container">
+>>>>>>> 247e617059b118de355522d7796f168dbf10008d
                                 @if (! session()->has('coupon'))
+                                <h6>Insert coupon code</h6>
                                 <form action="{{ route('coupons.store') }}" method="POST">
                                     @csrf
                                     <input type="text" name="coupon_code" id="coupon_code">

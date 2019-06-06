@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<div class="bg-overlay">
-    <div class="album py-5 bg-light">
+<div class="bg-overlay bg-light">
+    <div class="album py-5  ">
         <div class="container ">
-            <div class="row vh-100">
-                <div class="col-md-3">
+            <div class="row ">
+                <div class="col-md-3 col-sm-12">
                     <div class="box">
                         <h5 class="text-muted">Related Products:</h5>
                         <hr>
@@ -27,7 +27,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-9 col-sm-12">
                     <div class="container bg-light">
                         <h4>
                             Search for item:
@@ -36,7 +36,7 @@
                         <br>
                         <div class="row">
                             @forelse($products as $product)
-                            <div class="col-md-3">
+                            <div class="col-md-4 col-sm-12">
                                 <figure class="card card-product">
                                     <div class="img-wrap  p-2">
 
@@ -112,7 +112,7 @@
             @if(in_array($brand->id, $relBrands))
             <h4>Brand: <strong>{{$brand->name}}</strong></h4>
             <div class="row box bg-light">
-                <div class="col-md-10">
+                <div class="col-md-10 col-sm-12">
                     <div class="multiple-items">
                         @foreach($relProducts as $product)
                         @if($brand->id == $product->brand_id)

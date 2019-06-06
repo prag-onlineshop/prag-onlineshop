@@ -2,41 +2,105 @@
 @section('content')
 <section class="main-content">
    <!----------------------------- CAROUSEL ------------------------------->
-
-
-
-
    <div class="bg-carousel">
-      <div class="carouselWrap">
-         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-               <div class="carousel-item active">
-                  <img class="d-block w-100 " src="{{ asset('img/slides/img-slide.jpeg') }}" alt="First slide">
+      <div class="container  ">
+         <div class="containerCategory ">
+            <div class="row p-0 m-0">
+
+               <div class="boxCategory col-md-1 col-sm-12 col-lg-2">
+                  <div class="iconCategory"><img class="aCategory" src="{{ asset('img/logo/shoe.png') }}">
+                  </div>
+                  <div class="contentCategory">
+                     <h4> SHOES </h4>
+                  </div>
                </div>
-               <div class="carousel-item">
-                  <img class="d-block w-100" src="{{ asset('img/slides/img-slide2.jpeg') }}" alt="Second slide">
+               <div class="boxCategory col-md-1 col-sm-12 col-lg-2">
+                  <div class="iconCategory"><img class="aCategory" src="{{ asset('img/logo/shirt.png') }}">
+                  </div>
+                  <div class="contentCategory">
+                     <h4> SHIRTS </h4>
+                  </div>
                </div>
-               <div class="carousel-item">
-                  <img class="d-block w-100" src="{{ asset('img/slides/img-slide4.jpeg') }}" alt="Third slide">
+               <div class="boxCategory col-md-1 col-sm-12 col-lg-2">
+                  <div class="iconCategory"><img class="aCategory" src="{{ asset('img/logo/bag.png') }}">
+                  </div>
+                  <div class="contentCategory">
+                     <h4> BAGS </h4>
+                  </div>
+
+               </div>
+               <div class="boxCategory col-md-1 col-sm-12 col-lg-2">
+                  <div class="iconCategory"><img class="aCategory" src="{{ asset('img/logo/watch.png') }}">
+                  </div>
+                  <div class="contentCategory">
+                     <h4> WATCHES </h4>
+                  </div>
+
+               </div>
+               <div class="boxCategory col-md-1 col-sm-12 col-lg-2">
+                  <div class="iconCategory"><img class="aCategory" src="{{ asset('img/logo/cap.png') }}">
+                  </div>
+                  <div class="contentCategory">
+                     <h4> CAPS </h4>
+                  </div>
                </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-               <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-               <span class="sr-only">Next</span>
-            </a>
+         </div>
+      </div>
+   </div>
+   <div class="bg-carousel">
+      <div class="container ">
+         <div class="row">
+            <div class="col-md-7 col-sm-12">
+               <div class="carouselWrap">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                     <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                     </ol>
+                     <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <img class="d-block w-100 " src="{{ asset('img/slides/img-slide.jpeg') }}" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                           <img class="d-block w-100" src="{{ asset('img/slides/img-slide2.jpeg') }}"
+                              alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                           <img class="d-block w-100" src="{{ asset('img/slides/img-slide4.jpeg') }}" alt="Third slide">
+                        </div>
+                     </div>
+                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                     </a>
+                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                     </a>
+                  </div>
+               </div>
+            </div>
+
+            <!----------------------------- END Col ------------------------------->
+            <div class="col-md-4 col-sm-12">
+               <div class="pb-4 mt-2 ">
+                  <div class="h1"><img src="{{ asset('img/logo/voucherToday-logo.png') }}" alt="" height="auto"
+                        width="100%">
+
+                  </div>
+                  <div class="h1"><img src="{{ asset('img/logo/voucher-logo.png') }}" alt="" height="175px"
+                        width="100%">
+                  </div>
+               </div>
+
+            </div>
          </div>
       </div>
    </div>
    <!----------------------------- END CAROUSEL ------------------------------->
+
    <div class="bg-overlay py-3 ">
       <!----------------------------- MOST POPULAR ITEMS ------------------------------->
       <div class="col-md-10 col-lg-9 col-xl-9 mx-auto">
@@ -54,7 +118,6 @@
                      @if($brand->id == $product->brand_id)
                      <span>
                         <a href="{{ url('brand-products',$brand->name) }}">{{$brand->name}}</a> <br>
-
                      </span>
                      <hr>
                      @endif

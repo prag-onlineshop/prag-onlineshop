@@ -18,7 +18,7 @@ class CreateCouponsTable extends Migration
             $table->string('name');
             $table->string('code')->unique;
             $table->string('type');
-            $table->decimal('amount');
+            $table->integer('amount');
             $table->timestamps();
         });
     }

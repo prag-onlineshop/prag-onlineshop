@@ -67,8 +67,13 @@
                </div>
 
                <div class="form-group">
+<<<<<<< HEAD
                   <label for="ReCaptcha">Recaptcha:</label>
                   <div class="mx-auto" id="captcha-prag">
+=======
+                  <button type="submit" class="btn btn-block"> Create Account  </button>
+               </div>
+>>>>>>> 247e617059b118de355522d7796f168dbf10008d
 
                      {!! NoCaptcha::renderJs() !!}
                      {!! NoCaptcha::display() !!}
