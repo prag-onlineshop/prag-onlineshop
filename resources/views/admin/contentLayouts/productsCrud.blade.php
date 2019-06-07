@@ -9,29 +9,34 @@ Admin | Products List
 
 <div class="row">
   <div class="container py-4 mx-auto">
-    <div class="col-md-10 h3 col-sm-12 justify-content-xs-center">Product list</div>
+    <div class="col-md-12 h3 col-sm-12 justify-content-xs-center">Product list</div>
     <div align="right" class="m-2">
-      <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Product</a>
+      <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> <i class="fas fa-plus-circle"></i>
+        Create
+        New Brand</a>
     </div>
+    <div class="col-md-12 col-sm-12">
+      <div class="table-reponsive">
+        <table class="table  table-bordered" id="product_datatable">
+          <thead>
+            <tr class="text-white bg-primary">
+              <th scope="col" class="text-center">product ID</th>
+              <th scope="col">Category ID</th>
+              <th scope="col">Brand ID</th>
+              <th scope="col" class="text-wrap">Name</th>
+              <th scope="col">Image</th>
+              <th scope="col">price</th>
+              <th scope="col ">Description</th>
+              <th scope="col ">Quantity</th>
+              <th scope="col" class="">Actions</th>
+              <th scope="col">Time Created</th>
+              <th scope="col">Time Updated</th>
 
-    <table class="table table-reponsive table-bordered" id="product_datatable">
-      <thead>
-        <tr class="text-white bg-primary">
-          <th scope="col" class="text-center">product ID</th>
-          <th scope="col">Category ID</th>
-          <th scope="col">Brand ID</th>
-          <th scope="col" class="text-wrap">Name</th>
-          <th scope="col">Image</th>
-          <th scope="col">price</th>
-          <th scope="col " class="text-wrap">Description</th>
-          <th scope="col " class="text-wrap">Quantity</th>
-          <th scope="col">Actions</th>
-          <th scope="col">Time Created</th>
-          <th scope="col">Time Updated</th>
-
-        </tr>
-      </thead>
-    </table>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 <div class="modal fade " id="productModal" name="reset" aria-hidden="true" tabindex="-1" role="dialog">

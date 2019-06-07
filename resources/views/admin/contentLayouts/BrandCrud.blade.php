@@ -13,7 +13,9 @@ Admin | Brand List
 <div class="container py-4">
   <h2>Brand List</h2>
   <div align="right" class="m-2">
-    <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Brand</a>
+    <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> <i class="fas fa-plus-circle"></i>
+      Create
+      New Brand</a>
   </div>
 
   <table class="table table-bordered" id="brand_datatable">

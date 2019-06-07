@@ -72914,8 +72914,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
+__webpack_require__(/*! D:\Myproject\onlineshop\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Myproject\onlineshop\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
 __webpack_require__(/*! /home/paolo/Desktop/prag-onlineshop/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /home/paolo/Desktop/prag-onlineshop/resources/sass/app.scss */"./resources/sass/app.scss");
+>>>>>>> 247e617059b118de355522d7796f168dbf10008d
 
 
 /***/ })

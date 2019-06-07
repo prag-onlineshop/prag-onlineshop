@@ -20,7 +20,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
   <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> </script>
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -38,10 +38,10 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-   <link rel="stylesheet" href="{{ mix("css/adminlte.min.css") }}">
+  <link rel="stylesheet" href="{{ mix("css/adminlte.min.css") }}">
   <!-- iCheck -->
   <link rel="stylesheet" href="{{ mix("css/blue.css") }}">
- 
+
 
 
   <!-- Google Font: Source Sans Pro -->
@@ -76,7 +76,7 @@
         @yield('brands')
         @yield('coupons')
         @yield('dashboard')
-        
+
         @yield('reports')
         @yield('orders')
         @yield('settings')
@@ -85,26 +85,13 @@
     </div>
 
   </div>
-      
+
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
   </script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-<<<<<<< HEAD
-  {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
-  </script>
-  <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script> --}}
-  
-
-  
-  
 
 
-
-
-
-=======
->>>>>>> abfe03333edf96f4c7b20cb074862ac48e448691
 
 
 </body>

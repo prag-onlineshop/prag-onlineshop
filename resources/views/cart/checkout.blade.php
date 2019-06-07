@@ -24,7 +24,7 @@
     </div>
     @endif
     <!-- Checout Forms-->
-    <div class="container">
+    <div class="container ">
         <div class="row">
             <div class="col-sm-7">
                 <div class="container .position-relative py-3 bg-light table-responsive cart_info ">

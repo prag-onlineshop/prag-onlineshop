@@ -27,6 +27,6 @@ mix.copy('node_modules/admin-lte/plugins/iCheck/flat/blue.css', 'public/css');
 
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+  .sass('resources/sass/app.scss', 'public/css');
 
 mix.disableNotifications();

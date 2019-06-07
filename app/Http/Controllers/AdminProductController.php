@@ -31,8 +31,8 @@ class AdminProductController extends Controller
           $dataList = Product::latest()->get();
           return Datatables::of($dataList)
                   ->addColumn('action', function($data){
-                      $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  id="'.$data->id.'" data-original-title="Edit" name="edit" class="edit btn btn-primary btn-sm editCategory text-white">Edit</a>';
-                      $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" name="delete"  data-id="'.$data->id.'" data-original-title="Delete" class="delete btn btn-danger btn-sm text-white">Delete</a>';
+                      $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  id="'.$data->id.'" data-original-title="Edit" name="edit" class="edit btn btn-primary btn-sm editCategory text-white"><i class="fa fa-edit blue"></i></a>';
+                      $btn = $btn.' <span><a href="javascript:void(0)" data-toggle="tooltip" name="delete"  data-id="'.$data->id.'" data-original-title="Delete" class="delete btn btn-danger btn-sm text-white"><i class="fa fa-trash red"></i></a></span>';
   
                        return $btn;
                   })
@@ -151,8 +151,7 @@ class AdminProductController extends Controller
         else
         {
             $rules = array(
-                'name'    =>  'required',
-                'url'     =>  'required',
+            
             
             );
 
