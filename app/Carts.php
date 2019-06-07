@@ -49,4 +49,12 @@ class Carts extends Model
     {
         return $this->hasMany(CartsProduct::class, 'carts_id');
     }
+
+    public function statusOptions(){
+        return [
+            'Pending' => 'Pending',
+            'Shipped' => 'Shipped',
+            'Paid' => 'Paid'
+        ];
+    }
 }

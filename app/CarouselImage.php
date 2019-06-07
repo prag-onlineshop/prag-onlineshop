@@ -3,9 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\CarouselImage;
+use App\Setting;
 
-class Setting extends Model
+class CarouselImage extends Model
 {
     protected $guarded = [];
 }

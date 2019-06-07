@@ -75,13 +75,13 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
         return view('admin.contentLayouts.couponsIndex');
     });
 
+    //Admin Settings
+    Route::get('admin/settings','SettingsController@index');
+    Route::post('admin/settings','SettingsController@store')->name('settings.store');
+    Route::delete('admin/settings/{id}','SettingsController@destroy')->name('image.destroy');
+    
     //Admin Orders
     Route::get('orders', 'AdminController@orders');
     Route::get('ordersid/{id}', 'AdminController@ordersId');
-
-    //Admin Settings
-    Route::get('settings', function(){
-        return view('admin.setting.settings');
-    });
-    Route::get('settings','SettingsController@index');
+    Route::patch('ordersid/{order}','AdminController@statusUpdate');
 });

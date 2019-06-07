@@ -68,25 +68,15 @@
                 <div class="container">
                     @endforeach
                 </div>
-
             </div>
-
-
             @php ( $brands_id = [])
             @foreach ($products as $product)
             @php ( $brands_id[] = $product->brand_id )
-
-
             @endforeach
-
-
-
             <div class="form-group p-3 m-0">
                 <hr class="bg-secondary">
                 <h3>Other brand products:</h3>
-
             </div>
-
             <br>
             @foreach($brands as $brand)
             @if(in_array($brand->id, $brands_id))
@@ -133,9 +123,15 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
+                @endforeach
             </div>
             @endif
             @endforeach
         </div>
     </div>
-    @endsection
+    @endif
+    @endforeach
+</div>
+</div>
+@endsection
