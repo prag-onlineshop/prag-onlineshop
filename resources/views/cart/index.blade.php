@@ -22,7 +22,7 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="{{url('/')}}"></a></li>
-                    <li class="active">Shopping Cart</li>
+                    <li class="active h2 text-success">Shopping Cart</li>
                 </ol>
             </div>
             <div class="row">
@@ -56,8 +56,14 @@
                             <tbody>
                                 <tr>
                                     <td class="cart_product">
-                                        <p><img src="{{url('images',$cartItem->options->img)}}" class="img-responsive"
-                                                width="70"></p>
+
+                                        @if($cartItem->options->img == '../imgProduct/default_img.jpg')
+                                        <img src="{{ url('imgProduct', $cartItem->options->img) }} " width="150px"
+                                            height="100px">
+                                        @else
+                                        <img src="{{ url('storage/', $cartItem->options->img) }}" width="150px"
+                                            height="150px">
+                                        @endif
                                     </td>
                                     <td class="cart_description">
                                         <h4><a href="{{ url('productDetail',$cartItem->id) }}"
@@ -108,7 +114,8 @@
                                             @csrf
                                             <input type="hidden" value="{{$cartItem->id}}" name="prod_id">
                                             <input type="hidden" value="{{$cartItem->qty}}" name="qty">
-                                            <button class="btn btn-sm btn-secondary" type="submit">Remove</button>
+                                            <button class="btn  btn-danger " type="submit"><i
+                                                    class="fa fa-trash red"></i></button>
                                         </form>
                                     </td>
                                 </tr>

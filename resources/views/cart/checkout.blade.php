@@ -63,9 +63,16 @@
                             @foreach($cartItems as $cartItem)
                             <tr>
                                 <td class="cart_product">
-                                    <a href="{{url('/productDetail')}}/{{$cartItem->id}}"><img
-                                            src="{{url('images',$cartItem->options->img)}}" alt=""
-                                            style="width:50px; height:50px"></a>
+                                    {{-- <a href="{{url('/productDetail')}}/{{$cartItem->id}}"><img
+                                        src="{{url('images',$cartItem->options->img)}}" alt=""
+                                        style="width:50px; height:50px"></a> --}}
+                                    @if($cartItem->options->img == '../imgProduct/default_img.jpg')
+                                    <img src="{{ url('imgProduct', $cartItem->options->img) }} " width="150px"
+                                        height="100px">
+                                    @else
+                                    <img src="{{ url('storage/', $cartItem->options->img) }}" width="150px"
+                                        height="150px">
+                                    @endif
                                 </td>
                                 <td class="cart_description">
                                     <h5><a href="{{url('/productDetail')}}/{{$cartItem->id}}"

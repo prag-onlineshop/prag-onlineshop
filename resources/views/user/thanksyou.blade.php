@@ -4,8 +4,11 @@
     <section id="cart_items">
         <div class="container d-flex justify-content-center">
             <div class="">
-                <h3>Thanks For your Order :
-                    <span style='color:green'>{{ucwords(Auth::user()->name)}}</span></h3>
+                <div class="d-flex justify-content-center align-item-center">
+                    <div class="h2">Thank you for purchasing..
+                        <span style='color:green'>{{ucwords(Auth::user()->name)}}</span>
+                    </div>
+                </div>
             </div>
             <!--/breadcrums-->
         </div>

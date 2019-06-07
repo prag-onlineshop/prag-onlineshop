@@ -1,11 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/font-awesome.min.css": "/css/font-awesome.min.css",
-    "/css/adminlte.min.css": "/css/adminlte.min.css",
-    "/css/bootstrap3-wysihtml5.min.css": "/css/bootstrap3-wysihtml5.min.css",
-    "/css/blue.css": "/css/blue.css",
-    "/css/jquery-jvectormap-1.2.2.css": "/css/jquery-jvectormap-1.2.2.css",
-    "/js/bootstrap.bundle.min.js": "/js/bootstrap.bundle.min.js",
-    "/js/jquery.min.js": "/js/jquery.min.js"
+    "/css/app.css": "/css/app.css"
 }

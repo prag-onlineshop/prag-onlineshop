@@ -1,15 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 
-<script type="text/javascript">
-   var onloadCallback = function() {
-     grecaptcha.render('captcha-prag', {
-       'sitekey' : '6LexZ6cUAAAAAPToougcUuT9zivGriFx1II-XmaP'
-     });
-   };
-</script>
 
 <div class="bg-overlay">
    <div class="container py-3">
@@ -68,11 +60,14 @@
 
                <div class="form-group">
                   <label for="ReCaptcha">Recaptcha:</label>
-                  <div class="mx-auto" id="captcha-prag">
 
-                     {!! NoCaptcha::renderJs() !!}
-                     {!! NoCaptcha::display() !!}
-                  </div>
+                  {!! NoCaptcha::renderJs() !!}
+                  {!! NoCaptcha::display() !!}
+                  @if ($errors->has('g-recaptcha-response'))
+                  <span class="help-block">
+                     <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                  </span>
+                  @endif
                   <!-- form-group// -->
                   <div class="form-group mt-3">
                      <button type="submit" class="btn btn-primary btn-block" data-callback='onSubmit'> Create Account
@@ -93,8 +88,7 @@
    <!-- card.// -->
 </div>
 </div>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-</script>
+
 
 
 @endsection

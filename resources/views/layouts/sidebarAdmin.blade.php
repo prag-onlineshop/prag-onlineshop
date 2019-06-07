@@ -52,7 +52,7 @@
   <!--------------------------------------------- ORDERS -------------------------------------------->
   <div class="form-group ">
     <a href="/admin/orders" class="form-control bg-transparent border-0   text-dark ">
-      <img src="{{ asset('img/logo/light/couponLogoBlue.png') }}" alt="" class="rounded float-left">
+      <img src="{{ asset('img/logo/light/listLogoBlue.png') }}" alt="" class="rounded float-left">
       <h6 class="d-inline-block pl-2 ">Orders</h6>
       <img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}" alt="" class="float-right">
     </a>
@@ -60,7 +60,7 @@
   <!--------------------------------------------- REPORTS -------------------------------------------->
   <div class="form-group ">
     <a href="/admin/reports" class="form-control bg-transparent border-0   text-dark ">
-      <img src="{{ asset('img/logo/light/couponLogoBlue.png') }}" alt="" class="rounded float-left">
+      <img src="{{ asset('img/logo/light/listLogoBlue.png') }}" alt="" class="rounded float-left">
       <h6 class="d-inline-block pl-2 ">Reports</h6>
       <img src="{{ asset('img/logo/light/chevronLogoBlue.png') }}" alt="" class="float-right">
     </a>

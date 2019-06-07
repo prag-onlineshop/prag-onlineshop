@@ -33,7 +33,6 @@
                         </div>
 
                         <ul class="float-right nav-header">
-                            <li><a href="#">CUSTOMER CARE</a> </li>
                             <li><a href="/">HOME</a> </li>
                             @guest
                             <li><a href="/login">LOGIN</a></li>
@@ -55,7 +54,6 @@
                             @endguest
                         </ul>
                     </div>
-
                     <div class="clearfix"></div>
                     <div class="header-content p-1 ">
                         <div class="row">
@@ -95,7 +93,6 @@
                                                     aria-expanded="false">
                                                     Categories
                                                 </button>
-
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                                                     style="height:100px; overflow-y:auto;">
                                                     <?php $cats = DB::table('categories')->get();
@@ -105,7 +102,7 @@
                                                     @foreach($cat_product as $product)
                                                     @if($cat->id == $product->category_id)
                                                     <a class="dropdown-item"
-                                                        href="{{ url('category',$cat->url) }}">{{ $cat->name }}</a>
+                                                        href="{{ url('category-products',$cat->url) }}">{{ $cat->name }}</a>
                                                     @endif
                                                     @endforeach
                                                     @endforeach

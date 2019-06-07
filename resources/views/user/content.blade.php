@@ -51,7 +51,7 @@
    <div class="bg-carousel">
       <div class="container ">
          <div class="row">
-            <div class="col-md-7 col-sm-12">
+            <div class="col-md-6 col-sm-12">
                <div class="carouselWrap">
                   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                      <ol class="carousel-indicators">
@@ -59,16 +59,30 @@
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                      </ol>
-                     <div class="carousel-inner">
+                     <div class="carousel-inner  ">
                         <div class="carousel-item active">
-                           <img class="d-block w-100 " src="{{ asset('img/slides/img-slide.jpeg') }}" alt="First slide">
+                           <img class="d-block w-100 float-right " src="{{ asset('img/slides/img2.jpeg') }}"
+                              alt="First slide">
                         </div>
                         <div class="carousel-item">
-                           <img class="d-block w-100" src="{{ asset('img/slides/img-slide2.jpeg') }}"
+                           <img class="d-block w-100 float-right" src="{{ asset('img/slides/img3.jpeg') }}"
                               alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                           <img class="d-block w-100" src="{{ asset('img/slides/img-slide4.jpeg') }}" alt="Third slide">
+                           <img class="d-block w-100 float-right" src="{{ asset('img/slides/img1.jpg') }}"
+                              alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                           <img class="d-block w-100 float-right" src="{{ asset('img/slides/img4.jpeg') }}"
+                              alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                           <img class="d-block w-100 float-right" src="{{ asset('img/slides/img5.jpeg') }}"
+                              alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                           <img class="d-block w-100 float-right" src="{{ asset('img/slides/img6.jpg') }}"
+                              alt="Third slide">
                         </div>
                      </div>
                      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -84,14 +98,14 @@
             </div>
 
             <!----------------------------- END Col ------------------------------->
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-5 col-sm-12 float-right">
                <div class="pb-4 mt-2 ">
                   <div class="h1"><img src="{{ asset('img/logo/voucherToday-logo.png') }}" alt="" height="auto"
-                        width="100%">
+                        width="100%" style="border-radius: 20px; border: yellowgreen solid 3px;">
 
                   </div>
-                  <div class="h1"><img src="{{ asset('img/logo/voucher-logo.png') }}" alt="" height="175px"
-                        width="100%">
+                  <div class="h1"><img src="{{ asset('img/logo/voucher-logo.png') }}" alt="" height="175px" width="100%"
+                        style="border-radius: 25px; border: yellowgreen solid 2px;">
                   </div>
                </div>
 
@@ -207,11 +221,13 @@
          <div class="col-md-4 col-lg-2 col-xl-3  col-sm-5 justify-content-sm-center">
             <figure class="card card-product ">
                <div class="img-wrap">
+
                   @if($product->image == '../imgProduct/default_img.jpg')
                   <img src="{{ url('imgProduct', $product->image) }}">
                   @else
                   <img src="{{ url('storage/', $product->image) }}">
                   @endif
+
                   <a class="btn-overlay" href="{{ url('productDetail',$product->id) }}">
                      <i class="fa fa-search-plus"></i> Quick view
                   </a>
@@ -231,7 +247,7 @@
                      @if(in_array($product->id, $carts))
                      <i class="float-right">Added to cart</i>
                      @else
-                     <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right">Add to
+                     <a href="{{url('cart/addItem',$product->id)}}" class="btn btn-success btn-sm float-right"> Add to
                         Cart</a>
                      @endif
                      @endif
