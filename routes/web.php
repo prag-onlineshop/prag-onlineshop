@@ -12,6 +12,9 @@ Route::get('/brand-products/{brand}', 'ProductsController@productBrand');
 Route::get('/search-item', 'ProductsController@itemSearch');
 Route::get('/productDetail/{id}','CartController@detailPro');
 
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', 'ProfileController@index');
     Route::post('/updateProfile', 'ProfileController@updateProfile');

@@ -33,6 +33,9 @@
         <hr>
         <div class="reg"> <a href="/register"> Don't yet have an account? Register Here! </a></div>
       </form>
+
+      <a href="{{ url('/auth/facebook') }}" class="btn btn-facebook btn-primary"><i class="fab fa-facebook-f"></i> &nbsp&nbsp&nbsp&nbsp&nbspFacebook</a>
+      <a href="{{ url('/auth/google') }}" class="btn btn-google btn-danger"><i class="fab fa-google"></i> &nbsp&nbsp&nbsp&nbsp&nbspGoogle</a>
     </div>
   </div>
 </div>

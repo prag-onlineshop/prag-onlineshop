@@ -26,7 +26,7 @@ class Carts extends Model
     {   
         $discount = session()->get('coupon')['discount'] ?? 0;
         $dist = str_replace(',','',$discount);
-        $newSubtotal = (Cart::subtotal(2,'.','') - $dist);
+        $newSubtotal = (Cart::total(2,'.','') - $dist);
         $newTotal = $newSubtotal * (1);
 
         $user = Auth::user();
