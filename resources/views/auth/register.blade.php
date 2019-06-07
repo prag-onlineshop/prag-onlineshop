@@ -76,11 +76,7 @@
                </div>
                <p class="text-center">Have an account? <a href="/login">Log In</a> </p>
       </div>
-
-
-
       <!-- form-group// -->
-
       </form>
 
       </article>

@@ -12,6 +12,9 @@ Route::get('/brand-products/{brand}', 'ProductsController@productBrand');
 Route::get('/search-item', 'ProductsController@itemSearch');
 Route::get('/productDetail/{id}','CartController@detailPro');
 
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', 'ProfileController@index');
     Route::post('/updateProfile', 'ProfileController@updateProfile');
@@ -71,13 +74,13 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
         return view('admin.contentLayouts.couponsIndex');
     });
 
+    //Admin Settings
+    Route::get('admin/settings','SettingsController@index');
+    Route::post('admin/settings','SettingsController@store')->name('settings.store');
+    Route::delete('admin/settings/{id}','SettingsController@destroy')->name('image.destroy');
+    
     //Admin Orders
     Route::get('orders', 'AdminController@orders');
     Route::get('ordersid/{id}', 'AdminController@ordersId');
-
-    //Admin Settings
-    Route::get('settings', function(){
-        return view('admin.setting.settings');
-    });
-    Route::get('settings','SettingsController@index');
+    Route::patch('ordersid/{order}','AdminController@statusUpdate');
 });

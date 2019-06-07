@@ -151,8 +151,6 @@ class AdminProductController extends Controller
         else
         {
             $rules = array(
-            
-            
             );
 
             $error = Validator::make($request->all(), $rules);

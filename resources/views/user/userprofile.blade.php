@@ -20,14 +20,14 @@
 							<a href="#">My Account</a>
 						</li>
 						<li class="d-block">
-							<a href="#">profile</a>
+							<a href="/profile">profile</a>
 						</li>
 						<li class="d-block">
-							<a href="#">My Orders</a>
+							<a href="/orders">My Orders</a>
 						</li>
 					</ul>
 				</span>
-			</div> 
+			</div>
 			<div class="col-md-9 col-lg-9 col-sm-12 myprofile">
 				<p class="h3">My profile</p>
 				<h6>Manage and protect your account</h6>
@@ -70,7 +70,7 @@
 
 
 							<button type="submit" class="btn btn-primary d-block">Save</button>
-						
+
 					</div>
 
 					<div class="col-md-4 col-lg-4 mx-auto border-left">

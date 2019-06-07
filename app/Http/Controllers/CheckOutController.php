@@ -57,7 +57,8 @@ class CheckOutController extends Controller
         $total = Cart::total();
 
         $discount = session()->get('coupon')['discount'] ?? 0;
-        $newSubtotal = (Cart::total(2,'.','') - $discount);
+        $dist = str_replace(',','',$discount);
+        $newSubtotal = (Cart::subtotal(2,'.','') - $dist);
         $newTotal = $newSubtotal * (1);
 
         $user_id = Auth::user()->id;

@@ -12,7 +12,7 @@ Orders List
         <tr>
             <th>User</th>
             <th>Contact</th>
-            <th>Address</th> 
+            <th>Address</th>
             <th>Date</th>
             <th>Products</th>
             <th>Product Quantity</th>
@@ -44,7 +44,18 @@ Orders List
             @endforeach
             </td>
 
-            <td>{{ $order->status }}</td>
+            <td>
+                <form action="{{ url('admin/ordersid', $order->id) }}" method="post">
+                @method('PATCH')
+                <select name="status" id="status" style="border: none; align-text: center;">
+                @foreach($order->statusOptions() as $statusOptionKey => $statusOptionValue)
+                    <option value="{{$statusOptionValue}}" {{$order->status == $statusOptionKey ? 'selected' : ''}}>{{$statusOptionValue}}</option>
+                @endforeach 
+                </select>
+                <button class="btn btn-sm btn-success float-right">save</button>
+                @csrf
+                </form>
+            </td>
         </tr>
         @endforeach
         </tbody>

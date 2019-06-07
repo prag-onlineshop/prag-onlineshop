@@ -139,6 +139,7 @@
                                     @if (session()->has('coupon'))
                                     <span>Discount ({{ session()->get('coupon')['name'] }})</span>
                                     <span>Discount ({{ session()->get('coupon')['type'] }})</span>
+                                    
                                     <form action="{{ route('coupons.destroy') }}" method="POST">
                                         @csrf
                                         {{ method_field('delete') }}
