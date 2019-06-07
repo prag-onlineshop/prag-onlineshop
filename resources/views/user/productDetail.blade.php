@@ -126,12 +126,8 @@
                 @endif
                 @endforeach
             </div>
-            @endif
-            @endforeach
         </div>
     </div>
-    @endif
-    @endforeach
 </div>
 </div>
 @endsection

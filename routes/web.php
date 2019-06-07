@@ -7,7 +7,6 @@ Auth::routes();
 //Home Routes
 
 Route::get('/', 'ProductsController@indexHome');
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/category-products/{category}', 'ProductsController@showCates')->name('category.showCates');
 Route::get('/brand-products/{brand}', 'ProductsController@productBrand');
 Route::get('/search-item', 'ProductsController@itemSearch');
@@ -24,6 +23,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/checkout', 'CheckOutController@index');
     Route::post('/addCheckOut', 'CheckOutController@addCheckOut');
     Route::get('/orders', 'ProfileController@orders');
+    Route::delete('/orders/{order}','ProfileController@delete')->name('order.delete');
     Route::get('/userprofile','ProfileController@index');
     Route::view('/profileOrder','user.profileOrder'); 
     
@@ -73,12 +73,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     });
 
     //Admin Settings
-    Route::get('admin/settings','SettingsController@index');
-    Route::post('admin/settings','SettingsController@store')->name('settings.store');
-    Route::delete('admin/settings/{id}','SettingsController@destroy')->name('image.destroy');
+    Route::get('settings','SettingsController@index');
+    Route::post('settings','SettingsController@store')->name('settings.store');
+    Route::delete('settings/{id}','SettingsController@destroy')->name('image.destroy');
     
     //Admin Orders
-    Route::get('admin/orders', 'AdminController@orders');
-    Route::get('admin/ordersid/{id}', 'AdminController@ordersId');
-    Route::patch('admin/ordersid/{order}','AdminController@statusUpdate');
+    Route::get('orders', 'AdminController@orders');
+    Route::get('ordersid/{id}', 'AdminController@ordersId');
+    Route::patch('ordersid/{order}','AdminController@statusUpdate');
 });

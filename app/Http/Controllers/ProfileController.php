@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Carts;
 use Image;
 use DB;
 
@@ -58,5 +59,10 @@ class ProfileController extends Controller
             ->leftJoin('carts', 'carts.id', '=', 'carts_product.carts_id')
             ->where('carts.user_id', '=', $user_id)->get();
         return view('user.orders', compact('orders'));
+    }
+
+    public function delete(Carts $order){
+        $order->delete();
+        return redirect('/orders');
     }
 }

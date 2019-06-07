@@ -20,7 +20,17 @@
                     <td>{{ $order->name }}</td>
                     <td>{{ $order->qty }}</td>
                     <td>{{ $order->total }}</td>
+                    @if($order->status == "Paid")
+                    <form action="{{route('order.delete', $order->id)}}" method="post">
+                    @method('DELETE')
+                    <td><span>{{ $order->status }}
+                    <button type="submit" class="btn btn-sm btn-danger" title="delete">x</button></span>
+                    </td>
+                    @csrf
+                    </form>
+                    @else
                     <td>{{ $order->status }}</td>
+                    @endif
                 </tr>
                 @empty
                 <tr>

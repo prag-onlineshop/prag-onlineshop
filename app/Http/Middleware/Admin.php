@@ -18,9 +18,8 @@ class Admin
     {
         if(Auth::check() && Auth::user()->isAdmin()){
             //isAdmin function is at user Model
-
-           return $next($request); 
+           return $next($request);
         }
-        return redirect('home');
+        return redirect('/');
     }
 }

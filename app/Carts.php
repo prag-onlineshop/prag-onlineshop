@@ -16,10 +16,6 @@ class Carts extends Model
         'user_id'
     ];
 
-    protected $attributes=[
-        'Pending' => 'Pending'
-    ];
-
     public function orderFields()
     {
         // order can order many product from Product Table
