@@ -104,7 +104,7 @@
                                                     @foreach($cat_product as $product)
                                                     @if($cat->id == $product->category_id)
                                                     <a class="dropdown-item"
-                                                        href="{{ url('category',$cat->url) }}">{{ $cat->name }}</a>
+                                                        href="{{ url('category-products',$cat->url) }}">{{ $cat->name }}</a>
                                                     @endif
                                                     @endforeach
                                                     @endforeach

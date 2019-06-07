@@ -17,14 +17,14 @@ Route::get('/productDetail/{id}','CartController@detailPro');
 Route::get('admin/dashboard', function(){
     return view('admin.dashboard.dashboard');
 });
-Route::get('admin/settings', function(){
-    return view('admin.setting.settings');
-});
 
 Route::get('admin/settings','SettingsController@index');
+Route::post('admin/settings','SettingsController@store')->name('settings.store');
+Route::delete('admin/settings/{id}','SettingsController@destroy')->name('image.destroy');
 
 Route::get('admin/orders', 'AdminController@orders');
 Route::get('admin/ordersid/{id}', 'AdminController@ordersId');
+Route::patch('admin/ordersid/{order}','AdminController@statusUpdate');
 
 Route::get('admin/coupons', function(){
     return view('admin.contentLayouts.couponsIndex');

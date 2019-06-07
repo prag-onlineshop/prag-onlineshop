@@ -38,13 +38,13 @@
       <div class="col-md-10 col-lg-9 col-xl-9 mx-auto">
          <div class="row p-0 m-0">
             <div class="col-lg-3 col-md-3 col-sm-12">
-               <div class="box" style="height:400px; width:100%; overflow-y:auto">
+               <div class="box">
                   <p class="h4">Brands</p>
                   <hr class="bg-secondary">
                   <?php $brands = DB::table('brands')->get(); 
                               $brand_products = DB::table('products')->where('brand_id','!=','')->groupBy('brand_id')->orderBy('id', 'desc')->get();
                            ?>
-                  <div>
+                  <div style="height:350px; width:100%; overflow-y:auto">
                      @foreach($brands as $brand)
                      @foreach($brand_products as $product)
                      @if($brand->id == $product->brand_id)

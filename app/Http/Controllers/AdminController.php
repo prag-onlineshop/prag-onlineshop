@@ -126,6 +126,16 @@ class AdminController extends Controller
         $orders = Carts::with('users', 'carts_product.products')->where('id', $id)->get();
         return view('admin.order.ordersId', compact('orders'));
     }
+
+    public function statusUpdate(Carts $order){
+        $order->update($this->updateRequest());
+        return redirect('admin/ordersid/'.$order->id);
+    }
+    private function updateRequest(){
+        return request()->validate([
+            'status'=> 'required',
+        ]);
+    }
 }
 
 

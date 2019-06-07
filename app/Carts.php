@@ -16,6 +16,10 @@ class Carts extends Model
         'user_id'
     ];
 
+    protected $attributes=[
+        'Pending' => 'Pending'
+    ];
+
     public function orderFields()
     {
         // order can order many product from Product Table
@@ -25,7 +29,8 @@ class Carts extends Model
     public static function createOrder()
     {   
         $discount = session()->get('coupon')['discount'] ?? 0;
-        $newSubtotal = (Cart::total(2,'.','') - $discount);
+        $dist = str_replace(',','',$discount);
+        $newSubtotal = (Cart::subtotal(2,'.','') - $dist);
         $newTotal = $newSubtotal * (1);
 
         $user = Auth::user();
@@ -47,5 +52,13 @@ class Carts extends Model
     public function carts_product()
     {
         return $this->hasMany(CartsProduct::class, 'carts_id');
+    }
+
+    public function statusOptions(){
+        return [
+            'Pending' => 'Pending',
+            'Shipped' => 'Shipped',
+            'Paid' => 'Paid'
+        ];
     }
 }

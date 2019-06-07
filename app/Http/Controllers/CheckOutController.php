@@ -57,7 +57,8 @@ class CheckOutController extends Controller
         $total = Cart::total();
 
         $discount = session()->get('coupon')['discount'] ?? 0;
-        $newSubtotal = (Cart::total(2,'.','') - $discount);
+        $dist = str_replace(',','',$discount);
+        $newSubtotal = (Cart::subtotal(2,'.','') - $dist);
         $newTotal = $newSubtotal * (1);
 
         $user_id = Auth::user()->id;
@@ -68,7 +69,7 @@ class CheckOutController extends Controller
         Cart::destroy();
 
         //send email // 
-        // Mail::to($name->email)->send(new CheckOutMail($name, $products, $total, $discount, $newTotal));
+        Mail::to($name->email)->send(new CheckOutMail($name, $products, $total, $discount, $newTotal));
         return view('user.thanksyou');
     }
 }

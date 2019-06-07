@@ -151,8 +151,7 @@ class AdminProductController extends Controller
         else
         {
             $rules = array(
-                'name'    =>  'required',
-                'url'     =>  'required',
+               
             
             );
 
