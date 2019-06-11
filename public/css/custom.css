@@ -266,3 +266,35 @@ table.table .avatar {
 .modal form label {
     font-weight: normal;
 }
+
+.modal-lg {
+    max-width: 80% !important;
+}
+
+.modal-sm{
+    max-width: 50% !important;
+}
+
+.user{
+  display: flex;
+  justify-content: left;
+  align-items: center; 
+  border : 1px solid black;
+}
+.rowheader{
+    font-family: "Georgia", serif;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px 0;
+
+}
+.admintext{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border : 1px solid black;
+  color: red;
+  font-style: italic;
+}
+
+
