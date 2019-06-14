@@ -42,6 +42,12 @@ Route::delete('/category/destroy/{id}', 'AdminCategoryController@destroy');
 Route::delete('/products/destroy/{id}', 'AdminProductController@destroy');
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
+
+    //Route for dashboard
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard.index');
+    Route::get('userslist', 'UsersListController@index')->name('list.index');
+    Route::get('userlist/{user}', 'DashboardController@update')->name('list.update');
+
    //Route for coupon
     Route::get('Coupons', 'CouponController@index');
     Route::get('Coupons/create', 'CouponController@create')->name('coupon.create');
@@ -50,8 +56,6 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::delete('Coupons/{coupon}', 'CouponController@destroy')->name('coupon.delete');
     Route::patch('Coupons/{coupon}', 'CouponController@update')->name('coupon.update');
 
-    //Route for dashboard
-    Route::get('dashboard', 'DashboardController@index');
 
     // Admin Brand Controller
     Route::resource('brands', 'AdminBrandController');
@@ -84,4 +88,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function() {
     Route::get('orders', 'AdminController@orders');
     Route::get('ordersid/{id}', 'AdminController@ordersId');
     Route::patch('ordersid/{order}','AdminController@statusUpdate');
+
+
+    
 });

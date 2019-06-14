@@ -272,12 +272,18 @@ table.table .avatar {
 }
 
 .modal-sm{
-    max-width: 50% !important;
+    max-width: 30% !important;
 }
 
 .user{
   display: flex;
   justify-content: left;
+  align-items: center; 
+  border : 1px solid black;
+}
+.action{
+  display: flex;
+  justify-content: center;
   align-items: center; 
   border : 1px solid black;
 }

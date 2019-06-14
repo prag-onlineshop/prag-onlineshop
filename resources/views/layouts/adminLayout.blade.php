@@ -75,7 +75,7 @@
         @yield('brands')
         @yield('coupons')
         @yield('dashboard')
-
+        @yield('userlist')
         @yield('reports')
         @yield('orders')
         @yield('settings')
@@ -90,7 +90,23 @@
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
 
+<script>
+    $(document).on("click", ".passID", function () {
+    var listId = $(this).data('edit-id');
+    var listName = $(this).data('edit-name');
+    var listEmail = $(this).data('edit-email'); 
+    var listAddress = $(this).data('edit-address');
+    var listType = $(this).data('edit-type');
 
+    $(".modal-body #id").val( listId );
+    $(".modal-body #name").val( listName );
+    $(".modal-body #email").val( listEmail );
+    $(".modal-body #address").val( listAddress ); 
+    $(".modal-body #type").val( listType );
+
+    $('#').modal('show');
+});
+</script>
 
 
 </body>
